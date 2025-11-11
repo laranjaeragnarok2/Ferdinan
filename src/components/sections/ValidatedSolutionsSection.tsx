@@ -3,20 +3,20 @@ import { CheckCircle2 } from "lucide-react";
 
 const solutions = [
   {
-    title: "Posicionamento Estratégico de Marca",
-    description: "Refinamos sua narrativa de marca para ressoar com uma clientela de alto valor, estabelecendo você como líder de mercado.",
+    title: "Posicionamento de Marca Cirúrgico",
+    description: "Elevamos sua narrativa de marca para ressoar com uma clientela de alto padrão, estabelecendo você como a única escolha lógica em seu mercado.",
   },
   {
-    title: "Otimização de Funil Orientada a Dados",
-    description: "Aproveitando a análise para construir e otimizar funis de conversão que entregam leads qualificados de forma consistente.",
+    title: "Funis de Aquisição Otimizados por IA",
+    description: "Utilizamos dados e IA para construir e otimizar funis que não apenas geram leads, mas atraem os clientes certos de forma consistente.",
   },
   {
-    title: "Redes de Afiliados Exclusivas",
-    description: "Acesso à nossa rede curada de parceiros afiliados, garantindo que sua marca seja promovida com integridade.",
+    title: "Alianças Estratégicas de Alto Nível",
+    description: "Acesso à nossa rede exclusiva de parceiros, garantindo que sua marca seja amplificada com integridade e alcance exponencial.",
   },
     {
-    title: "Desenvolvimento de Ecossistema de Conteúdo",
-    description: "Construindo um ecossistema de conteúdo valioso que nutre leads e constrói equidade de marca a longo prazo.",
+    title: "Ecossistemas de Conteúdo que Geram Autoridade",
+    description: "Criamos um universo de conteúdo que educa seu mercado, nutre leads no piloto automático e constrói um ativo de marca duradouro.",
   },
 ];
 
@@ -25,10 +25,10 @@ export default function ValidatedSolutionsSection() {
     <section id="solutions" className="py-16 sm:py-24 bg-background">
       <div className="container mx-auto max-w-6xl px-4 text-center">
         <h2 className="text-3xl font-bold md:text-4xl font-headline text-foreground">
-          Soluções Integradas e Validadas
+          Soluções Comprovadas para Crescimento Acelerado
         </h2>
         <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-          Cada solução é um componente pré-validado e de alto desempenho do seu motor de crescimento, pronto para ser integrado.
+          Cada solução é um componente de alta performance, pré-validado em cenários reais e pronto para ser integrado ao seu motor de crescimento.
         </p>
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
           {solutions.map((solution) => (

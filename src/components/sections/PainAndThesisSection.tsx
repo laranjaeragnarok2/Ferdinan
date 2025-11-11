@@ -11,14 +11,14 @@ export default function PainAndThesisSection() {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
-            <h2 className="text-3xl font-bold md:text-4xl font-headline text-foreground mb-6">O Problema & Nossa Tese</h2>
+            <h2 className="text-3xl font-bold md:text-4xl font-headline text-foreground mb-6">O Mercado é Caótico. Sua Estratégia Não Precisa Ser.</h2>
             <div className="space-y-4 text-muted-foreground text-lg">
-                <p><strong className="text-foreground">A Dor:</strong> Negócios de alto valor operam em um mercado complexo e ruidoso. Estratégias prontas falham porque não consideram os ativos de marca únicos, o posicionamento de mercado e a intrincada teia da psicologia do consumidor.</p>
-                <p><strong className="text-foreground">Nossa Tese:</strong> O crescimento sustentável não é sobre seguir tendências; é sobre curadoria estratégica. Ao selecionar, validar e integrar meticulosamente estratégias e soluções que se alinham com o DNA central de um negócio, desbloqueamos um valor exponencial e de longo prazo.</p>
+                <p><strong className="text-foreground">A Dor:</strong> Soluções genéricas falham em mercados de alto valor. Ruído, complexidade e a pressão por resultados imediatos levam a decisões reativas que desperdiçam recursos e diluem sua marca.</p>
+                <p><strong className="text-foreground">Nossa Tese:</strong> O crescimento exponencial e sustentável vem da curadoria, não da cópia. Ao alinhar estratégias validadas com o DNA exclusivo do seu negócio, transformamos complexidade em vantagem competitiva e criamos um caminho claro para a liderança.</p>
             </div>
             <Link href="#contact" className="mt-8 inline-block">
                 <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-                    Resolva Meu Problema de Crescimento
+                    Transforme Complexidade em Vantagem
                 </Button>
             </Link>
           </div>

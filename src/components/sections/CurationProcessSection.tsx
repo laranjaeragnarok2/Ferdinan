@@ -5,20 +5,20 @@ import Image from "next/image";
 const curationSteps = [
   {
     id: "curation-1",
-    title: "Descoberta Profunda",
-    description: "Nós mergulhamos na sua marca, mercado e psicologia do cliente para descobrir pontos de alavancagem únicos.",
+    title: "1. Descoberta Profunda",
+    description: "Mergulhamos em sua marca, mercado e na psicologia do seu cliente para encontrar os pontos de alavancagem ocultos que seus concorrentes ignoram.",
     iconHint: "gold compass"
   },
   {
     id: "curation-2",
-    title: "Curadoria Estratégica",
-    description: "Não apenas planejamos; nós curamos. Selecionamos e adaptamos estratégias que se encaixam perfeitamente no DNA do seu negócio.",
+    title: "2. Curadoria Estratégica",
+    description: "Selecionamos e adaptamos apenas as estratégias de maior impacto, garantindo um alinhamento perfeito com o DNA e os objetivos do seu negócio.",
     iconHint: "gold chart"
   },
   {
     id: "curation-3",
-    title: "Validação Rigorosa",
-    description: "Cada estratégia é testada e validada contra a dinâmica real do mercado antes da implementação em larga escala.",
+    title: "3. Validação e Otimização",
+    description: "Testamos rigorosamente cada estratégia contra a dinâmica real do mercado. Só implementamos o que comprovadamente funciona e otimizamos para máxima performance.",
     iconHint: "gold checkmark"
   },
 ];
@@ -28,10 +28,10 @@ export default function CurationProcessSection() {
     <section id="process" className="py-16 sm:py-24 bg-secondary/50">
       <div className="container mx-auto max-w-6xl px-4 text-center">
         <h2 className="text-3xl font-bold md:text-4xl font-headline text-foreground">
-          Nosso Processo de Curadoria
+          Nossa Metodologia para Resultados Reais
         </h2>
         <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-          Uma metodologia de três etapas projetada para arquitetar crescimento sustentável e liderança de mercado.
+          Um processo de três etapas desenhado não para planejar, mas para arquitetar seu crescimento e domínio de mercado.
         </p>
         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
           {curationSteps.map((step) => {

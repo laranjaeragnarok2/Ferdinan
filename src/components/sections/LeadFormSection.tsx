@@ -5,10 +5,10 @@ export default function LeadFormSection() {
     <section id="contact" className="py-16 sm:py-24 bg-secondary/50">
       <div className="container mx-auto max-w-3xl px-4 text-center">
         <h2 className="text-3xl font-bold md:text-4xl font-headline text-foreground">
-          Solicitar uma Consultoria
+          Pronto para Acelerar seu Crescimento?
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
-          Preencha este breve formulário para começar. Vamos ver se somos a escolha certa para desbloquear seu crescimento.
+          Preencha o formulário abaixo. Vamos descobrir juntos se nossa curadoria estratégica é a peça que falta para o seu negócio decolar.
         </p>
         <div className="mt-12">
           <LeadForm />
