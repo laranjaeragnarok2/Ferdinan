@@ -28,14 +28,14 @@ import { submitLead, type LeadFormData } from "@/app/actions/submitLead";
 import { Textarea } from "../ui/textarea";
 
 const formSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters."),
-  email: z.string().email("Please enter a valid email."),
-  company: z.string().min(2, "Company name is required."),
-  role: z.string().min(2, "Your role is required."),
-  budget: z.string().nonempty("Please select a budget range."),
+  name: z.string().min(2, "O nome deve ter pelo menos 2 caracteres."),
+  email: z.string().email("Por favor, insira um e-mail válido."),
+  company: z.string().min(2, "O nome da empresa é obrigatório."),
+  role: z.string().min(2, "Sua função é obrigatória."),
+  budget: z.string().nonempty("Por favor, selecione uma faixa de orçamento."),
   challenge: z
     .string()
-    .min(10, "Please describe your challenge in at least 10 characters."),
+    .min(10, "Por favor, descreva seu desafio em pelo menos 10 caracteres."),
 });
 
 export default function LeadForm() {
@@ -61,15 +61,15 @@ export default function LeadForm() {
 
     if (result.success) {
       toast({
-        title: "Submission Successful",
+        title: "Enviado com Sucesso",
         description: result.message,
       });
       form.reset();
     } else {
       toast({
         variant: "destructive",
-        title: "Submission Failed",
-        description: "Something went wrong. Please try again.",
+        title: "Falha no Envio",
+        description: "Algo deu errado. Por favor, tente novamente.",
       });
     }
   }
@@ -85,9 +85,9 @@ export default function LeadForm() {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Full Name</FormLabel>
+                    <FormLabel>Nome Completo</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g. Jane Doe" {...field} className="bg-input" />
+                      <Input placeholder="ex: João da Silva" {...field} className="bg-input" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -98,11 +98,11 @@ export default function LeadForm() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email Address</FormLabel>
+                    <FormLabel>Endereço de Email</FormLabel>
                     <FormControl>
                       <Input
                         type="email"
-                        placeholder="e.g. jane.doe@example.com"
+                        placeholder="ex: joao.silva@exemplo.com"
                         {...field}
                         className="bg-input"
                       />
@@ -119,9 +119,9 @@ export default function LeadForm() {
                 name="company"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Company Name</FormLabel>
+                    <FormLabel>Nome da Empresa</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g. Example Inc." {...field} className="bg-input" />
+                      <Input placeholder="ex: Exemplo Ltda." {...field} className="bg-input" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -132,9 +132,9 @@ export default function LeadForm() {
                 name="role"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Your Role</FormLabel>
+                    <FormLabel>Seu Cargo</FormLabel>
                     <FormControl>
-                      <Input placeholder="e.g. Marketing Director" {...field} className="bg-input" />
+                      <Input placeholder="ex: Diretor de Marketing" {...field} className="bg-input" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -147,19 +147,19 @@ export default function LeadForm() {
               name="budget"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Estimated Annual Budget</FormLabel>
+                  <FormLabel>Orçamento Anual Estimado</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger className="bg-input">
-                        <SelectValue placeholder="Select a budget range" />
+                        <SelectValue placeholder="Selecione uma faixa de orçamento" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="< $50k">&lt; $50,000</SelectItem>
-                      <SelectItem value="$50k-$100k">$50,000 - $100,000</SelectItem>
-                      <SelectItem value="$100k-$250k">$100,000 - $250,000</SelectItem>
-                      <SelectItem value="$250k-$500k">$250,000 - $500,000</SelectItem>
-                      <SelectItem value="$500k+">&gt; $500,000</SelectItem>
+                      <SelectItem value="< R$50k">&lt; R$50.000</SelectItem>
+                      <SelectItem value="R$50k-R$100k">R$50.000 - R$100.000</SelectItem>
+                      <SelectItem value="R$100k-R$250k">R$100.000 - R$250.000</SelectItem>
+                      <SelectItem value="R$250k-R$500k">R$250.000 - R$500.000</SelectItem>
+                      <SelectItem value="R$500k+">&gt; R$500.000</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -172,10 +172,10 @@ export default function LeadForm() {
               name="challenge"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Primary Business Challenge</FormLabel>
+                  <FormLabel>Principal Desafio de Negócio</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Briefly describe the main challenge you're looking to solve..."
+                      placeholder="Descreva brevemente o principal desafio que você busca resolver..."
                       className="resize-none bg-input"
                       {...field}
                     />
@@ -193,7 +193,7 @@ export default function LeadForm() {
               {isSubmitting && (
                 <Loader2 className="mr-2 h-5 w-5 animate-spin" />
               )}
-              Request a Consultation
+              Solicitar uma Consultoria
             </Button>
           </form>
         </Form>

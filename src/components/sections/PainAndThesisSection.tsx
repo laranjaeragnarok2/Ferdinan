@@ -11,14 +11,14 @@ export default function PainAndThesisSection() {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
-            <h2 className="text-3xl font-bold md:text-4xl font-headline text-foreground mb-6">The Problem & Our Thesis</h2>
+            <h2 className="text-3xl font-bold md:text-4xl font-headline text-foreground mb-6">O Problema & Nossa Tese</h2>
             <div className="space-y-4 text-muted-foreground text-lg">
-                <p><strong className="text-foreground">The Pain:</strong> High-value businesses operate in a complex, noisy market. Off-the-shelf strategies fail because they don't account for unique brand assets, market positioning, and the intricate web of customer psychology.</p>
-                <p><strong className="text-foreground">Our Thesis:</strong> Sustainable growth is not about chasing trends; it's about strategic curation. By meticulously selecting, validating, and integrating strategies and solutions that align with a business's core DNA, we unlock exponential, long-term value.</p>
+                <p><strong className="text-foreground">A Dor:</strong> Negócios de alto valor operam em um mercado complexo e ruidoso. Estratégias prontas falham porque não consideram os ativos de marca únicos, o posicionamento de mercado e a intrincada teia da psicologia do consumidor.</p>
+                <p><strong className="text-foreground">Nossa Tese:</strong> O crescimento sustentável não é sobre seguir tendências; é sobre curadoria estratégica. Ao selecionar, validar e integrar meticulosamente estratégias e soluções que se alinham com o DNA central de um negócio, desbloqueamos um valor exponencial e de longo prazo.</p>
             </div>
             <Link href="#contact" className="mt-8 inline-block">
                 <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-                    Solve My Growth Problem
+                    Resolva Meu Problema de Crescimento
                 </Button>
             </Link>
           </div>

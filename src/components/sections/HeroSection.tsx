@@ -12,20 +12,20 @@ export default function HeroSection() {
     <section className="py-20 md:py-32 bg-background">
       <div className="container mx-auto px-4 text-center">
         <h1 className="font-headline text-4xl md:text-6xl tracking-tight text-foreground">
-          Curated Growth Strategies<br />for High-Value Businesses
+          Estratégias de Crescimento Curadas<br />para Negócios de Alto Valor
         </h1>
         <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
-          We deliver bespoke growth strategies and validated solutions, meticulously curated to navigate the complexities of the modern market and unlock sustainable growth for high-value businesses.
+          Entregamos estratégias de crescimento personalizadas e soluções validadas, meticulosamente curadas para navegar nas complexidades do mercado moderno e desbloquear o crescimento sustentável para negócios de alto valor.
         </p>
         <div className="mt-8 flex justify-center gap-4">
           <Link href="#contact">
             <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-              Request a Consultation
+              Solicitar uma Consultoria
             </Button>
           </Link>
           <Link href="#process">
             <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-              Our Process
+              Nosso Processo
             </Button>
           </Link>
         </div>

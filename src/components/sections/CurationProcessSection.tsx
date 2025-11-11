@@ -5,20 +5,20 @@ import Image from "next/image";
 const curationSteps = [
   {
     id: "curation-1",
-    title: "Deep Discovery",
-    description: "We immerse ourselves in your brand, market, and customer psychology to uncover unique leverage points.",
+    title: "Descoberta Profunda",
+    description: "Nós mergulhamos na sua marca, mercado e psicologia do cliente para descobrir pontos de alavancagem únicos.",
     iconHint: "gold compass"
   },
   {
     id: "curation-2",
-    title: "Strategic Curation",
-    description: "We don't just plan; we curate. We select and tailor strategies that are a perfect fit for your business DNA.",
+    title: "Curadoria Estratégica",
+    description: "Não apenas planejamos; nós curamos. Selecionamos e adaptamos estratégias que se encaixam perfeitamente no DNA do seu negócio.",
     iconHint: "gold chart"
   },
   {
     id: "curation-3",
-    title: "Rigorous Validation",
-    description: "Every strategy is tested and validated against real-world market dynamics before full-scale implementation.",
+    title: "Validação Rigorosa",
+    description: "Cada estratégia é testada e validada contra a dinâmica real do mercado antes da implementação em larga escala.",
     iconHint: "gold checkmark"
   },
 ];
@@ -28,10 +28,10 @@ export default function CurationProcessSection() {
     <section id="process" className="py-16 sm:py-24 bg-secondary/50">
       <div className="container mx-auto max-w-6xl px-4 text-center">
         <h2 className="text-3xl font-bold md:text-4xl font-headline text-foreground">
-          Our Curation Process
+          Nosso Processo de Curadoria
         </h2>
         <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-          A three-step methodology designed to architect sustainable growth and market leadership.
+          Uma metodologia de três etapas projetada para arquitetar crescimento sustentável e liderança de mercado.
         </p>
         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
           {curationSteps.map((step) => {

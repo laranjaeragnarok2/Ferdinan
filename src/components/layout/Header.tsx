@@ -13,16 +13,16 @@ export default function Header() {
           </span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-          <Link href="#pain-thesis" className="text-foreground/60 hover:text-foreground/80">The Problem</Link>
-          <Link href="#process" className="text-foreground/60 hover:text-foreground/80">Our Process</Link>
-          <Link href="#solutions" className="text-foreground/60 hover:text-foreground/80">Solutions</Link>
-          <Link href="#social-proof" className="text-foreground/60 hover:text-foreground/80">Testimonials</Link>
-          <Link href="#contact" className="text-foreground/60 hover:text-foreground/80">Contact</Link>
+          <Link href="#pain-thesis" className="text-foreground/60 hover:text-foreground/80">O Problema</Link>
+          <Link href="#process" className="text-foreground/60 hover:text-foreground/80">Nosso Processo</Link>
+          <Link href="#solutions" className="text-foreground/60 hover:text-foreground/80">Soluções</Link>
+          <Link href="#social-proof" className="text-foreground/60 hover:text-foreground/80">Depoimentos</Link>
+          <Link href="#contact" className="text-foreground/60 hover:text-foreground/80">Contato</Link>
         </nav>
         <nav className="flex items-center gap-4">
           <Link href="#contact" passHref>
             <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
-              Request a Consultation
+              Solicitar uma Consultoria
             </Button>
           </Link>
         </nav>
