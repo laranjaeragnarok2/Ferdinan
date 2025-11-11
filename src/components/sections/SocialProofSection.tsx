@@ -31,7 +31,7 @@ export default function SocialProofSection() {
   return (
     <section id="social-proof" className="py-16 sm:py-24 bg-secondary/50">
         <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold md:text-4xl font-headline text-foreground">Resultados, Não Promessas</h2>
+            <h2 className="text-3xl font-bold md:text-4xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500">Resultados, Não Promessas</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
                 Parceiros que confiam em nossa curadoria para transformar seus negócios.
             </p>
@@ -64,9 +64,9 @@ export default function SocialProofSection() {
                             <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                         </div>
                     </div>
-                    <div className="flex text-primary">
+                    <div className="flex text-yellow-400">
                         {[...Array(testimonial.rating)].map((_, i) => (
-                            <Star key={i} className="w-4 h-4 fill-primary"/>
+                            <Star key={i} className="w-4 h-4 fill-current"/>
                         ))}
                     </div>
                 </CardFooter>
