@@ -37,7 +37,7 @@ export default function CurationProcessSection() {
           {curationSteps.map((step) => {
             const image = PlaceHolderImages.find(img => img.id === step.id);
             return (
-              <Card key={step.title} className="text-center bg-card border-border/70 shadow-lg transform transition-transform hover:-translate-y-2">
+              <Card key={step.title} className="text-center bg-card border-border/70 shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-xl">
                 <CardHeader>
                   <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
                     {image && <Image src={image.imageUrl} alt={step.title} width={40} height={40} data-ai-hint={step.iconHint} />}

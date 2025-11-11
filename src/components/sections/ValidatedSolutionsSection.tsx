@@ -32,7 +32,7 @@ export default function ValidatedSolutionsSection() {
         </p>
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
           {solutions.map((solution) => (
-            <Card key={solution.title} className="text-left bg-card border-border/70 shadow-lg flex items-start p-6">
+            <Card key={solution.title} className="text-left bg-card border-border/70 shadow-lg flex items-start p-6 transition-all duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-xl hover:border-primary/50">
               <CardHeader className="p-0 mr-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
                     <CheckCircle2 className="h-6 w-6" />

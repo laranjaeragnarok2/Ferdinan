@@ -43,7 +43,7 @@ export default function SocialProofSection() {
               (img) => img.id === testimonial.id
             );
             return (
-              <Card key={testimonial.id} className="flex flex-col bg-card border-border/70 shadow-lg">
+              <Card key={testimonial.id} className="flex flex-col bg-card border-border/70 shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-xl">
                 <CardContent className="p-6 flex-grow">
                   <p className="text-muted-foreground">"{testimonial.quote}"</p>
                 </CardContent>

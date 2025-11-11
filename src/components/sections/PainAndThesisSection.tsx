@@ -17,7 +17,7 @@ export default function PainAndThesisSection() {
                 <p><strong className="text-foreground">Nossa Tese:</strong> O crescimento exponencial e sustentável vem da curadoria, não da cópia. Ao alinhar estratégias validadas com o DNA exclusivo do seu negócio, transformamos complexidade em vantagem competitiva e criamos um caminho claro para a liderança.</p>
             </div>
             <Link href="#contact" className="mt-8 inline-block">
-                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform transform hover:scale-105">
                     Transforme Complexidade em Vantagem
                 </Button>
             </Link>
@@ -29,7 +29,7 @@ export default function PainAndThesisSection() {
                     alt={painThesisImage.description}
                     width={600}
                     height={700}
-                    className="rounded-lg shadow-2xl mx-auto object-cover"
+                    className="rounded-lg shadow-2xl mx-auto object-cover transform transition-all duration-300 hover:scale-105"
                     data-ai-hint={painThesisImage.imageHint}
                 />
             )}
