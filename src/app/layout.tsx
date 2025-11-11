@@ -3,6 +3,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import Script from 'next/script';
+import CookieConsent from '@/components/layout/CookieConsent';
 
 export const metadata: Metadata = {
   title: 'Ferdian-MSP',
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body className="font-body antialiased">
         {children}
         <Toaster />
+        <CookieConsent />
         <SpeedInsights />
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-KXTREZQQ36"></Script>
         <Script id="google-analytics">
