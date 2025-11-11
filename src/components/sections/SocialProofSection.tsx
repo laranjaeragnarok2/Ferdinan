@@ -31,7 +31,7 @@ export default function SocialProofSection() {
   return (
     <section id="social-proof" className="py-16 sm:py-24 bg-secondary/50">
         <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold md:text-4xl font-headline text-stone-800">What Our Clients Say</h2>
+            <h2 className="text-3xl font-bold md:text-4xl font-headline text-foreground">What Our Clients Say</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
                 We are a trusted partner for businesses that demand excellence and results.
             </p>

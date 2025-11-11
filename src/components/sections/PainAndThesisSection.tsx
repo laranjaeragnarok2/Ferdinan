@@ -11,7 +11,7 @@ export default function PainAndThesisSection() {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
-            <h2 className="text-3xl font-bold md:text-4xl font-headline text-stone-800 mb-6">The Problem & Our Thesis</h2>
+            <h2 className="text-3xl font-bold md:text-4xl font-headline text-foreground mb-6">The Problem & Our Thesis</h2>
             <div className="space-y-4 text-muted-foreground text-lg">
                 <p><strong className="text-foreground">The Pain:</strong> High-value businesses operate in a complex, noisy market. Off-the-shelf strategies fail because they don't account for unique brand assets, market positioning, and the intricate web of customer psychology.</p>
                 <p><strong className="text-foreground">Our Thesis:</strong> Sustainable growth is not about chasing trends; it's about strategic curation. By meticulously selecting, validating, and integrating strategies and solutions that align with a business's core DNA, we unlock exponential, long-term value.</p>

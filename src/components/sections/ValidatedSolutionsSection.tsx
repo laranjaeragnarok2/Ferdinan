@@ -24,7 +24,7 @@ export default function ValidatedSolutionsSection() {
   return (
     <section id="solutions" className="py-16 sm:py-24 bg-background">
       <div className="container mx-auto max-w-6xl px-4 text-center">
-        <h2 className="text-3xl font-bold md:text-4xl font-headline text-stone-800">
+        <h2 className="text-3xl font-bold md:text-4xl font-headline text-foreground">
           Integrated & Validated Solutions
         </h2>
         <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">

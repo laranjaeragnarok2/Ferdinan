@@ -8,7 +8,7 @@ export default function Header() {
       <div className="container flex h-16 max-w-screen-xl items-center justify-between px-4">
         <Link href="/" className="flex items-center space-x-2">
           <MountainIcon className="h-6 w-6 text-primary" />
-          <span className="font-bold text-xl font-headline text-stone-800">
+          <span className="font-bold text-xl font-headline text-foreground">
             Ferdinan
           </span>
         </Link>

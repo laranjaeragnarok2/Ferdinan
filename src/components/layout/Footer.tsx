@@ -10,14 +10,14 @@ export default function Footer() {
             <div>
                  <Link href="/" className="flex items-center space-x-2 mb-4">
                     <MountainIcon className="h-6 w-6 text-primary" />
-                    <span className="font-bold text-xl font-headline text-stone-800">
+                    <span className="font-bold text-xl font-headline text-foreground">
                         Ferdinan
                     </span>
                 </Link>
                 <p className="text-muted-foreground">Bespoke growth strategies, curated for high-value businesses.</p>
             </div>
             <div>
-                <h3 className="font-semibold mb-4">Quick Links</h3>
+                <h3 className="font-semibold mb-4 text-foreground">Quick Links</h3>
                 <ul className="space-y-2">
                     <li><Link href="#pain-thesis" className="text-muted-foreground hover:text-foreground">The Problem</Link></li>
                     <li><Link href="#process" className="text-muted-foreground hover:text-foreground">Our Process</Link></li>
@@ -26,7 +26,7 @@ export default function Footer() {
                 </ul>
             </div>
             <div>
-                 <h3 className="font-semibold mb-4">Stay Updated</h3>
+                 <h3 className="font-semibold mb-4 text-foreground">Stay Updated</h3>
                  <p className="text-muted-foreground mb-4">Subscribe to our newsletter for the latest insights.</p>
                  <div className="flex w-full max-w-sm items-center space-x-2">
                     <Input type="email" placeholder="Email" className="bg-input"/>
