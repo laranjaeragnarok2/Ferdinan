@@ -12,25 +12,38 @@ const testimonialImages = [
     PlaceHolderImages.find((img) => img.id === "testimonial-3"),
 ];
 
+const heroBackgroundImage = PlaceHolderImages.find((img) => img.id === "hero-background");
+
 
 export default function HeroSection() {
   return (
-    <section className="py-20 md:py-32 bg-background">
-      <div className="container mx-auto px-4 text-center">
-        <h1 className="font-headline text-4xl md:text-6xl tracking-tight text-foreground">
+    <section className="relative py-20 md:py-32 bg-background text-white">
+        {heroBackgroundImage && (
+            <Image
+                src={heroBackgroundImage.imageUrl}
+                alt={heroBackgroundImage.description}
+                fill
+                className="object-cover"
+                priority
+                data-ai-hint={heroBackgroundImage.imageHint}
+            />
+        )}
+        <div className="absolute inset-0 bg-black/60"></div>
+      <div className="container relative mx-auto px-4 text-center">
+        <h1 className="font-headline text-4xl md:text-6xl tracking-tight text-white">
           Pare de Adivinhar. Comece a Crescer.
         </h1>
-        <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
+        <p className="mt-6 max-w-2xl mx-auto text-lg text-slate-300">
           Navegue pelas complexidades do mercado com estratégias de crescimento personalizadas, meticulosamente curadas para negócios de alto valor que não se contentam com o comum.
         </p>
         <div className="mt-8 flex justify-center gap-4">
           <Link href="#contact">
-            <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+            <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 transition-transform transform hover:scale-105">
               Solicitar uma Consultoria
             </Button>
           </Link>
           <Link href="#process">
-            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 transition-transform transform hover:scale-105">
               Conheça Nosso Processo
             </Button>
           </Link>
@@ -47,10 +60,10 @@ export default function HeroSection() {
             <div className="text-left">
                 <div className="flex items-center">
                     {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                        <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                     ))}
                 </div>
-                <p className="text-sm text-muted-foreground">Confiado por líderes de mercado.</p>
+                <p className="text-sm text-slate-400">Confiado por líderes de mercado.</p>
             </div>
         </div>
       </div>

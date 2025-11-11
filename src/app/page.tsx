@@ -13,11 +13,13 @@ export default function Home() {
       <Header />
       <main className="flex-grow">
         <HeroSection />
-        <PainAndThesisSection />
-        <CurationProcessSection />
-        <ValidatedSolutionsSection />
-        <SocialProofSection />
-        <LeadFormSection />
+        <div className="relative z-10 bg-background">
+          <PainAndThesisSection />
+          <CurationProcessSection />
+          <ValidatedSolutionsSection />
+          <SocialProofSection />
+          <LeadFormSection />
+        </div>
       </main>
       <Footer />
     </div>
