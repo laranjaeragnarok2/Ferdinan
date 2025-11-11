@@ -16,17 +16,7 @@ const heroBackgroundImage = PlaceHolderImages.find((img) => img.id === "hero-bac
 
 export default function HeroSection() {
   return (
-    <section className="relative text-white">
-        {heroBackgroundImage && (
-            <Image
-                src={heroBackgroundImage.imageUrl}
-                alt={heroBackgroundImage.description}
-                fill
-                className="object-cover"
-                priority
-                data-ai-hint={heroBackgroundImage.imageHint}
-            />
-        )}
+    <section className="relative text-white hero-bg">
         <div className="absolute inset-0 bg-black/60"></div>
       <div className="container relative mx-auto text-center py-20 md:py-32">
         <h1 className="font-headline text-4xl md:text-6xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">

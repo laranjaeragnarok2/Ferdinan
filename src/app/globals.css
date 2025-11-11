@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,7 +13,7 @@
     --card-foreground: 210 25% 95%;
     --popover: 222 71% 15%;
     --popover-foreground: 210 25% 95%;
-    --primary: 216 16% 77%; /* Slate Gray #727F8C */
+    --primary: 43 74% 66%; /* Gold */
     --primary-foreground: 220 85% 7%;
     --secondary: 222 71% 15%;
     --secondary-foreground: 210 25% 95%;
@@ -46,7 +49,7 @@
     --card-foreground: 210 25% 95%;
     --popover: 222 71% 15%;
     --popover-foreground: 210 25% 95%;
-    --primary: 216 16% 77%; /* Slate Gray #727F8C */
+    --primary: 43 74% 66%; /* Gold */
     --primary-foreground: 220 85% 7%;
     --secondary: 222 71% 15%;
     --secondary-foreground: 210 25% 95%;
@@ -108,5 +111,12 @@
 
   .btn-gradient:hover::before {
     left: 100%;
+  }
+
+  .hero-bg {
+    background-image: url('https://i.imgur.com/DIj135R.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
   }
 }
