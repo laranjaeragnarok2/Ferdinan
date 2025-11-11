@@ -29,7 +29,7 @@ export default function HeroSection() {
             />
         )}
         <div className="absolute inset-0 bg-black/60"></div>
-      <div className="container relative mx-auto text-center max-w-7xl">
+      <div className="container relative mx-auto text-center">
         <h1 className="font-headline text-4xl md:text-6xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500">
           Pare de Adivinhar. Comece a Crescer.
         </h1>

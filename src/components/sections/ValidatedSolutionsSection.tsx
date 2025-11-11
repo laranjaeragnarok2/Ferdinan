@@ -23,7 +23,7 @@ const solutions = [
 export default function ValidatedSolutionsSection() {
   return (
     <section id="solutions" className="py-16 sm:py-24 bg-background px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto max-w-7xl text-center">
+      <div className="container mx-auto text-center">
         <h2 className="text-3xl font-bold md:text-4xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500">
           Soluções Comprovadas para Crescimento Acelerado
         </h2>

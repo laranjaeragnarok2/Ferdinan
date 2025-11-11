@@ -6,10 +6,10 @@ import { Button } from "../ui/button";
 export default function Footer() {
   return (
     <footer className="border-t border-border/40 bg-secondary/50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
                  <Link href="/" className="flex items-center space-x-2 mb-4">
-                    <GrowthIcon className="text-chart-4" />
+                    <GrowthIcon />
                     <span className="font-bold text-xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500">
                         Ferdian-MSP
                     </span>
@@ -34,7 +34,7 @@ export default function Footer() {
                 </div>
             </div>
         </div>
-      <div className="container mx-auto text-center text-sm text-muted-foreground mt-8 border-t border-border/40 pt-6 max-w-7xl">
+      <div className="container mx-auto text-center text-sm text-muted-foreground mt-8 border-t border-border/40 pt-6">
         <p>
           &copy; {new Date().getFullYear()} Ferdian-MSP. Todos os Direitos Reservados.
         </p>
