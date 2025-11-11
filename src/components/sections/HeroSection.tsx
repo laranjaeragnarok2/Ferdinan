@@ -4,8 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Star } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const heroImage = PlaceHolderImages.find((img) => img.id === "hero-strategy");
+const testimonialImages = [
+    PlaceHolderImages.find((img) => img.id === "testimonial-1"),
+    PlaceHolderImages.find((img) => img.id === "testimonial-2"),
+    PlaceHolderImages.find((img) => img.id === "testimonial-3"),
+];
+
 
 export default function HeroSection() {
   return (
@@ -28,6 +35,24 @@ export default function HeroSection() {
               Nosso Processo
             </Button>
           </Link>
+        </div>
+        <div className="mt-8 flex justify-center items-center gap-4">
+            <div className="flex -space-x-2">
+                {testimonialImages.map((img, index) => img && (
+                    <Avatar key={index} className="border-2 border-background">
+                        <AvatarImage src={img.imageUrl} alt="Cliente satisfeito" data-ai-hint={img.imageHint} />
+                        <AvatarFallback>{`C${index+1}`}</AvatarFallback>
+                    </Avatar>
+                ))}
+            </div>
+            <div className="text-left">
+                <div className="flex items-center">
+                    {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 fill-primary text-primary" />
+                    ))}
+                </div>
+                <p className="text-sm text-muted-foreground">Confiado por líderes de mercado.</p>
+            </div>
         </div>
       </div>
       <div className="container mx-auto px-4 mt-16 relative">
