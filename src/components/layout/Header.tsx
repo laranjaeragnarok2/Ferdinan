@@ -23,7 +23,7 @@ export default function Header() {
         </nav>
         <nav className="flex items-center gap-4">
           <Link href="#contact" passHref>
-            <Button className="bg-card text-foreground font-bold hover:bg-gradient-to-r hover:from-yellow-300 hover:to-amber-500 hover:text-black btn-gradient border border-border">
+            <Button className="bg-gradient-to-r from-yellow-300 to-amber-500 text-black font-bold btn-gradient border-amber-500 hover:brightness-110">
               Solicitar uma Consultoria
             </Button>
           </Link>

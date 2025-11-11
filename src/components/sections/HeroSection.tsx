@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,7 +37,7 @@ export default function HeroSection() {
         </p>
         <div className="mt-8 flex justify-center gap-4">
           <Link href="#contact">
-            <Button size="lg" className="bg-card text-foreground font-bold hover:bg-gradient-to-r hover:from-yellow-300 hover:to-amber-500 hover:text-black transition-transform transform hover:scale-105 btn-gradient border border-border">
+            <Button size="lg" className="bg-gradient-to-r from-yellow-300 to-amber-500 text-black font-bold transition-transform transform hover:scale-105 btn-gradient border-amber-500 hover:brightness-110">
               Solicitar uma Consultoria
             </Button>
           </Link>

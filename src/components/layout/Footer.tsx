@@ -30,7 +30,7 @@ export default function Footer() {
                  <p className="text-muted-foreground mb-4">Assine nossa newsletter para receber as últimas novidades.</p>
                  <div className="flex w-full max-w-sm items-center space-x-2">
                     <Input type="email" placeholder="Email" className="bg-input"/>
-                    <Button type="submit" className="bg-card text-foreground font-bold hover:bg-gradient-to-r hover:from-yellow-300 hover:to-amber-500 hover:text-black btn-gradient border border-border">Inscrever</Button>
+                    <Button type="submit" className="bg-gradient-to-r from-yellow-300 to-amber-500 text-black font-bold btn-gradient border-amber-500 hover:brightness-110">Inscrever</Button>
                 </div>
             </div>
         </div>
