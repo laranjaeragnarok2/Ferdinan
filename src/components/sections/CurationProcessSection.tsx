@@ -1,25 +1,24 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-import Image from "next/image";
+import { Compass, LineChart, CheckCircle } from "lucide-react";
 
 const curationSteps = [
   {
     id: "curation-1",
     title: "1. Descoberta Profunda",
     description: "Mergulhamos em sua marca, mercado e na psicologia do seu cliente para encontrar os pontos de alavancagem ocultos que seus concorrentes ignoram.",
-    iconHint: "gold compass"
+    icon: Compass
   },
   {
     id: "curation-2",
     title: "2. Curadoria Estratégica",
     description: "Selecionamos e adaptamos apenas as estratégias de maior impacto, garantindo um alinhamento perfeito com o DNA e os objetivos do seu negócio.",
-    iconHint: "gold chart"
+    icon: LineChart
   },
   {
     id: "curation-3",
     title: "3. Validação e Otimização",
     description: "Testamos rigorosamente cada estratégia contra a dinâmica real do mercado. Só implementamos o que comprovadamente funciona e otimizamos para máxima performance.",
-    iconHint: "gold checkmark"
+    icon: CheckCircle
   },
 ];
 
@@ -34,13 +33,11 @@ export default function CurationProcessSection() {
           Um processo de três etapas desenhado não para planejar, mas para arquitetar seu crescimento e domínio de mercado.
         </p>
         <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
-          {curationSteps.map((step) => {
-            const image = PlaceHolderImages.find(img => img.id === step.id);
-            return (
+          {curationSteps.map((step) => (
               <Card key={step.title} className="text-center bg-card border-border/70 shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-xl">
                 <CardHeader>
-                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-primary/10">
-                    {image && <Image src={image.imageUrl} alt={step.title} width={40} height={40} data-ai-hint={step.iconHint} />}
+                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 text-accent">
+                    <step.icon className="h-10 w-10" />
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -50,8 +47,7 @@ export default function CurationProcessSection() {
                   </p>
                 </CardContent>
               </Card>
-            );
-          })}
+            ))}
         </div>
       </div>
     </section>

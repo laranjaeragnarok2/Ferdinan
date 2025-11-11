@@ -27,8 +27,8 @@ export default function PainAndThesisSection() {
                 <Image 
                     src={painThesisImage.imageUrl}
                     alt={painThesisImage.description}
-                    width={307}
-                    height={358}
+                    width={353}
+                    height={412}
                     className="rounded-lg shadow-2xl mx-auto object-cover transform transition-all duration-300 hover:scale-105"
                     data-ai-hint={painThesisImage.imageHint}
                 />
