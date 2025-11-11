@@ -24,8 +24,8 @@ const curationSteps = [
 
 export default function CurationProcessSection() {
   return (
-    <section id="process" className="py-16 sm:py-24 bg-secondary/50">
-      <div className="container mx-auto max-w-6xl px-4 text-center">
+    <section id="process" className="py-16 sm:py-24 bg-secondary/50 px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-7xl text-center">
         <h2 className="text-3xl font-bold md:text-4xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500">
           Nossa Metodologia para Resultados Reais
         </h2>

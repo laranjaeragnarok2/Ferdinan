@@ -7,8 +7,8 @@ const painThesisImage = PlaceHolderImages.find(img => img.id === 'pain-thesis');
 
 export default function PainAndThesisSection() {
   return (
-    <section id="pain-thesis" className="py-16 sm:py-24 bg-background">
-      <div className="container mx-auto px-4 max-w-6xl">
+    <section id="pain-thesis" className="py-16 sm:py-24 bg-background px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-7xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
             <h2 className="text-3xl font-bold md:text-4xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500 mb-6">O Mercado é Caótico. Sua Estratégia Não Precisa Ser.</h2>
@@ -27,8 +27,8 @@ export default function PainAndThesisSection() {
                 <Image 
                     src={painThesisImage.imageUrl}
                     alt={painThesisImage.description}
-                    width={339}
-                    height={396}
+                    width={296}
+                    height={346}
                     className="rounded-lg shadow-2xl mx-auto object-cover transform transition-all duration-300 hover:scale-105"
                     data-ai-hint={painThesisImage.imageHint}
                 />

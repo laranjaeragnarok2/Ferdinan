@@ -17,7 +17,7 @@ const heroBackgroundImage = PlaceHolderImages.find((img) => img.id === "hero-bac
 
 export default function HeroSection() {
   return (
-    <section className="relative py-20 md:py-32 bg-background text-white">
+    <section className="relative py-20 md:py-32 bg-background text-white px-4 sm:px-6 lg:px-8">
         {heroBackgroundImage && (
             <Image
                 src={heroBackgroundImage.imageUrl}
@@ -29,7 +29,7 @@ export default function HeroSection() {
             />
         )}
         <div className="absolute inset-0 bg-black/60"></div>
-      <div className="container relative mx-auto px-4 text-center max-w-6xl">
+      <div className="container relative mx-auto text-center max-w-7xl">
         <h1 className="font-headline text-4xl md:text-6xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500">
           Pare de Adivinhar. Comece a Crescer.
         </h1>
