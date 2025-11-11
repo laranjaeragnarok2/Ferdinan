@@ -7,7 +7,7 @@ const painThesisImage = PlaceHolderImages.find(img => img.id === 'pain-thesis');
 
 export default function PainAndThesisSection() {
   return (
-    <section id="pain-thesis" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+    <section id="pain-thesis" className="py-16 sm:py-24">
       <div className="container mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
@@ -17,7 +17,7 @@ export default function PainAndThesisSection() {
                 <p><strong className="text-foreground">Nossa Tese:</strong> O crescimento exponencial e sustentável vem da curadoria, não da cópia. Ao alinhar estratégias validadas com o DNA exclusivo do seu negócio, transformamos complexidade em vantagem competitiva e criamos um caminho claro para a liderança.</p>
             </div>
             <Link href="#contact" className="mt-8 inline-block">
-                <Button size="lg" className="bg-gradient-to-r from-yellow-300 to-amber-500 text-black font-bold hover:from-yellow-400 hover:to-amber-600 transition-transform transform hover:scale-105 btn-gradient">
+                <Button size="lg" className="bg-card text-foreground font-bold hover:bg-gradient-to-r hover:from-yellow-300 hover:to-amber-500 hover:text-black transition-transform transform hover:scale-105 btn-gradient border border-border">
                     Transforme Complexidade em Vantagem
                 </Button>
             </Link>
@@ -27,8 +27,8 @@ export default function PainAndThesisSection() {
                 <Image 
                     src={painThesisImage.imageUrl}
                     alt={painThesisImage.description}
-                    width={296}
-                    height={346}
+                    width={237}
+                    height={277}
                     className="rounded-lg shadow-2xl mx-auto object-cover transform transition-all duration-300 hover:scale-105"
                     data-ai-hint={painThesisImage.imageHint}
                 />

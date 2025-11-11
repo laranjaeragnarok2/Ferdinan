@@ -5,8 +5,8 @@ import { Button } from "../ui/button";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-border/40 bg-secondary/50 py-12 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="border-t border-border/40 bg-secondary/50">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 py-12">
             <div>
                  <Link href="/" className="flex items-center space-x-2 mb-4">
                     <GrowthIcon />
@@ -30,11 +30,11 @@ export default function Footer() {
                  <p className="text-muted-foreground mb-4">Assine nossa newsletter para receber as últimas novidades.</p>
                  <div className="flex w-full max-w-sm items-center space-x-2">
                     <Input type="email" placeholder="Email" className="bg-input"/>
-                    <Button type="submit" className="bg-gradient-to-r from-yellow-300 to-amber-500 text-black font-bold hover:from-yellow-400 hover:to-amber-600 btn-gradient">Inscrever</Button>
+                    <Button type="submit" className="bg-card text-foreground font-bold hover:bg-gradient-to-r hover:from-yellow-300 hover:to-amber-500 hover:text-black btn-gradient border border-border">Inscrever</Button>
                 </div>
             </div>
         </div>
-      <div className="container mx-auto text-center text-sm text-muted-foreground mt-8 border-t border-border/40 pt-6">
+      <div className="container mx-auto text-center text-sm text-muted-foreground mt-8 border-t border-border/40 pt-6 pb-6">
         <p>
           &copy; {new Date().getFullYear()} Ferdian-MSP. Todos os Direitos Reservados.
         </p>

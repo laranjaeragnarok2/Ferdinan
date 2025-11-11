@@ -17,7 +17,7 @@ const heroBackgroundImage = PlaceHolderImages.find((img) => img.id === "hero-bac
 
 export default function HeroSection() {
   return (
-    <section className="relative py-20 md:py-32 bg-background text-white px-4 sm:px-6 lg:px-8">
+    <section className="relative text-white">
         {heroBackgroundImage && (
             <Image
                 src={heroBackgroundImage.imageUrl}
@@ -29,7 +29,7 @@ export default function HeroSection() {
             />
         )}
         <div className="absolute inset-0 bg-black/60"></div>
-      <div className="container relative mx-auto text-center">
+      <div className="container relative mx-auto text-center py-20 md:py-32">
         <h1 className="font-headline text-4xl md:text-6xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500">
           Pare de Adivinhar. Comece a Crescer.
         </h1>
@@ -38,7 +38,7 @@ export default function HeroSection() {
         </p>
         <div className="mt-8 flex justify-center gap-4">
           <Link href="#contact">
-            <Button size="lg" className="bg-gradient-to-r from-yellow-300 to-amber-500 text-black font-bold hover:from-yellow-400 hover:to-amber-600 transition-transform transform hover:scale-105 btn-gradient">
+            <Button size="lg" className="bg-card text-foreground font-bold hover:bg-gradient-to-r hover:from-yellow-300 hover:to-amber-500 hover:text-black transition-transform transform hover:scale-105 btn-gradient border border-border">
               Solicitar uma Consultoria
             </Button>
           </Link>
