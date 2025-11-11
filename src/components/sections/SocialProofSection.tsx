@@ -8,14 +8,14 @@ const testimonials = [
     id: "testimonial-1",
     name: "Alexandre Dubois",
     title: "CEO, Maison de Luxe",
-    quote: "Ferdinan's team didn't just provide a service; they curated a growth journey. Their strategic insights were invaluable, leading to a 40% increase in qualified leads within a single quarter.",
+    quote: "Ferdian-MSP's team didn't just provide a service; they curated a growth journey. Their strategic insights were invaluable, leading to a 40% increase in qualified leads within a single quarter.",
     rating: 5,
   },
   {
     id: "testimonial-2",
     name: "Isabella Rossi",
     title: "Founder, Artisa",
-    quote: "Working with Ferdinan felt like having an in-house team of strategic geniuses. Their validation process ensured that we only invested in what works. The results have been phenomenal.",
+    quote: "Working with Ferdian-MSP felt like having an in-house team of strategic geniuses. Their validation process ensured that we only invested in what works. The results have been phenomenal.",
     rating: 5,
   },
   {

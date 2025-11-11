@@ -9,7 +9,7 @@ export default function Header() {
         <Link href="/" className="flex items-center space-x-2">
           <MountainIcon className="h-6 w-6 text-primary" />
           <span className="font-bold text-xl font-headline text-foreground">
-            Ferdinan
+            Ferdian-MSP
           </span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">

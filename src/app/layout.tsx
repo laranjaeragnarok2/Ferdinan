@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Ferdinan Strategy Curator',
+  title: 'Ferdian-MSP',
   description: 'Bespoke growth strategies, curated for high-value businesses.',
 };
 

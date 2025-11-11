@@ -11,7 +11,7 @@ export default function Footer() {
                  <Link href="/" className="flex items-center space-x-2 mb-4">
                     <MountainIcon className="h-6 w-6 text-primary" />
                     <span className="font-bold text-xl font-headline text-foreground">
-                        Ferdinan
+                        Ferdian-MSP
                     </span>
                 </Link>
                 <p className="text-muted-foreground">Bespoke growth strategies, curated for high-value businesses.</p>
@@ -36,7 +36,7 @@ export default function Footer() {
         </div>
       <div className="container mx-auto px-4 text-center text-sm text-muted-foreground mt-8 border-t border-border/40 pt-6">
         <p>
-          &copy; {new Date().getFullYear()} Ferdinan Strategy Curator. All Rights Reserved.
+          &copy; {new Date().getFullYear()} Ferdian-MSP. All Rights Reserved.
         </p>
       </div>
     </footer>
