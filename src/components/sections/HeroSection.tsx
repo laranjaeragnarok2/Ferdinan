@@ -29,7 +29,7 @@ export default function HeroSection() {
         )}
         <div className="absolute inset-0 bg-black/60"></div>
       <div className="container relative mx-auto text-center py-20 md:py-32">
-        <h1 className="font-headline text-4xl md:text-6xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500">
+        <h1 className="font-headline text-4xl md:text-6xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-600">
           Pare de Adivinhar. Comece a Crescer.
         </h1>
         <p className="mt-6 max-w-2xl mx-auto text-lg text-slate-300">
@@ -37,7 +37,7 @@ export default function HeroSection() {
         </p>
         <div className="mt-8 flex justify-center gap-4">
           <Link href="#contact">
-            <Button size="lg" className="bg-gradient-to-r from-yellow-300 to-amber-500 text-black font-bold transition-transform transform hover:scale-105 btn-gradient border-amber-500 hover:brightness-110">
+            <Button size="lg" className="bg-gradient-to-r from-yellow-400 to-amber-600 text-black font-bold transition-transform transform hover:scale-105 btn-gradient border-amber-500 hover:brightness-110">
               Solicitar uma Consultoria
             </Button>
           </Link>

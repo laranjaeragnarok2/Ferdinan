@@ -188,7 +188,7 @@ export default function LeadForm() {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gradient-to-r from-yellow-300 to-amber-500 text-black font-bold text-lg py-6 btn-gradient border-amber-500 hover:brightness-110"
+              className="w-full bg-gradient-to-r from-yellow-400 to-amber-600 text-black font-bold text-lg py-6 btn-gradient border-amber-500 hover:brightness-110"
             >
               {isSubmitting && (
                 <Loader2 className="mr-2 h-5 w-5 animate-spin" />

@@ -10,7 +10,7 @@ export default function Header() {
       <div className="flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center space-x-2">
           <GrowthIcon />
-          <span className="font-bold text-xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500">
+          <span className="font-bold text-xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-600">
             Ferdian-MSP
           </span>
         </Link>
@@ -23,7 +23,7 @@ export default function Header() {
         </nav>
         <nav className="flex items-center gap-4">
           <Link href="#contact" passHref>
-            <Button className="bg-gradient-to-r from-yellow-300 to-amber-500 text-black font-bold btn-gradient border-amber-500 hover:brightness-110">
+            <Button className="bg-gradient-to-r from-yellow-400 to-amber-600 text-black font-bold btn-gradient border-amber-500 hover:brightness-110">
               Solicitar uma Consultoria
             </Button>
           </Link>

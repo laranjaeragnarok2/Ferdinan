@@ -6,11 +6,11 @@ import { Button } from "../ui/button";
 export default function Footer() {
   return (
     <footer className="border-t border-border/40 bg-secondary/50">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 py-12">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 py-12 px-4 sm:px-6 lg:px-8">
             <div>
                  <Link href="/" className="flex items-center space-x-2 mb-4">
                     <GrowthIcon />
-                    <span className="font-bold text-xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-500">
+                    <span className="font-bold text-xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-600">
                         Ferdian-MSP
                     </span>
                 </Link>
@@ -30,11 +30,11 @@ export default function Footer() {
                  <p className="text-muted-foreground mb-4">Assine nossa newsletter para receber as últimas novidades.</p>
                  <div className="flex w-full max-w-sm items-center space-x-2">
                     <Input type="email" placeholder="Email" className="bg-input"/>
-                    <Button type="submit" className="bg-gradient-to-r from-yellow-300 to-amber-500 text-black font-bold btn-gradient border-amber-500 hover:brightness-110">Inscrever</Button>
+                    <Button type="submit" className="bg-gradient-to-r from-yellow-400 to-amber-600 text-black font-bold btn-gradient border-amber-500 hover:brightness-110">Inscrever</Button>
                 </div>
             </div>
         </div>
-      <div className="container mx-auto text-center text-sm text-muted-foreground mt-8 border-t border-border/40 pt-6 pb-6">
+      <div className="container mx-auto text-center text-sm text-muted-foreground mt-8 border-t border-border/40 pt-6 pb-6 px-4 sm:px-6 lg:px-8">
         <p>
           &copy; {new Date().getFullYear()} Ferdian-MSP. Todos os Direitos Reservados.
         </p>
