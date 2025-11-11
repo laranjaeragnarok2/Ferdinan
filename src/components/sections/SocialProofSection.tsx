@@ -29,9 +29,9 @@ const testimonials = [
 
 export default function SocialProofSection() {
   return (
-    <section id="social-proof" className="py-16 sm:py-24 bg-secondary/50 px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold md:text-4xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-600">Resultados, Não Promessas</h2>
+    <section id="social-proof" className="py-16 sm:py-24 bg-secondary/50">
+        <div className="container mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold md:text-4xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Resultados, Não Promessas</h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
                 Parceiros que confiam em nossa curadoria para transformar seus negócios.
             </p>

@@ -10,7 +10,7 @@ export default function Footer() {
             <div>
                  <Link href="/" className="flex items-center space-x-2 mb-4">
                     <GrowthIcon />
-                    <span className="font-bold text-xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-600">
+                    <span className="font-bold text-xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
                         Ferdian-MSP
                     </span>
                 </Link>
@@ -30,7 +30,7 @@ export default function Footer() {
                  <p className="text-muted-foreground mb-4">Assine nossa newsletter para receber as últimas novidades.</p>
                  <div className="flex w-full max-w-sm items-center space-x-2">
                     <Input type="email" placeholder="Email" className="bg-input"/>
-                    <Button type="submit" className="bg-gradient-to-r from-yellow-400 to-amber-600 text-black font-bold btn-gradient border-amber-500 hover:brightness-110">Inscrever</Button>
+                    <Button type="submit" className="bg-gradient-to-r from-amber-500 to-orange-600 text-black font-bold btn-gradient border-amber-500 hover:brightness-110">Inscrever</Button>
                 </div>
             </div>
         </div>

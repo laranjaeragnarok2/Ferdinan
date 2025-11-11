@@ -24,9 +24,9 @@ const curationSteps = [
 
 export default function CurationProcessSection() {
   return (
-    <section id="process" className="py-16 sm:py-24 bg-secondary/50 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-bold md:text-4xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-600">
+    <section id="process" className="py-16 sm:py-24 bg-secondary/50">
+      <div className="container mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl font-bold md:text-4xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
           Nossa Metodologia para Resultados Reais
         </h2>
         <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
@@ -36,7 +36,7 @@ export default function CurationProcessSection() {
           {curationSteps.map((step) => (
               <Card key={step.title} className="text-center bg-card border-border/70 shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-2 hover:shadow-xl">
                 <CardHeader>
-                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-primary/10 text-yellow-400">
+                  <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-amber-500 to-orange-600 text-background">
                     <step.icon className="h-10 w-10" />
                   </div>
                 </CardHeader>
