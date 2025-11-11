@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Ferdian-MSP',
@@ -21,6 +22,16 @@ export default function RootLayout({
         {children}
         <Toaster />
         <SpeedInsights />
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-KXTREZQQ36"></Script>
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-KXTREZQQ36');
+          `}
+        </Script>
       </body>
     </html>
   );
