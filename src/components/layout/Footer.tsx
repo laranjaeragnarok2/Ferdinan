@@ -1,4 +1,4 @@
-import { MountainIcon } from "lucide-react";
+import GrowthIcon from "../icons/GrowthIcon";
 import Link from "next/link";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
@@ -9,8 +9,8 @@ export default function Footer() {
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
                  <Link href="/" className="flex items-center space-x-2 mb-4">
-                    <MountainIcon className="h-6 w-6 text-primary" />
-                    <span className="font-bold text-xl font-headline text-foreground">
+                    <GrowthIcon className="text-chart-4" />
+                    <span className="font-bold text-xl font-headline text-chart-4">
                         Ferdian-MSP
                     </span>
                 </Link>
