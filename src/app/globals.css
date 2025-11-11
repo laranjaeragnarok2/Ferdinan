@@ -83,3 +83,30 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .btn-gradient {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-gradient::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 300%;
+    height: 100%;
+    background: linear-gradient(
+      115deg,
+      transparent 20%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 80%
+    );
+    transition: left 0.6s ease;
+  }
+
+  .btn-gradient:hover::before {
+    left: 100%;
+  }
+}

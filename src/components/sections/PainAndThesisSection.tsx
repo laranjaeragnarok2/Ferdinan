@@ -7,7 +7,7 @@ const painThesisImage = PlaceHolderImages.find(img => img.id === 'pain-thesis');
 
 export default function PainAndThesisSection() {
   return (
-    <section id="pain-thesis" className="py-16 sm:py-24 bg-background px-4 sm:px-6 lg:px-8">
+    <section id="pain-thesis" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
@@ -17,7 +17,7 @@ export default function PainAndThesisSection() {
                 <p><strong className="text-foreground">Nossa Tese:</strong> O crescimento exponencial e sustentável vem da curadoria, não da cópia. Ao alinhar estratégias validadas com o DNA exclusivo do seu negócio, transformamos complexidade em vantagem competitiva e criamos um caminho claro para a liderança.</p>
             </div>
             <Link href="#contact" className="mt-8 inline-block">
-                <Button size="lg" className="bg-gradient-to-r from-yellow-300 to-amber-500 text-black font-bold hover:from-yellow-400 hover:to-amber-600 transition-transform transform hover:scale-105">
+                <Button size="lg" className="bg-gradient-to-r from-yellow-300 to-amber-500 text-black font-bold hover:from-yellow-400 hover:to-amber-600 transition-transform transform hover:scale-105 btn-gradient">
                     Transforme Complexidade em Vantagem
                 </Button>
             </Link>

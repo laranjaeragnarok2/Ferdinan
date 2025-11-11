@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import CurationProcessSection from '@/components/sections/CurationProcessSection';
 import ValidatedSolutionsSection from '@/components/sections/ValidatedSolutionsSection';
 import SocialProofSection from '@/components/sections/SocialProofSection';
+import { FadeInOnScroll } from '@/components/animations/FadeInOnScroll';
 
 export default function Home() {
   return (
@@ -14,11 +15,21 @@ export default function Home() {
       <main className="flex-grow">
         <HeroSection />
         <div className="relative z-10 bg-background">
-          <PainAndThesisSection />
-          <CurationProcessSection />
-          <ValidatedSolutionsSection />
-          <SocialProofSection />
-          <LeadFormSection />
+          <FadeInOnScroll>
+            <PainAndThesisSection />
+          </FadeInOnScroll>
+          <FadeInOnScroll>
+            <CurationProcessSection />
+          </FadeInOnScroll>
+          <FadeInOnScroll>
+            <ValidatedSolutionsSection />
+          </FadeInOnScroll>
+          <FadeInOnScroll>
+            <SocialProofSection />
+          </FadeInOnScroll>
+          <FadeInOnScroll>
+            <LeadFormSection />
+          </FadeInOnScroll>
         </div>
       </main>
       <Footer />
