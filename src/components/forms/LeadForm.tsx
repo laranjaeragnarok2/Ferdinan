@@ -6,14 +6,6 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import {
   Form,
   FormControl,
   FormField,
@@ -21,11 +13,19 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { submitLead, type LeadFormData } from "@/app/actions/submitLead";
+import { Textarea } from "../ui/textarea";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -75,7 +75,7 @@ export default function LeadForm() {
   }
 
   return (
-    <Card className="max-w-2xl mx-auto shadow-2xl">
+    <Card className="max-w-3xl mx-auto shadow-2xl bg-card border-border">
       <CardContent className="p-8">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -87,7 +87,7 @@ export default function LeadForm() {
                   <FormItem>
                     <FormLabel>Full Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="John Doe" {...field} />
+                      <Input placeholder="e.g. Jane Doe" {...field} className="bg-input" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -98,26 +98,30 @@ export default function LeadForm() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel>Email Address</FormLabel>
                     <FormControl>
                       <Input
                         type="email"
-                        placeholder="john.doe@company.com"
+                        placeholder="e.g. jane.doe@example.com"
                         {...field}
+                        className="bg-input"
                       />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FormField
                 control={form.control}
                 name="company"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Company</FormLabel>
+                    <FormLabel>Company Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Acme Inc." {...field} />
+                      <Input placeholder="e.g. Example Inc." {...field} className="bg-input" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -130,34 +134,32 @@ export default function LeadForm() {
                   <FormItem>
                     <FormLabel>Your Role</FormLabel>
                     <FormControl>
-                      <Input placeholder="Marketing Director" {...field} />
+                      <Input placeholder="e.g. Marketing Director" {...field} className="bg-input" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
             </div>
-
+            
             <FormField
               control={form.control}
               name="budget"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Monthly Marketing Budget</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
+                  <FormLabel>Estimated Annual Budget</FormLabel>
+                  <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
-                      <SelectTrigger>
+                      <SelectTrigger className="bg-input">
                         <SelectValue placeholder="Select a budget range" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="<5k">&lt; $5,000</SelectItem>
-                      <SelectItem value="5-10k">$5,000 - $10,000</SelectItem>
-                      <SelectItem value="10-25k">$10,000 - $25,000</SelectItem>
-                      <SelectItem value="25k+">$25,000+</SelectItem>
+                      <SelectItem value="< $50k">&lt; $50,000</SelectItem>
+                      <SelectItem value="$50k-$100k">$50,000 - $100,000</SelectItem>
+                      <SelectItem value="$100k-$250k">$100,000 - $250,000</SelectItem>
+                      <SelectItem value="$250k-$500k">$250,000 - $500,000</SelectItem>
+                      <SelectItem value="$500k+">&gt; $500,000</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -170,11 +172,11 @@ export default function LeadForm() {
               name="challenge"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Biggest Marketing Challenge</FormLabel>
+                  <FormLabel>Primary Business Challenge</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="e.g., Lead generation, brand awareness, tech stack ROI..."
-                      className="resize-none"
+                      placeholder="Briefly describe the main challenge you're looking to solve..."
+                      className="resize-none bg-input"
                       {...field}
                     />
                   </FormControl>
@@ -191,7 +193,7 @@ export default function LeadForm() {
               {isSubmitting && (
                 <Loader2 className="mr-2 h-5 w-5 animate-spin" />
               )}
-              Request Consultation
+              Request a Consultation
             </Button>
           </form>
         </Form>
