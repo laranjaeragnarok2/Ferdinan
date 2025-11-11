@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 export default function Footer() {
   return (
     <footer className="border-t border-border/40 bg-secondary/50 py-12">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl">
             <div>
                  <Link href="/" className="flex items-center space-x-2 mb-4">
                     <GrowthIcon className="text-chart-4" />
@@ -34,7 +34,7 @@ export default function Footer() {
                 </div>
             </div>
         </div>
-      <div className="container mx-auto px-4 text-center text-sm text-muted-foreground mt-8 border-t border-border/40 pt-6">
+      <div className="container mx-auto px-4 text-center text-sm text-muted-foreground mt-8 border-t border-border/40 pt-6 max-w-6xl">
         <p>
           &copy; {new Date().getFullYear()} Ferdian-MSP. Todos os Direitos Reservados.
         </p>

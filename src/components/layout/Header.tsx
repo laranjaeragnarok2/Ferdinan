@@ -7,7 +7,7 @@ import GrowthIcon from "../icons/GrowthIcon";
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-transparent backdrop-blur-sm">
-      <div className="container flex h-16 max-w-screen-xl items-center justify-between px-4">
+      <div className="container flex h-16 max-w-6xl items-center justify-between px-4">
         <Link href="/" className="flex items-center space-x-2">
           <GrowthIcon className="text-chart-4" />
           <span className="font-bold text-xl font-headline text-chart-4">
