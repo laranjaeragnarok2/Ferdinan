@@ -1,3 +1,4 @@
+
 "use server";
 
 import { z } from "zod";
@@ -16,8 +17,28 @@ const formSchema = z.object({
 export type LeadFormData = z.infer<typeof formSchema>;
 
 export async function submitLead(data: LeadFormData) {
-  console.log("Novo lead enviado:", data);
-  // Simula um atraso na rede
-  await new Promise((resolve) => setTimeout(resolve, 1500));
-  return { success: true, message: "Obrigado! Entraremos em contato em breve." };
+  const formspreeEndpoint = "https://formspree.io/f/mdkyozev";
+
+  try {
+    const response = await fetch(formspreeEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (response.ok) {
+      console.log("Lead enviado com sucesso para o Formspree:", data);
+      return { success: true, message: "Obrigado! Entraremos em contato em breve." };
+    } else {
+      const errorData = await response.json();
+      console.error("Erro ao enviar para o Formspree:", errorData);
+      return { success: false, message: "Houve um erro ao enviar o formulário. Tente novamente." };
+    }
+  } catch (error) {
+    console.error("Erro de rede ao enviar para o Formspree:", error);
+    return { success: false, message: "Não foi possível conectar ao servidor. Verifique sua conexão." };
+  }
 }
