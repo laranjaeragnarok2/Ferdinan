@@ -19,6 +19,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="!scroll-smooth dark">
       <head>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1477681884429701"
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        />
       </head>
       <body className="font-body antialiased">
         {children}
