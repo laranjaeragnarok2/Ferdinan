@@ -38,6 +38,18 @@ const formSchema = z.object({
     .min(10, "Por favor, descreva seu desafio em pelo menos 10 caracteres."),
 });
 
+// Define a interface para a função gtag no objeto window
+declare global {
+  interface Window {
+    gtag: (
+      type: 'event',
+      eventName: string,
+      eventParams: { [key: string]: any }
+    ) => void;
+  }
+}
+
+
 export default function LeadForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
@@ -65,6 +77,17 @@ export default function LeadForm() {
         description: result.message,
       });
       form.reset();
+
+      // Dispara o evento de conversão do Google Ads
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', {
+            'send_to': 'AW-16899626920/4cr8COPKjaQaEKivr_o-',
+            'value': 1.0,
+            'currency': 'BRL',
+            'transaction_id': ''
+        });
+      }
+
     } else {
       toast({
         variant: "destructive",
