@@ -1,0 +1,140 @@
+{
+  "LocaleSwitcher": {
+    "label": "Cambiar idioma",
+    "locale": "{locale, select, pt-BR {🇧🇷 Portugués (BR)} en {🇺🇸 Inglés} es {🇪🇸 Español} zh {🇨🇳 Mandarín} other {Desconocido}}"
+  },
+  "Header": {
+    "painThesis": "El Problema",
+    "process": "Nuestro Proceso",
+    "solutions": "Soluciones",
+    "socialProof": "Testimonios",
+    "contact": "Contacto",
+    "ctaButton": "Solicitar una Consultoría"
+  },
+  "HeroSection": {
+    "headline": "Deja de gastar en cursos. Ten un experto implementando el crecimiento de tu negocio.",
+    "subheadline": "Consultoría práctica para empresarios que necesitan ROI, no más certificados.",
+    "ctaButton": "Solicitar Análisis de Mi Negocio",
+    "testimonialAlt": "Cliente satisfecho",
+    "testimonialText": "Con la confianza de los líderes del mercado."
+  },
+  "PainAndThesisSection": {
+    "title": "El Mercado es Caótico. Tu Estrategia No Tiene Por Qué Serlo.",
+    "painTitle": "El Dolor:",
+    "painText": "Las soluciones genéricas fracasan en mercados de alto valor. El ruido, la complejidad y la presión por resultados inmediatos llevan a decisiones reactivas que desperdician recursos y diluyen tu marca.",
+    "thesisTitle": "Nuestra Tesis:",
+    "thesisText": "El crecimiento exponencial y sostenible proviene de la curación, no de la copia. Al alinear estrategias validadas con el ADN único de tu negocio, transformamos la complejidad en una ventaja competitiva y creamos un camino claro hacia el liderazgo.",
+    "ctaButton": "Transforma la Complejidad en Ventaja"
+  },
+  "CurationProcessSection": {
+    "title": "Nuestra Metodología para Resultados Reales",
+    "subtitle": "Un proceso de tres pasos diseñado no para planificar, sino para arquitectar tu crecimiento y dominio del mercado.",
+    "step1_title": "1. Descubrimiento Profundo",
+    "step1_description": "Nos sumergimos en tu marca, mercado y la psicología de tu cliente para encontrar los puntos de apalancamiento ocultos que tus competidores ignoran.",
+    "step2_title": "2. Curación Estratégica",
+    "step2_description": "Seleccionamos y adaptamos solo las estrategias de mayor impacto, garantizando una alineación perfecta con el ADN и los objetivos de tu negocio.",
+    "step3_title": "3. Validación y Optimización",
+    "step3_description": "Probamos rigurosamente cada estrategia contra la dinámica real del mercado. Solo implementamos lo que funciona de manera comprobada y optimizamos para un rendimiento máximo."
+  },
+  "ValidatedSolutionsSection": {
+    "title": "Soluciones Comprobadas para un Crecimiento Acelerado",
+    "subtitle": "Cada solución es un componente de alto rendimiento, pre-validado en escenarios reales y listo para ser integrado en tu motor de crecimiento.",
+    "solution1_title": "Posicionamiento de Marca Quirúrgico",
+    "solution1_description": "Elevamos tu narrativa de marca para resonar con una clientela de alto nivel, estableciéndote como la única opción lógica en tu mercado.",
+    "solution2_title": "Embudos de Adquisición Optimizados por IA",
+    "solution2_description": "Utilizamos datos e IA para construir y optimizar embudos que no solo generan leads, sino que atraen a los clientes correctos de manera consistente.",
+    "solution3_title": "Alianzas Estratégicas de Alto Nivel",
+    "solution3_description": "Acceso a nuestra red exclusiva de socios, garantizando que tu marca se amplifique con integridad y alcance exponencial.",
+    "solution4_title": "Ecosistemas de Contenido que Generan Autoridad",
+    "solution4_description": "Creamos un universo de contenido que educa a tu mercado, nutre leads en piloto automático y construye un activo de marca duradero."
+  },
+  "SocialProofSection": {
+    "title": "Resultados, No Promesas",
+    "subtitle": "Socios que confían en nuestra curación para transformar sus negocios.",
+    "testimonial1_quote": "Ferdian-MSP no entregó un servicio, sino una asociación estratégica. Su curación fue fundamental para nuestro aumento del 40% en leads calificados en un solo trimestre.",
+    "testimonial1_name": "Alexandre Dubois",
+    "testimonial1_title": "CEO, Maison de Luxe",
+    "testimonial2_quote": "Trabajar con Ferdian-MSP nos dio la claridad que necesitábamos. Su proceso de validación aseguró que cada peso invertido tuviera el máximo retorno. Los resultados fueron transformadores.",
+    "testimonial2_name": "Isabella Rossi",
+    "testimonial2_title": "Fundadora, Artisa",
+    "testimonial3_quote": "Lo que más me impresionó fue su capacidad para entender los matices de nuestro mercado. Las soluciones no solo fueron eficaces, sino que estaban perfectamente alineadas con nuestra visión a largo plazo.",
+    "testimonial3_name": "Chen Wei",
+    "testimonial3_title": "Director, Precision Dynamics"
+  },
+  "LeadFormSection": {
+    "title": "¿Dónde se está escapando tu dinero?",
+    "subtitle": "Realiza un diagnóstico rápido y descubre los 3 cuellos de botella que impiden tus ganancias hoy."
+  },
+  "LeadForm": {
+    "name": {
+      "label": "Nombre Completo",
+      "placeholder": "ej: Juan Pérez",
+      "error": "El nombre debe tener al menos 2 caracteres."
+    },
+    "email": {
+      "label": "Dirección de Correo Electrónico",
+      "placeholder": "ej: juan.perez@ejemplo.com",
+      "error": "Por favor, introduce un correo electrónico válido."
+    },
+    "whatsapp": {
+      "label": "WhatsApp",
+      "placeholder": "ej: +34 600 123 456",
+      "error": "Por favor, introduce un número de WhatsApp válido."
+    },
+    "challenge": {
+      "label": "¿Cuál es tu mayor desafío hoy?",
+      "placeholder": "Selecciona tu mayor desafío",
+      "error": "Por favor, selecciona un desafío.",
+      "options": {
+        "sales": "Ventas",
+        "management": "Gestión",
+        "processes": "Procesos"
+      }
+    },
+    "submitButton": "Solicitar Análisis de Mi Negocio",
+    "toast": {
+      "success": {
+        "title": "Enviado con Éxito",
+        "description": "¡Gracias! Nos pondremos en contacto en breve."
+      },
+      "error": {
+        "title": "Fallo en el Envío",
+        "description": "Algo salió mal. Por favor, inténtalo de nuevo."
+      }
+    }
+  },
+  "Footer": {
+    "description": "Estrategias de crecimiento personalizadas y curadas para negocios de alto valor.",
+    "quickLinks": "Enlaces Rápidos",
+    "linkProblem": "El Problema",
+    "linkProcess": "Nuestro Proceso",
+    "linkSolutions": "Soluciones",
+    "linkContact": "Contacto",
+    "stayUpdated": "Mantente Actualizado",
+    "newsletter": "Suscríbete a nuestro boletín para recibir las últimas noticias.",
+    "emailPlaceholder": "Correo Electrónico",
+    "subscribeButton": "Suscribir",
+    "copyright": "© {year} Ferdian-MSP. Todos los Derechos Reservados."
+  },
+  "Concierge": {
+    "title": "Conserje Virtual",
+    "initialMessage": "¡Hola! Soy el asistente virtual de Ferdian-MSP. ¿Cómo puedo ayudarte a descubrir la mejor estrategia de crecimiento para tu negocio hoy?",
+    "inputPlaceholder": "Escribe tu pregunta...",
+    "sendButtonText": "Enviar"
+  },
+  "StickyElementsWidget": {
+    "whatsappAriaLabel": "Contactar por WhatsApp",
+    "whatsappMessage": "Hola, me gustaría más información",
+    "conciergeAriaLabel": "Abrir Asistente de IA",
+    "newsletterAriaLabel": "Suscribirse al Boletín",
+    "consultationAriaLabel": "Solicitar una Consultoría",
+    "mainAriaLabel": "Abrir opciones de contacto",
+    "closeConciergeAriaLabel": "Cerrar Asistente de IA"
+  },
+  "NewsFeedSection": {
+    "title": "Radar de Mercado",
+    "subtitle": "Mantente actualizado con las últimas noticias de economía y emprendimiento.",
+    "loading": "Cargando noticias...",
+    "readMore": "Leer Más"
+  }
+}

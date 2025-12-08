@@ -1,0 +1,140 @@
+{
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, pt-BR {🇧🇷 Portuguese (BR)} en {🇺🇸 English} es {🇪🇸 Spanish} zh {🇨🇳 Mandarin} other {Unknown}}"
+  },
+  "Header": {
+    "painThesis": "The Problem",
+    "process": "Our Process",
+    "solutions": "Solutions",
+    "socialProof": "Testimonials",
+    "contact": "Contact",
+    "ctaButton": "Request a Consultation"
+  },
+  "HeroSection": {
+    "headline": "Stop spending on courses. Have an expert implement your business growth.",
+    "subheadline": "Practical consulting for entrepreneurs who need ROI, not more certificates.",
+    "ctaButton": "Request My Business Analysis",
+    "testimonialAlt": "Satisfied client",
+    "testimonialText": "Trusted by market leaders."
+  },
+  "PainAndThesisSection": {
+    "title": "The Market is Chaotic. Your Strategy Doesn't Have to Be.",
+    "painTitle": "The Pain:",
+    "painText": "Generic solutions fail in high-value markets. Noise, complexity, and pressure for immediate results lead to reactive decisions that waste resources and dilute your brand.",
+    "thesisTitle": "Our Thesis:",
+    "thesisText": "Exponential and sustainable growth comes from curation, not copying. By aligning validated strategies with your business's unique DNA, we turn complexity into a competitive advantage and create a clear path to leadership.",
+    "ctaButton": "Turn Complexity into Advantage"
+  },
+  "CurationProcessSection": {
+    "title": "Our Methodology for Real Results",
+    "subtitle": "A three-step process designed not to plan, but to architect your growth and market dominance.",
+    "step1_title": "1. Deep Discovery",
+    "step1_description": "We dive into your brand, market, and customer psychology to find hidden leverage points your competitors ignore.",
+    "step2_title": "2. Strategic Curation",
+    "step2_description": "We select and adapt only the highest-impact strategies, ensuring perfect alignment with your business's DNA and goals.",
+    "step3_title": "3. Validation and Optimization",
+    "step3_description": "We rigorously test each strategy against real market dynamics. We only implement what is proven to work and optimize for maximum performance."
+  },
+  "ValidatedSolutionsSection": {
+    "title": "Proven Solutions for Accelerated Growth",
+    "subtitle": "Each solution is a high-performance component, pre-validated in real-world scenarios and ready to be integrated into your growth engine.",
+    "solution1_title": "Surgical Brand Positioning",
+    "solution1_description": "We elevate your brand narrative to resonate with a high-end clientele, establishing you as the only logical choice in your market.",
+    "solution2_title": "AI-Optimized Acquisition Funnels",
+    "solution2_description": "We use data and AI to build and optimize funnels that not only generate leads but attract the right customers consistently.",
+    "solution3_title": "High-Level Strategic Alliances",
+    "solution3_description": "Access to our exclusive network of partners, ensuring your brand is amplified with integrity and exponential reach.",
+    "solution4_title": "Authority-Building Content Ecosystems",
+    "solution4_description": "We create a universe of content that educates your market, nurtures leads on autopilot, and builds a lasting brand asset."
+  },
+  "SocialProofSection": {
+    "title": "Results, Not Promises",
+    "subtitle": "Partners who trust our curation to transform their businesses.",
+    "testimonial1_quote": "Ferdian-MSP delivered not a service, but a strategic partnership. Their curation was key to our 40% increase in qualified leads in a single quarter.",
+    "testimonial1_name": "Alexandre Dubois",
+    "testimonial1_title": "CEO, Maison de Luxe",
+    "testimonial2_quote": "Working with Ferdian-MSP gave us the clarity we needed. Their validation process ensured that every dollar invested had maximum return. The results were transformative.",
+    "testimonial2_name": "Isabella Rossi",
+    "testimonial2_title": "Founder, Artisa",
+    "testimonial3_quote": "What impressed me most was their ability to understand the nuances of our market. The solutions were not just effective, but perfectly aligned with our long-term vision.",
+    "testimonial3_name": "Chen Wei",
+    "testimonial3_title": "Director, Precision Dynamics"
+  },
+  "LeadFormSection": {
+    "title": "Where is your money leaking?",
+    "subtitle": "Take a quick diagnosis and discover the 3 bottlenecks hindering your profit today."
+  },
+  "LeadForm": {
+    "name": {
+      "label": "Full Name",
+      "placeholder": "e.g., John Doe",
+      "error": "Name must be at least 2 characters."
+    },
+    "email": {
+      "label": "Email Address",
+      "placeholder": "e.g., john.doe@example.com",
+      "error": "Please enter a valid email."
+    },
+    "whatsapp": {
+      "label": "WhatsApp",
+      "placeholder": "e.g., +1 555-123-4567",
+      "error": "Please enter a valid WhatsApp number."
+    },
+    "challenge": {
+      "label": "What is your biggest challenge today?",
+      "placeholder": "Select your biggest challenge",
+      "error": "Please select a challenge.",
+      "options": {
+        "sales": "Sales",
+        "management": "Management",
+        "processes": "Processes"
+      }
+    },
+    "submitButton": "Request My Business Analysis",
+    "toast": {
+      "success": {
+        "title": "Sent Successfully",
+        "description": "Thank you! We will be in touch shortly."
+      },
+      "error": {
+        "title": "Submission Failed",
+        "description": "Something went wrong. Please try again."
+      }
+    }
+  },
+  "Footer": {
+    "description": "Custom-curated growth strategies for high-value businesses.",
+    "quickLinks": "Quick Links",
+    "linkProblem": "The Problem",
+    "linkProcess": "Our Process",
+    "linkSolutions": "Solutions",
+    "linkContact": "Contact",
+    "stayUpdated": "Stay Updated",
+    "newsletter": "Subscribe to our newsletter to get the latest news.",
+    "emailPlaceholder": "Email",
+    "subscribeButton": "Subscribe",
+    "copyright": "© {year} Ferdian-MSP. All Rights Reserved."
+  },
+  "Concierge": {
+    "title": "Virtual Concierge",
+    "initialMessage": "Hello! I'm the virtual assistant for Ferdian-MSP. How can I help you discover the best growth strategy for your business today?",
+    "inputPlaceholder": "Type your question...",
+    "sendButtonText": "Send"
+  },
+  "StickyElementsWidget": {
+    "whatsappAriaLabel": "Contact via WhatsApp",
+    "whatsappMessage": "Hello, I would like more information",
+    "conciergeAriaLabel": "Open AI Assistant",
+    "newsletterAriaLabel": "Subscribe to Newsletter",
+    "consultationAriaLabel": "Request a Consultation",
+    "mainAriaLabel": "Open contact options",
+    "closeConciergeAriaLabel": "Close AI Assistant"
+  },
+  "NewsFeedSection": {
+    "title": "Market Radar",
+    "subtitle": "Stay updated with the latest news in economics and entrepreneurship.",
+    "loading": "Loading news...",
+    "readMore": "Read More"
+  }
+}

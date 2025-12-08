@@ -1,23 +1,30 @@
 import type { Metadata } from 'next';
-import './globals.css';
+import { NextIntlClientProvider, useMessages } from 'next-intl';
+import '../globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script';
 import CookieConsent from '@/components/layout/CookieConsent';
-import WhatsAppButton from '@/components/layout/WhatsAppButton';
+import StickyElementsWidget from '@/components/layout/StickyElementsWidget';
+import ConciergeContent from '@/components/concierge/ConciergeContent';
 
 export const metadata: Metadata = {
   title: 'Ferdian-MSP',
-  description: 'Estratégias de crescimento personalizadas, curadas para negócios de alto valor.',
+  description:
+    'Estratégias de crescimento personalizadas, curadas para negócios de alto valor.',
 };
 
-export default function RootLayout({
+export default function LocaleLayout({
   children,
-}: Readonly<{
+  params: { locale },
+}: {
   children: React.ReactNode;
-}>) {
+  params: { locale: string };
+}) {
+  const messages = useMessages();
+
   return (
-    <html lang="pt-BR" className="!scroll-smooth dark">
+    <html lang={locale} className="!scroll-smooth dark">
       <head>
         <meta name="google-adsense-account" content="ca-pub-1477681884429701" />
         <Script
@@ -28,12 +35,14 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
-        {children}
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          {children}
+        </NextIntlClientProvider>
         <Toaster />
-        <WhatsAppButton />
-        <CookieConsent />
-        <SpeedInsights />
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-KXTREZQQ36"></Script>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-KXTREZQQ36"
+        ></Script>
         <Script id="google-analytics">
           {`
             window.dataLayer = window.dataLayer || [];
