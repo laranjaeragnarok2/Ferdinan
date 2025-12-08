@@ -10,20 +10,18 @@ import {
   Mail,
   MessageCircle,
 } from 'lucide-react';
-import { useTranslations } from 'next-intl';
 
 const StickyElementsWidget = ({
   conciergeContent,
 }: {
   conciergeContent: React.ReactNode;
 }) => {
-  const t = useTranslations('StickyElementsWidget');
   const [isOpen, setIsOpen] = useState(false);
   const [isConciergeOpen, setIsConciergeOpen] = useState(false);
   const widgetRef = useRef<HTMLDivElement>(null);
 
   const phoneNumber = '556492339844';
-  const message = t('whatsappMessage');
+  const message = 'Olá, eu gostaria de mais informações';
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     message
   )}`;
@@ -57,21 +55,21 @@ const StickyElementsWidget = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group flex h-14 w-14 items-center justify-center rounded-full bg-secondary text-foreground shadow-lg transition-all duration-300 hover:bg-green-500 hover:text-white"
-                aria-label={t('whatsappAriaLabel')}
+                aria-label="Contatar via WhatsApp"
               >
                 <MessageCircle className="h-7 w-7" />
               </a>
               <button
                 onClick={toggleConcierge}
                 className="group flex h-14 w-14 items-center justify-center rounded-full bg-secondary text-foreground shadow-lg transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-                aria-label={t('conciergeAriaLabel')}
+                aria-label="Abrir Assistente de IA"
               >
                 <Bot className="h-7 w-7" />
               </button>
               <button
                 onClick={handleScrollToContact}
                 className="group flex h-14 w-14 items-center justify-center rounded-full bg-secondary text-foreground shadow-lg transition-all duration-300 hover:bg-primary hover:text-primary-foreground"
-                aria-label={t('consultationAriaLabel')}
+                aria-label="Solicitar uma Consultoria"
               >
                 <ScrollText className="h-7 w-7" />
               </button>
@@ -81,7 +79,7 @@ const StickyElementsWidget = ({
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-black shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 hover:brightness-110"
-          aria-label={t('mainAriaLabel')}
+          aria-label="Abrir opções de contato"
         >
           <motion.div
             animate={{ rotate: isOpen ? 45 : 0 }}
@@ -105,7 +103,7 @@ const StickyElementsWidget = ({
               <button
                 onClick={() => setIsConciergeOpen(false)}
                 className="absolute -top-2 -right-2 flex h-8 w-8 items-center justify-center rounded-full bg-secondary text-foreground shadow-md transition-colors hover:bg-destructive hover:text-destructive-foreground"
-                aria-label={t('closeConciergeAriaLabel')}
+                aria-label="Fechar Assistente de IA"
               >
                 <X className="h-5 w-5" />
               </button>

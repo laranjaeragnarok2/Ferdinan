@@ -25,7 +25,6 @@ import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { submitLead, type LeadFormData } from '@/app/actions/submitLead';
-import { useTranslations } from 'next-intl';
 
 // Define a interface para a função gtag no objeto window
 declare global {
@@ -38,21 +37,16 @@ declare global {
   }
 }
 
+const formSchema = z.object({
+  name: z.string().min(2, 'O nome deve ter pelo menos 2 caracteres.'),
+  email: z.string().email('Por favor, insira um e-mail válido.'),
+  whatsapp: z.string().min(10, 'Por favor, insira um número de WhatsApp válido.'),
+  challenge: z.string().nonempty('Por favor, selecione um desafio.'),
+});
+
 export default function LeadForm() {
-  const t = useTranslations('LeadForm');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-
-  const getFormSchema = (t: any) =>
-    z.object({
-      name: z.string().min(2, t('name.error')),
-      email: z.string().email(t('email.error')),
-      whatsapp: z.string().min(10, t('whatsapp.error')),
-      challenge: z.string().nonempty(t('challenge.error')),
-    });
-  
-  const formSchema = getFormSchema(t);
-
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -72,8 +66,8 @@ export default function LeadForm() {
 
     if (result.success) {
       toast({
-        title: t('toast.success.title'),
-        description: t('toast.success.description'),
+        title: 'Enviado com Sucesso',
+        description: 'Obrigado! Entraremos em contato em breve.',
       });
       form.reset();
 
@@ -89,8 +83,8 @@ export default function LeadForm() {
     } else {
       toast({
         variant: 'destructive',
-        title: t('toast.error.title'),
-        description: t('toast.error.description'),
+        title: 'Falha no Envio',
+        description: 'Algo deu errado. Por favor, tente novamente.',
       });
     }
   }
@@ -106,10 +100,10 @@ export default function LeadForm() {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t('name.label')}</FormLabel>
+                    <FormLabel>Nome Completo</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder={t('name.placeholder')}
+                        placeholder="ex: João da Silva"
                         {...field}
                         className="bg-input"
                       />
@@ -123,11 +117,11 @@ export default function LeadForm() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t('email.label')}</FormLabel>
+                    <FormLabel>Endereço de Email</FormLabel>
                     <FormControl>
                       <Input
                         type="email"
-                        placeholder={t('email.placeholder')}
+                        placeholder="ex: joao.silva@exemplo.com"
                         {...field}
                         className="bg-input"
                       />
@@ -143,10 +137,10 @@ export default function LeadForm() {
               name="whatsapp"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{t('whatsapp.label')}</FormLabel>
+                  <FormLabel>WhatsApp</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder={t('whatsapp.placeholder')}
+                      placeholder="ex: (11) 99999-9999"
                       {...field}
                       className="bg-input"
                     />
@@ -161,20 +155,20 @@ export default function LeadForm() {
               name="challenge"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{t('challenge.label')}</FormLabel>
+                  <FormLabel>Qual seu maior desafio hoje?</FormLabel>
                   <Select
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
                     <FormControl>
                       <SelectTrigger className="bg-input">
-                        <SelectValue placeholder={t('challenge.placeholder')} />
+                        <SelectValue placeholder="Selecione seu maior desafio" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="vendas">{t('challenge.options.sales')}</SelectItem>
-                      <SelectItem value="gestao">{t('challenge.options.management')}</SelectItem>
-                      <SelectItem value="processos">{t('challenge.options.processes')}</SelectItem>
+                      <SelectItem value="vendas">Vendas</SelectItem>
+                      <SelectItem value="gestao">Gestão</SelectItem>
+                      <SelectItem value="processos">Processos</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -190,7 +184,7 @@ export default function LeadForm() {
               {isSubmitting && (
                 <Loader2 className="mr-2 h-5 w-5 animate-spin" />
               )}
-              {t('submitButton')}
+              Solicitar Análise do Meu Negócio
             </Button>
           </form>
         </Form>

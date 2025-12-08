@@ -10,7 +10,6 @@ import {
 } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '../ui/button';
-import { useTranslations } from 'next-intl';
 
 interface NewsItem {
   title: string;
@@ -20,7 +19,6 @@ interface NewsItem {
 }
 
 const NewsFeedSection = () => {
-  const t = useTranslations('NewsFeedSection');
   const [news, setNews] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -55,15 +53,15 @@ const NewsFeedSection = () => {
     <section id="news" className="py-16 sm:py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold md:text-4xl font-headline text-center text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
-          {t('title')}
+          Radar de Mercado
         </h2>
         <p className="mt-4 max-w-2xl mx-auto text-center text-lg text-muted-foreground">
-          {t('subtitle')}
+          Mantenha-se atualizado com as últimas notícias de economia e empreendedorismo.
         </p>
 
         {loading && (
           <div className="mt-12 text-center text-muted-foreground">
-            {t('loading')}
+            Carregando notícias...
           </div>
         )}
         {error && (
@@ -97,7 +95,7 @@ const NewsFeedSection = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            {t('readMore')}
+                            Ler Mais
                           </a>
                         </Button>
                       </CardContent>

@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Star } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { useTranslations } from 'next-intl';
 
 const testimonialImages = [
   PlaceHolderImages.find((img) => img.id === 'testimonial-1'),
@@ -19,8 +18,6 @@ const heroBackgroundImage = PlaceHolderImages.find(
 );
 
 export default function HeroSection() {
-  const t = useTranslations('HeroSection');
-
   return (
     <section className="relative text-white">
       {heroBackgroundImage && (
@@ -36,10 +33,10 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-black/60"></div>
       <div className="container relative z-10 mx-auto px-4 py-20 text-center md:py-32">
         <h1 className="font-headline text-4xl font-bold tracking-tight text-white md:text-6xl">
-          {t('headline')}
+          Pare de gastar com cursos. Tenha um especialista implementando o crescimento do seu negócio.
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-300">
-          {t('subheadline')}
+          Consultoria prática para empresários que precisam de ROI, não de mais certificados.
         </p>
         <div className="mt-8 flex justify-center gap-4">
           <Link href="#contact" passHref>
@@ -47,7 +44,7 @@ export default function HeroSection() {
               size="lg"
               className="bg-orange-600 text-white font-bold transition-transform transform hover:scale-105 hover:bg-orange-700"
             >
-              {t('ctaButton')}
+              Solicitar Análise do Meu Negócio
             </Button>
           </Link>
         </div>
@@ -59,7 +56,7 @@ export default function HeroSection() {
                   <Avatar key={index} className="border-2 border-background">
                     <AvatarImage
                       src={img.imageUrl}
-                      alt={t('testimonialAlt')}
+                      alt="Cliente satisfeito"
                       data-ai-hint={img.imageHint}
                     />
                     <AvatarFallback>{`C${index + 1}`}</AvatarFallback>
@@ -76,7 +73,7 @@ export default function HeroSection() {
                 />
               ))}
             </div>
-            <p className="text-sm text-slate-400">{t('testimonialText')}</p>
+            <p className="text-sm text-slate-400">Confiado por líderes de mercado.</p>
           </div>
         </div>
       </div>
