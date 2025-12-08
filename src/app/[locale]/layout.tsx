@@ -1,11 +1,9 @@
 import type { Metadata } from 'next';
-import './globals.css';
+import '../globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script';
 import CookieConsent from '@/components/layout/CookieConsent';
-import StickyElementsWidget from '@/components/layout/StickyElementsWidget';
-import ConciergeContent from '@/components/concierge/ConciergeContent';
 
 export const metadata: Metadata = {
   title: 'Ferdian-MSP',
@@ -13,13 +11,15 @@ export const metadata: Metadata = {
     'Estratégias de crescimento personalizadas, curadas para negócios de alto valor.',
 };
 
-export default function RootLayout({
+export default function LocaleLayout({
   children,
+  params: { locale },
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
   return (
-    <html lang="pt-BR" className="!scroll-smooth dark">
+    <html lang={locale} className="!scroll-smooth dark">
       <head>
         <meta name="google-adsense-account" content="ca-pub-1477681884429701" />
         <Script

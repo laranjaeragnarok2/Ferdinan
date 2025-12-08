@@ -1,0 +1,140 @@
+{
+  "LocaleSwitcher": {
+    "label": "切换语言",
+    "locale": "{locale, select, pt-BR {🇧🇷 葡萄牙语 (巴西)} en {🇺🇸 英语} es {🇪🇸 西班牙语} zh {🇨🇳 普通话} other {未知}}"
+  },
+  "Header": {
+    "painThesis": "问题所在",
+    "process": "我们的流程",
+    "solutions": "解决方案",
+    "socialProof": "客户评价",
+    "contact": "联系方式",
+    "ctaButton": "请求咨询"
+  },
+  "HeroSection": {
+    "headline": "别再花钱上课了。让专家为您的企业实现增长。",
+    "subheadline": "为需要投资回报率而非更多证书的企业家提供实用咨询。",
+    "ctaButton": "请求我的业务分析",
+    "testimonialAlt": "满意的客户",
+    "testimonialText": "深受市场领导者的信赖。"
+  },
+  "PainAndThesisSection": {
+    "title": "市场是混乱的。你的策略不必如此。",
+    "painTitle": "痛点：",
+    "painText": "通用解决方案在高价值市场中会失败。噪音、复杂性和对即时结果的压力导致反应性决策，浪费资源并稀释您的品牌。",
+    "thesisTitle": "我们的论点：",
+    "thesisText": "指数级和可持续增长来自精心策划，而非复制。通过将经过验证的策略与您业务独特的DNA相结合，我们将复杂性转化为竞争优势，并为领先地位创造一条清晰的道路。",
+    "ctaButton": "将复杂性转化为优势"
+  },
+  "CurationProcessSection": {
+    "title": "我们实现真正成果的方法论",
+    "subtitle": "一个三步流程，旨在构建您的增长和市场主导地位，而不仅仅是规划。",
+    "step1_title": "1. 深度探索",
+    "step1_description": "我们深入研究您的品牌、市场和客户心理，以找到竞争对手忽略的隐藏杠杆点。",
+    "step2_title": "2. 战略策划",
+    "step2_description": "我们只选择和调整最具影响力的策略，确保与您业务的DNA和目标完美契合。",
+    "step3_title": "3. 验证与优化",
+    "step3_description": "我们针对真实市场动态严格测试每项策略。我们只实施经证实有效的方法，并优化以获得最佳性能。"
+  },
+  "ValidatedSolutionsSection": {
+    "title": "经过验证的加速增长解决方案",
+    "subtitle": "每种解决方案都是一个高性能组件，经过真实场景的预验证，随时可以集成到您的增长引擎中。",
+    "solution1_title": "精准的品牌定位",
+    "solution1_description": "我们提升您的品牌叙事，以与高端客户产生共鸣，将您确立为您市场的唯一合乎逻辑的选择。",
+    "solution2_title": "人工智能优化的获客漏斗",
+    "solution2_description": "我们利用数据和人工智能来构建和优化漏斗，不仅能产生潜在客户，还能持续吸引合适的客户。",
+    "solution3_title": "高层战略联盟",
+    "solution3_description": "接入我们独家的合作伙伴网络，确保您的品牌以诚信和指数级的影响力得到放大。",
+    "solution4_title": "建立权威的内容生态系统",
+    "solution4_description": "我们创造一个内容世界，教育您的市场，自动培育潜在客户，并建立持久的品牌资产。"
+  },
+  "SocialProofSection": {
+    "title": "结果，而非承诺",
+    "subtitle": "信任我们策划以改变其业务的合作伙伴。",
+    "testimonial1_quote": "Ferdian-MSP提供的不是服务，而是战略合作伙伴关系。他们的策划是我们一个季度内合格潜在客户增加40%的关键。",
+    "testimonial1_name": "亚历山大·杜波依斯",
+    "testimonial1_title": "Maison de Luxe首席执行官",
+    "testimonial2_quote": "与Ferdian-MSP合作给了我们所需的清晰度。他们的验证过程确保了每一笔投资都获得最大回报。结果是变革性的。",
+    "testimonial2_name": "伊莎贝拉·罗西",
+    "testimonial2_title": "Artisa创始人",
+    "testimonial3_quote": "最让我印象深刻的是他们理解我们市场细微差别的能力。这些解决方案不仅有效，而且与我们的长期愿景完美契合。",
+    "testimonial3_name": "陈伟",
+    "testimonial3_title": "Precision Dynamics总监"
+  },
+  "LeadFormSection": {
+    "title": "您的钱从哪里流失了？",
+    "subtitle": "进行快速诊断，发现今天阻碍您利润的3个瓶颈。"
+  },
+  "LeadForm": {
+    "name": {
+      "label": "全名",
+      "placeholder": "例如：张三",
+      "error": "姓名必须至少包含2个字符。"
+    },
+    "email": {
+      "label": "电子邮件地址",
+      "placeholder": "例如：zhang.san@example.com",
+      "error": "请输入有效的电子邮件地址。"
+    },
+    "whatsapp": {
+      "label": "WhatsApp",
+      "placeholder": "例如：+86 138 1234 5678",
+      "error": "请输入有效的WhatsApp号码。"
+    },
+    "challenge": {
+      "label": "您今天最大的挑战是什么？",
+      "placeholder": "选择您最大的挑战",
+      "error": "请选择一个挑战。",
+      "options": {
+        "sales": "销售",
+        "management": "管理",
+        "processes": "流程"
+      }
+    },
+    "submitButton": "请求我的业务分析",
+    "toast": {
+      "success": {
+        "title": "发送成功",
+        "description": "谢谢！我们会尽快与您联系。"
+      },
+      "error": {
+        "title": "提交失败",
+        "description": "出了点问题。请再试一次。"
+      }
+    }
+  },
+  "Footer": {
+    "description": "为高价值企业量身定制的增长策略。",
+    "quickLinks": "快速链接",
+    "linkProblem": "问题所在",
+    "linkProcess": "我们的流程",
+    "linkSolutions": "解决方案",
+    "linkContact": "联系方式",
+    "stayUpdated": "保持更新",
+    "newsletter": "订阅我们的新闻通讯以获取最新消息。",
+    "emailPlaceholder": "电子邮件",
+    "subscribeButton": "订阅",
+    "copyright": "© {year} Ferdian-MSP. 版权所有。"
+  },
+  "Concierge": {
+    "title": "虚拟礼宾服务",
+    "initialMessage": "你好！我是Ferdian-MSP的虚拟助手。我今天如何帮助您为您的业务发现最佳增长策略？",
+    "inputPlaceholder": "输入您的问题...",
+    "sendButtonText": "发送"
+  },
+  "StickyElementsWidget": {
+    "whatsappAriaLabel": "通过WhatsApp联系",
+    "whatsappMessage": "你好，我想了解更多信息",
+    "conciergeAriaLabel": "打开人工智能助手",
+    "newsletterAriaLabel": "订阅新闻通讯",
+    "consultationAriaLabel": "请求咨询",
+    "mainAriaLabel": "打开联系选项",
+    "closeConciergeAriaLabel": "关闭人工智能助手"
+  },
+  "NewsFeedSection": {
+    "title": "市场雷达",
+    "subtitle": "随时了解经济和创业领域的最新消息。",
+    "loading": "正在加载新闻...",
+    "readMore": "阅读更多"
+  }
+}
