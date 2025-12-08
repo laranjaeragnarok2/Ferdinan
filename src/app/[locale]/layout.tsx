@@ -1,12 +1,9 @@
 import type { Metadata } from 'next';
-import { NextIntlClientProvider, useMessages } from 'next-intl';
 import '../globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script';
 import CookieConsent from '@/components/layout/CookieConsent';
-import StickyElementsWidget from '@/components/layout/StickyElementsWidget';
-import ConciergeContent from '@/components/concierge/ConciergeContent';
 
 export const metadata: Metadata = {
   title: 'Ferdian-MSP',
@@ -21,8 +18,6 @@ export default function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  const messages = useMessages();
-
   return (
     <html lang={locale} className="!scroll-smooth dark">
       <head>
@@ -35,9 +30,7 @@ export default function LocaleLayout({
         />
       </head>
       <body className="font-body antialiased">
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          {children}
-        </NextIntlClientProvider>
+        {children}
         <Toaster />
         <Script
           async

@@ -10,12 +10,9 @@ import ValidatedSolutionsSection from '@/components/sections/ValidatedSolutionsS
 import SocialProofSection from '@/components/sections/SocialProofSection';
 import { FadeInOnScroll } from '@/components/animations/FadeInOnScroll';
 import StickyElementsWidget from '@/components/layout/StickyElementsWidget';
-import ConciergeContent from '@/components/concierge/ConciergeContent';
 import NewsFeedSection from '@/components/sections/NewsFeedSection';
-import { useTranslations } from 'next-intl';
 
 export default function Home() {
-  const t = useTranslations('Concierge');
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
@@ -43,16 +40,7 @@ export default function Home() {
         </div>
       </main>
       <Footer />
-      <StickyElementsWidget
-        conciergeContent={
-          <ConciergeContent
-            title={t('title')}
-            initialMessage={t('initialMessage')}
-            inputPlaceholder={t('inputPlaceholder')}
-            sendButtonText={t('sendButtonText')}
-          />
-        }
-      />
+      <StickyElementsWidget />
     </div>
   );
 }
