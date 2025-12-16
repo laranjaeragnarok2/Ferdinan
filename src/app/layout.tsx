@@ -22,9 +22,9 @@ const ptSans = PT_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Ferdian-MSP',
+  title: 'Ferdinan-MSP.Group',
   description:
-    'Estratégias de crescimento personalizadas, curadas para negócios de alto valor.',
+    'Potencialize seu lucro com Consultoria de Growth, Vendas e Gestão de Alta Performance. Descubra onde sua empresa está perdendo dinheiro. Faça seu Diagnóstico Gratuito.',
 };
 
 export const viewport: Viewport = {
