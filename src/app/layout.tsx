@@ -7,6 +7,8 @@ import CookieConsent from '@/components/layout/CookieConsent';
 import StickyElementsWidget from '@/components/layout/StickyElementsWidget';
 import ConciergeContent from '@/components/concierge/ConciergeContent';
 
+import { StockTicker } from '@/components/ui/StockTicker';
+
 export const metadata: Metadata = {
   title: 'Ferdian-MSP',
   description:
@@ -30,6 +32,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased">
+        <StockTicker />
         {children}
         <Toaster />
         <Script
