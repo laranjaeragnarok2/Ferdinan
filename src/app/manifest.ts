@@ -3,13 +3,13 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-        name: 'Ferdian MSP - Consultoria de Crescimento',
-        short_name: 'Ferdian',
+        name: 'Ferdinan MSP Group',
+        short_name: 'Ferdinan MSP Group',
         description: 'Estratégias de crescimento personalizadas, curadas para negócios de alto valor.',
         start_url: '/',
         display: 'standalone',
         background_color: '#09090b', // Cor de fundo dark (combinando com o site)
-        theme_color: '#f59e0b', // Cor do tema (Amber-500 usado no site)
+        theme_color: '#000000ff', // Cor do tema (Amber-500 usado no site)
         orientation: 'portrait',
         icons: [
             {
