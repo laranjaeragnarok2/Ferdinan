@@ -28,7 +28,7 @@ const NewsFeedSection = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fexame.com%2Frss%2Fpme%2F'
+          'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnews.google.com%2Frss%2Fsearch%3Fq%3Dempreendedorismo%2Beconomia%26hl%3Dpt-BR%26gl%3DBR%26ceid%3DBR%3Apt-419'
         );
         if (!response.ok) {
           throw new Error('Failed to fetch news');
