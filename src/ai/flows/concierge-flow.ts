@@ -44,5 +44,19 @@ Responda de forma direta e útil.`;
     },
   });
 
+  // Save interaction to Firestore
+  try {
+    const { collection, addDoc } = await import('firebase/firestore');
+    const { db } = await import('@/lib/firebase');
+
+    await addDoc(collection(db, 'chat_logs'), {
+      timestamp: new Date().toISOString(),
+      user_query: input.query,
+      ai_response: output?.response || 'No response',
+    });
+  } catch (error) {
+    console.error('Error saving chat log to Firestore:', error);
+  }
+
   return output!;
 }
