@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { SpeedInsights } from '@vercel/speed-insights/next';
@@ -13,6 +13,13 @@ export const metadata: Metadata = {
   title: 'Ferdian-MSP',
   description:
     'Estratégias de crescimento personalizadas, curadas para negócios de alto valor.',
+};
+
+export const viewport: Viewport = {
+  themeColor: '#09090b',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
