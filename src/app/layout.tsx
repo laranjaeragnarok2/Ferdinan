@@ -1,13 +1,25 @@
+import { Playfair_Display, PT_Sans } from 'next/font/google';
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script';
 import CookieConsent from '@/components/layout/CookieConsent';
 import StickyElementsWidget from '@/components/layout/StickyElementsWidget';
-import ConciergeContent from '@/components/concierge/ConciergeContent';
 
 import { StockTicker } from '@/components/ui/StockTicker';
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-headline',
+});
+
+const ptSans = PT_Sans({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-body',
+});
 
 export const metadata: Metadata = {
   title: 'Ferdian-MSP',
@@ -28,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className="!scroll-smooth dark">
+    <html lang="pt-BR" className={`!scroll-smooth dark ${playfair.variable} ${ptSans.variable}`}>
       <head>
         <meta name="google-adsense-account" content="ca-pub-1477681884429701" />
         <Script
@@ -38,9 +50,11 @@ export default function RootLayout({
           strategy="lazyOnload"
         />
       </head>
-      <body className="font-body antialiased">
+      <body className="font-body antialiased bg-background text-foreground">
         <StockTicker />
         {children}
+        <StickyElementsWidget />
+        <CookieConsent />
         <Toaster />
         <Script
           async

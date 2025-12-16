@@ -131,49 +131,40 @@ const NewsFeedSection = () => {
           >
             <CarouselContent className="-ml-4">
               {news.map((item, index) => {
-                const imageUrl = getNewsImages(item, index);
                 // Clean description
                 const cleanDesc = item.description?.replace(/<[^>]*>/g, '').slice(0, 100) + '...';
 
                 return (
-                  <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/3">
+                  <CarouselItem key={index} className="pl-4 md:basis-1/3 lg:basis-1/4 xl:basis-1/4">
                     <div className="h-full group">
-                      <Card className="flex flex-col h-full bg-card/50 backdrop-blur-sm border-muted/40 overflow-hidden hover:border-primary/50 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-                        <div className="relative h-48 overflow-hidden">
-                          <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-black animate-pulse" />
-                          <img
-                            src={imageUrl}
-                            alt={item.title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            loading="lazy"
-                          />
-                          <div className="absolute top-3 left-3">
-                            <span className="px-2 py-1 text-xs font-semibold bg-primary/90 text-primary-foreground rounded-full backdrop-blur-md shadow-sm">
+                      <Card className="flex flex-col h-full bg-card/50 backdrop-blur-sm border-muted/40 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                        <CardContent className="p-5 flex flex-col flex-grow">
+                          <div className="mb-3 flex items-center justify-between">
+                            <span className="px-2 py-0.5 text-[10px] uppercase tracking-wider font-bold bg-primary/10 text-primary rounded-full">
                               {new Date(item.pubDate).toLocaleDateString()}
                             </span>
                           </div>
-                        </div>
 
-                        <CardContent className="p-6 flex flex-col flex-grow">
-                          <h3 className="text-lg font-bold text-foreground mb-3 line-clamp-2 leading-tight group-hover:text-primary transition-colors">
+                          <h3 className="text-base font-bold text-foreground mb-2 line-clamp-3 leading-snug group-hover:text-primary transition-colors min-h-[4.5rem]">
                             {item.title}
                           </h3>
-                          <div className="text-sm text-muted-foreground mb-4 line-clamp-3">
-                            {cleanDesc.length > 5 ? cleanDesc : "Clique para ler a notícia completa e ver os detalhes desta atualização de mercado."}
+
+                          <div className="text-xs text-muted-foreground mb-4 line-clamp-4 flex-grow">
+                            {cleanDesc.length > 5 ? cleanDesc : "Clique para ler a notícia completa."}
                           </div>
 
-                          <div className="mt-auto pt-4 flex items-center justify-between border-t border-border/50">
-                            <span className="text-xs font-medium text-muted-foreground truncate max-w-[120px]">
+                          <div className="mt-auto pt-3 flex items-center justify-between border-t border-border/50">
+                            <span className="text-[10px] font-medium text-muted-foreground truncate max-w-[100px]">
                               {item.author || 'Redação'}
                             </span>
-                            <Button asChild variant="ghost" size="sm" className="p-0 h-auto hover:bg-transparent hover:text-primary font-semibold group/btn">
+                            <Button asChild variant="ghost" size="sm" className="h-6 text-xs px-2 hover:bg-transparent hover:text-primary font-semibold group/btn">
                               <a
                                 href={item.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-1"
                               >
-                                Ler conteúdo <span className="transition-transform group-hover/btn:translate-x-1">→</span>
+                                Ler <span className="transition-transform group-hover/btn:translate-x-1">→</span>
                               </a>
                             </Button>
                           </div>
