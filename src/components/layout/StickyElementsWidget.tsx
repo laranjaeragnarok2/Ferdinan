@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bot, X } from 'lucide-react';
+import { Headset, X } from 'lucide-react';
 import ConciergeContent from '../concierge/ConciergeContent';
 
 const StickyElementsWidget = () => {
@@ -71,7 +71,7 @@ const StickyElementsWidget = () => {
               {isConciergeOpen ? (
                 <X className="h-6 w-6" />
               ) : (
-                <Bot className="h-6 w-6" />
+                <Headset className="h-6 w-6" />
               )}
             </motion.div>
           </AnimatePresence>
