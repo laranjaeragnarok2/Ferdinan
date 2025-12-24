@@ -25,8 +25,12 @@ export const metadata: Metadata = {
   title: 'Ferdinan-MSP.Group | Consultoria de Growth e Alta Performance',
   description:
     'Potencialize seu lucro com Consultoria de Growth, Vendas e Gestão de Alta Performance. Descubra onde sua empresa está perdendo dinheiro. Faça seu Diagnóstico Gratuito.',
-  keywords: ['Growth Hacking', 'Consultoria de Vendas', 'Gestão de Alta Performance', 'Automação de Processos', 'Ferdinan', 'MSP Group'],
+  keywords: ['Growth Hacking', 'Consultoria de Vendas', 'Gestão de Alta Performance', 'Automação de Processos', 'Ferdinan', 'MSP Group', 'Growth Marketing', 'Vendas B2B'],
   authors: [{ name: 'Ferdinan' }],
+  metadataBase: new URL('https://ferdinan-msp.group'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'Ferdinan-MSP.Group | Consultoria de Growth e Alta Performance',
     description: 'Descubra onde sua empresa está perdendo dinheiro. Potencialize seu lucro com estratégias de Growth e Gestão.',
@@ -39,9 +43,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Ferdinan-MSP.Group | Consultoria de Growth e Alta Performance',
     description: 'Evolua seu negócio com estratégias de Growth e Gestão de Alta Performance.',
-  },
-  alternates: {
-    canonical: 'https://ferdinan-msp.group',
   },
 };
 

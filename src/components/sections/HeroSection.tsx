@@ -42,7 +42,7 @@ export default function HeroSection() {
           <Link href="#contact" passHref>
             <Button
               size="lg"
-              className="bg-orange-600 text-white font-bold transition-transform transform hover:scale-105 hover:bg-orange-700"
+              className="bg-orange-600 text-white font-bold transition-all duration-300 transform hover:scale-110 hover:bg-orange-700 shadow-[0_0_20px_rgba(234,88,12,0.4)] animate-shimmer bg-[length:200%_100%]"
             >
               Solicitar Análise do Meu Negócio
             </Button>

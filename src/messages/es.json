@@ -51,10 +51,10 @@
   "SocialProofSection": {
     "title": "Resultados, No Promesas",
     "subtitle": "Socios que confían en nuestra curación para transformar sus negocios.",
-    "testimonial1_quote": "Ferdian-MSP no entregó un servicio, sino una asociación estratégica. Su curación fue fundamental para nuestro aumento del 40% en leads calificados en un solo trimestre.",
+    "testimonial1_quote": "Ferdinan-MSP no entregó un servicio, sino una asociación estratégica. Su curación fue fundamental para nuestro aumento del 40% en leads calificados en un solo trimestre.",
     "testimonial1_name": "Alexandre Dubois",
     "testimonial1_title": "CEO, Maison de Luxe",
-    "testimonial2_quote": "Trabajar con Ferdian-MSP nos dio la claridad que necesitábamos. Su proceso de validación aseguró que cada peso invertido tuviera el máximo retorno. Los resultados fueron transformadores.",
+    "testimonial2_quote": "Trabajar con Ferdinan-MSP nos dio la claridad que necesitábamos. Su proceso de validación aseguró que cada peso invertido tuviera el máximo retorno. Los resultados fueron transformadores.",
     "testimonial2_name": "Isabella Rossi",
     "testimonial2_title": "Fundadora, Artisa",
     "testimonial3_quote": "Lo que más me impresionó fue su capacidad para entender los matices de nuestro mercado. Las soluciones no solo fueron eficaces, sino que estaban perfectamente alineadas con nuestra visión a largo plazo.",
@@ -88,7 +88,7 @@
       "options": {
         "sales": "Ventas",
         "management": "Gestión",
-        "processes": "Procesos"
+        "processes": "Processos"
       }
     },
     "submitButton": "Solicitar Análisis de Mi Negocio",
@@ -114,11 +114,11 @@
     "newsletter": "Suscríbete a nuestro boletín para recibir las últimas noticias.",
     "emailPlaceholder": "Correo Electrónico",
     "subscribeButton": "Suscribir",
-    "copyright": "© {year} Ferdian-MSP. Todos los Derechos Reservados."
+    "copyright": "© {year} Ferdinan-MSP. Todos los Derechos Reservados."
   },
   "Concierge": {
     "title": "Conserje Virtual",
-    "initialMessage": "¡Hola! Soy el asistente virtual de Ferdian-MSP. ¿Cómo puedo ayudarte a descubrir la mejor estrategia de crecimiento para tu negocio hoy?",
+    "initialMessage": "¡Hola! Soy el asistente virtual de Ferdinan-MSP. ¿Cómo puedo ayudarte a descubrir la mejor estrategia de crecimiento para tu negocio hoy?",
     "inputPlaceholder": "Escribe tu pregunta...",
     "sendButtonText": "Enviar"
   },

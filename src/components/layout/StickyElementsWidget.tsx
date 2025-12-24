@@ -30,7 +30,7 @@ const StickyElementsWidget = () => {
   const conciergeTexts = {
     title: 'Concierge Virtual',
     initialMessage:
-      'Olá! Sou o assistente virtual da Ferdian-MSP. Como posso te ajudar a descobrir a melhor estratégia de crescimento para seu negócio hoje?',
+      'Olá! Sou o assistente virtual da Ferdinan-MSP. Como posso te ajudar a descobrir a melhor estratégia de crescimento para seu negócio hoje?',
     inputPlaceholder: 'Digite sua dúvida...',
     sendButtonText: 'Enviar',
   };

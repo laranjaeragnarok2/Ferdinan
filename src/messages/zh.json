@@ -51,10 +51,10 @@
   "SocialProofSection": {
     "title": "结果，而非承诺",
     "subtitle": "信任我们策划以改变其业务的合作伙伴。",
-    "testimonial1_quote": "Ferdian-MSP提供的不是服务，而是战略合作伙伴关系。他们的策划是我们一个季度内合格潜在客户增加40%的关键。",
+    "testimonial1_quote": "Ferdinan-MSP提供的不是服务，而是战略合作伙伴关系。他们的策划是我们一个季度内合格潜在客户增加40%的关键。",
     "testimonial1_name": "亚历山大·杜波依斯",
     "testimonial1_title": "Maison de Luxe首席执行官",
-    "testimonial2_quote": "与Ferdian-MSP合作给了我们所需的清晰度。他们的验证过程确保了每一笔投资都获得最大回报。结果是变革性的。",
+    "testimonial2_quote": "与Ferdinan-MSP合作给了我们所需的清晰度。他们的验证过程确保了每一笔投资都获得最大回报。结果是变革性的。",
     "testimonial2_name": "伊莎贝拉·罗西",
     "testimonial2_title": "Artisa创始人",
     "testimonial3_quote": "最让我印象深刻的是他们理解我们市场细微差别的能力。这些解决方案不仅有效，而且与我们的长期愿景完美契合。",
@@ -114,11 +114,11 @@
     "newsletter": "订阅我们的新闻通讯以获取最新消息。",
     "emailPlaceholder": "电子邮件",
     "subscribeButton": "订阅",
-    "copyright": "© {year} Ferdian-MSP. 版权所有。"
+    "copyright": "© {year} Ferdinan-MSP. 版权所有。"
   },
   "Concierge": {
     "title": "虚拟礼宾服务",
-    "initialMessage": "你好！我是Ferdian-MSP的虚拟助手。我今天如何帮助您为您的业务发现最佳增长策略？",
+    "initialMessage": "你好！我是Ferdinan-MSP的虚拟助手。我今天如何帮助您为您的业务发现最佳增长策略？",
     "inputPlaceholder": "输入您的问题...",
     "sendButtonText": "发送"
   },

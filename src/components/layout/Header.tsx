@@ -17,7 +17,7 @@ export default function Header() {
         <Link href="/" className="flex items-center space-x-2">
           <GrowthIcon />
           <span className="font-bold text-xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
-            Ferdian-MSP
+            Ferdinan-MSP
           </span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
