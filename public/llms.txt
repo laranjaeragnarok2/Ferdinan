@@ -1,0 +1,25 @@
+# Ferdinan-MSP.Group
+
+> Potencialize seu lucro com Consultoria de Growth, Vendas e Gestão de Alta Performance.
+
+## Perfil do Site
+Este site pertence ao Ferdinan e ao MSP Group, uma consultoria focada em acelerar o crescimento (Growth) de empresas através de estratégias de vendas, automação de processos e gestão de alta performance.
+
+## Proposta de Valor
+- **Growth & Vendas:** Implementação de funis e processos para escala comercial.
+- **Gestão de Alta Performance:** Otimização operacional para evitar perda de dinheiro.
+- **Diagnóstico Gratuito:** Ponto de entrada para consultoria.
+
+## Seções Principais
+- **News Feed:** Atualizações sobre tecnologia, IA e automação.
+- **Dores & Teses:** Identificação de problemas comuns em negócios e como resolvê-los.
+- **Soluções Validadas:** Portfólio de serviços e ferramentas.
+- **Provas Sociais:** Depoimentos e casos de sucesso.
+
+## Contato e Leads
+O site possui um formulário de captura para diagnósticos gratuitos e contato direto via widgets de comunicação (WhatsApp/Email).
+
+## Informações Técnicas para LLMs
+- **Linguagem Principal:** Português (pt-BR).
+- **Stack:** Next.js (React), Tailwind CSS.
+- **Foco:** B2B, Consultoria Executiva, Automação de Negócios.
