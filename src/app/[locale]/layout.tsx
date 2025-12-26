@@ -21,6 +21,7 @@ export default function LocaleLayout({
   return (
     <html lang={locale} className="!scroll-smooth dark">
       <head>
+        <meta name="google-site-verification" content="micLhK74KQ1gJVOLK9Wh0lj09tPNLRMebMigcF11gb4" />
         <meta name="google-adsense-account" content="ca-pub-1477681884429701" />
         <Script
           async
