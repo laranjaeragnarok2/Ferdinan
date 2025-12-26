@@ -67,6 +67,56 @@ export default function LocaleLayout({
             }
           `}
         </Script>
+        <Script id="faq-schema-markup" type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Como funciona a consultoria da Ferdinan MSP?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Nossa consultoria é focada na implementação prática de estratégias de crescimento e automação com IA. Não entregamos apenas relatórios, mas soluções validadas que geram ROI real para o seu negócio."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Qual o diferencial de vocês em relação a cursos de marketing?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Diferente de cursos, nós 'colocamos a mão na massa'. Atuamos como um braço estratégico do seu negócio, diagnosticando falhas e implementando processos de vendas e gestão personalizados para o seu mercado."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "A consultoria é presencial ou online?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Atendemos empresas em todo o Brasil de forma online, com foco especial em Rio Verde, Goiás, onde temos nossa base de operações. A proximidade regional facilita o entendimento da dinâmica local para empresas goianas."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Quanto tempo leva para ver resultados?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Os resultados variam conforme o estágio do negócio, mas nosso foco é em vitórias rápidas (quick wins) no primeiro mês, enquanto estruturamos o crescimento sustentável de longo prazo."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "A Ferdinan MSP trabalha com qualquer tipo de empresa?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Somos especializados em negócios de alto valor que buscam escala através de eficiência operacional, automação e estratégias de Growth Hacking adaptadas ao DNA da marca."
+                  }
+                }
+              ]
+            }
+          `}
+        </Script>
       </head>
       <body className="font-body antialiased">
         {children}
