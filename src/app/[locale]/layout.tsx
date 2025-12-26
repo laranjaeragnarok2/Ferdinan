@@ -6,9 +6,9 @@ import Script from 'next/script';
 import CookieConsent from '@/components/layout/CookieConsent';
 
 export const metadata: Metadata = {
-  title: 'Ferdian-MSP',
+  title: 'Ferdinan MSP',
   description:
-    'Estratégias de crescimento personalizadas, curadas para negócios de alto valor.',
+    'Consultoria de vendas e gestão em Rio Verde, Goiás. Estratégias de crescimento personalizadas, curadas para negócios de alto valor.',
 };
 
 export default function LocaleLayout({
@@ -28,6 +28,45 @@ export default function LocaleLayout({
           crossOrigin="anonymous"
           strategy="lazyOnload"
         />
+        <Script id="schema-markup" type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "name": "Ferdinan MSP",
+              "image": "https://www.ferdinan-msp.group/logo.png",
+              "@id": "https://www.ferdinan-msp.group",
+              "url": "https://www.ferdinan-msp.group",
+              "telephone": "+556492339844",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "",
+                "addressLocality": "Rio Verde",
+                "addressRegion": "GO",
+                "postalCode": "",
+                "addressCountry": "BR"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": -17.7915,
+                "longitude": -50.9204
+              },
+              "description": "A Ferdinan MSP presta consultoria de vendas e gestão em Rio Verde, Goiás, focada em estratégias de crescimento e automação com IA.",
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "08:00",
+                "closes": "18:00"
+              }
+            }
+          `}
+        </Script>
       </head>
       <body className="font-body antialiased">
         {children}
