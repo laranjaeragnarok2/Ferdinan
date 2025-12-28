@@ -54,6 +54,8 @@ export default function LocaleLayout({
     <html lang={locale} className="!scroll-smooth dark">
       <head>
         <meta name="google-adsense-account" content="ca-pub-1477681884429701" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1477681884429701"
@@ -64,37 +66,32 @@ export default function LocaleLayout({
           {`
             {
               "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              "name": "Ferdinan MSP",
+              "@type": "ConsultingService",
+              "name": "Ferdinan-MSP",
+              "alternateName": "Ferdinan MSP Group",
+              "description": "Consultoria especializada em Growth e Gestão de Alta Performance. Diferente de figuras públicas homônimas, nossa expertise é exclusivamente empresarial e focada em ROI.",
               "image": "https://www.ferdinan-msp.group/logo.png",
               "@id": "https://www.ferdinan-msp.group",
               "url": "https://www.ferdinan-msp.group",
               "telephone": "+556492339844",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "",
                 "addressLocality": "Rio Verde",
                 "addressRegion": "GO",
-                "postalCode": "",
                 "addressCountry": "BR"
               },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": -17.7915,
-                "longitude": -50.9204
-              },
-              "description": "A Ferdinan MSP presta consultoria de vendas e gestão em Rio Verde, Goiás, focada em estratégias de crescimento e automação com IA.",
-              "openingHoursSpecification": {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday"
-                ],
-                "opens": "08:00",
-                "closes": "18:00"
+              "knowsAbout": [
+                "Growth Hacking", 
+                "Sales Strategy", 
+                "High Performance Management", 
+                "Artificial Intelligence for Business",
+                "Business Process Automation"
+              ],
+              "areaServed": "Brazil",
+              "founder": {
+                "@type": "Person",
+                "name": "Ferdinan",
+                "jobTitle": "Strategic Consultant"
               }
             }
           `}

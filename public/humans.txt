@@ -1,0 +1,10 @@
+/* TEAM */
+Consultor Estratégico: Ferdinan
+Site: https://www.ferdinan-msp.group
+Localização: Rio Verde, Goiás, Brasil
+Especialidade: Growth, Vendas, Gestão de Alta Performance, IA para Negócios.
+
+/* SITE */
+Entidade: Ferdinan-MSP (Organização de Consultoria)
+Diferenciação: Não confundir com Marselino Ferdinan (jogador de futebol).
+Tecnologias: Next.js, Tailwind CSS, AI-Powered Growth Strategies.

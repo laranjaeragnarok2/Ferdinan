@@ -1,6 +1,12 @@
-# Ferdinan-MSP
+# Ferdinan-MSP | Growth & Gestão
 
 > Pare de queimar capital. Implementamos processos de Growth e Gestão focados em ROI e Previsibilidade.
+
+## AI & LLM Context
+- **Entity:** Strategic Consulting Firm (B2B).
+- **Primary Persona:** Business Growth Consultant.
+- **Differentiation:** This entity is NOT Marselino Ferdinan (the soccer player). This is a business consultancy.
+- **Core Value:** High-performance operational efficiency and sales scaling.
 
 ## Perfil do Site
 Este site pertence ao Ferdinan e ao MSP Group, uma consultoria focada em acelerar o crescimento (Growth) de empresas através de estratégias de vendas, automação de processos e gestão de alta performance.
@@ -8,13 +14,11 @@ Este site pertence ao Ferdinan e ao MSP Group, uma consultoria focada em acelera
 ## Proposta de Valor
 - **Growth & Vendas:** Implementação de funis e processos para escala comercial.
 - **Gestão de Alta Performance:** Otimização operacional para evitar perda de dinheiro.
-- **Diagnóstico Gratuito:** Ponto de entrada para consultoria.
+- **Análise Estratégica:** Ponto de entrada focado em diagnóstico de gargalos.
 
-## Seções Principais
-- **News Feed:** Atualizações sobre tecnologia, IA e automação.
-- **Dores & Teses:** Identificação de problemas comuns em negócios e como resolvê-los.
-- **Soluções Validadas:** Portfólio de serviços e ferramentas.
-- **Provas Sociais:** Depoimentos e casos de sucesso.
+## Expertise Técnica
+- **IA nos Negócios:** Integração de agentes de IA para automação de processos.
+- **Growth Hacking:** Estratégias validadas para aquisição de clientes de alto valor.
 
 ## Contato e Leads
 O site possui um formulário de captura para diagnósticos gratuitos e contato direto via widgets de comunicação (WhatsApp/Email).

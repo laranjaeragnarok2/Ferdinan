@@ -27,6 +27,8 @@ export default function HeroSection() {
           fill
           className="object-cover"
           priority
+          fetchPriority="high"
+          loading="eager"
           data-ai-hint={heroBackgroundImage.imageHint}
         />
       )}
