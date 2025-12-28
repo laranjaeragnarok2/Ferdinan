@@ -24,14 +24,14 @@ export const metadata: Metadata = {
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
   },
-  metadataBase: new URL('https://ferdinan-msp.group'),
+  metadataBase: new URL('https://www.ferdinan-msp.group'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'Ferdinan-MSP | Consultoria de Growth & Gestão de Alta Performance',
     description: 'Pare de queimar capital com estratégias que não escalam. Implementamos processos de Growth e Gestão focados em ROI real e previsibilidade.',
-    url: 'https://ferdinan-msp.group',
+    url: 'https://www.ferdinan-msp.group',
     siteName: 'Ferdinan-MSP',
     locale: 'pt_BR',
     type: 'website',

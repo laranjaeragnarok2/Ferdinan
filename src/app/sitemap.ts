@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://ferdinan-msp.group';
+    const baseUrl = 'https://www.ferdinan-msp.group';
 
     return [
         {
