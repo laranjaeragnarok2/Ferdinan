@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   title: 'Ferdinan MSP',
   description:
     'Consultoria de vendas e gestão em Rio Verde, Goiás. Estratégias de crescimento personalizadas, curadas para negócios de alto valor.',
+  verification: {
+    google: 'micLhK74KQ1gJVOLK9Wh0lj09tPNLRMebMigcF11gb4',
+  },
 };
 
 export default function LocaleLayout({
@@ -21,7 +24,6 @@ export default function LocaleLayout({
   return (
     <html lang={locale} className="!scroll-smooth dark">
       <head>
-        <meta name="google-site-verification" content="micLhK74KQ1gJVOLK9Wh0lj09tPNLRMebMigcF11gb4" />
         <meta name="google-adsense-account" content="ca-pub-1477681884429701" />
         <Script
           async
