@@ -4,6 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script';
 import CookieConsent from '@/components/layout/CookieConsent';
+import LeadCaptureModal from '@/components/layout/LeadCaptureModal';
 
 export const metadata: Metadata = {
   title: 'Ferdinan-MSP | Consultoria de Growth & Gestão de Alta Performance',
@@ -150,6 +151,7 @@ export default function LocaleLayout({
       <body className="font-body antialiased">
         {children}
         <Toaster />
+        <LeadCaptureModal />
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-KXTREZQQ36"

@@ -4,6 +4,7 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import Script from 'next/script';
 import CookieConsent from '@/components/layout/CookieConsent';
+import LeadCaptureModal from '@/components/layout/LeadCaptureModal';
 import StickyElementsWidget from '@/components/layout/StickyElementsWidget';
 
 import { StockTicker } from '@/components/ui/StockTicker';
@@ -92,6 +93,7 @@ export default function RootLayout({
         <StickyElementsWidget />
         <CookieConsent />
         <Toaster />
+        <LeadCaptureModal />
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-KXTREZQQ36"
