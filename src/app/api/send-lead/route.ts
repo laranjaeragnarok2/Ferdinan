@@ -45,6 +45,12 @@ export async function POST(req: Request) {
             <li><strong>Claude 3.5 Sonnet:</strong> A IA mais refinada para redação estratégica e análise de documentos complexos. Use para revisar contratos ou criar teses de vendas.</li>
           </ul>
 
+          <h3 style="color: #ea580c;">📺 3. Visão Estratégica (YouTube)</h3>
+          <ul>
+            <li><strong><a href="https://www.youtube.com/watch?v=PHe0bXAIuk0" style="color: #333; text-decoration: underline;">Como a Máquina Econômica Funciona (Ray Dalio)</a>:</strong> 30 minutos que ensinam mais sobre ciclos de mercado do que 4 anos de faculdade. Obrigatório para previsibilidade.</li>
+            <li><strong><a href="https://www.youtube.com/watch?v=nO8YJbd4UeE" style="color: #333; text-decoration: underline;">Alex Hormozi - $100M Offers (Resumo Prático)</a>:</strong> Como criar ofertas tão boas que seus clientes se sentiriam estúpidos em dizer não. A base da nossa consultoria de vendas.</li>
+          </ul>
+
           <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
 
           <h3 style="color: #333;">💡 O Próximo Passo Estratégico</h3>
