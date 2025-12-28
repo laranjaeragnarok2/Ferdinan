@@ -6,11 +6,30 @@ import Script from 'next/script';
 import CookieConsent from '@/components/layout/CookieConsent';
 
 export const metadata: Metadata = {
-  title: 'Ferdinan MSP',
+  title: 'Ferdinan-MSP | Consultoria de Growth & Gestão de Alta Performance',
   description:
-    'Consultoria de vendas e gestão em Rio Verde, Goiás. Estratégias de crescimento personalizadas, curadas para negócios de alto valor.',
+    'Pare de queimar capital com estratégias que não escalam. Implementamos processos de Growth e Gestão focados em ROI real e previsibilidade. Agende sua análise estratégica.',
+  keywords: ['Growth Hacking', 'Consultoria de Vendas', 'Gestão de Alta Performance', 'Automação de Processos', 'Ferdinan', 'MSP Group', 'Growth Marketing', 'Vendas B2B'],
+  authors: [{ name: 'Ferdinan' }],
   verification: {
     google: 'micLhK74KQ1gJVOLK9Wh0lj09tPNLRMebMigcF11gb4',
+  },
+  metadataBase: new URL('https://ferdinan-msp.group'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Ferdinan-MSP | Consultoria de Growth & Gestão de Alta Performance',
+    description: 'Pare de queimar capital com estratégias que não escalam. Implementamos processos de Growth e Gestão focados em ROI real e previsibilidade.',
+    url: 'https://ferdinan-msp.group',
+    siteName: 'Ferdinan-MSP',
+    locale: 'pt_BR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ferdinan-MSP | Consultoria de Growth & Gestão de Alta Performance',
+    description: 'Implementação prática de Growth e Gestão focada em ROI e previsibilidade.',
   },
 };
 

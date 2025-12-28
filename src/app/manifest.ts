@@ -3,9 +3,9 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-        name: 'Ferdinan MSP Group',
-        short_name: 'Ferdinan MSP Group',
-        description: 'Estratégias de crescimento personalizadas, curadas para negócios de alto valor.',
+        name: 'Ferdinan-MSP | Growth & Gestão',
+        short_name: 'Ferdinan-MSP',
+        description: 'Pare de queimar capital. Implementamos processos de Growth e Gestão focados em ROI e Previsibilidade.',
         start_url: '/',
         display: 'standalone',
         background_color: '#09090b', // Cor de fundo dark (combinando com o site)

@@ -13,7 +13,7 @@ export default function LeadFormSection() {
           Onde seu dinheiro está vazando?
         </h2>
         <p className="mt-4 text-xl text-muted-foreground">
-          Faça um diagnóstico rápido e descubra os 3 gargalos que impedem seu lucro hoje.
+          Descubra os gargalos que impedem seu lucro hoje.
         </p>
         <div className="mt-12 p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent shadow-2xl">
           <div className="bg-background/80 backdrop-blur-xl rounded-xl p-6 sm:p-10 border border-white/10">
