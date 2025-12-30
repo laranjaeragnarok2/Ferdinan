@@ -57,6 +57,29 @@ Para clonar e executar este projeto em sua máquina local, siga os passos abaixo
     ```
     *(ou `yarn install` se você usa Yarn)*
 
+4.  **Configure as variáveis de ambiente:**
+    
+    Crie um arquivo `.env.local` na raiz do projeto com as seguintes variáveis:
+    
+    ```bash
+    # SMTP Configuration (Hostinger)
+    SMTP_USER=contact@ferdinan-msp.group
+    SMTP_PASS=sua_senha_smtp_aqui
+    
+    # Discord Webhook
+    DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/SEU_WEBHOOK_ID/SEU_WEBHOOK_TOKEN
+    ```
+    
+    **Como obter a URL do Discord Webhook:**
+    
+    1. Acesse o canal do Discord onde deseja receber as notificações
+    2. Clique em **Configurações do Canal** (ícone de engrenagem)
+    3. Vá em **Integrações** → **Webhooks**
+    4. Clique em **Novo Webhook**
+    5. Dê um nome (ex: "Leads Ferdinan-MSP")
+    6. Copie a **URL do Webhook** e cole no `.env.local`
+
+
 ### Executando o Servidor de Desenvolvimento
 
 Após a instalação, você pode iniciar o servidor de desenvolvimento local:

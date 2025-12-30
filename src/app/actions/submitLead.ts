@@ -3,6 +3,7 @@
 
 import { z } from "zod";
 import nodemailer from 'nodemailer';
+import { sendDiscordNotification } from '@/utils/discord';
 
 const formSchema = z.object({
   name: z.string().min(2, 'O nome deve ter pelo menos 2 caracteres.'),
@@ -74,10 +75,11 @@ export async function submitLead(data: LeadFormData) {
       `,
     };
 
-    // Enviar ambos os e-mails
-    await Promise.all([
+    // Enviar ambos os e-mails e notificação Discord
+    await Promise.allSettled([
       transporter.sendMail(notificationMail),
-      transporter.sendMail(confirmationMail)
+      transporter.sendMail(confirmationMail),
+      sendDiscordNotification(data, 'form')
     ]);
 
     return { success: true, message: "Solicitação recebida com sucesso! Verifique seu e-mail." };

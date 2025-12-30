@@ -1,29 +1,30 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { sendDiscordNotification } from '@/utils/discord';
 
 export async function POST(req: Request) {
-    try {
-        const { email } = await req.json();
+  try {
+    const { email } = await req.json();
 
-        if (!email) {
-            return NextResponse.json({ error: 'Email is required' }, { status: 400 });
-        }
+    if (!email) {
+      return NextResponse.json({ error: 'Email is required' }, { status: 400 });
+    }
 
-        const transporter = nodemailer.createTransport({
-            host: 'smtp.hostinger.com',
-            port: 465,
-            secure: true, // true for 465, false for other ports
-            auth: {
-                user: process.env.SMTP_USER,
-                pass: process.env.SMTP_PASS,
-            },
-        });
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.hostinger.com',
+      port: 465,
+      secure: true, // true for 465, false for other ports
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    });
 
-        const mailOptions = {
-            from: `"Ferdinan-MSP" <${process.env.SMTP_USER}>`,
-            to: email,
-            subject: '🛠️ Sua Curadoria de Alta Performance (Livros + Ferramentas)',
-            html: `
+    const mailOptions = {
+      from: `"Ferdinan-MSP" <${process.env.SMTP_USER}>`,
+      to: email,
+      subject: '🛠️ Sua Curadoria de Alta Performance (Livros + Ferramentas)',
+      html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #333; line-height: 1.6;">
           <h2 style="color: #ea580c;">Domine o Caos Estratégico</h2>
           <p>Olá,</p>
@@ -67,22 +68,27 @@ export async function POST(req: Request) {
           <span style="font-size: 12px; color: #666;">Growth & Gestão | Ferdinan-MSP</span></p>
         </div>
       `,
-        };
+    };
 
-        await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions);
 
-        // Também enviar um email de notificação para você (opcional mas recomendado)
-        const notificationOptions = {
-            from: `"Sistema Ferdinan-MSP" <${process.env.SMTP_USER}>`,
-            to: process.env.SMTP_USER,
-            subject: '🔥 Novo Lead Capturado!',
-            text: `Um novo lead deixou o email para a curadoria: ${email}`,
-        };
-        await transporter.sendMail(notificationOptions);
+    // Também enviar um email de notificação para você (opcional mas recomendado)
+    const notificationOptions = {
+      from: `"Sistema Ferdinan-MSP" <${process.env.SMTP_USER}>`,
+      to: process.env.SMTP_USER,
+      subject: '🔥 Novo Lead Capturado!',
+      text: `Um novo lead deixou o email para a curadoria: ${email}`,
+    };
 
-        return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
-    } catch (error) {
-        console.error('Email sending error:', error);
-        return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
-    }
+    // Enviar notificação por email e Discord
+    await Promise.allSettled([
+      transporter.sendMail(notificationOptions),
+      sendDiscordNotification({ email }, 'modal')
+    ]);
+
+    return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
+  } catch (error) {
+    console.error('Email sending error:', error);
+    return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+  }
 }
