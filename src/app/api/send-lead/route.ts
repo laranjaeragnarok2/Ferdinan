@@ -60,7 +60,7 @@ export async function POST(req: Request) {
           <p>Se você quer pular a etapa da tentativa e erro e ir direto para o <strong>ROI</strong>, eu reservei um slot na minha agenda para uma <strong>Análise Estratégica de Gargalos</strong>.</p>
           
           <div style="text-align: center; margin: 30px 0;">
-            <a href="https://www.ferdinan-msp.group/#contact" style="background-color: #ea580c; color: white; padding: 15px 25px; text-decoration: none; border-radius: 8px; font-weight: bold;">AGENDAR MINHA ANÁLISE ESTRATÉGICA</a>
+            <a href="https://www.ferdinan-msp.group/#contact" style="display: inline-block; background-color: #ea580c; color: white; padding: 12px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 14px; max-width: 90%; box-sizing: border-box; line-height: 1.4;">AGENDAR MINHA ANÁLISE ESTRATÉGICA</a>
           </div>
 
           <p>Sucesso e alta performance,<br>
