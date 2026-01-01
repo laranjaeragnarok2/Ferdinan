@@ -12,6 +12,7 @@ import { FadeInOnScroll } from '@/components/animations/FadeInOnScroll';
 import StickyElementsWidget from '@/components/layout/StickyElementsWidget';
 import NewsFeedSection from '@/components/sections/NewsFeedSection';
 import FAQSection from '@/components/sections/FAQSection';
+import LatestPostSection from '@/components/sections/LatestPostSection';
 
 export default function Home() {
   return (
@@ -22,6 +23,9 @@ export default function Home() {
         <div className="relative z-10 bg-background">
           <FadeInOnScroll>
             <NewsFeedSection />
+          </FadeInOnScroll>
+          <FadeInOnScroll>
+            <LatestPostSection />
           </FadeInOnScroll>
           <FadeInOnScroll>
             <PainAndThesisSection />

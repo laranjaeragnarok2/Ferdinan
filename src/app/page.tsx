@@ -11,6 +11,8 @@ import SocialProofSection from '@/components/sections/SocialProofSection';
 import { FadeInOnScroll } from '@/components/animations/FadeInOnScroll';
 import StickyElementsWidget from '@/components/layout/StickyElementsWidget';
 import NewsFeedSection from '@/components/sections/NewsFeedSection';
+import LatestPostSection from '@/components/sections/LatestPostSection';
+import FAQSection from '@/components/sections/FAQSection';
 
 export default function Home() {
   return (
@@ -23,6 +25,9 @@ export default function Home() {
             <NewsFeedSection />
           </FadeInOnScroll>
           <FadeInOnScroll>
+            <LatestPostSection />
+          </FadeInOnScroll>
+          <FadeInOnScroll>
             <PainAndThesisSection />
           </FadeInOnScroll>
           <FadeInOnScroll>
@@ -33,6 +38,9 @@ export default function Home() {
           </FadeInOnScroll>
           <FadeInOnScroll>
             <SocialProofSection />
+          </FadeInOnScroll>
+          <FadeInOnScroll>
+            <FAQSection />
           </FadeInOnScroll>
           <FadeInOnScroll>
             <LeadFormSection />

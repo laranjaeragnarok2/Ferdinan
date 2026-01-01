@@ -35,7 +35,7 @@ export default function AdminBlogPage() {
         try {
             const response = await fetch('/api/blog/posts');
             const data = await response.json();
-            setPosts(data.posts);
+            setPosts(data.posts || []);
         } catch (error) {
             console.error('Error fetching posts:', error);
         } finally {
@@ -195,7 +195,7 @@ export default function AdminBlogPage() {
                                             </TableCell>
                                             <TableCell>
                                                 <div className="flex flex-wrap gap-1">
-                                                    {post.tags.slice(0, 2).map((tag) => (
+                                                    {(post.tags || []).slice(0, 2).map((tag) => (
                                                         <Badge
                                                             key={tag}
                                                             variant="outline"
@@ -204,9 +204,9 @@ export default function AdminBlogPage() {
                                                             {tag}
                                                         </Badge>
                                                     ))}
-                                                    {post.tags.length > 2 && (
+                                                    {(post.tags || []).length > 2 && (
                                                         <Badge variant="outline" className="text-xs">
-                                                            +{post.tags.length - 2}
+                                                            +{(post.tags || []).length - 2}
                                                         </Badge>
                                                     )}
                                                 </div>

@@ -10,9 +10,9 @@ export const authOptions: NextAuthOptions = {
     ],
     callbacks: {
         async signIn({ user }) {
-            // Apenas permitir o email do admin
-            const adminEmail = process.env.ADMIN_EMAIL;
-            return user.email === adminEmail;
+            // Permitir múltiplos emails de admin separados por vírgula
+            const adminEmails = (process.env.ADMIN_EMAIL || '').split(',').map(e => e.trim().toLowerCase());
+            return !!user.email && adminEmails.includes(user.email.toLowerCase());
         },
         async session({ session, token }) {
             return session;

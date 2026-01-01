@@ -7,10 +7,11 @@ import { UpdateBlogPostInput } from '@/types/blog';
 // GET /api/blog/posts/[slug] - Buscar post por slug
 export async function GET(
     request: NextRequest,
-    { params }: { params: { slug: string } }
+    { params }: { params: Promise<{ slug: string }> }
 ) {
     try {
-        const post = await getPostBySlug(params.slug);
+        const { slug } = await params;
+        const post = await getPostBySlug(slug);
 
         if (!post) {
             return NextResponse.json(
@@ -32,9 +33,10 @@ export async function GET(
 // PUT /api/blog/posts/[slug] - Atualizar post (requer autenticação)
 export async function PUT(
     request: NextRequest,
-    { params }: { params: { slug: string } }
+    { params }: { params: Promise<{ slug: string }> }
 ) {
     try {
+        const { slug } = await params;
         const session = await getServerSession(authOptions);
 
         if (!session) {
@@ -44,7 +46,7 @@ export async function PUT(
             );
         }
 
-        const post = await getPostBySlug(params.slug);
+        const post = await getPostBySlug(slug);
 
         if (!post) {
             return NextResponse.json(
@@ -76,9 +78,10 @@ export async function PUT(
 // DELETE /api/blog/posts/[slug] - Deletar post (requer autenticação)
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { slug: string } }
+    { params }: { params: Promise<{ slug: string }> }
 ) {
     try {
+        const { slug } = await params;
         const session = await getServerSession(authOptions);
 
         if (!session) {
@@ -88,7 +91,7 @@ export async function DELETE(
             );
         }
 
-        const post = await getPostBySlug(params.slug);
+        const post = await getPostBySlug(slug);
 
         if (!post) {
             return NextResponse.json(

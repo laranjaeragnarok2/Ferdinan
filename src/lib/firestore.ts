@@ -128,12 +128,13 @@ export async function updatePost(input: UpdateBlogPostInput): Promise<void> {
     const docRef = doc(db, POSTS_COLLECTION, id);
 
     // Atualizar slug se o título mudou
+    const dataToUpdate: any = { ...updateData };
     if (updateData.title) {
-        updateData.slug = generateSlug(updateData.title);
+        dataToUpdate.slug = generateSlug(updateData.title);
     }
 
     await updateDoc(docRef, {
-        ...updateData,
+        ...dataToUpdate,
         updatedAt: new Date().toISOString(),
     });
 }
@@ -150,7 +151,7 @@ export async function getAllTags(): Promise<string[]> {
     const tagsSet = new Set<string>();
 
     posts.forEach((post) => {
-        post.tags.forEach((tag) => tagsSet.add(tag));
+        post.tags?.forEach((tag) => tagsSet.add(tag));
     });
 
     return Array.from(tagsSet).sort();

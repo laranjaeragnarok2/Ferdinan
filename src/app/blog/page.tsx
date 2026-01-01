@@ -22,13 +22,14 @@ export default function BlogPage() {
             try {
                 const response = await fetch('/api/blog/posts?published=true');
                 const data = await response.json();
-                setPosts(data.posts);
-                setFilteredPosts(data.posts);
+                const postsData = data.posts || [];
+                setPosts(postsData);
+                setFilteredPosts(postsData);
 
                 // Extrair tags únicas
                 const tags = new Set<string>();
-                data.posts.forEach((post: BlogPost) => {
-                    post.tags.forEach((tag) => tags.add(tag));
+                postsData.forEach((post: BlogPost) => {
+                    post.tags?.forEach((tag) => tags.add(tag));
                 });
                 setAvailableTags(Array.from(tags).sort());
             } catch (error) {

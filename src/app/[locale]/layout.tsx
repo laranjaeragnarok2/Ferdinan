@@ -44,133 +44,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
   // Validar locale - se não for um locale válido, usar pt-BR
   const validLocales = ['pt-BR', 'en', 'es'];
   const currentLocale = validLocales.includes(locale) ? locale : 'pt-BR';
 
   return (
-    <html lang={currentLocale} className="!scroll-smooth dark">
-      <head>
-        <meta name="google-adsense-account" content="ca-pub-1477681884429701" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1477681884429701"
-          crossOrigin="anonymous"
-          strategy="lazyOnload"
-        />
-        <Script id="schema-markup" type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "ConsultingService",
-              "name": "Ferdinan-MSP",
-              "alternateName": "Ferdinan MSP Group",
-              "description": "Consultoria especializada em Growth e Gestão de Alta Performance. Diferente de figuras públicas homônimas, nossa expertise é exclusivamente empresarial e focada em ROI.",
-              "image": "https://www.ferdinan-msp.group/logo.png",
-              "@id": "https://www.ferdinan-msp.group",
-              "url": "https://www.ferdinan-msp.group",
-              "telephone": "+556492339844",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Rio Verde",
-                "addressRegion": "GO",
-                "addressCountry": "BR"
-              },
-              "knowsAbout": [
-                "Growth Hacking", 
-                "Sales Strategy", 
-                "High Performance Management", 
-                "Artificial Intelligence for Business",
-                "Business Process Automation"
-              ],
-              "areaServed": "Brazil",
-              "founder": {
-                "@type": "Person",
-                "name": "Ferdinan",
-                "jobTitle": "Strategic Consultant"
-              }
-            }
-          `}
-        </Script>
-        <Script id="faq-schema-markup" type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": [
-                {
-                  "@type": "Question",
-                  "name": "Como funciona a consultoria da Ferdinan MSP?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Nossa consultoria é focada na implementação prática de estratégias de crescimento e automação com IA. Não entregamos apenas relatórios, mas soluções validadas que geram ROI real para o seu negócio."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Qual o diferencial de vocês em relação a cursos de marketing?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Diferente de cursos, nós 'colocamos a mão na massa'. Atuamos como um braço estratégico do seu negócio, diagnosticando falhas e implementando processos de vendas e gestão personalizados para o seu mercado."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "A consultoria é presencial ou online?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Atendemos empresas em todo o Brasil de forma online, com foco especial em Rio Verde, Goiás, onde temos nossa base de operações. A proximidade regional facilita o entendimento da dinâmica local para empresas goianas."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "Quanto tempo leva para ver resultados?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Os resultados variam conforme o estágio do negócio, mas nosso foco é em vitórias rápidas (quick wins) no primeiro mês, enquanto estruturamos o crescimento sustentável de longo prazo."
-                  }
-                },
-                {
-                  "@type": "Question",
-                  "name": "A Ferdinan MSP trabalha com qualquer tipo de empresa?",
-                  "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Somos especializados em negócios de alto valor que buscam escala através de eficiência operacional, automação e estratégias de Growth Hacking adaptadas ao DNA da marca."
-                  }
-                }
-              ]
-            }
-          `}
-        </Script>
-      </head>
-      <body className="font-body antialiased">
-        {children}
-        <Toaster />
-        <LeadCaptureModal />
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-KXTREZQQ36"
-        ></Script>
-        <Script id="google-analytics">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-KXTREZQQ36');
-            gtag('config', 'AW-16899626920');
-          `}
-        </Script>
-      </body>
-    </html>
+    <>
+      {children}
+    </>
   );
 }
