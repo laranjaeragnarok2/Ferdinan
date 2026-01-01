@@ -23,4 +23,5 @@ export const authOptions: NextAuthOptions = {
         error: '/admin/login',
     },
     secret: process.env.NEXTAUTH_SECRET,
+    trustHost: true,
 };
