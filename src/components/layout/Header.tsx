@@ -4,9 +4,12 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import GrowthIcon from "../icons/GrowthIcon";
 import { useSession } from "next-auth/react";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const { status } = useSession();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const phoneNumber = '556492339844';
   const message = 'Olá, eu gostaria de mais informações';
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
@@ -33,8 +36,8 @@ export default function Header() {
           <Link
             href="/admin/blog"
             className={`flex items-center gap-1.5 transition-all ${status === 'authenticated'
-                ? 'text-amber-500 font-bold'
-                : 'text-slate-500 hover:text-slate-300 text-[10px] uppercase tracking-widest'
+              ? 'text-amber-500 font-bold'
+              : 'text-slate-500 hover:text-slate-300 text-[10px] uppercase tracking-widest'
               }`}
           >
             {status === 'authenticated' && (
@@ -43,7 +46,7 @@ export default function Header() {
             Admin
           </Link>
         </nav>
-        <nav className="flex items-center gap-4">
+        <nav className="hidden md:flex items-center gap-4">
           <a
             href={whatsappUrl}
             target="_blank"
@@ -54,7 +57,93 @@ export default function Header() {
             </Button>
           </a>
         </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden p-2 text-white hover:text-amber-500 transition-colors"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
+
+      {/* Mobile Menu Dropdown */}
+      {isMenuOpen && (
+        <div className="md:hidden border-t border-white/10 bg-black/95 backdrop-blur-xl">
+          <nav className="flex flex-col p-4 space-y-4">
+            <Link
+              href="/#pain-thesis"
+              className="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-all"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              O Problema
+            </Link>
+            <Link
+              href="/#process"
+              className="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-all"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Nosso Processo
+            </Link>
+            <Link
+              href="/#solutions"
+              className="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-all"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Soluções
+            </Link>
+            <Link
+              href="/#social-proof"
+              className="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-all"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Depoimentos
+            </Link>
+            <Link
+              href="/blog"
+              className="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-all"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Blog
+            </Link>
+            <Link
+              href="/#contact"
+              className="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-all"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Contato
+            </Link>
+
+            <Link
+              href="/admin/blog"
+              className={`flex items-center gap-2 p-2 rounded-lg transition-all ${status === 'authenticated'
+                ? 'text-amber-500 font-bold bg-amber-500/10'
+                : 'text-slate-500 hover:text-slate-300'
+                }`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {status === 'authenticated' && (
+                <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
+              )}
+              Admin
+            </Link>
+
+            <div className="pt-4 border-t border-white/10">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMenuOpen(false)}
+                className="block"
+              >
+                <Button className="w-full bg-gradient-to-r from-amber-500 to-orange-600 text-black font-bold btn-gradient border-amber-500 hover:brightness-110">
+                  Solicitar uma Consultoria
+                </Button>
+              </a>
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
