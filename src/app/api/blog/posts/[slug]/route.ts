@@ -38,14 +38,17 @@ export async function PUT(
 ) {
     try {
         const { slug } = await params;
-        const token = await getToken({ req: request });
+        const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
         const adminEmails = (process.env.ADMIN_EMAIL || '').split(',').map(e => e.trim().toLowerCase());
 
-        if (!token || !token.email || !adminEmails.includes(token.email.toLowerCase())) {
-            return NextResponse.json(
-                { error: 'Unauthorized' },
-                { status: 401 }
-            );
+        if (!token) {
+            return NextResponse.json({ error: 'Unauthorized: Token não encontrado' }, { status: 401 });
+        }
+        if (!token.email) {
+            return NextResponse.json({ error: 'Unauthorized: Token sem email' }, { status: 401 });
+        }
+        if (!adminEmails.includes(token.email.toLowerCase())) {
+            return NextResponse.json({ error: `Unauthorized: Email ${token.email} não autorizado` }, { status: 401 });
         }
 
         const post = await getPostBySlug(slug);
@@ -84,14 +87,17 @@ export async function DELETE(
 ) {
     try {
         const { slug } = await params;
-        const token = await getToken({ req: request });
+        const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
         const adminEmails = (process.env.ADMIN_EMAIL || '').split(',').map(e => e.trim().toLowerCase());
 
-        if (!token || !token.email || !adminEmails.includes(token.email.toLowerCase())) {
-            return NextResponse.json(
-                { error: 'Unauthorized' },
-                { status: 401 }
-            );
+        if (!token) {
+            return NextResponse.json({ error: 'Unauthorized: Token não encontrado' }, { status: 401 });
+        }
+        if (!token.email) {
+            return NextResponse.json({ error: 'Unauthorized: Token sem email' }, { status: 401 });
+        }
+        if (!adminEmails.includes(token.email.toLowerCase())) {
+            return NextResponse.json({ error: `Unauthorized: Email ${token.email} não autorizado` }, { status: 401 });
         }
 
         const post = await getPostBySlug(slug);

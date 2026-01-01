@@ -42,14 +42,17 @@ export async function GET(request: NextRequest) {
 // POST /api/blog/posts - Criar novo post (requer autenticação)
 export async function POST(request: NextRequest) {
     try {
-        const token = await getToken({ req: request });
+        const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
         const adminEmails = (process.env.ADMIN_EMAIL || '').split(',').map(e => e.trim().toLowerCase());
 
-        if (!token || !token.email || !adminEmails.includes(token.email.toLowerCase())) {
-            return NextResponse.json(
-                { error: 'Unauthorized' },
-                { status: 401 }
-            );
+        if (!token) {
+            return NextResponse.json({ error: 'Unauthorized: Token não encontrado' }, { status: 401 });
+        }
+        if (!token.email) {
+            return NextResponse.json({ error: 'Unauthorized: Token sem email' }, { status: 401 });
+        }
+        if (!adminEmails.includes(token.email.toLowerCase())) {
+            return NextResponse.json({ error: `Unauthorized: Email ${token.email} não autorizado` }, { status: 401 });
         }
 
         const body: CreateBlogPostInput = await request.json();
