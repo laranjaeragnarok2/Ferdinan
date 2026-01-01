@@ -3,8 +3,10 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import GrowthIcon from "../icons/GrowthIcon";
+import { useSession } from "next-auth/react";
 
 export default function Header() {
+  const { status } = useSession();
   const phoneNumber = '556492339844';
   const message = 'Olá, eu gostaria de mais informações';
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
@@ -27,6 +29,19 @@ export default function Header() {
           <Link href="/#social-proof" className="text-slate-300 hover:text-white">Depoimentos</Link>
           <Link href="/blog" className="text-slate-300 hover:text-white">Blog</Link>
           <Link href="/#contact" className="text-slate-300 hover:text-white">Contato</Link>
+
+          <Link
+            href="/admin/blog"
+            className={`flex items-center gap-1.5 transition-all ${status === 'authenticated'
+                ? 'text-amber-500 font-bold'
+                : 'text-slate-500 hover:text-slate-300 text-[10px] uppercase tracking-widest'
+              }`}
+          >
+            {status === 'authenticated' && (
+              <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse" />
+            )}
+            Admin
+          </Link>
         </nav>
         <nav className="flex items-center gap-4">
           <a

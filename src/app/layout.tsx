@@ -67,6 +67,8 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
+import AuthProvider from '@/components/providers/AuthProvider';
+
 export default function RootLayout({
   children,
 }: {
@@ -88,12 +90,14 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body antialiased bg-background text-foreground">
-        <StockTicker />
-        {children}
-        <StickyElementsWidget />
-        <CookieConsent />
-        <Toaster />
-        <LeadCaptureModal />
+        <AuthProvider>
+          <StockTicker />
+          {children}
+          <StickyElementsWidget />
+          <CookieConsent />
+          <Toaster />
+          <LeadCaptureModal />
+        </AuthProvider>
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-KXTREZQQ36"
