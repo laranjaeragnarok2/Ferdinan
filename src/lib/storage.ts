@@ -1,49 +1,46 @@
-import { writeFile, mkdir } from 'fs/promises';
-import { join } from 'path';
-import { existsSync } from 'fs';
+import { storage } from './firebase';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 
-const UPLOAD_DIR = join(process.cwd(), 'public', 'blog-images');
-
-// Garantir que o diretório existe
-async function ensureUploadDir() {
-    if (!existsSync(UPLOAD_DIR)) {
-        await mkdir(UPLOAD_DIR, { recursive: true });
-    }
-}
-
-// Upload de imagem
+/**
+ * Upload de imagem para o Firebase Storage
+ * Substitui o salvamento local para funcionar na Vercel (disco somente-leitura)
+ */
 export async function uploadImage(file: File): Promise<string> {
-    await ensureUploadDir();
-
     // Gerar nome único para o arquivo
     const timestamp = Date.now();
     const randomString = Math.random().toString(36).substring(7);
     const extension = file.name.split('.').pop();
-    const filename = `${timestamp}-${randomString}.${extension}`;
+    const filename = `blog/${timestamp}-${randomString}.${extension}`;
 
-    // Converter File para Buffer
+    // Criar referência no storage
+    const storageRef = ref(storage, filename);
+
+    // Fazer upload
     const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-
-    // Salvar arquivo
-    const filepath = join(UPLOAD_DIR, filename);
-    await writeFile(filepath, buffer);
+    await uploadBytes(storageRef, new Uint8Array(bytes));
 
     // Retornar URL pública
-    return `/blog-images/${filename}`;
+    return await getDownloadURL(storageRef);
 }
 
-// Deletar imagem (opcional, para quando deletar posts)
+/**
+ * Deletar imagem do Firebase Storage
+ */
 export async function deleteImage(imageUrl: string): Promise<void> {
-    if (!imageUrl.startsWith('/blog-images/')) {
-        return;
-    }
+    try {
+        // Apenas deletar se for do nosso bucket oficial
+        if (!imageUrl.includes('firebasestorage.googleapis.com')) {
+            return;
+        }
 
-    const filename = imageUrl.replace('/blog-images/', '');
-    const filepath = join(UPLOAD_DIR, filename);
+        // Extrair o caminho do arquivo da URL (decodificando caracteres especiais)
+        const pathStart = imageUrl.indexOf('/o/') + 3;
+        const pathEnd = imageUrl.indexOf('?');
+        const fullPath = decodeURIComponent(imageUrl.substring(pathStart, pathEnd));
 
-    if (existsSync(filepath)) {
-        const { unlink } = await import('fs/promises');
-        await unlink(filepath);
+        const storageRef = ref(storage, fullPath);
+        await deleteObject(storageRef);
+    } catch (error) {
+        console.error('Erro ao deletar imagem do Firebase:', error);
     }
 }
