@@ -4,6 +4,8 @@ import { authOptions } from '@/lib/auth';
 import { getPostBySlug, updatePost, deletePost } from '@/lib/firestore';
 import { UpdateBlogPostInput } from '@/types/blog';
 
+export const dynamic = 'force-dynamic';
+
 // GET /api/blog/posts/[slug] - Buscar post por slug
 export async function GET(
     request: NextRequest,

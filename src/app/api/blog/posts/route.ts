@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { getPosts, createPost } from '@/lib/firestore';
+import { getPosts, createPost, getPostById } from '@/lib/firestore';
 import { CreateBlogPostInput } from '@/types/blog';
+
+export const dynamic = 'force-dynamic';
 
 // GET /api/blog/posts - Listar posts
 export async function GET(request: NextRequest) {
@@ -12,6 +14,12 @@ export async function GET(request: NextRequest) {
         const tag = searchParams.get('tag');
         const search = searchParams.get('search');
         const limitParam = searchParams.get('limit');
+        const id = searchParams.get('id');
+
+        if (id) {
+            const post = await getPostById(id);
+            return NextResponse.json({ posts: post ? [post] : [] }, { status: 200 });
+        }
 
         const options = {
             published: published === 'true' ? true : published === 'false' ? false : undefined,

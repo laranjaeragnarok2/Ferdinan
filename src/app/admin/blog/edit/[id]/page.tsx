@@ -42,7 +42,7 @@ export default function EditPostPage() {
             const response = await fetch(`/api/blog/posts?id=${postId}`);
             if (response.ok) {
                 const data = await response.json();
-                const foundPost = data.posts.find((p: BlogPost) => p.id === postId);
+                const foundPost = data.posts?.[0]; // Agora retorna um array com um único post do ID solicitado
 
                 if (foundPost) {
                     setPost(foundPost);
@@ -52,10 +52,15 @@ export default function EditPostPage() {
                         content: foundPost.content,
                         coverImage: foundPost.coverImage,
                         authorName: foundPost.author?.name || '',
-                        tags: foundPost.tags,
+                        tags: foundPost.tags || [],
                         published: foundPost.published,
                     });
+                } else {
+                    console.error('Post not found in response');
                 }
+            } else {
+                const errorData = await response.json().catch(() => ({}));
+                console.error('Error response from API:', response.status, errorData);
             }
         } catch (error) {
             console.error('Error fetching post:', error);
@@ -134,11 +139,13 @@ export default function EditPostPage() {
             if (response.ok) {
                 router.push('/admin/blog');
             } else {
-                alert('Erro ao atualizar post');
+                const errorData = await response.json().catch(() => ({}));
+                const errorMessage = errorData.error || response.statusText || 'Erro desconhecido';
+                alert(`Erro ao atualizar post: ${errorMessage} (Status: ${response.status})`);
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error('Error updating post:', error);
-            alert('Erro ao atualizar post');
+            alert(`Erro na requisição: ${error.message}`);
         } finally {
             setSaving(false);
         }
