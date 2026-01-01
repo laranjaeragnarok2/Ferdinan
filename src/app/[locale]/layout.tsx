@@ -51,8 +51,12 @@ export default function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
+  // Validar locale - se não for um locale válido, usar pt-BR
+  const validLocales = ['pt-BR', 'en', 'es'];
+  const currentLocale = validLocales.includes(locale) ? locale : 'pt-BR';
+
   return (
-    <html lang={locale} className="!scroll-smooth dark">
+    <html lang={currentLocale} className="!scroll-smooth dark">
       <head>
         <meta name="google-adsense-account" content="ca-pub-1477681884429701" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />

@@ -21,11 +21,12 @@ export default function Header() {
           </span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-          <Link href="#pain-thesis" className="text-slate-300 hover:text-white">O Problema</Link>
-          <Link href="#process" className="text-slate-300 hover:text-white">Nosso Processo</Link>
-          <Link href="#solutions" className="text-slate-300 hover:text-white">Soluções</Link>
-          <Link href="#social-proof" className="text-slate-300 hover:text-white">Depoimentos</Link>
-          <Link href="#contact" className="text-slate-300 hover:text-white">Contato</Link>
+          <Link href="/#pain-thesis" className="text-slate-300 hover:text-white">O Problema</Link>
+          <Link href="/#process" className="text-slate-300 hover:text-white">Nosso Processo</Link>
+          <Link href="/#solutions" className="text-slate-300 hover:text-white">Soluções</Link>
+          <Link href="/#social-proof" className="text-slate-300 hover:text-white">Depoimentos</Link>
+          <Link href="/blog" className="text-slate-300 hover:text-white">Blog</Link>
+          <Link href="/#contact" className="text-slate-300 hover:text-white">Contato</Link>
         </nav>
         <nav className="flex items-center gap-4">
           <a
