@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+import { getToken } from 'next-auth/jwt';
 import { uploadImage } from '@/lib/storage';
 
 // POST /api/blog/upload - Upload de imagem (requer autenticação)
 export async function POST(request: NextRequest) {
     try {
-        const session = await getServerSession(authOptions);
+        const token = await getToken({ req: request });
+        const adminEmails = (process.env.ADMIN_EMAIL || '').split(',').map(e => e.trim().toLowerCase());
 
-        if (!session) {
+        if (!token || !token.email || !adminEmails.includes(token.email.toLowerCase())) {
             return NextResponse.json(
                 { error: 'Unauthorized' },
                 { status: 401 }

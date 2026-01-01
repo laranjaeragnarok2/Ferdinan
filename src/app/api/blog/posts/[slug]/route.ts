@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+import { getToken } from 'next-auth/jwt';
 import { getPostBySlug, updatePost, deletePost } from '@/lib/firestore';
 import { UpdateBlogPostInput } from '@/types/blog';
 
@@ -39,9 +38,10 @@ export async function PUT(
 ) {
     try {
         const { slug } = await params;
-        const session = await getServerSession(authOptions);
+        const token = await getToken({ req: request });
+        const adminEmails = (process.env.ADMIN_EMAIL || '').split(',').map(e => e.trim().toLowerCase());
 
-        if (!session) {
+        if (!token || !token.email || !adminEmails.includes(token.email.toLowerCase())) {
             return NextResponse.json(
                 { error: 'Unauthorized' },
                 { status: 401 }
@@ -84,9 +84,10 @@ export async function DELETE(
 ) {
     try {
         const { slug } = await params;
-        const session = await getServerSession(authOptions);
+        const token = await getToken({ req: request });
+        const adminEmails = (process.env.ADMIN_EMAIL || '').split(',').map(e => e.trim().toLowerCase());
 
-        if (!session) {
+        if (!token || !token.email || !adminEmails.includes(token.email.toLowerCase())) {
             return NextResponse.json(
                 { error: 'Unauthorized' },
                 { status: 401 }

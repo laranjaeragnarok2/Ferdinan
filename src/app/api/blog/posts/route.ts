@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+import { getToken } from 'next-auth/jwt';
 import { getPosts, createPost, getPostById } from '@/lib/firestore';
 import { CreateBlogPostInput } from '@/types/blog';
 
@@ -43,9 +42,10 @@ export async function GET(request: NextRequest) {
 // POST /api/blog/posts - Criar novo post (requer autenticação)
 export async function POST(request: NextRequest) {
     try {
-        const session = await getServerSession(authOptions);
+        const token = await getToken({ req: request });
+        const adminEmails = (process.env.ADMIN_EMAIL || '').split(',').map(e => e.trim().toLowerCase());
 
-        if (!session) {
+        if (!token || !token.email || !adminEmails.includes(token.email.toLowerCase())) {
             return NextResponse.json(
                 { error: 'Unauthorized' },
                 { status: 401 }
