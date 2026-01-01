@@ -33,18 +33,7 @@ export default function Header() {
           <Link href="/blog" className="text-slate-300 hover:text-white">Blog</Link>
           <Link href="/#contact" className="text-slate-300 hover:text-white">Contato</Link>
 
-          <Link
-            href="/admin/blog"
-            className={`flex items-center gap-1.5 transition-all ${status === 'authenticated'
-              ? 'text-amber-500 font-bold'
-              : 'text-slate-500 hover:text-slate-300 text-[10px] uppercase tracking-widest'
-              }`}
-          >
-            {status === 'authenticated' && (
-              <span className="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse" />
-            )}
-            Admin
-          </Link>
+          {/* Admin Link Removed temporarily */}
         </nav>
         <nav className="hidden md:flex items-center gap-4">
           <a
@@ -114,19 +103,7 @@ export default function Header() {
               Contato
             </Link>
 
-            <Link
-              href="/admin/blog"
-              className={`flex items-center gap-2 p-2 rounded-lg transition-all ${status === 'authenticated'
-                ? 'text-amber-500 font-bold bg-amber-500/10'
-                : 'text-slate-500 hover:text-slate-300'
-                }`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {status === 'authenticated' && (
-                <span className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
-              )}
-              Admin
-            </Link>
+            {/* Admin Link Removed temporarily */}
 
             <div className="pt-4 border-t border-white/10">
               <a
