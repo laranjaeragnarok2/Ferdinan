@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Blog - Ferdinan MSP',
+    title: 'Blog - Ferdinan-MSP.Group',
     description: 'Insights sobre Growth, AI e Automação',
 };
 

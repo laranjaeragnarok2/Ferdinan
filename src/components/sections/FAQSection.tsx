@@ -9,7 +9,7 @@ import {
 
 const faqs = [
     {
-        question: "Como funciona a consultoria da Ferdinan MSP?",
+        question: "Como funciona a consultoria da Ferdinan-MSP.Group?",
         answer: "Nossa consultoria é focada na implementação prática de estratégias de crescimento e automação com IA. Não entregamos apenas relatórios, mas soluções validadas que geram ROI real para o seu negócio.",
     },
     {
@@ -25,7 +25,7 @@ const faqs = [
         answer: "Os resultados variam conforme o estágio do negócio, mas nosso foco é em vitórias rápidas (quick wins) no primeiro mês, enquanto estruturamos o crescimento sustentável de longo prazo.",
     },
     {
-        question: "A Ferdinan MSP trabalha com qualquer tipo de empresa?",
+        question: "A Ferdinan-MSP.Group trabalha com qualquer tipo de empresa?",
         answer: "Somos especializados em negócios de alto valor que buscam escala através de eficiência operacional, automação e estratégias de Growth Hacking adaptadas ao DNA da marca.",
     },
 ];

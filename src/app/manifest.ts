@@ -3,8 +3,8 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-        name: 'Ferdinan-MSP | Growth & Gestão',
-        short_name: 'Ferdinan-MSP',
+        name: 'Ferdinan-MSP.Group | Growth & Gestão',
+        short_name: 'Ferdinan-MSP.Group',
         description: 'Pare de queimar capital. Implementamos processos de Growth e Gestão focados em ROI e Previsibilidade.',
         start_url: '/',
         display: 'standalone',

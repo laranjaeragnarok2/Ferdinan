@@ -8,14 +8,14 @@ const testimonials = [
     id: "testimonial-1",
     name: "Alexandre Dubois",
     title: "CEO, Maison de Luxe",
-    quote: "A Ferdinan MSP não entregou um serviço, mas uma parceria estratégica. A curadoria deles foi fundamental para nosso aumento de 40% em leads qualificados em um único trimestre.",
+    quote: "A Ferdinan-MSP.Group não entregou um serviço, mas uma parceria estratégica. A curadoria deles foi fundamental para nosso aumento de 40% em leads qualificados em um único trimestre.",
     rating: 5,
   },
   {
     id: "testimonial-2",
     name: "Isabella Rossi",
     title: "Fundadora, Artisa",
-    quote: "Trabalhar com a Ferdinan MSP nos deu a clareza que precisávamos. O processo de validação deles garantiu que cada real investido tivesse retorno máximo. Os resultados foram transformadores.",
+    quote: "Trabalhar com a Ferdinan-MSP.Group nos deu a clareza que precisávamos. O processo de validação deles garantiu que cada real investido tivesse retorno máximo. Os resultados foram transformadores.",
     rating: 5,
   },
   {

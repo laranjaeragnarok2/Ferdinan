@@ -11,10 +11,10 @@ export default function Footer() {
           <Link href="/" className="flex items-center space-x-2 mb-4">
             <GrowthIcon />
             <span className="font-bold text-xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
-              Ferdinan MSP
+              Ferdinan-MSP.Group
             </span>
           </Link>
-          <p className="text-muted-foreground">A Ferdinan MSP presta consultoria de vendas e gestão em Rio Verde, Goiás. Estratégias de crescimento personalizadas para negócios de alto valor.</p>
+          <p className="text-muted-foreground">A Ferdinan-MSP.Group presta consultoria de vendas e gestão em Rio Verde, Goiás. Estratégias de crescimento personalizadas para negócios de alto valor.</p>
         </div>
         <div>
           <h3 className="font-semibold mb-4 text-foreground">Links Rápidos</h3>
@@ -36,7 +36,7 @@ export default function Footer() {
       </div>
       <div className="container mx-auto text-center text-sm text-muted-foreground mt-8 border-t border-border/40 pt-6 pb-6 px-4 sm:px-6 lg:px-8">
         <p>
-          &copy; {new Date().getFullYear()} Ferdinan MSP. Todos os Direitos Reservados.
+          &copy; {new Date().getFullYear()} Ferdinan-MSP.Group. Todos os Direitos Reservados.
         </p>
       </div>
     </footer>

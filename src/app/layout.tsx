@@ -23,7 +23,7 @@ const ptSans = PT_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Ferdinan-MSP | Consultoria de Growth & Gestão de Alta Performance',
+  title: 'Ferdinan-MSP.Group | Consultoria de Growth & Gestão de Alta Performance',
   description:
     'Pare de queimar capital com estratégias que não escalam. Implementamos processos de Growth e Gestão focados em ROI real e previsibilidade. Agende sua análise estratégica.',
   keywords: ['Growth Hacking', 'Consultoria de Vendas', 'Gestão de Alta Performance', 'Automação de Processos', 'Ferdinan', 'MSP Group', 'Growth Marketing', 'Vendas B2B'],
@@ -46,16 +46,16 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Ferdinan-MSP | Consultoria de Growth & Gestão de Alta Performance',
+    title: 'Ferdinan-MSP.Group | Consultoria de Growth & Gestão de Alta Performance',
     description: 'Pare de queimar capital com estratégias que não escalam. Implementamos processos de Growth e Gestão focados em ROI real e previsibilidade.',
     url: 'https://www.ferdinan-msp.group',
-    siteName: 'Ferdinan-MSP',
+    siteName: 'Ferdinan-MSP.Group',
     locale: 'pt_BR',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ferdinan-MSP | Consultoria de Growth & Gestão de Alta Performance',
+    title: 'Ferdinan-MSP.Group | Consultoria de Growth & Gestão de Alta Performance',
     description: 'Implementação prática de Growth e Gestão focada em ROI e previsibilidade.',
   },
 };
