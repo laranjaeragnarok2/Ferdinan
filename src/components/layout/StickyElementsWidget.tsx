@@ -2,36 +2,55 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Headset, X } from 'lucide-react';
+import { MessageCircle, X, Sparkles } from 'lucide-react';
 import ConciergeContent from '../concierge/ConciergeContent';
 
 const StickyElementsWidget = () => {
   const [isConciergeOpen, setIsConciergeOpen] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [showPulse, setShowPulse] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const widgetRef = useRef<HTMLDivElement>(null);
 
-  const [showTooltip, setShowTooltip] = useState(false);
-
   useEffect(() => {
-    // Show tooltip after 3 seconds instead of auto-opening
-    const timer = setTimeout(() => {
-      setShowTooltip(true);
+    // Mostrar tooltip após 3 segundos
+    const tooltipTimer = setTimeout(() => {
+      if (!hasInteracted) {
+        setShowTooltip(true);
+      }
     }, 3000);
 
-    return () => clearTimeout(timer);
-  }, []);
+    // Mostrar pulso após 5 segundos
+    const pulseTimer = setTimeout(() => {
+      if (!hasInteracted) {
+        setShowPulse(true);
+      }
+    }, 5000);
+
+    // Esconder tooltip após 10 segundos
+    const hideTooltipTimer = setTimeout(() => {
+      setShowTooltip(false);
+    }, 13000);
+
+    return () => {
+      clearTimeout(tooltipTimer);
+      clearTimeout(pulseTimer);
+      clearTimeout(hideTooltipTimer);
+    };
+  }, [hasInteracted]);
 
   const toggleConcierge = () => {
     setIsConciergeOpen(!isConciergeOpen);
-    if (!isConciergeOpen) {
-      setShowTooltip(false); // Hide tooltip when opening
-    }
+    setHasInteracted(true);
+    setShowTooltip(false);
+    setShowPulse(false);
   };
 
   const conciergeTexts = {
-    title: 'Concierge Virtual',
+    title: '💬 Fale com um Especialista',
     initialMessage:
-      'Olá! Sou o assistente virtual da Ferdinan-MSP. Como posso te ajudar a descobrir a melhor estratégia de crescimento para seu negócio hoje?',
-    inputPlaceholder: 'Digite sua dúvida...',
+      'E aí! 👋 Sou consultor da Ferdinan-MSP.Group.\n\nJá ajudamos +50 empresas a escalar de verdade. Como posso te ajudar hoje?',
+    inputPlaceholder: 'Digite sua mensagem...',
     sendButtonText: 'Enviar',
   };
 
@@ -39,53 +58,93 @@ const StickyElementsWidget = () => {
     <>
       <div
         ref={widgetRef}
-        className="fixed bottom-6 right-6 z-50 flex flex-col items-center"
+        className="fixed bottom-6 right-6 z-50 flex flex-col items-end"
       >
+        {/* Tooltip "Converse conosco" */}
         <AnimatePresence>
           {showTooltip && !isConciergeOpen && (
             <motion.div
-              initial={{ opacity: 0, y: 10, scale: 0.8 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 10, scale: 0.8 }}
-              className="absolute bottom-20 right-0 bg-background border border-border text-foreground text-xs font-semibold px-4 py-2 rounded-xl shadow-lg whitespace-nowrap mb-2 mr-2"
+              initial={{ opacity: 0, x: 20, scale: 0.8 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: 20, scale: 0.8 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              className="mb-4 mr-2"
             >
-              Converse conosco
-              <div className="absolute -bottom-1 right-6 w-3 h-3 bg-background border-b border-r border-border transform rotate-45"></div>
+              <div className="relative bg-gradient-to-r from-amber-500 to-orange-600 text-black font-semibold px-5 py-3 rounded-2xl shadow-xl">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="h-4 w-4 animate-pulse" />
+                  <span className="text-sm">Converse conosco!</span>
+                </div>
+                {/* Seta apontando para o botão */}
+                <div className="absolute -bottom-2 right-8 w-4 h-4 bg-gradient-to-br from-amber-500 to-orange-600 transform rotate-45"></div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
 
-        <button
+        {/* Botão do Chat */}
+        <motion.button
           onClick={toggleConcierge}
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-black shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 hover:brightness-110"
-          aria-label="Abrir Assistente de IA"
+          className={`
+            relative flex h-16 w-16 items-center justify-center rounded-full 
+            bg-gradient-to-r from-amber-500 to-orange-600 text-black 
+            shadow-2xl transition-all duration-300 ease-out
+            hover:scale-110 hover:shadow-amber-500/50
+            ${showPulse && !isConciergeOpen ? 'animate-bounce' : ''}
+          `}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Abrir Chat"
         >
+          {/* Efeito de pulso - APENAS quando fechado */}
+          {showPulse && !isConciergeOpen && (
+            <span className="absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75 animate-ping"></span>
+          )}
+
+          {/* Ícone */}
           <AnimatePresence mode="wait">
             <motion.div
-              key={isConciergeOpen ? 'x' : 'bot'}
-              initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+              key={isConciergeOpen ? 'close' : 'open'}
+              initial={{ opacity: 0, rotate: -180, scale: 0.5 }}
               animate={{ opacity: 1, rotate: 0, scale: 1 }}
-              exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
-              transition={{ duration: 0.2 }}
+              exit={{ opacity: 0, rotate: 180, scale: 0.5 }}
+              transition={{ duration: 0.3, type: 'spring' }}
             >
               {isConciergeOpen ? (
-                <X className="h-6 w-6" />
+                <X className="h-7 w-7" strokeWidth={2.5} />
               ) : (
-                <Headset className="h-6 w-6" />
+                <MessageCircle className="h-7 w-7" strokeWidth={2.5} />
               )}
             </motion.div>
           </AnimatePresence>
-        </button>
+
+          {/* Badge de notificação */}
+          {!hasInteracted && !isConciergeOpen && (
+            <motion.span
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-red-500 text-white text-xs font-bold"
+            >
+              1
+            </motion.span>
+          )}
+        </motion.button>
       </div>
 
+      {/* Janela do Chat */}
       <AnimatePresence>
         {isConciergeOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="fixed bottom-24 right-6 z-40"
+            exit={{ opacity: 0, y: 50, scale: 0.9 }}
+            transition={{
+              type: 'spring',
+              stiffness: 300,
+              damping: 25,
+              duration: 0.4
+            }}
+            className="fixed bottom-28 right-6 z-40"
           >
             <ConciergeContent
               title={conciergeTexts.title}
