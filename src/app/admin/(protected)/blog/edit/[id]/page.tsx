@@ -12,6 +12,7 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowLeft, Save, Upload, X } from 'lucide-react';
 import Link from 'next/link';
 import { Switch } from '@/components/ui/switch';
+import RichTextEditor from '@/components/RichTextEditor';
 
 export default function EditPostPage() {
     const params = useParams();
@@ -244,14 +245,16 @@ export default function EditPostPage() {
                                     <CardTitle>Conteúdo *</CardTitle>
                                 </CardHeader>
                                 <CardContent>
-                                    <Textarea
-                                        value={formData.content}
-                                        onChange={(e) =>
-                                            setFormData((prev) => ({ ...prev, content: e.target.value }))
+                                    <RichTextEditor
+                                        content={formData.content}
+                                        onChange={(content) =>
+                                            setFormData((prev) => ({ ...prev, content }))
                                         }
-                                        className="min-h-[400px] font-mono text-sm"
-                                        required
+                                        placeholder="Escreva o conteúdo do post aqui..."
                                     />
+                                    <p className="text-xs text-muted-foreground mt-2">
+                                        Use a barra de ferramentas para formatar seu texto
+                                    </p>
                                 </CardContent>
                             </Card>
                         </div>
