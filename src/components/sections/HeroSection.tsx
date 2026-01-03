@@ -35,10 +35,10 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-black/60"></div>
       <div className="container relative z-10 mx-auto px-4 py-20 text-center md:py-32">
         <h1 className="font-headline text-4xl font-bold tracking-tight text-white md:text-6xl">
-          Pare de gastar com cursos. Tenha um especialista implementando o crescimento do seu negócio.
+          Chega de Cursos que Não Funcionam. Tenha um Especialista Implementando Crescimento Real.
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-slate-300">
-          Consultoria prática para empresários que precisam de ROI, não de mais certificados.
+          Estratégias validadas e executadas para você, com resultados mensuráveis.
         </p>
         <div className="mt-8 flex justify-center gap-4">
           <Link href="#contact" passHref>
