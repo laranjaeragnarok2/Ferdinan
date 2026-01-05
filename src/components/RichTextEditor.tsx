@@ -67,11 +67,19 @@ export default function RichTextEditor({ content, onChange, placeholder }: RichT
 
     const handleImageUpload = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
-        if (!file || !editor) return;
+
+        console.log('🔍 [Upload] Iniciando processo de upload');
+        console.log('📁 [Upload] Arquivo selecionado:', file?.name, file?.type, `${(file?.size || 0) / 1024}KB`);
+
+        if (!file || !editor) {
+            console.warn('⚠️ [Upload] Arquivo ou editor não disponível');
+            return;
+        }
 
         // Validar tipo de arquivo
         const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'];
         if (!allowedTypes.includes(file.type)) {
+            console.error('❌ [Upload] Tipo de arquivo inválido:', file.type);
             alert('Tipo de arquivo inválido. Apenas imagens são permitidas.');
             return;
         }
@@ -79,33 +87,62 @@ export default function RichTextEditor({ content, onChange, placeholder }: RichT
         // Validar tamanho (máximo 5MB)
         const maxSize = 5 * 1024 * 1024;
         if (file.size > maxSize) {
+            console.error('❌ [Upload] Arquivo muito grande:', `${file.size / 1024 / 1024}MB`);
             alert('Arquivo muito grande. O tamanho máximo é 5MB.');
             return;
         }
 
+        console.log('✅ [Upload] Validações passaram, iniciando upload...');
         setIsUploadingImage(true);
 
         try {
             const formData = new FormData();
             formData.append('file', file);
 
+            console.log('📤 [Upload] Enviando requisição para /api/blog/upload');
+
             const response = await fetch('/api/blog/upload', {
                 method: 'POST',
                 body: formData,
             });
 
+            console.log('📥 [Upload] Resposta recebida:', {
+                status: response.status,
+                statusText: response.statusText,
+                ok: response.ok
+            });
+
             if (!response.ok) {
                 const error = await response.json();
+                console.error('❌ [Upload] Erro na resposta:', error);
                 throw new Error(error.error || 'Falha ao fazer upload da imagem');
             }
 
-            const { url } = await response.json();
-            editor.chain().focus().setImage({ src: url }).run();
+            const data = await response.json();
+            console.log('✅ [Upload] Upload bem-sucedido!', data);
+
+            if (data.url) {
+                console.log('🖼️ [Upload] Inserindo imagem no editor:', data.url);
+                editor.chain().focus().setImage({ src: data.url }).run();
+                console.log('✅ [Upload] Imagem inserida com sucesso!');
+            } else {
+                console.error('❌ [Upload] URL não retornada na resposta');
+                throw new Error('URL da imagem não foi retornada');
+            }
         } catch (error) {
-            console.error('Erro ao fazer upload da imagem:', error);
+            console.error('❌ [Upload] Erro capturado:', error);
+
+            // Log detalhado do erro
+            if (error instanceof Error) {
+                console.error('❌ [Upload] Mensagem:', error.message);
+                console.error('❌ [Upload] Stack:', error.stack);
+            }
+
             alert(error instanceof Error ? error.message : 'Erro ao fazer upload da imagem');
         } finally {
             setIsUploadingImage(false);
+            console.log('🏁 [Upload] Processo finalizado');
+
             // Limpar o input para permitir upload do mesmo arquivo novamente
             if (fileInputRef.current) {
                 fileInputRef.current.value = '';
