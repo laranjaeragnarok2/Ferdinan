@@ -22,8 +22,9 @@ import {
     ImageIcon,
     Code2,
     Minus,
+    Loader2,
 } from 'lucide-react';
-import { useCallback } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 interface RichTextEditorProps {
     content: string;
@@ -32,6 +33,8 @@ interface RichTextEditorProps {
 }
 
 export default function RichTextEditor({ content, onChange, placeholder }: RichTextEditorProps) {
+    const [isUploadingImage, setIsUploadingImage] = useState(false);
+    const fileInputRef = useRef<HTMLInputElement>(null);
     const editor = useEditor({
         extensions: [
             StarterKit.configure({
@@ -62,12 +65,57 @@ export default function RichTextEditor({ content, onChange, placeholder }: RichT
         },
     });
 
-    const addImage = useCallback(() => {
-        const url = window.prompt('URL da imagem:');
-        if (url && editor) {
+    const handleImageUpload = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (!file || !editor) return;
+
+        // Validar tipo de arquivo
+        const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'];
+        if (!allowedTypes.includes(file.type)) {
+            alert('Tipo de arquivo inválido. Apenas imagens são permitidas.');
+            return;
+        }
+
+        // Validar tamanho (máximo 5MB)
+        const maxSize = 5 * 1024 * 1024;
+        if (file.size > maxSize) {
+            alert('Arquivo muito grande. O tamanho máximo é 5MB.');
+            return;
+        }
+
+        setIsUploadingImage(true);
+
+        try {
+            const formData = new FormData();
+            formData.append('file', file);
+
+            const response = await fetch('/api/blog/upload', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error || 'Falha ao fazer upload da imagem');
+            }
+
+            const { url } = await response.json();
             editor.chain().focus().setImage({ src: url }).run();
+        } catch (error) {
+            console.error('Erro ao fazer upload da imagem:', error);
+            alert(error instanceof Error ? error.message : 'Erro ao fazer upload da imagem');
+        } finally {
+            setIsUploadingImage(false);
+            // Limpar o input para permitir upload do mesmo arquivo novamente
+            if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+            }
         }
     }, [editor]);
+
+    const addImage = useCallback(() => {
+        fileInputRef.current?.click();
+    }, []);
 
     const setLink = useCallback(() => {
         const previousUrl = editor?.getAttributes('link').href;
@@ -233,10 +281,22 @@ export default function RichTextEditor({ content, onChange, placeholder }: RichT
                         variant="ghost"
                         size="sm"
                         onClick={addImage}
+                        disabled={isUploadingImage}
                         title="Adicionar Imagem"
                     >
-                        <ImageIcon className="h-4 w-4" />
+                        {isUploadingImage ? (
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                        ) : (
+                            <ImageIcon className="h-4 w-4" />
+                        )}
                     </Button>
+                    <input
+                        ref={fileInputRef}
+                        type="file"
+                        accept="image/jpeg,image/jpg,image/png,image/webp,image/gif"
+                        onChange={handleImageUpload}
+                        className="hidden"
+                    />
                 </div>
 
                 {/* History */}
