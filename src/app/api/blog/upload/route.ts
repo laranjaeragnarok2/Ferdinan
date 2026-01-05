@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
-import { writeFile, mkdir } from 'fs/promises';
-import { join } from 'path';
-import { existsSync } from 'fs';
+import { uploadImage } from '@/lib/storage';
 
 // POST /api/blog/upload - Upload de imagem (requer autenticação)
 export async function POST(request: NextRequest) {
@@ -72,31 +70,9 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        console.log('✅ [API Upload] Validações passaram, salvando arquivo localmente...');
+        console.log('✅ [API Upload] Validações passaram, iniciando upload no Firebase Storage...');
 
-        // Gerar nome único para o arquivo
-        const timestamp = Date.now();
-        const randomString = Math.random().toString(36).substring(7);
-        const extension = file.name.split('.').pop();
-        const filename = `${timestamp}-${randomString}.${extension}`;
-
-        // Criar diretório de uploads se não existir
-        const uploadsDir = join(process.cwd(), 'public', 'uploads', 'blog');
-        if (!existsSync(uploadsDir)) {
-            console.log('📁 [API Upload] Criando diretório:', uploadsDir);
-            await mkdir(uploadsDir, { recursive: true });
-        }
-
-        // Salvar arquivo
-        const filepath = join(uploadsDir, filename);
-        const bytes = await file.arrayBuffer();
-        const buffer = Buffer.from(bytes);
-
-        console.log('💾 [API Upload] Salvando arquivo em:', filepath);
-        await writeFile(filepath, buffer);
-
-        // Gerar URL pública
-        const imageUrl = `/uploads/blog/${filename}`;
+        const imageUrl = await uploadImage(file);
 
         console.log('✅ [API Upload] Upload concluído com sucesso!');
         console.log('🔗 [API Upload] URL gerada:', imageUrl);
