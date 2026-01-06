@@ -41,6 +41,8 @@ export default function RichTextEditor({ content, onChange, placeholder }: RichT
                 heading: {
                     levels: [1, 2, 3],
                 },
+                // Desabilitar o Link do StarterKit para usar nossa configuração customizada
+                link: false,
             }),
             Image.configure({
                 HTMLAttributes: {
