@@ -18,6 +18,7 @@ export async function uploadImage(file: File): Promise<string> {
             throw new Error('Firebase Storage não foi inicializado. Verifique as variáveis de ambiente.');
         }
         console.log('✅ [STEP 1] Storage inicializado com sucesso');
+        console.log('   📦 Bucket:', storage.app.options.storageBucket);
 
         // 2. Log da imagem
         console.log('\n📋 [STEP 2] Analisando imagem...');
