@@ -25,6 +25,7 @@ import {
     Loader2,
 } from 'lucide-react';
 import { useCallback, useRef, useState } from 'react';
+import imageCompression from 'browser-image-compression';
 
 interface RichTextEditorProps {
     content: string;
@@ -94,12 +95,31 @@ export default function RichTextEditor({ content, onChange, placeholder }: RichT
             return;
         }
 
-        console.log('✅ [Upload] Validações passaram, iniciando upload...');
+        console.log('✅ [Upload] Validações passaram, iniciando compressão...');
         setIsUploadingImage(true);
 
         try {
+            // Comprimir imagem no client-side
+            console.log('🗜️ [Compressão] Comprimindo imagem...');
+            console.log('   📏 Tamanho original:', (file.size / 1024).toFixed(2), 'KB');
+
+            const options = {
+                maxSizeMB: 0.7, // 700KB
+                maxWidthOrHeight: 1920, // Full HD
+                useWebWorker: true,
+                fileType: 'image/webp',
+            };
+
+            const compressedFile = await imageCompression(file, options);
+
+            console.log('✅ [Compressão] Compressão concluída!');
+            console.log('   📏 Tamanho comprimido:', (compressedFile.size / 1024).toFixed(2), 'KB');
+            console.log('   💾 Redução:', ((1 - compressedFile.size / file.size) * 100).toFixed(1), '%');
+            console.log('   🎨 Formato:', compressedFile.type);
+
+            // Enviar imagem comprimida
             const formData = new FormData();
-            formData.append('file', file);
+            formData.append('file', compressedFile);
 
             console.log('📤 [Upload] Enviando requisição para /api/blog/upload');
 

@@ -1,14 +1,13 @@
 import { db } from './firebase';
 import { collection, addDoc } from 'firebase/firestore';
-import imageCompression from 'browser-image-compression';
 
 /**
- * Comprimir e fazer upload de imagem para o Firestore como base64
- * Aceita imagens grandes e comprime automaticamente para otimização web/SEO
+ * Upload de imagem para o Firestore como base64
+ * A compressão já foi feita no client-side antes de chegar aqui
  */
 export async function uploadImage(file: File): Promise<string> {
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-    console.log('🚀 [UPLOAD] Iniciando processo de upload com compressão');
+    console.log('🚀 [UPLOAD] Processando imagem comprimida');
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 
     try {
@@ -20,71 +19,48 @@ export async function uploadImage(file: File): Promise<string> {
         }
         console.log('✅ [STEP 1] Firestore inicializado com sucesso');
 
-        // 2. Log da imagem original
-        console.log('\n📋 [STEP 2] Analisando imagem original...');
+        // 2. Log da imagem (já comprimida)
+        console.log('\n📋 [STEP 2] Analisando imagem...');
         console.log('   📁 Arquivo:', file.name);
-        console.log('   📏 Tamanho original:', (file.size / 1024 / 1024).toFixed(2), 'MB');
+        console.log('   📏 Tamanho:', (file.size / 1024).toFixed(2), 'KB');
         console.log('   🎨 Tipo:', file.type);
 
-        // 3. Comprimir imagem
-        console.log('\n📋 [STEP 3] Comprimindo imagem...');
-        console.log('   🎯 Objetivo: Máximo 700KB para Firestore');
-        console.log('   🔧 Otimizando para web/SEO...');
-
-        const options = {
-            maxSizeMB: 0.7, // 700KB - deixa margem para base64
-            maxWidthOrHeight: 1920, // Máximo 1920px (Full HD)
-            useWebWorker: true,
-            fileType: 'image/webp', // WebP é mais eficiente
-        };
-
-        const compressedFile = await imageCompression(file, options);
-
-        console.log('✅ [STEP 3] Compressão concluída!');
-        console.log('   📏 Tamanho original:', (file.size / 1024).toFixed(2), 'KB');
-        console.log('   📏 Tamanho comprimido:', (compressedFile.size / 1024).toFixed(2), 'KB');
-        console.log('   💾 Redução:', ((1 - compressedFile.size / file.size) * 100).toFixed(1), '%');
-        console.log('   🎨 Formato:', compressedFile.type);
-
-        // 4. Validar tamanho após compressão
-        console.log('\n📋 [STEP 4] Validando tamanho...');
+        // 3. Validar tamanho (deve estar ~700KB após compressão)
+        console.log('\n📋 [STEP 3] Validando tamanho...');
         const maxSize = 800 * 1024; // 800KB
-        if (compressedFile.size > maxSize) {
-            console.warn('⚠️ [AVISO] Imagem ainda muito grande após compressão');
-            console.warn('   📏 Tamanho:', (compressedFile.size / 1024).toFixed(2), 'KB');
+        if (file.size > maxSize) {
+            console.warn('⚠️ [AVISO] Imagem maior que o esperado');
+            console.warn('   📏 Tamanho:', (file.size / 1024).toFixed(2), 'KB');
             console.warn('   🎯 Máximo:', (maxSize / 1024).toFixed(2), 'KB');
-            throw new Error(`Imagem muito grande mesmo após compressão. Tamanho: ${(compressedFile.size / 1024).toFixed(2)}KB. Tente uma imagem menor ou com menos detalhes.`);
+            throw new Error(`Imagem muito grande. Tamanho: ${(file.size / 1024).toFixed(2)}KB. A compressão pode ter falhado.`);
         }
-        console.log('✅ [STEP 4] Tamanho validado');
+        console.log('✅ [STEP 3] Tamanho validado');
 
-        // 5. Converter para base64
-        console.log('\n📋 [STEP 5] Convertendo para base64...');
-        const base64 = await fileToBase64(compressedFile);
-        console.log('✅ [STEP 5] Conversão concluída');
+        // 4. Converter para base64
+        console.log('\n📋 [STEP 4] Convertendo para base64...');
+        const base64 = await fileToBase64(file);
+        console.log('✅ [STEP 4] Conversão concluída');
         console.log('   📊 Tamanho base64:', (base64.length / 1024).toFixed(2), 'KB');
 
-        // 6. Salvar no Firestore
-        console.log('\n📋 [STEP 6] Salvando no Firestore...');
+        // 5. Salvar no Firestore
+        console.log('\n📋 [STEP 5] Salvando no Firestore...');
         const timestamp = Date.now();
         const imageDoc = await addDoc(collection(db, 'blog-images'), {
             data: base64,
             filename: file.name,
-            originalSize: file.size,
-            compressedSize: compressedFile.size,
-            contentType: compressedFile.type,
+            size: file.size,
+            contentType: file.type,
             uploadedAt: new Date().toISOString(),
             timestamp: timestamp,
         });
-        console.log('✅ [STEP 6] Imagem salva no Firestore');
+        console.log('✅ [STEP 5] Imagem salva no Firestore');
         console.log('   🆔 Document ID:', imageDoc.id);
 
         console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
         console.log('🎉 [SUCESSO] Upload finalizado com sucesso!');
         console.log('   📊 Estatísticas:');
-        console.log('   • Original:', (file.size / 1024).toFixed(2), 'KB');
-        console.log('   • Comprimido:', (compressedFile.size / 1024).toFixed(2), 'KB');
-        console.log('   • Economia:', ((1 - compressedFile.size / file.size) * 100).toFixed(1), '%');
-        console.log('   • Formato:', compressedFile.type);
+        console.log('   • Tamanho:', (file.size / 1024).toFixed(2), 'KB');
+        console.log('   • Formato:', file.type);
         console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
         return base64;
