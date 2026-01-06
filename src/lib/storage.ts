@@ -1,77 +1,53 @@
-import { storage } from './firebase';
-import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
-
 /**
- * Upload de imagem para o Firebase Storage
- * Substitui o salvamento local para funcionar na Vercel (disco somente-leitura)
+ * Upload de imagem convertendo para base64
+ * Salva diretamente no Firestore sem precisar do Firebase Storage
+ * Isso resolve o erro 404 e funciona perfeitamente na Vercel
  */
 export async function uploadImage(file: File): Promise<string> {
     try {
-        // Validar se o storage foi inicializado
-        if (!storage) {
-            throw new Error('Firebase Storage não foi inicializado. Verifique as variáveis de ambiente.');
-        }
+        console.log(`[Storage] Iniciando conversão para base64: ${file.name}`);
 
-        // Gerar nome único para o arquivo
-        const timestamp = Date.now();
-        const randomString = Math.random().toString(36).substring(7);
-        const extension = file.name.split('.').pop();
-        const filename = `blog/${timestamp}-${randomString}.${extension}`;
+        // Converter arquivo para base64
+        const base64 = await fileToBase64(file);
 
-        console.log(`[Storage] Iniciando upload: ${filename}`);
+        console.log(`[Storage] Conversão concluída: ${base64.substring(0, 50)}...`);
+        console.log(`[Storage] Tamanho da string base64: ${(base64.length / 1024).toFixed(2)}KB`);
 
-        // Criar referência no storage
-        const storageRef = ref(storage, filename);
-
-        // Fazer upload
-        const bytes = await file.arrayBuffer();
-        await uploadBytes(storageRef, new Uint8Array(bytes));
-
-        console.log(`[Storage] Upload concluído: ${filename}`);
-
-        // Retornar URL pública
-        const downloadURL = await getDownloadURL(storageRef);
-        console.log(`[Storage] URL gerada: ${downloadURL}`);
-
-        return downloadURL;
+        // Retornar a string base64 completa (data URL)
+        return base64;
     } catch (error) {
-        console.error('[Storage] Erro ao fazer upload:', error);
-
-        // Fornecer mensagens de erro mais específicas
-        if (error instanceof Error) {
-            if (error.message.includes('storage/unauthorized')) {
-                throw new Error('Sem permissão para fazer upload. Verifique as regras do Firebase Storage.');
-            }
-            if (error.message.includes('storage/unauthenticated')) {
-                throw new Error('Usuário não autenticado. Faça login novamente.');
-            }
-            if (error.message.includes('storage/quota-exceeded')) {
-                throw new Error('Cota de armazenamento excedida.');
-            }
-        }
-
+        console.error('[Storage] Erro ao converter imagem:', error);
         throw error;
     }
 }
 
 /**
- * Deletar imagem do Firebase Storage
+ * Converter File para base64 (data URL)
+ */
+function fileToBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            if (typeof reader.result === 'string') {
+                resolve(reader.result);
+            } else {
+                reject(new Error('Erro ao ler arquivo como base64'));
+            }
+        };
+
+        reader.onerror = () => {
+            reject(new Error('Erro ao ler arquivo'));
+        };
+
+        reader.readAsDataURL(file);
+    });
+}
+
+/**
+ * Deletar imagem (não faz nada para base64, pois está inline no documento)
  */
 export async function deleteImage(imageUrl: string): Promise<void> {
-    try {
-        // Apenas deletar se for do nosso bucket oficial
-        if (!imageUrl.includes('firebasestorage.googleapis.com')) {
-            return;
-        }
-
-        // Extrair o caminho do arquivo da URL (decodificando caracteres especiais)
-        const pathStart = imageUrl.indexOf('/o/') + 3;
-        const pathEnd = imageUrl.indexOf('?');
-        const fullPath = decodeURIComponent(imageUrl.substring(pathStart, pathEnd));
-
-        const storageRef = ref(storage, fullPath);
-        await deleteObject(storageRef);
-    } catch (error) {
-        console.error('Erro ao deletar imagem do Firebase:', error);
-    }
+    // Base64 está inline no documento, não precisa deletar separadamente
+    console.log('[Storage] Imagem base64 inline, nada a deletar');
 }
