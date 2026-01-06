@@ -86,11 +86,11 @@ export default function RichTextEditor({ content, onChange, placeholder }: RichT
             return;
         }
 
-        // Validar tamanho (máximo 5MB)
-        const maxSize = 5 * 1024 * 1024;
+        // Validar tamanho (máximo 20MB)
+        const maxSize = 20 * 1024 * 1024;
         if (file.size > maxSize) {
             console.error('❌ [Upload] Arquivo muito grande:', `${file.size / 1024 / 1024}MB`);
-            alert('Arquivo muito grande. O tamanho máximo é 5MB.');
+            alert('Arquivo muito grande. O tamanho máximo é 20MB.');
             return;
         }
 

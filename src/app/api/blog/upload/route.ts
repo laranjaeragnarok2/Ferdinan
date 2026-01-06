@@ -60,14 +60,12 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Validar tamanho (máximo 2MB para base64)
-        // Base64 aumenta o tamanho em ~33%, então limitamos a 2MB
-        // para evitar documentos muito grandes no Firestore (limite de 1MB por documento)
-        const maxSize = 2 * 1024 * 1024; // 2MB
+        // Validar tamanho (máximo 20MB)
+        const maxSize = 20 * 1024 * 1024; // 20MB
         if (file.size > maxSize) {
             console.error('❌ [API Upload] Arquivo muito grande:', `${(file.size / 1024 / 1024).toFixed(2)}MB`);
             return NextResponse.json(
-                { error: 'File too large. Maximum size is 2MB for base64 encoding.' },
+                { error: 'File too large. Maximum size is 20MB.' },
                 { status: 400 }
             );
         }

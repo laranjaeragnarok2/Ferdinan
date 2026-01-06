@@ -1,4 +1,4 @@
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -33,14 +33,27 @@ const nextConfig: NextConfig = {
         hostname: 'i.imgur.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.firebasestorage.app',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'firebasestorage.googleapis.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
-  devIndicators: {
-    allowedDevOrigins: [
-      '*.cloudworkstations.dev',
-    ]
-  }
+  // Aumentar limite de body size para 20MB
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '20mb',
+    },
+  },
 };
 
 export default nextConfig;
