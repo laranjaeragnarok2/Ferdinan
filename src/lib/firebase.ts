@@ -11,19 +11,35 @@ const firebaseConfig = {
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Log da configuração (apenas em desenvolvimento)
-if (process.env.NODE_ENV === 'development') {
-    console.log('🔥 [Firebase] Configuração:', {
-        projectId: firebaseConfig.projectId,
-        storageBucket: firebaseConfig.storageBucket,
-        authDomain: firebaseConfig.authDomain,
-    });
-}
+console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+console.log('🔥 [FIREBASE] Inicializando Firebase...');
+console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+
+// Log da configuração
+console.log('📋 Configuração do Firebase:');
+console.log('   🔑 API Key:', firebaseConfig.apiKey ? `${firebaseConfig.apiKey.substring(0, 20)}...` : '❌ NÃO CONFIGURADO');
+console.log('   🌐 Auth Domain:', firebaseConfig.authDomain || '❌ NÃO CONFIGURADO');
+console.log('   📦 Project ID:', firebaseConfig.projectId || '❌ NÃO CONFIGURADO');
+console.log('   📁 Storage Bucket:', firebaseConfig.storageBucket || '❌ NÃO CONFIGURADO');
+console.log('   🆔 App ID:', firebaseConfig.appId ? `${firebaseConfig.appId.substring(0, 20)}...` : '❌ NÃO CONFIGURADO');
 
 // Validar configuração crítica
-if (!firebaseConfig.storageBucket) {
-    console.error('❌ [Firebase] ERRO: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET não está configurado!');
-    console.error('❌ [Firebase] Configure a variável de ambiente com o valor correto do Firebase Console');
+const missingVars = [];
+if (!firebaseConfig.apiKey) missingVars.push('NEXT_PUBLIC_FIREBASE_API_KEY');
+if (!firebaseConfig.authDomain) missingVars.push('NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN');
+if (!firebaseConfig.projectId) missingVars.push('NEXT_PUBLIC_FIREBASE_PROJECT_ID');
+if (!firebaseConfig.storageBucket) missingVars.push('NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET');
+if (!firebaseConfig.appId) missingVars.push('NEXT_PUBLIC_FIREBASE_APP_ID');
+
+if (missingVars.length > 0) {
+    console.error('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.error('❌ [ERRO] Variáveis de ambiente faltando!');
+    console.error('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.error('📋 Variáveis não configuradas:');
+    missingVars.forEach(v => console.error(`   ❌ ${v}`));
+    console.error('🔧 Configure estas variáveis na Vercel:');
+    console.error('   https://vercel.com/dashboard > Settings > Environment Variables');
+    console.error('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 }
 
 // Initialize Firebase (singleton pattern)
@@ -31,7 +47,9 @@ const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-console.log('✅ [Firebase] Inicializado com sucesso');
-console.log('📦 [Firebase Storage] Bucket:', storage.app.options.storageBucket);
+console.log('✅ [FIREBASE] Inicializado com sucesso!');
+console.log('   📦 Storage Bucket:', storage.app.options.storageBucket);
+console.log('   🔑 Project ID:', storage.app.options.projectId);
+console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
 
 export { db, storage };
