@@ -1,6 +1,7 @@
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { redirect } from 'next/navigation';
+import { AdminNav } from '@/components/admin/AdminNav';
 
 export default async function AdminLayout({
     children,
@@ -14,5 +15,10 @@ export default async function AdminLayout({
         redirect('/admin/login');
     }
 
-    return <>{children}</>;
+    return (
+        <div className="min-h-screen bg-background">
+            <AdminNav />
+            <main>{children}</main>
+        </div>
+    );
 }

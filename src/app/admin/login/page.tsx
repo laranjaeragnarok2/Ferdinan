@@ -7,7 +7,7 @@ import { Chrome } from 'lucide-react';
 
 export default function AdminLoginPage() {
     const handleGoogleSignIn = () => {
-        signIn('google', { callbackUrl: '/admin/blog' });
+        signIn('google', { callbackUrl: '/admin' });
     };
 
     return (

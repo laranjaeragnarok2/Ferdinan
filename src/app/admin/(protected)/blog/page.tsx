@@ -87,7 +87,7 @@ export default function AdminBlogPage() {
     const draftCount = posts.filter((p) => !p.published).length;
 
     return (
-        <div className="min-h-screen bg-background p-8">
+        <div className="p-8">
             <div className="container mx-auto max-w-7xl">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-8">
@@ -112,10 +112,6 @@ export default function AdminBlogPage() {
                                 Novo Post
                             </Button>
                         </Link>
-                        <Button variant="ghost" onClick={() => signOut()}>
-                            <LogOut className="mr-2 h-4 w-4" />
-                            Sair
-                        </Button>
                     </div>
                 </div>
 
