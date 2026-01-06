@@ -86,11 +86,11 @@ export default function RichTextEditor({ content, onChange, placeholder }: RichT
             return;
         }
 
-        // Validar tamanho (máximo 800KB para Firestore base64)
-        const maxSize = 800 * 1024;
+        // Validar tamanho (máximo 20MB - será comprimido automaticamente)
+        const maxSize = 20 * 1024 * 1024;
         if (file.size > maxSize) {
-            console.error('❌ [Upload] Arquivo muito grande:', `${file.size / 1024}KB`);
-            alert('Arquivo muito grande. O tamanho máximo é 800KB.');
+            console.error('❌ [Upload] Arquivo muito grande:', `${file.size / 1024 / 1024}MB`);
+            alert('Arquivo muito grande. O tamanho máximo é 20MB.');
             return;
         }
 

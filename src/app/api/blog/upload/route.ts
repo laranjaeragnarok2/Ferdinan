@@ -60,14 +60,13 @@ export async function POST(request: NextRequest) {
             );
         }
 
-        // Validar tamanho (máximo 800KB para base64 no Firestore)
-        // Firestore tem limite de 1MB por documento
-        // Base64 aumenta ~33%, então 800KB vira ~1MB
-        const maxSize = 800 * 1024; // 800KB
+        // Validar tamanho (máximo 20MB antes da compressão)
+        // A imagem será comprimida automaticamente para ~700KB
+        const maxSize = 20 * 1024 * 1024; // 20MB
         if (file.size > maxSize) {
-            console.error('❌ [API Upload] Arquivo muito grande:', `${(file.size / 1024).toFixed(2)}KB`);
+            console.error('❌ [API Upload] Arquivo muito grande:', `${(file.size / 1024 / 1024).toFixed(2)}MB`);
             return NextResponse.json(
-                { error: 'File too large. Maximum size is 800KB for Firestore storage.' },
+                { error: 'File too large. Maximum size is 20MB.' },
                 { status: 400 }
             );
         }
