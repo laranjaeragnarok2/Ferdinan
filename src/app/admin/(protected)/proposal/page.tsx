@@ -219,7 +219,7 @@ export default function ProposalAdminPage() {
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-3xl font-bold">Proposta Comercial</h1>
                 <div className="flex gap-4">
-                    <Button variant="outline" onClick={() => window.open('/proposta.html', '_blank')}>
+                    <Button variant="outline" onClick={() => window.open('/propostas/proposta.html', '_blank')}>
                         <Eye className="w-4 h-4 mr-2" /> Ver Base HTML
                     </Button>
                     <Button variant="outline" onClick={handleSave} disabled={saving}>
