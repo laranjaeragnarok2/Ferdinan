@@ -13,6 +13,7 @@ import { ArrowLeft, Save, Upload, X } from 'lucide-react';
 import Link from 'next/link';
 import { Switch } from '@/components/ui/switch';
 import RichTextEditor from '@/components/RichTextEditor';
+import imageCompression from 'browser-image-compression';
 
 export default function EditPostPage() {
     const params = useParams();
@@ -76,8 +77,17 @@ export default function EditPostPage() {
 
         setUploadingImage(true);
         try {
+            // Comprimir imagem antes de enviar
+            const options = {
+                maxSizeMB: 0.8, // Menos de 1MB para garantir que a Vercel aceite
+                maxWidthOrHeight: 1920,
+                useWebWorker: true,
+                fileType: 'image/webp' // Converter para WebP para melhor performance
+            };
+
+            const compressedFile = await imageCompression(file, options);
             const formDataUpload = new FormData();
-            formDataUpload.append('file', file);
+            formDataUpload.append('file', compressedFile);
 
             const response = await fetch('/api/blog/upload', {
                 method: 'POST',
@@ -88,11 +98,12 @@ export default function EditPostPage() {
                 const data = await response.json();
                 setFormData((prev) => ({ ...prev, coverImage: data.url }));
             } else {
-                alert('Erro ao fazer upload da imagem');
+                const error = await response.json();
+                alert(`Erro no upload: ${error.error || 'Falha ao processar imagem'}`);
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error('Error uploading image:', error);
-            alert('Erro ao fazer upload da imagem');
+            alert('Erro ao processar imagem. Tente uma imagem menor ou em outro formato.');
         } finally {
             setUploadingImage(false);
         }
