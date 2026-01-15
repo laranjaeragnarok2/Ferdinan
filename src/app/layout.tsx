@@ -8,6 +8,7 @@ import LeadCaptureModal from '@/components/layout/LeadCaptureModal';
 import StickyElementsWidget from '@/components/layout/StickyElementsWidget';
 
 import { StockTicker } from '@/components/ui/StockTicker';
+import dynamic from 'next/dynamic';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -69,6 +70,10 @@ export const viewport: Viewport = {
 
 import AuthProvider from '@/components/providers/AuthProvider';
 
+const LeadCaptureModal = dynamic(() => import('@/components/layout/LeadCaptureModal'), { ssr: false });
+const StickyElementsWidget = dynamic(() => import('@/components/layout/StickyElementsWidget'), { ssr: false });
+const CookieConsent = dynamic(() => import('@/components/layout/CookieConsent'), { ssr: false });
+
 export default function RootLayout({
   children,
 }: {
@@ -82,6 +87,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1477681884429701"
@@ -99,10 +105,10 @@ export default function RootLayout({
           <LeadCaptureModal />
         </AuthProvider>
         <Script
-          async
           src="https://www.googletagmanager.com/gtag/js?id=G-KXTREZQQ36"
-        ></Script>
-        <Script id="google-analytics">
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

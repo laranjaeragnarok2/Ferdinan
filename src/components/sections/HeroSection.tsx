@@ -25,6 +25,7 @@ export default function HeroSection() {
           src={heroBackgroundImage.imageUrl}
           alt={heroBackgroundImage.description}
           fill
+          sizes="100vw"
           className="object-cover"
           priority
           fetchPriority="high"

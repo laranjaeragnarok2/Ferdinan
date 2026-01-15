@@ -15,37 +15,37 @@
     {
       "id": "curation-1",
       "description": "Minimalist gold icon for Discovery.",
-      "imageUrl": "https://images.unsplash.com/photo-1750874617615-4b8e45c3260f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxnb2xkJTIwY29tcGFzc3xlbnwwfHx8fDE3NjI4MzgwMDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1750874617615-4b8e45c3260f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxnb2xkJTIwY29tcGFzc3xlbnwwfHx8fDE3NjI4MzgwMDh8MA&ixlib=rb-4.1.0&q=80&w=600",
       "imageHint": "gold compass"
     },
     {
       "id": "curation-2",
       "description": "Minimalist gold icon for Strategy.",
-      "imageUrl": "https://images.unsplash.com/photo-1744473755637-e09f0c2fab41?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxnb2xkJTIwY2hhcnR8ZW58MHx8fHwxNzYyODM4MDAzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1744473755637-e09f0c2fab41?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxnb2xkJTIwY2hhcnR8ZW58MHx8fHwxNzYyODM4MDAzfDA&ixlib=rb-4.1.0&q=80&w=600",
       "imageHint": "gold chart"
     },
     {
       "id": "curation-3",
       "description": "Minimalist gold icon for Validation.",
-      "imageUrl": "https://images.unsplash.com/photo-1641457379940-2a6530925721?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxnb2xkJTIwY2hlY2ttYXJrfGVufDB8fHx8MTc2MjgzODAwM3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1641457379940-2a6530925721?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxnb2xkJTIwY2hlY2ttYXJrfGVufDB8fHx8MTc2MjgzODAwM3ww&ixlib=rb-4.1.0&q=80&w=600",
       "imageHint": "gold checkmark"
     },
     {
       "id": "testimonial-1",
       "description": "Professional headshot of a satisfied client.",
-      "imageUrl": "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwcm9mZXNzaW9uYWwlMjBwZXJzb258ZW58MHx8fHwxNzYyNzc1MjEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw8fHxwcm9mZXNzaW9uYWwlMjBwZXJzb258ZW58MHx8fHwxNzYyNzc1MjEyfDA&ixlib=rb-4.1.0&q=80&w=100",
       "imageHint": "professional person"
     },
     {
       "id": "testimonial-2",
       "description": "Professional headshot of another satisfied client.",
-      "imageUrl": "https://images.unsplash.com/photo-1611095790444-1dfa35e37b52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxidXNpbmVzcyUyMHBlcnNvbnxlbnwwfHx8fDE3NjI4MzgwMDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1611095790444-1dfa35e37b52?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxidXNpbmVzcyUyMHBlcnNvbnxlbnwwfHx8fDE3NjI4MzgwMDN8MA&ixlib=rb-4.1.0&q=80&w=100",
       "imageHint": "business person"
     },
     {
       "id": "testimonial-3",
       "description": "Professional headshot of a third satisfied client.",
-      "imageUrl": "https://images.unsplash.com/photo-1680024435561-915cc268b3a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxoYXBweSUyMHByb2Zlc3Npb25hbHxlbnwwfHx8fDE3NjI4MzgwMDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1680024435561-915cc268b3a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxoYXBweSUyMHByb2Zlc3Npb25hbHxlbnwwfHx8fDE3NjI4MzgwMDN8MA&ixlib=rb-4.1.0&q=80&w=100",
       "imageHint": "happy professional"
     }
   ]
