@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="border-t border-border/40 bg-secondary/50">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 py-12 px-4 sm:px-6 lg:px-8">
         <div>
-          <Link href="/" className="flex items-center space-x-2 mb-4">
+          <Link href="/" className="flex items-center space-x-2 mb-4" aria-label="Ferdinan-MSP.Group Home">
             <GrowthIcon />
             <span className="font-bold text-xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
               Ferdinan-MSP.Group
@@ -29,7 +29,7 @@ export default function Footer() {
           <h3 className="font-semibold mb-4 text-foreground">Mantenha-se Atualizado</h3>
           <p className="text-muted-foreground mb-4">Assine nossa newsletter para receber as últimas novidades.</p>
           <div className="flex w-full max-w-sm items-center space-x-2">
-            <Input type="email" placeholder="Email" className="bg-input" />
+            <Input type="email" placeholder="Email" aria-label="Seu endereço de e-mail para newsletter" className="bg-input" />
             <Button type="submit" className="bg-gradient-to-r from-amber-500 to-orange-600 text-black font-bold btn-gradient border-amber-500 hover:brightness-110">Inscrever</Button>
           </div>
         </div>

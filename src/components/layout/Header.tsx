@@ -19,7 +19,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-transparent backdrop-blur-sm">
       <div className="flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center space-x-2">
+        <Link href="/" className="flex items-center space-x-2" aria-label="Ferdinan-MSP.Group Home">
           <GrowthIcon />
           <span className="font-bold text-xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
             Ferdinan-MSP.Group
@@ -40,6 +40,7 @@ export default function Header() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Solicitar consultoria via WhatsApp"
           >
             <Button className="bg-gradient-to-r from-amber-500 to-orange-600 text-black font-bold btn-gradient border-amber-500 hover:brightness-110">
               Solicitar uma Consultoria
@@ -51,6 +52,8 @@ export default function Header() {
         <button
           className="md:hidden p-2 text-white hover:text-amber-500 transition-colors"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={isMenuOpen}
         >
           {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>

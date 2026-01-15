@@ -89,12 +89,13 @@ export default function LeadCaptureModal() {
                 <button
                     onClick={closeModal}
                     className="absolute top-4 right-4 text-zinc-500 hover:text-white transition-colors z-10"
+                    aria-label="Fechar modal"
                 >
                     <X size={20} />
                 </button>
 
                 <div className="p-8 sm:p-10">
-                    <div className="flex items-center gap-2 text-orange-500 mb-4">
+                    <div className="flex items-center gap-2 text-orange-500 mb-4" aria-hidden="true">
                         <Sparkles size={18} className="animate-pulse" />
                         <span className="text-xs font-bold uppercase tracking-widest">Acesso Exclusivo</span>
                     </div>
@@ -109,20 +110,21 @@ export default function LeadCaptureModal() {
 
                     <form onSubmit={handleSubmit} className="space-y-4">
                         <div className="relative">
-                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={18} />
+                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={18} aria-hidden="true" />
                             <Input
                                 type="email"
                                 placeholder="Seu melhor e-mail corporativo"
                                 required
+                                aria-label="Seu melhor e-mail corporativo"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="pl-10 h-12 bg-zinc-900 border-zinc-700 text-white placeholder:text-zinc-600 focus:border-orange-500/50 transition-all"
+                                className="pl-10 h-12 bg-zinc-900 border-zinc-700 text-white placeholder:text-zinc-400 focus:border-orange-500/50 transition-all"
                             />
                         </div>
                         <Button
                             type="submit"
                             disabled={isSubmitting}
-                            className="w-full h-12 bg-orange-600 hover:bg-orange-700 text-white font-bold text-lg shadow-lg shadow-orange-900/30 transition-all active:scale-[0.98]"
+                            className="w-full h-12 bg-orange-700 hover:bg-orange-800 text-white font-bold text-lg shadow-lg shadow-orange-900/30 transition-all active:scale-[0.98]"
                         >
                             {isSubmitting ? "Enviando..." : "Quero Acessar a Curadoria"}
                         </Button>

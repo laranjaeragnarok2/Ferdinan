@@ -41,10 +41,10 @@ export default function HeroSection() {
           Estratégias validadas e executadas para você, com resultados mensuráveis.
         </p>
         <div className="mt-8 flex justify-center gap-4">
-          <Link href="#contact" passHref>
+          <Link href="#contact" passHref aria-label="Solicitar análise do meu negócio">
             <Button
               size="lg"
-              className="bg-orange-600 text-white font-bold transition-all duration-300 transform hover:scale-110 hover:bg-orange-700 shadow-[0_0_20px_rgba(234,88,12,0.4)] animate-shimmer bg-[length:200%_100%]"
+              className="bg-orange-700 text-white font-bold transition-all duration-300 transform hover:scale-110 hover:bg-orange-800 shadow-[0_0_20px_rgba(234,88,12,0.4)] animate-shimmer bg-[length:200%_100%]"
             >
               Solicitar Análise do Meu Negócio
             </Button>
@@ -58,7 +58,7 @@ export default function HeroSection() {
                   <Avatar key={index} className="border-2 border-background">
                     <AvatarImage
                       src={img.imageUrl}
-                      alt="Cliente satisfeito"
+                      alt={`Depoimento do cliente ${index + 1}`}
                       data-ai-hint={img.imageHint}
                     />
                     <AvatarFallback>{`C${index + 1}`}</AvatarFallback>

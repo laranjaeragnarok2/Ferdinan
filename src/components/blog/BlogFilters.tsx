@@ -29,10 +29,11 @@ export default function BlogFilters({
         <div className="space-y-6">
             {/* Barra de busca */}
             <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" aria-hidden="true" />
                 <Input
                     type="text"
                     placeholder="Buscar posts..."
+                    aria-label="Buscar posts no blog"
                     value={searchQuery}
                     onChange={(e) => onSearchChange(e.target.value)}
                     className="pl-10 bg-card/50 border-border/50 focus:border-primary/50"
@@ -65,8 +66,8 @@ export default function BlogFilters({
                                     key={tag}
                                     variant={isSelected ? 'default' : 'outline'}
                                     className={`cursor-pointer transition-all ${isSelected
-                                            ? 'bg-primary text-primary-foreground hover:bg-primary/90'
-                                            : 'hover:bg-primary/10 hover:text-primary hover:border-primary/50'
+                                        ? 'bg-primary text-primary-foreground hover:bg-primary/90'
+                                        : 'hover:bg-primary/10 hover:text-primary hover:border-primary/50'
                                         }`}
                                     onClick={() => onTagToggle(tag)}
                                 >
