@@ -24,7 +24,7 @@ import {
     Minus,
     Loader2,
 } from 'lucide-react';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState, useEffect } from 'react';
 import imageCompression from 'browser-image-compression';
 
 interface RichTextEditorProps {
@@ -36,27 +36,142 @@ interface RichTextEditorProps {
 export default function RichTextEditor({ content, onChange, placeholder }: RichTextEditorProps) {
     const [isSourceMode, setIsSourceMode] = useState(false);
     const [sourceContent, setSourceContent] = useState('');
+    const [isUploadingImage, setIsUploadingImage] = useState(false);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
+    const editor = useEditor({
+        extensions: [
+            StarterKit.configure({
+                heading: {
+                    levels: [1, 2, 3],
+                },
+                link: false,
+            }),
+            Image.configure({
+                HTMLAttributes: {
+                    class: 'rounded-lg max-w-full h-auto',
+                },
+            }),
+            Link.configure({
+                openOnClick: false,
+                HTMLAttributes: {
+                    class: 'text-primary underline cursor-pointer',
+                },
+            }),
+        ],
+        content: content, // Initial content
+        editorProps: {
+            attributes: {
+                class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-xl focus:outline-none min-h-[400px] max-w-none p-4',
+            },
+        },
+        onUpdate: ({ editor }) => {
+            if (!isSourceMode) {
+                onChange(editor.getHTML());
+            }
+        },
+    });
+
+    // Sync content updates from parent if strictly necessary (careful with loops)
+    // For now, relying on initial content and internal state.
 
     const toggleSourceMode = useCallback(() => {
+        if (!editor) return;
+
         if (isSourceMode) {
-            // Saindo do modo fonte: atualizar editor
-            editor?.commands.setContent(sourceContent);
+            // Exiting source mode: update editor content from textarea
+            try {
+                editor.commands.setContent(sourceContent);
+                // Trigger change to parent
+                onChange(sourceContent);
+            } catch (e) {
+                console.error('Error setting content from source:', e);
+            }
             setIsSourceMode(false);
         } else {
-            // Entrando no modo fonte: pegar HTML atual
-            const html = editor?.getHTML() || '';
+            // Entering source mode: get HTML from editor
+            const html = editor.getHTML() || '';
             setSourceContent(html);
             setIsSourceMode(true);
         }
-    }, [editor, isSourceMode, sourceContent]);
+    }, [editor, isSourceMode, sourceContent, onChange]);
 
     const handleSourceChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setSourceContent(e.target.value);
-        onChange(e.target.value);
+        const newVal = e.target.value;
+        setSourceContent(newVal);
+        onChange(newVal);
     };
 
+    const handleImageUpload = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (!editor) return;
+
+        const file = event.target.files?.[0];
+        if (!file) return;
+
+        console.log('🔍 [Upload] Iniciando processo de upload');
+
+        // Verifica tipo
+        const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'];
+        if (!allowedTypes.includes(file.type)) {
+            alert('Tipo de arquivo inválido.');
+            return;
+        }
+
+        setIsUploadingImage(true);
+
+        try {
+            const options = {
+                maxSizeMB: 0.7,
+                maxWidthOrHeight: 1920,
+                useWebWorker: true,
+                fileType: 'image/webp',
+            };
+
+            const compressedFile = await imageCompression(file, options);
+            const formData = new FormData();
+            formData.append('file', compressedFile);
+
+            const response = await fetch('/api/blog/upload', {
+                method: 'POST',
+                body: formData,
+            });
+
+            if (!response.ok) throw new Error('Falha no upload');
+
+            const data = await response.json();
+
+            if (data.url) {
+                editor.chain().focus().setImage({ src: data.url }).run();
+            }
+        } catch (error) {
+            console.error('❌ [Upload] Erro:', error);
+            alert('Erro ao fazer upload da imagem');
+        } finally {
+            setIsUploadingImage(false);
+            if (fileInputRef.current) fileInputRef.current.value = '';
+        }
+    }, [editor]);
+
+    const addImage = useCallback(() => {
+        fileInputRef.current?.click();
+    }, []);
+
+    const setLink = useCallback(() => {
+        if (!editor) return;
+        const previousUrl = editor.getAttributes('link').href;
+        const url = window.prompt('URL do link:', previousUrl);
+
+        if (url === null) return;
+        if (url === '') {
+            editor.chain().focus().extendMarkRange('link').unsetLink().run();
+            return;
+        }
+        editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run();
+    }, [editor]);
+
+    // Safety check: Don't render anything until editor is ready
     if (!editor) {
-        return null;
+        return <div className="p-4 text-muted-foreground">Inicializando editor...</div>;
     }
 
     return (
@@ -279,8 +394,8 @@ export default function RichTextEditor({ content, onChange, placeholder }: RichT
             {/* Footer Info */}
             <div className="border-t border-border/50 bg-muted/30 px-4 py-2 text-xs text-muted-foreground flex justify-between">
                 <span>
-                    {editor?.storage.characterCount?.characters() || 0} caracteres •{' '}
-                    {editor?.storage.characterCount?.words() || 0} palavras
+                    {editor && editor.storage.characterCount ? editor.storage.characterCount.characters() : 0} caracteres •{' '}
+                    {editor && editor.storage.characterCount ? editor.storage.characterCount.words() : 0} palavras
                 </span>
                 {isSourceMode && <span className="text-amber-500">Modo de Edição HTML</span>}
             </div>
