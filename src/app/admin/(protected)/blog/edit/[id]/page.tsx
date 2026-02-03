@@ -28,6 +28,7 @@ export default function EditPostPage() {
         description: '',
         content: '',
         coverImage: '',
+        coverImageAssetId: '', // ID do asset no Sanity
         authorName: '',
         tags: [] as string[],
         published: false,
@@ -44,7 +45,7 @@ export default function EditPostPage() {
             const response = await fetch(`/api/blog/posts?id=${postId}`);
             if (response.ok) {
                 const data = await response.json();
-                const foundPost = data.posts?.[0]; // Agora retorna um array com um único post do ID solicitado
+                const foundPost = data.posts?.[0];
 
                 if (foundPost) {
                     setPost(foundPost);
@@ -53,6 +54,7 @@ export default function EditPostPage() {
                         description: foundPost.description,
                         content: foundPost.content,
                         coverImage: foundPost.coverImage,
+                        coverImageAssetId: '', // Não temos o ID ao carregar, apenas a URL. Se não alterarmos, mantém.
                         authorName: foundPost.author?.name || '',
                         tags: foundPost.tags || [],
                         published: foundPost.published,
@@ -77,12 +79,11 @@ export default function EditPostPage() {
 
         setUploadingImage(true);
         try {
-            // Comprimir imagem antes de enviar
             const options = {
-                maxSizeMB: 0.8, // Menos de 1MB para garantir que a Vercel aceite
+                maxSizeMB: 0.8,
                 maxWidthOrHeight: 1920,
                 useWebWorker: true,
-                fileType: 'image/webp' // Converter para WebP para melhor performance
+                fileType: 'image/webp'
             };
 
             const compressedFile = await imageCompression(file, options);
@@ -96,7 +97,12 @@ export default function EditPostPage() {
 
             if (response.ok) {
                 const data = await response.json();
-                setFormData((prev) => ({ ...prev, coverImage: data.url }));
+                // Agora salvamos URL para preview E o ID para salvar no banco
+                setFormData((prev) => ({
+                    ...prev,
+                    coverImage: data.url,
+                    coverImageAssetId: data.assetId
+                }));
             } else {
                 const error = await response.json();
                 alert(`Erro no upload: ${error.error || 'Falha ao processar imagem'}`);
@@ -139,7 +145,7 @@ export default function EditPostPage() {
                     title: formData.title,
                     description: formData.description,
                     content: formData.content,
-                    coverImage: formData.coverImage,
+                    coverImageAssetId: formData.coverImageAssetId, // Envia ID se foi alterado
                     author: {
                         name: formData.authorName || 'Admin',
                     },

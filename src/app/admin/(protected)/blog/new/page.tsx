@@ -22,6 +22,7 @@ export default function NewPostPage() {
         description: '',
         content: '',
         coverImage: '',
+        coverImageAssetId: '',
         authorName: '',
         tags: [] as string[],
         published: false,
@@ -54,7 +55,11 @@ export default function NewPostPage() {
 
             if (response.ok) {
                 const data = await response.json();
-                setFormData((prev) => ({ ...prev, coverImage: data.url }));
+                setFormData((prev) => ({
+                    ...prev,
+                    coverImage: data.url,
+                    coverImageAssetId: data.assetId
+                }));
             } else {
                 const error = await response.json();
                 alert(`Erro no upload: ${error.error || 'Falha ao processar imagem'}`);
@@ -96,7 +101,7 @@ export default function NewPostPage() {
                     title: formData.title,
                     description: formData.description,
                     content: formData.content,
-                    coverImage: formData.coverImage,
+                    coverImageAssetId: formData.coverImageAssetId,
                     author: {
                         name: formData.authorName || 'Admin',
                     },

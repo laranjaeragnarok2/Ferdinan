@@ -55,9 +55,15 @@ export const post = defineType({
             validation: (rule) => rule.max(300),
         }),
         defineField({
+            name: 'content',
+            title: 'Conteúdo (HTML/MDX)',
+            type: 'text',
+        }),
+        defineField({
             name: 'body',
-            title: 'Conteúdo',
+            title: 'Conteúdo (Portable Text - Legado)',
             type: 'array',
+            hidden: true,
             of: [{ type: 'block' }, { type: 'image' }],
         }),
     ],

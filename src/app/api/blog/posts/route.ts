@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getPosts } from '@/lib/mdx';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+import { client } from '@/sanity/lib/client';
+import { writeClient } from '@/sanity/lib/write-client';
 
 export const dynamic = 'force-dynamic';
 
-// GET /api/blog/posts - Listar posts do MDX
+// GET /api/blog/posts - Listar posts do Sanity
 export async function GET(request: NextRequest) {
     try {
         const { searchParams } = new URL(request.url);
@@ -15,31 +13,52 @@ export async function GET(request: NextRequest) {
         const limitParam = searchParams.get('limit');
         const id = searchParams.get('id');
 
-        let posts = (await getPosts()) as any[];
-
-        if (published === 'true') {
-            posts = posts.filter(p => p.published);
-        }
+        // Construir query GROQ
+        let filters = ['_type == "post"'];
+        const params: any = {};
 
         if (id) {
-            posts = posts.filter(p => p.id === id);
+            filters.push('_id == $id');
+            params.id = id;
         }
 
         if (search) {
-            const lower = search.toLowerCase();
-            posts = posts.filter(p =>
-                p.title?.toLowerCase().includes(lower) ||
-                p.description?.toLowerCase().includes(lower)
-            );
+            filters.push('(title match $search + "*" || description match $search + "*")');
+            params.search = search;
         }
 
-        if (limitParam) {
-            posts = posts.slice(0, parseInt(limitParam));
-        }
+        const query = `*[${filters.join(' && ')}] | order(publishedAt desc) {
+            _id,
+            title,
+            "slug": slug.current,
+            description,
+            content,
+            "coverImage": coverImage.asset->url,
+            "author": author->{name, "avatar": avatar.asset->url},
+            "tags": tags,
+            publishedAt,
+            "_updatedAt": _updatedAt
+        }${limitParam ? `[0...${limitParam}]` : ''}`;
+
+        const sanityPosts = await client.fetch(query, params);
+
+        const posts = sanityPosts.map((post: any) => ({
+            id: post._id,
+            slug: post.slug,
+            title: post.title,
+            description: post.description || '',
+            content: post.content || '',
+            coverImage: post.coverImage || '',
+            author: post.author || { name: 'Admin' },
+            tags: post.tags || [],
+            publishedAt: post.publishedAt || new Date().toISOString(),
+            updatedAt: post._updatedAt || new Date().toISOString(),
+            published: true,
+        }));
 
         return NextResponse.json({ posts }, { status: 200 });
     } catch (error) {
-        console.error('Error fetching posts:', error);
+        console.error('Error fetching posts from Sanity:', error);
         return NextResponse.json(
             { error: 'Failed to fetch posts' },
             { status: 500 }
@@ -47,13 +66,11 @@ export async function GET(request: NextRequest) {
     }
 }
 
-const BLOG_PATH = path.join(process.cwd(), 'src/content/blog');
-
-// POST /api/blog/posts - Criar novo post
+// POST /api/blog/posts - Criar novo post no Sanity
 export async function POST(request: NextRequest) {
     try {
         const body = await request.json();
-        const { title, content, ...rest } = body;
+        const { title, content, description, coverImageAssetId, tags, author, published } = body;
 
         if (!title || !content) {
             return NextResponse.json(
@@ -65,44 +82,39 @@ export async function POST(request: NextRequest) {
         // Gerar slug a partir do título
         const slug = title
             .toLowerCase()
-            .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove acentos
-            .replace(/[^a-z0-9]+/g, '-') // Substitui não alfanuméricos por hífens
-            .replace(/^-+|-+$/g, ''); // Remove hífens do início e fim
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
 
-        // Verificar se arquivo já existe
-        const filePath = path.join(BLOG_PATH, `${slug}.mdx`);
-        if (fs.existsSync(filePath)) {
-            return NextResponse.json(
-                { error: 'Post with this title already exists' },
-                { status: 409 }
-            );
-        }
-
-        // Preparar frontmatter
-        const frontmatter = {
+        const newPost: any = {
+            _type: 'post',
             title,
-            ...rest,
-            date: new Date().toISOString(),
+            slug: { current: slug },
+            content,
+            description,
+            tags: tags || [],
+            publishedAt: published ? new Date().toISOString() : null,
         };
 
-        // Criar conteúdo do arquivo
-        const fileContent = matter.stringify(content, frontmatter);
-
-        // Garantir que diretório existe
-        if (!fs.existsSync(BLOG_PATH)) {
-            fs.mkdirSync(BLOG_PATH, { recursive: true });
+        if (coverImageAssetId) {
+            newPost.coverImage = {
+                _type: 'image',
+                asset: {
+                    _ref: coverImageAssetId
+                }
+            };
         }
 
-        // Escrever arquivo
-        fs.writeFileSync(filePath, fileContent);
+        // Criar documento
+        const result = await writeClient.create(newPost);
 
         return NextResponse.json(
-            { message: 'Post created successfully', slug },
+            { message: 'Post created successfully', slug, id: result._id },
             { status: 201 }
         );
 
     } catch (error) {
-        console.error('Error creating post:', error);
+        console.error('Error creating post in Sanity:', error);
         return NextResponse.json(
             { error: 'Failed to create post' },
             { status: 500 }

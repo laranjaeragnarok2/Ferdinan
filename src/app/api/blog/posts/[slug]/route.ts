@@ -1,36 +1,54 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getPostBySlug } from '@/lib/mdx';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+import { client } from '@/sanity/lib/client';
+import { writeClient } from '@/sanity/lib/write-client';
 
 export const dynamic = 'force-dynamic';
 
-const BLOG_PATH = path.join(process.cwd(), 'src/content/blog');
-
-// GET /api/blog/posts/[slug] - Buscar post por slug (MDX)
+// GET /api/blog/posts/[slug] - Buscar post por slug (Sanity)
 export async function GET(
     request: NextRequest,
     { params }: { params: Promise<{ slug: string }> }
 ) {
     try {
         const { slug } = await params;
-        const result = await getPostBySlug(slug);
 
-        if (!result) {
+        const query = `*[_type == "post" && slug.current == $slug][0] {
+            _id,
+            title,
+            "slug": slug.current,
+            description,
+            content,
+            "coverImage": coverImage.asset->url,
+            "author": author->{name, "avatar": avatar.asset->url},
+            "tags": tags,
+            publishedAt,
+            "_updatedAt": _updatedAt
+        }`;
+
+        const post = await client.fetch(query, { slug });
+
+        if (!post) {
             return NextResponse.json(
                 { error: 'Post not found' },
                 { status: 404 }
             );
         }
 
-        const post = {
-            ...result.data,
-            content: result.content,
-            slug
+        const formattedPost = {
+            id: post._id,
+            slug: post.slug,
+            title: post.title,
+            description: post.description || '',
+            content: post.content || '',
+            coverImage: post.coverImage || '',
+            author: post.author || { name: 'Admin' },
+            tags: post.tags || [],
+            publishedAt: post.publishedAt || new Date().toISOString(),
+            updatedAt: post._updatedAt || new Date().toISOString(),
+            published: true
         };
 
-        return NextResponse.json({ post }, { status: 200 });
+        return NextResponse.json({ post: formattedPost }, { status: 200 });
     } catch (error) {
         console.error('Error fetching post:', error);
         return NextResponse.json(
@@ -40,25 +58,24 @@ export async function GET(
     }
 }
 
-// DELETE /api/blog/posts/[slug] - Deletar post (Apenas localmente ou servidor com write access)
+// DELETE /api/blog/posts/[slug] - Deletar post (Sanity)
 export async function DELETE(
     request: NextRequest,
     { params }: { params: Promise<{ slug: string }> }
 ) {
     try {
         const { slug } = await params;
-        const mdxPath = path.join(BLOG_PATH, `${slug}.mdx`);
-        const mdPath = path.join(BLOG_PATH, `${slug}.md`);
 
-        if (fs.existsSync(mdxPath)) {
-            fs.unlinkSync(mdxPath);
-            return NextResponse.json({ message: 'Post deleted successfully' }, { status: 200 });
-        } else if (fs.existsSync(mdPath)) {
-            fs.unlinkSync(mdPath);
-            return NextResponse.json({ message: 'Post deleted successfully' }, { status: 200 });
-        } else {
+        // Buscar ID do post
+        const id = await client.fetch(`*[_type == "post" && slug.current == $slug][0]._id`, { slug });
+
+        if (!id) {
             return NextResponse.json({ error: 'Post not found' }, { status: 404 });
         }
+
+        await writeClient.delete(id);
+
+        return NextResponse.json({ message: 'Post deleted successfully' }, { status: 200 });
 
     } catch (error) {
         console.error('Error deleting post:', error);
@@ -70,7 +87,7 @@ export async function DELETE(
 }
 
 
-// PUT /api/blog/posts/[slug] - Atualizar post
+// PUT /api/blog/posts/[slug] - Atualizar post (Sanity)
 export async function PUT(
     request: NextRequest,
     { params }: { params: Promise<{ slug: string }> }
@@ -79,35 +96,34 @@ export async function PUT(
         const { slug } = await params;
         const body = await request.json();
 
-        // Determinar arquivo existente
-        let filePath = path.join(BLOG_PATH, `${slug}.mdx`);
-        if (!fs.existsSync(filePath)) {
-            filePath = path.join(BLOG_PATH, `${slug}.md`);
-        }
+        // Buscar ID do post
+        const id = await client.fetch(`*[_type == "post" && slug.current == $slug][0]._id`, { slug });
 
-        if (!fs.existsSync(filePath)) {
+        if (!id) {
             return NextResponse.json({ error: 'Post not found' }, { status: 404 });
         }
 
-        // Ler arquivo atual para preservar conteúdo se não enviado
-        const fileContent = fs.readFileSync(filePath, 'utf8');
-        const { data: currentFrontmatter, content: currentContent } = matter(fileContent);
-
-        // Mesclar dados
-        const newFrontmatter = {
-            ...currentFrontmatter,
-            ...body, // Atualiza campos passados no body (ex: published)
-            updatedAt: new Date().toISOString() // Atualiza data
+        // Preparar patch
+        const patch: any = {
+            updatedAt: new Date().toISOString()
         };
 
-        // Se content foi passado no body, usa, senão mantém o atual
-        // Nota: O body pode não ter content se for apenas togglePublished
-        const newContent = body.content !== undefined ? body.content : currentContent;
+        if (body.title) patch.title = body.title;
+        if (body.description) patch.description = body.description;
+        if (body.content) patch.content = body.content;
+        if (body.published !== undefined) patch.publishedAt = body.published ? new Date().toISOString() : null;
+        if (body.tags) patch.tags = body.tags;
 
-        // Recriar arquivo com gray-matter
-        const newFileContent = matter.stringify(newContent, newFrontmatter);
+        if (body.coverImageAssetId) {
+            patch.coverImage = {
+                _type: 'image',
+                asset: {
+                    _ref: body.coverImageAssetId
+                }
+            };
+        }
 
-        fs.writeFileSync(filePath, newFileContent);
+        await writeClient.patch(id).set(patch).commit();
 
         return NextResponse.json({ message: 'Post updated successfully' }, { status: 200 });
 
