@@ -136,8 +136,8 @@ const NewsFeedSection = () => {
 
                 return (
                   <CarouselItem key={index} className="pl-4 md:basis-1/3 lg:basis-1/4 xl:basis-1/4">
-                    <div className="h-full group">
-                      <Card className="flex flex-col h-full bg-card/50 backdrop-blur-sm border-muted/40 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="h-full block group">
+                      <Card className="flex flex-col h-full bg-card/50 backdrop-blur-sm border-muted/40 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
                         <CardContent className="p-5 flex flex-col flex-grow">
                           <div className="mb-3 flex items-center justify-between">
                             <span className="px-2 py-0.5 text-[10px] uppercase tracking-wider font-bold bg-primary/10 text-primary rounded-full">
@@ -157,20 +157,13 @@ const NewsFeedSection = () => {
                             <span className="text-[10px] font-medium text-muted-foreground truncate max-w-[100px]">
                               {item.author || 'Redação'}
                             </span>
-                            <Button asChild variant="ghost" size="sm" className="h-6 text-xs px-2 hover:bg-transparent hover:text-primary font-semibold group/btn">
-                              <a
-                                href={item.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center gap-1"
-                              >
-                                Ler <span className="transition-transform group-hover/btn:translate-x-1">→</span>
-                              </a>
-                            </Button>
+                            <div className="inline-flex items-center justify-center rounded-md text-xs font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-6 px-2 text-primary hover:bg-transparent hover:text-primary group/btn">
+                              Ler <span className="transition-transform group-hover/btn:translate-x-1 ml-1">→</span>
+                            </div>
                           </div>
                         </CardContent>
                       </Card>
-                    </div>
+                    </a>
                   </CarouselItem>
                 );
               })}

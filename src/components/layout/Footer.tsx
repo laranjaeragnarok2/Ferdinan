@@ -22,6 +22,7 @@ export default function Footer() {
             <li><Link href="#pain-thesis" className="text-muted-foreground hover:text-foreground">O Problema</Link></li>
             <li><Link href="#process" className="text-muted-foreground hover:text-foreground">Nosso Processo</Link></li>
             <li><Link href="#solutions" className="text-muted-foreground hover:text-foreground">Soluções</Link></li>
+            <li><Link href="/blog" className="text-muted-foreground hover:text-foreground">Blog</Link></li>
             <li><Link href="#contact" className="text-muted-foreground hover:text-foreground">Contato</Link></li>
           </ul>
         </div>

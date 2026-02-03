@@ -58,7 +58,7 @@ const LatestPostSection = () => {
                     </Link>
                 </div>
 
-                <Link href={`/blog/${post.slug}`}>
+                <Link href={`/blog/${post.slug}`} className="block">
                     <Card className="overflow-hidden border-muted/40 bg-card/50 backdrop-blur-md hover:border-primary/40 transition-all duration-500 group cursor-pointer shadow-2xl">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                             {/* Imagem */}
@@ -116,10 +116,10 @@ const LatestPostSection = () => {
                                     </div>
 
                                     <div className="ml-auto">
-                                        <Button variant="ghost" className="text-primary hover:text-primary hover:bg-primary/5 font-bold flex items-center gap-2 group/btn">
+                                        <div className="inline-flex items-center justify-center rounded-md text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 text-primary hover:bg-primary/5 gap-2 group/btn">
                                             Ler Agora
                                             <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                                        </Button>
+                                        </div>
                                     </div>
                                 </div>
                             </CardContent>
