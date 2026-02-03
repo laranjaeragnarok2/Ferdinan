@@ -7,7 +7,6 @@ import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FadeInOnScroll } from '@/components/animations/FadeInOnScroll';
-import { MDXRemote } from 'next-mdx-remote/rsc';
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
@@ -40,7 +39,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     }
 
     const post = result.data;
-    const publishedDate = new Date(post.date || new Date()).toLocaleDateString('pt-BR', {
+    const publishedDate = new Date(post.publishedAt || new Date()).toLocaleDateString('pt-BR', {
         day: '2-digit',
         month: 'long',
         year: 'numeric',
@@ -134,7 +133,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                             prose-code:text-primary
                             prose-pre:bg-card/50
                             prose-img:rounded-lg">
-                            <MDXRemote source={result.content} />
+                            <div dangerouslySetInnerHTML={{ __html: result.content }} />
                         </div>
                     </FadeInOnScroll>
                 </article>
