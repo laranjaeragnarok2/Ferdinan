@@ -279,8 +279,8 @@ export default function RichTextEditor({ content, onChange, placeholder }: RichT
             {/* Footer Info */}
             <div className="border-t border-border/50 bg-muted/30 px-4 py-2 text-xs text-muted-foreground flex justify-between">
                 <span>
-                    {editor.storage.characterCount?.characters() || 0} caracteres •{' '}
-                    {editor.storage.characterCount?.words() || 0} palavras
+                    {editor?.storage.characterCount?.characters() || 0} caracteres •{' '}
+                    {editor?.storage.characterCount?.words() || 0} palavras
                 </span>
                 {isSourceMode && <span className="text-amber-500">Modo de Edição HTML</span>}
             </div>
