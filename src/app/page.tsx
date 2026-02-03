@@ -3,16 +3,25 @@
 import Header from '@/components/layout/Header';
 import HeroSection from '@/components/sections/HeroSection';
 import PainAndThesisSection from '@/components/sections/PainAndThesisSection';
-import LeadFormSection from '@/components/sections/LeadFormSection';
 import Footer from '@/components/layout/Footer';
-import CurationProcessSection from '@/components/sections/CurationProcessSection';
-import ValidatedSolutionsSection from '@/components/sections/ValidatedSolutionsSection';
-import SocialProofSection from '@/components/sections/SocialProofSection';
 import { FadeInOnScroll } from '@/components/animations/FadeInOnScroll';
-import StickyElementsWidget from '@/components/layout/StickyElementsWidget';
-import NewsFeedSection from '@/components/sections/NewsFeedSection';
-import LatestPostSection from '@/components/sections/LatestPostSection';
-import FAQSection from '@/components/sections/FAQSection';
+import dynamic from 'next/dynamic';
+
+// Lazy load below-the-fold components
+const LeadFormSection = dynamic(() => import('@/components/sections/LeadFormSection'), {
+  loading: () => <div className="h-96 bg-background" />,
+});
+const CurationProcessSection = dynamic(() => import('@/components/sections/CurationProcessSection'));
+const ValidatedSolutionsSection = dynamic(() => import('@/components/sections/ValidatedSolutionsSection'));
+const SocialProofSection = dynamic(() => import('@/components/sections/SocialProofSection'));
+const NewsFeedSection = dynamic(() => import('@/components/sections/NewsFeedSection'), {
+  loading: () => <div className="h-96 bg-background" />,
+});
+const LatestPostSection = dynamic(() => import('@/components/sections/LatestPostSection'));
+const FAQSection = dynamic(() => import('@/components/sections/FAQSection'));
+const StickyElementsWidget = dynamic(() => import('@/components/layout/StickyElementsWidget'), {
+  ssr: false
+});
 
 export default function Home() {
   return (
