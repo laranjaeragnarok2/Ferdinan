@@ -85,7 +85,7 @@ export default function ConciergeContent({
   };
 
   return (
-    <div className="flex h-[450px] w-80 flex-col rounded-lg border bg-card text-card-foreground shadow-xl">
+    <div className="flex h-full max-h-[450px] w-80 sm:w-96 flex-col rounded-lg border bg-card text-card-foreground shadow-xl overflow-hidden">
       <div className="border-b p-4 bg-gradient-to-r from-amber-500/10 to-orange-600/10">
         <h3 className="font-semibold text-base">{title}</h3>
       </div>

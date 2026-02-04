@@ -59,6 +59,10 @@ const StickyElementsWidget = () => {
       <div
         ref={widgetRef}
         className="fixed bottom-6 right-6 z-50 flex flex-col items-end"
+        style={{
+          paddingBottom: 'env(safe-area-inset-bottom)',
+          paddingRight: 'env(safe-area-inset-right)'
+        }}
       >
         {/* Tooltip "Converse conosco" */}
         <AnimatePresence>
@@ -144,7 +148,11 @@ const StickyElementsWidget = () => {
               damping: 25,
               duration: 0.4
             }}
-            className="fixed bottom-28 right-6 z-40"
+            className="fixed bottom-28 right-6 z-40 max-h-[calc(100dvh-10rem)]"
+            style={{
+              paddingBottom: 'env(safe-area-inset-bottom)',
+              paddingRight: 'env(safe-area-inset-right)'
+            }}
           >
             <ConciergeContent
               title={conciergeTexts.title}
