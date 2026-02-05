@@ -18,24 +18,35 @@ interface NewsItem {
   link: string;
   author: string;
   description?: string;
+  thumbnail?: string;
+  enclosure?: {
+    link?: string;
+    type?: string;
+  };
 }
 
 const getNewsImages = (item: NewsItem, index: number) => {
-  const topicImages: Record<string, string> = {
-    'tecnologia': 'photo-1518770660439-4636190af475',
-    'ia': 'photo-1620712943543-bcc4688e7485',
-    'mercado': 'photo-1611974765215-0279735d6480',
-    'economia': 'photo-1526304640155-24e53298e6ad',
-    ' startup': 'photo-1519389950473-47ba0277781c',
-  };
+  // 1. Tentar imagem do feed (thumbnail ou enclosure)
+  if (item.thumbnail && item.thumbnail !== '') return item.thumbnail;
+  if (item.enclosure?.link) return item.enclosure.link;
 
-  const text = (item.title + ' ' + (item.description || '')).toLowerCase();
-  for (const [key, id] of Object.entries(topicImages)) {
-    if (text.includes(key)) {
-      return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=800&q=80`;
-    }
+  // 2. Extrair palavras-chave do título para busca no Unsplash
+  // Removemos stop words comuns e caracteres especiais para melhor precisão
+  const cleanTitle = item.title
+    .toLowerCase()
+    .replace(/[^\w\s]/gi, '')
+    .split(' ')
+    .filter(word => word.length > 3) // Apenas palavras significativas
+    .slice(0, 3) // Pegamos as 3 primeiras palavras-chave
+    .join(',');
+
+  // 3. Fallback inteligente usando busca por termos do título no Unsplash
+  // Usamos o parâmetro 'featured' ou apenas a busca por termos
+  if (cleanTitle) {
+    return `https://images.unsplash.com/featured/800x600?${cleanTitle}&sig=${index}`;
   }
 
+  // 4. Fallback final caso o título seja muito curto
   const fallbackImages = [
     'photo-1486406146926-c627a92ad1ab',
     'photo-1600880292203-757bb62b4baf',
