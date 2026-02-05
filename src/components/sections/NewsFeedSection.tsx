@@ -26,35 +26,44 @@ interface NewsItem {
 }
 
 const getNewsImages = (item: NewsItem, index: number) => {
-  // 1. Tentar imagem do feed (thumbnail ou enclosure)
-  if (item.thumbnail && item.thumbnail !== '') return item.thumbnail;
-  if (item.enclosure?.link) return item.enclosure.link;
-
-  // 2. Extrair palavras-chave do título para busca no Unsplash
-  // Removemos stop words comuns e caracteres especiais para melhor precisão
-  const cleanTitle = item.title
-    .toLowerCase()
-    .replace(/[^\w\s]/gi, '')
-    .split(' ')
-    .filter(word => word.length > 3) // Apenas palavras significativas
-    .slice(0, 3) // Pegamos as 3 primeiras palavras-chave
-    .join(',');
-
-  // 3. Fallback inteligente usando busca por termos do título no Unsplash
-  // Usamos o parâmetro 'featured' ou apenas a busca por termos
-  if (cleanTitle) {
-    return `https://images.unsplash.com/featured/800x600?${cleanTitle}&sig=${index}`;
+  // 1. Tentar extrair imagem da descrição (Google News coloca um <img> no HTML)
+  if (item.description) {
+    const imgMatch = item.description.match(/<img[^>]+src="([^">]+)"/);
+    if (imgMatch && imgMatch[1]) {
+      // Garantir que a URL comece com https:
+      return imgMatch[1].startsWith('http') ? imgMatch[1] : `https:${imgMatch[1]}`;
+    }
   }
 
-  // 4. Fallback final caso o título seja muito curto
-  const fallbackImages = [
-    'photo-1486406146926-c627a92ad1ab',
-    'photo-1600880292203-757bb62b4baf',
-    'photo-1556761175-5973dc0f32e7',
-    'photo-1460925895917-afdab827c52f',
+  // 2. Fallback baseado em palavras-chave com IDs de fotos do Unsplash testados e confiáveis
+  const keywords: Record<string, string> = {
+    'empreendedor': 'photo-1519389950473-47ba0277781c',
+    'feira': 'photo-1540575467063-178a50c2df87',
+    'negócios': 'photo-1522202176988-66273c2fd55f',
+    'mercado': 'photo-1611974765215-0279735d6480',
+    'tecnologia': 'photo-1518770660439-4636190af475',
+    'startup': 'photo-1559136555-9303baea8ebd',
+    'economia': 'photo-1526304640155-24e53298e6ad',
+    'finanças': 'photo-1590283603385-17ffb3a7f29f',
+    'inovação': 'photo-1451187580459-43490279c0fa',
+  };
+
+  const text = (item.title + (item.description || '')).toLowerCase();
+  for (const [key, id] of Object.entries(keywords)) {
+    if (text.includes(key)) {
+      return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=800&q=80`;
+    }
+  }
+
+  // 3. Fallbacks genéricos premium que combinam com o design
+  const fallbacks = [
+    'photo-1486406146926-c627a92ad1ab', // Architectura/Negócios
+    'photo-1497366216548-37526070297c', // Office moderno
+    'photo-1507679799987-c7377ec58699', // Profissional
+    'photo-1454165833767-027ff7702572'  // Planejamento
   ];
 
-  const fallbackId = fallbackImages[index % fallbackImages.length];
+  const fallbackId = fallbacks[index % fallbacks.length];
   return `https://images.unsplash.com/${fallbackId}?auto=format&fit=crop&w=800&q=80`;
 };
 
