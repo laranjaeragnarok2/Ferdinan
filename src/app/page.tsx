@@ -19,7 +19,6 @@ const NewsFeedSection = dynamic(() => import('@/components/sections/NewsFeedSect
 });
 const LatestPostSection = dynamic(() => import('@/components/sections/LatestPostSection'));
 const FAQSection = dynamic(() => import('@/components/sections/FAQSection'));
-const StickyElementsWidget = dynamic(() => import('@/components/layout/StickyElementsWidget'));
 
 export default function Home() {
   return (
@@ -55,7 +54,6 @@ export default function Home() {
         </div>
       </main>
       <Footer />
-      <StickyElementsWidget />
     </div>
   );
 }

@@ -9,7 +9,6 @@ import CurationProcessSection from '@/components/sections/CurationProcessSection
 import ValidatedSolutionsSection from '@/components/sections/ValidatedSolutionsSection';
 import SocialProofSection from '@/components/sections/SocialProofSection';
 import { FadeInOnScroll } from '@/components/animations/FadeInOnScroll';
-import StickyElementsWidget from '@/components/layout/StickyElementsWidget';
 import NewsFeedSection from '@/components/sections/NewsFeedSection';
 import FAQSection from '@/components/sections/FAQSection';
 import LatestPostSection from '@/components/sections/LatestPostSection';
@@ -48,7 +47,6 @@ export default function Home() {
         </div>
       </main>
       <Footer />
-      <StickyElementsWidget />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -55,6 +55,17 @@ export default function ConciergeContent({
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages, isLoading]);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -85,12 +96,12 @@ export default function ConciergeContent({
   };
 
   return (
-    <div className="flex h-full max-h-[450px] w-80 sm:w-96 flex-col rounded-lg border bg-card text-card-foreground shadow-xl overflow-hidden">
+    <div className="flex h-[450px] max-h-full w-80 sm:w-96 flex-col rounded-lg border bg-card text-card-foreground shadow-xl overflow-hidden">
       <div className="border-b p-4 bg-gradient-to-r from-amber-500/10 to-orange-600/10">
         <h3 className="font-semibold text-base">{title}</h3>
       </div>
-      <ScrollArea className="flex-1 p-4">
-        <div className="space-y-4">
+      <ScrollArea className="flex-1">
+        <div className="space-y-4 p-4">
           {messages.map((message, index) => (
             <div
               key={index}
@@ -133,6 +144,7 @@ export default function ConciergeContent({
               </div>
             </div>
           )}
+          <div ref={scrollRef} />
         </div>
       </ScrollArea>
       <div className="border-t p-4 bg-muted/30">
