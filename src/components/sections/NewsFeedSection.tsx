@@ -10,49 +10,37 @@ import {
 } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '../ui/button';
+import { ExternalLink, TrendingUp } from 'lucide-react';
 
 interface NewsItem {
   title: string;
   pubDate: string;
   link: string;
   author: string;
+  description?: string;
 }
 
 const getNewsImages = (item: NewsItem, index: number) => {
-  // 1. Tenta extrair imagem do feed
-  const imgMatch = item.description?.match(/<img[^>]+src="([^">]+)"/);
-  if (imgMatch) return imgMatch[1];
-
-  // 2. Banco de imagens curadas (Unsplash IDs diretos para evitar links quebrados)
   const topicImages: Record<string, string> = {
-    'tecnologia': 'photo-1518770660439-4636190af475', // Tech circuit
-    'ia': 'photo-1620712943543-bcc4688e7485', // AI Brain
-    'mercado': 'photo-1611974765215-0279735d6480', // Stock graph
-    'bolsa': 'photo-1611974765215-0279735d6480', // Stock graph
-    'dinheiro': 'photo-1580519542036-c47de6196ba5', // Money
-    'dolar': 'photo-1580519542036-c47de6196ba5', // Money
-    'economia': 'photo-1526304640155-24e53298e6ad', // Economy graph
-    'brasil': 'photo-1483389127117-b6a2102724ae', // SP City
-    'governo': 'photo-1541872703-74c596ff149d', // Architecture/Gov
-    'startup': 'photo-1519389950473-47ba0277781c', // Team working
-    'empreendedor': 'photo-1507679799987-e7346c487463', // Man in suit
+    'tecnologia': 'photo-1518770660439-4636190af475',
+    'ia': 'photo-1620712943543-bcc4688e7485',
+    'mercado': 'photo-1611974765215-0279735d6480',
+    'economia': 'photo-1526304640155-24e53298e6ad',
+    ' startup': 'photo-1519389950473-47ba0277781c',
   };
 
-  // 3. Tenta casar palavras-chave do título
-  const text = (item.title + ' ' + item.description).toLowerCase();
+  const text = (item.title + ' ' + (item.description || '')).toLowerCase();
   for (const [key, id] of Object.entries(topicImages)) {
     if (text.includes(key)) {
       return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=800&q=80`;
     }
   }
 
-  // 4. Fallback: Imagens genéricas de negócios rotativas
   const fallbackImages = [
-    'photo-1486406146926-c627a92ad1ab', // Building
-    'photo-1600880292203-757bb62b4baf', // Meeting
-    'photo-1556761175-5973dc0f32e7', // Handshake
-    'photo-1460925895917-afdab827c52f', // Analytics
-    'photo-1556155092-490a1ba16284', // Graph tablet
+    'photo-1486406146926-c627a92ad1ab',
+    'photo-1600880292203-757bb62b4baf',
+    'photo-1556761175-5973dc0f32e7',
+    'photo-1460925895917-afdab827c52f',
   ];
 
   const fallbackId = fallbackImages[index % fallbackImages.length];
@@ -71,9 +59,7 @@ const NewsFeedSection = () => {
         const response = await fetch(
           'https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnews.google.com%2Frss%2Fsearch%3Fq%3Dempreendedorismo%2Beconomia%26hl%3Dpt-BR%26gl%3DBR%26ceid%3DBR%3Apt-419'
         );
-        if (!response.ok) {
-          throw new Error('Failed to fetch news');
-        }
+        if (!response.ok) throw new Error('Failed to fetch news');
         const data = await response.json();
         if (data.status === 'ok') {
           setNews(data.items);
@@ -91,33 +77,45 @@ const NewsFeedSection = () => {
   }, []);
 
   return (
-    <section id="news" className="py-20 bg-background relative overflow-hidden">
-      {/* Background Decor */}
+    <section id="news" className="py-24 bg-background relative overflow-hidden">
+      {/* Abstract Background */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-600/10 rounded-full blur-3xl" />
+        <div className="absolute top-[-10%] left-[-5%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-orange-600/5 rounded-full blur-[120px]" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold md:text-5xl font-headline tracking-tight text-foreground">
-            Radar de <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Mercado</span>
-          </h2>
-          <p className="mt-4 text-xl text-muted-foreground max-w-2xl mx-auto">
-            Insights estratégicos e as notícias que movimentam a economia.
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold mb-4 uppercase tracking-widest">
+              <TrendingUp className="w-3 h-3" />
+              Live Insights
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold font-headline tracking-tight text-foreground">
+              Radar de <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">Mercado</span>
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Acompanhe as movimentações estratégicas que impactam o crescimento e a economia global em tempo real.
+            </p>
+          </div>
+          <div className="hidden md:flex gap-2">
+            <CarouselPrevious className="static translate-y-0 h-12 w-12 border-muted/40 hover:bg-primary hover:text-white transition-all" />
+            <CarouselNext className="static translate-y-0 h-12 w-12 border-muted/40 hover:bg-primary hover:text-white transition-all" />
+          </div>
         </div>
 
         {loading && (
-          <div className="flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="h-[400px] bg-muted/20 animate-pulse rounded-2xl border border-muted/30" />
+            ))}
           </div>
         )}
 
         {error && (
-          <div className="text-center py-20">
-            <p className="text-destructive mb-4">Não foi possível carregar as notícias.</p>
-            <Button onClick={() => window.location.reload()} variant="outline">Tentar Novamente</Button>
+          <div className="text-center py-20 bg-card/30 backdrop-blur rounded-3xl border border-dashed border-border">
+            <p className="text-destructive mb-4 font-medium">Conexão instável com o radar de notícias.</p>
+            <Button onClick={() => window.location.reload()} variant="outline" className="rounded-full">Recarregar Radar</Button>
           </div>
         )}
 
@@ -129,37 +127,42 @@ const NewsFeedSection = () => {
             }}
             className="w-full"
           >
-            <CarouselContent className="-ml-4">
+            <CarouselContent className="-ml-6">
               {news.map((item, index) => {
-                // Clean description
-                const cleanDesc = item.description?.replace(/<[^>]*>/g, '').slice(0, 100) + '...';
-
+                const imageUrl = getNewsImages(item, index);
                 return (
-                  <CarouselItem key={index} className="pl-4 md:basis-1/3 lg:basis-1/4 xl:basis-1/4">
+                  <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                     <a href={item.link} target="_blank" rel="noopener noreferrer" className="h-full block group">
-                      <Card className="flex flex-col h-full bg-card/50 backdrop-blur-sm border-muted/40 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
-                        <CardContent className="p-5 flex flex-col flex-grow">
-                          <div className="mb-3 flex items-center justify-between">
-                            <span className="px-2 py-0.5 text-[10px] uppercase tracking-wider font-bold bg-primary/10 text-primary rounded-full">
+                      <Card className="flex flex-col h-full bg-card/30 backdrop-blur-md border-muted/30 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] cursor-pointer group rounded-2xl overflow-hidden">
+                        <div className="relative h-48 w-full overflow-hidden">
+                          <img
+                            src={imageUrl}
+                            alt={item.title}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
+                          <div className="absolute top-4 right-4 h-8 w-8 rounded-full bg-background/80 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <ExternalLink className="w-4 h-4 text-primary" />
+                          </div>
+                        </div>
+
+                        <CardContent className="p-6 flex flex-col flex-grow relative">
+                          <div className="flex items-center gap-2 mb-4">
+                            <span className="text-[10px] font-bold text-primary/60 uppercase tracking-widest">
                               {new Date(item.pubDate).toLocaleDateString()}
+                            </span>
+                            <span className="w-1 h-1 rounded-full bg-muted-foreground/30" />
+                            <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
+                              {item.author || 'Mercado'}
                             </span>
                           </div>
 
-                          <h3 className="text-base font-bold text-foreground mb-2 line-clamp-3 leading-snug group-hover:text-primary transition-colors min-h-[4.5rem]">
+                          <h3 className="text-lg font-bold text-foreground mb-4 line-clamp-3 leading-tight group-hover:text-primary transition-colors">
                             {item.title}
                           </h3>
 
-                          <div className="text-xs text-muted-foreground mb-4 line-clamp-4 flex-grow">
-                            {cleanDesc.length > 5 ? cleanDesc : "Clique para ler a notícia completa."}
-                          </div>
-
-                          <div className="mt-auto pt-3 flex items-center justify-between border-t border-border/50">
-                            <span className="text-[10px] font-medium text-muted-foreground truncate max-w-[100px]">
-                              {item.author || 'Redação'}
-                            </span>
-                            <div className="inline-flex items-center justify-center rounded-md text-xs font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-6 px-2 text-primary hover:bg-transparent hover:text-primary group/btn">
-                              Ler <span className="transition-transform group-hover/btn:translate-x-1 ml-1">→</span>
-                            </div>
+                          <div className="mt-auto flex items-center gap-2 text-xs font-semibold text-primary group-hover:gap-3 transition-all">
+                            Ler análise completa <span className="text-lg">→</span>
                           </div>
                         </CardContent>
                       </Card>
@@ -168,9 +171,10 @@ const NewsFeedSection = () => {
                 );
               })}
             </CarouselContent>
-            <div className="flex justify-center gap-4 mt-8">
-              <CarouselPrevious className="static translate-y-0 hover:bg-primary hover:text-primary-foreground" />
-              <CarouselNext className="static translate-y-0 hover:bg-primary hover:text-primary-foreground" />
+            {/* Mobile Nav */}
+            <div className="flex justify-center gap-4 mt-8 md:hidden">
+              <CarouselPrevious className="static translate-y-0" />
+              <CarouselNext className="static translate-y-0" />
             </div>
           </Carousel>
         )}
