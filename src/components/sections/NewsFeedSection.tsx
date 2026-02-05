@@ -26,39 +26,44 @@ interface NewsItem {
 }
 
 const getNewsImages = (item: NewsItem, index: number) => {
-  // 1. Tentar extrair a imagem real do Google News e "turbinar" a resolução
+  // 1. Tentar extrair a imagem real do Google News (sem forçar redimensionamento arriscado)
   if (item.description) {
     const imgMatch = item.description.match(/<img[^>]+src="([^">]+)"/);
     if (imgMatch && imgMatch[1]) {
-      let url = imgMatch[1].startsWith('http') ? imgMatch[1] : `https:${imgMatch[1]}`;
-      // Google News usa parâmetros como s100 ou w100 para tamanho. 
-      // Vamos tentar aumentar para w800 para ter qualidade.
-      return url.replace(/=w\d+-h\d+/, '=w800-h600').replace(/=s\d+/, '=s800');
+      return imgMatch[1].startsWith('http') ? imgMatch[1] : `https:${imgMatch[1]}`;
     }
   }
 
-  // 2. SOLUÇÃO IA: Se não houver imagem real, geramos uma via IA baseada no título
-  // Criamos um prompt "premium" baseado no título da notícia
+  // 2. Fallback dinâmico via IA (Luma/Pollinations simplificado)
   const cleanTitle = item.title
-    .replace(/[^\w\s]/gi, ' ')
+    .toLowerCase()
+    .replace(/[^\w\s]/gi, '')
     .split(' ')
     .filter(w => w.length > 3)
-    .slice(0, 8)
+    .slice(0, 5)
     .join(' ');
 
-  const aiPrompt = encodeURIComponent(
-    `Professional editorial photography for high-end business magazine, corporate style, minimalist, cinematic lighting, related to: ${cleanTitle}`
-  );
-
-  // Usamos o Pollinations.ai que gera imagens on-the-fly via URL
-  // Adicionamos o sig para garantir que cada notícia tenha sua própria imagem gerada
-  return `https://image.pollinations.ai/prompt/${aiPrompt}?width=800&height=600&nologo=true&seed=${index + 42}&model=flux`;
+  // Usando um prompt em inglês para melhor compatibilidade com a IA
+  const prompt = encodeURIComponent(`high-end business editorial photography, ${cleanTitle}, cinematic lighting, luxury corporate aesthetic`);
+  return `https://image.pollinations.ai/prompt/${prompt}?width=800&height=600&nologo=true&seed=${index}`;
 };
 
 const NewsFeedSection = () => {
   const [news, setNews] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  // Fallback definitivo caso qualquer imagem falhe no carregamento
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    const target = e.target as HTMLImageElement;
+    const fallbacks = [
+      'photo-1486406146926-c627a92ad1ab',
+      'photo-1497366216548-37526070297c',
+      'photo-1507679799987-c7377ec58699'
+    ];
+    const randomId = fallbacks[Math.floor(Math.random() * fallbacks.length)];
+    target.src = `https://images.unsplash.com/${randomId}?auto=format&fit=crop&w=800&q=80`;
+  };
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -147,6 +152,7 @@ const NewsFeedSection = () => {
                             <img
                               src={imageUrl}
                               alt={item.title}
+                              onError={handleImageError}
                               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
