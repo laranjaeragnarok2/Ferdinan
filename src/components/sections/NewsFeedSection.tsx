@@ -26,45 +26,33 @@ interface NewsItem {
 }
 
 const getNewsImages = (item: NewsItem, index: number) => {
-  // 1. Tentar extrair imagem da descrição (Google News coloca um <img> no HTML)
+  // 1. Tentar extrair a imagem real do Google News e "turbinar" a resolução
   if (item.description) {
     const imgMatch = item.description.match(/<img[^>]+src="([^">]+)"/);
     if (imgMatch && imgMatch[1]) {
-      // Garantir que a URL comece com https:
-      return imgMatch[1].startsWith('http') ? imgMatch[1] : `https:${imgMatch[1]}`;
+      let url = imgMatch[1].startsWith('http') ? imgMatch[1] : `https:${imgMatch[1]}`;
+      // Google News usa parâmetros como s100 ou w100 para tamanho. 
+      // Vamos tentar aumentar para w800 para ter qualidade.
+      return url.replace(/=w\d+-h\d+/, '=w800-h600').replace(/=s\d+/, '=s800');
     }
   }
 
-  // 2. Fallback baseado em palavras-chave com IDs de fotos do Unsplash testados e confiáveis
-  const keywords: Record<string, string> = {
-    'empreendedor': 'photo-1519389950473-47ba0277781c',
-    'feira': 'photo-1540575467063-178a50c2df87',
-    'negócios': 'photo-1522202176988-66273c2fd55f',
-    'mercado': 'photo-1611974765215-0279735d6480',
-    'tecnologia': 'photo-1518770660439-4636190af475',
-    'startup': 'photo-1559136555-9303baea8ebd',
-    'economia': 'photo-1526304640155-24e53298e6ad',
-    'finanças': 'photo-1590283603385-17ffb3a7f29f',
-    'inovação': 'photo-1451187580459-43490279c0fa',
-  };
+  // 2. SOLUÇÃO IA: Se não houver imagem real, geramos uma via IA baseada no título
+  // Criamos um prompt "premium" baseado no título da notícia
+  const cleanTitle = item.title
+    .replace(/[^\w\s]/gi, ' ')
+    .split(' ')
+    .filter(w => w.length > 3)
+    .slice(0, 8)
+    .join(' ');
 
-  const text = (item.title + (item.description || '')).toLowerCase();
-  for (const [key, id] of Object.entries(keywords)) {
-    if (text.includes(key)) {
-      return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=800&q=80`;
-    }
-  }
+  const aiPrompt = encodeURIComponent(
+    `Professional editorial photography for high-end business magazine, corporate style, minimalist, cinematic lighting, related to: ${cleanTitle}`
+  );
 
-  // 3. Fallbacks genéricos premium que combinam com o design
-  const fallbacks = [
-    'photo-1486406146926-c627a92ad1ab', // Architectura/Negócios
-    'photo-1497366216548-37526070297c', // Office moderno
-    'photo-1507679799987-c7377ec58699', // Profissional
-    'photo-1454165833767-027ff7702572'  // Planejamento
-  ];
-
-  const fallbackId = fallbacks[index % fallbacks.length];
-  return `https://images.unsplash.com/${fallbackId}?auto=format&fit=crop&w=800&q=80`;
+  // Usamos o Pollinations.ai que gera imagens on-the-fly via URL
+  // Adicionamos o sig para garantir que cada notícia tenha sua própria imagem gerada
+  return `https://image.pollinations.ai/prompt/${aiPrompt}?width=800&height=600&nologo=true&seed=${index + 42}&model=flux`;
 };
 
 const NewsFeedSection = () => {
