@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
             content,
             "coverImage": coverImage.asset->url,
             "author": author->{name, "avatar": avatar.asset->url},
-            "tags": tags,
+            "tags": coalesce(tags, categories[]->title),
             publishedAt,
             "_updatedAt": _updatedAt
         }${limitParam ? `[0...${limitParam}]` : ''}`;

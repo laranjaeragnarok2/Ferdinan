@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import { writeClient } from '@/sanity/lib/write-client';
 
+export const dynamic = 'force-dynamic';
+
 // POST /api/blog/upload - Upload de imagem para o Sanity
 export async function POST(request: NextRequest) {
     try {
