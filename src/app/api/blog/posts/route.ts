@@ -7,11 +7,13 @@ export const dynamic = 'force-dynamic';
 // GET /api/blog/posts - Listar posts do Sanity
 export async function GET(request: NextRequest) {
     try {
-        const { searchParams } = new URL(request.url);
+        const { searchParams } = request.nextUrl;
         const published = searchParams.get('published');
         const search = searchParams.get('search');
         const limitParam = searchParams.get('limit');
         const id = searchParams.get('id');
+
+        console.log('Fetching posts with params:', { published, search, limitParam, id });
 
         // Construir query GROQ
         let filters = ['_type == "post"'];
