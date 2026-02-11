@@ -26,35 +26,37 @@ interface NewsItem {
 }
 
 const getNewsImages = (item: NewsItem, index: number) => {
-  // 1. Verificar se o RSS2JSON já extraiu um thumbnail ou enclosure
-  if (item.thumbnail && item.thumbnail.length > 0) return item.thumbnail;
-  if (item.enclosure?.link && item.enclosure.link.includes('http')) return item.enclosure.link;
-
-  // 2. Tentar extrair a imagem real da descrição (Google News costuma colocar aqui)
+  // 1. Procurar imagem real do Google News (geralmente na descrição)
   if (item.description) {
     const imgMatch = item.description.match(/<img[^>]+src="([^">]+)"/);
     if (imgMatch && imgMatch[1]) {
       let url = imgMatch[1];
       if (url.startsWith('//')) url = `https:${url}`;
-      // Google News às vezes usa imagens minúsculas, mas é o que temos
       return url;
     }
   }
 
-  // 3. Fallback: Usar IA com um prompt muito mais refinado para evitar o aspecto "esquisito"
-  // Filtramos palavras irrelevantes do título para o prompt
-  const promptKeywords = item.title
-    .split(' ')
-    .filter(w => w.length > 3)
-    .slice(0, 4)
-    .join(' ');
+  // 2. Verificar se o RSS2JSON extraiu algum outro campo
+  if (item.thumbnail && item.thumbnail.length > 0) return item.thumbnail;
+  if (item.enclosure?.link && item.enclosure.link.includes('http')) return item.enclosure.link;
 
-  const safePrompt = encodeURIComponent(
-    `High-end professional business editorial photography, ${promptKeywords}, corporate luxury aesthetic, clean composition, cinematic lighting, 8k resolution, realistic textures, no text, no logos`
-  );
+  // 3. Fallback Premium: Galeria Curada da Unsplash (Totalmente Grátis e Sem Limites)
+  // Usamos uma lista de IDs de fotos de alta qualidade com temática de business/growth
+  const premiumBusinessPhotos = [
+    'photo-1460925895917-afdab827c52f', // Gráficos e Laptop
+    'photo-1486406146926-c627a92ad1ab', // Arquitetura Corporativa
+    'photo-1497366216548-37526070297c', // Escritório Moderno
+    'photo-1507679799987-c7377ec58699', // Business Profissional
+    'photo-1553729459-efe14ef6055d', // Business Concept
+    'photo-1542744173-8e7e53415bb0', // Estratégia
+    'photo-1519389950473-47ba027788c0', // Tecnologia e Trabalho
+    'photo-1551288049-bbbda50a137e', // Análise de Dados
+    'photo-1526628953301-3e589a6a8b74'  // Mercado Financeiro
+  ];
 
-  // Usamos o índice para garantir imagens diferentes para notícias diferentes
-  return `https://image.pollinations.ai/prompt/${safePrompt}?width=800&height=600&nologo=true&seed=${index + 1234}`;
+  // Escolhe uma imagem da galeria baseada no índice do item para não repetir muito
+  const photoId = premiumBusinessPhotos[index % premiumBusinessPhotos.length];
+  return `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=800&q=80`;
 };
 
 const NewsFeedSection = () => {
@@ -66,11 +68,11 @@ const NewsFeedSection = () => {
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const target = e.target as HTMLImageElement;
     const fallbacks = [
-      'photo-1486406146926-c627a92ad1ab', // Building
-      'photo-1497366216548-37526070297c', // Office
-      'photo-1507679799987-c7377ec58699', // Business man
-      'photo-1454165833767-171f675b33d0', // Meeting
-      'photo-1517245386807-bb43f82c33c4'  // Team
+      'photo-1486406146926-c627a92ad1ab',
+      'photo-1497366216548-37526070297c',
+      'photo-1507679799987-c7377ec58699',
+      'photo-1454165833767-171f675b33d0',
+      'photo-1517245386807-bb43f82c33c4'
     ];
     const randomId = fallbacks[Math.floor(Math.random() * fallbacks.length)];
     target.src = `https://images.unsplash.com/${randomId}?auto=format&fit=crop&w=800&q=80`;
