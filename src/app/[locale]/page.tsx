@@ -1,5 +1,3 @@
-'use client';
-
 import Header from '@/components/layout/Header';
 import HeroSection from '@/components/sections/HeroSection';
 import PainAndThesisSection from '@/components/sections/PainAndThesisSection';
@@ -24,6 +22,9 @@ export default function Home() {
             <NewsFeedSection />
           </FadeInOnScroll>
           <FadeInOnScroll>
+            {/* O LatestPostSection é um Server Component assíncrono.
+                Passando como child de um Client Component (FadeInOnScroll),
+                ele é renderizado no servidor e o resultado estático é passado ao cliente. */}
             <LatestPostSection />
           </FadeInOnScroll>
           <FadeInOnScroll>

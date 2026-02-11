@@ -16,7 +16,9 @@ export async function getPosts(): Promise<BlogPost[]> {
         "published": true // Sanity drafts are handled by perspective, here assuming published
     }`;
 
-    const posts = await client.fetch(query);
+    const posts = await client.fetch(query, {}, {
+        next: { revalidate: 60 } // Revalida a cada minuto
+    });
 
     return posts.map((post: any) => ({
         id: post._id,
@@ -47,7 +49,9 @@ export async function getPostBySlug(slug: string): Promise<{ data: BlogPost; con
         "_updatedAt": _updatedAt
     }`;
 
-    const post = await client.fetch(query, { slug });
+    const post = await client.fetch(query, { slug }, {
+        next: { revalidate: 60 }
+    });
 
     if (!post) return null;
 
