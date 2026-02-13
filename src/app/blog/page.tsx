@@ -1,12 +1,11 @@
 import { getPosts } from '@/lib/mdx';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
+import { GlassCard, GlassContent, GlassFooter, GlassHeader } from '@/components/ui/glass-card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Calendar, Clock, ArrowRight, User } from 'lucide-react';
+import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { FadeInOnScroll } from '@/components/animations/FadeInOnScroll';
 
 export const metadata = {
@@ -19,11 +18,11 @@ export default async function BlogListingPage() {
     const publishedPosts = allPosts.filter((post) => post.published);
 
     return (
-        <div className="flex flex-col min-h-screen bg-background relative overflow-hidden">
-            {/* Background Gradients */}
+        <div className="flex flex-col min-h-screen bg-black relative overflow-hidden">
+            {/* Background Gradients para potencializar o Glassmorphism */}
             <div className="fixed inset-0 z-0 pointer-events-none">
-                <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl opacity-50" />
-                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-3xl opacity-50" />
+                <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-primary/20 rounded-full blur-[120px] opacity-40 animate-pulse" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-600/20 rounded-full blur-[120px] opacity-30 animate-pulse" />
             </div>
 
             <Header />
@@ -34,17 +33,17 @@ export default async function BlogListingPage() {
                     {/* Hero Section */}
                     <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
                         <FadeInOnScroll>
-                            <Badge variant="secondary" className="mb-4 bg-primary/10 text-primary border-primary/20 px-4 py-1.5 text-sm uppercase tracking-wide">
-                                Nosso Blog
+                            <Badge variant="secondary" className="mb-4 bg-white/5 text-white/70 border-white/10 px-4 py-1.5 text-sm uppercase tracking-widest backdrop-blur-md">
+                                Vanguarda Técnica
                             </Badge>
-                            <h1 className="text-4xl md:text-6xl font-bold font-headline mb-6 tracking-tight">
-                                Insights para <br />
-                                <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-orange-500 to-amber-500">
-                                    Crescimento Exponencial
+                            <h1 className="text-5xl md:text-7xl font-bold font-headline mb-6 tracking-tighter text-white">
+                                Estrutura & <br />
+                                <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-primary/80 animate-gradient-x">
+                                    Conhecimento
                                 </span>
                             </h1>
-                            <p className="text-xl text-muted-foreground leading-relaxed">
-                                Estratégias validadas, estudos de caso e hacks de gestão para escalar sua operação sem sacrificar a qualidade.
+                            <p className="text-xl text-white/50 leading-relaxed font-light">
+                                Estratégias táticas e visões de mercado filtradas para quem joga o jogo no nível mais alto.
                             </p>
                         </FadeInOnScroll>
                     </div>
@@ -54,84 +53,85 @@ export default async function BlogListingPage() {
                             {publishedPosts.map((post, index) => (
                                 <FadeInOnScroll key={post.slug} delay={index * 0.1}>
                                     <Link href={`/blog/${post.slug}`} className="group h-full block">
-                                        <Card className="h-full flex flex-col overflow-hidden border-border/50 bg-card/40 backdrop-blur-sm hover:border-primary/50 hover:bg-card/60 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-1">
+                                        <GlassCard intensity="medium" className="h-full flex flex-col group-hover:bg-white/15 group-hover:scale-[1.02] group-hover:border-white/30 transition-all duration-500">
                                             {/* Image Container */}
-                                            <div className="relative h-56 w-full overflow-hidden">
+                                            <div className="relative h-64 w-full overflow-hidden rounded-t-2xl">
                                                 {post.coverImage ? (
                                                     <Image
                                                         src={post.coverImage}
                                                         alt={post.title}
                                                         fill
-                                                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                                        className="object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[0.5] group-hover:grayscale-0"
                                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                                     />
                                                 ) : (
-                                                    <div className="w-full h-full bg-gradient-to-br from-secondary/50 to-secondary flex items-center justify-center">
-                                                        <span className="text-muted-foreground font-medium">Ferdinan Blog</span>
+                                                    <div className="w-full h-full bg-gradient-to-br from-white/5 to-white/10 flex items-center justify-center">
+                                                        <span className="text-white/20 font-bold tracking-tighter text-4xl italic">FERDINAN</span>
                                                     </div>
                                                 )}
-                                                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-60" />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
 
                                                 {/* Tags Overlay */}
                                                 <div className="absolute top-4 left-4 flex flex-wrap gap-2">
                                                     {post.tags?.slice(0, 2).map(tag => (
-                                                        <span key={tag} className="px-2.5 py-1 bg-background/80 backdrop-blur text-xs font-semibold rounded-md border border-border/50 text-foreground">
+                                                        <span key={tag} className="px-3 py-1 bg-white/10 backdrop-blur-xl text-[10px] font-bold uppercase tracking-widest rounded-full border border-white/10 text-white/90">
                                                             {tag}
                                                         </span>
                                                     ))}
                                                 </div>
                                             </div>
 
-                                            <CardHeader className="space-y-2 pb-2">
-                                                <div className="flex items-center gap-3 text-xs text-muted-foreground mb-1">
-                                                    <span className="flex items-center gap-1">
-                                                        <Calendar className="w-3.5 h-3.5 text-primary" />
+                                            <GlassHeader className="space-y-3 pb-2 mt-2">
+                                                <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1">
+                                                    <span className="flex items-center gap-1.5">
+                                                        <Calendar className="w-3 h-3 text-primary" />
                                                         {new Date(post.publishedAt).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })}
                                                     </span>
-                                                    {/* Opcional: tempo de leitura fake ou real se tivermos calculado */}
-                                                    <span className="flex items-center gap-1">
-                                                        <Clock className="w-3.5 h-3.5 text-primary" />
-                                                        5 min de leitura
+                                                    <span className="flex items-center gap-1.5">
+                                                        <Clock className="w-3 h-3 text-primary" />
+                                                        5 min read
                                                     </span>
                                                 </div>
-                                                <h2 className="text-xl font-bold font-headline leading-tight group-hover:text-primary transition-colors">
+                                                <h2 className="text-2xl font-bold leading-tight text-white group-hover:text-primary transition-colors tracking-tight">
                                                     {post.title}
                                                 </h2>
-                                            </CardHeader>
+                                            </GlassHeader>
 
-                                            <CardContent className="flex-grow">
-                                                <p className="text-muted-foreground line-clamp-3 text-sm leading-relaxed">
+                                            <GlassContent className="flex-grow">
+                                                <p className="text-white/40 line-clamp-2 text-sm leading-relaxed font-light italic">
                                                     {post.description}
                                                 </p>
-                                            </CardContent>
+                                            </GlassContent>
 
-                                            <CardFooter className="pt-0 border-t border-border/10 mt-auto p-6 flex items-center justify-between">
-                                                <div className="flex items-center gap-2">
-                                                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center text-[10px] font-bold text-primary">
-                                                        {post.author?.name?.charAt(0) || 'F'}
+                                            <GlassFooter className="pt-4 border-t border-white/5 mt-auto p-6 flex items-center justify-between">
+                                                <div className="flex items-center gap-3">
+                                                    <div className="w-8 h-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-[10px] font-black text-white/60 overflow-hidden">
+                                                        {post.author?.image ? (
+                                                            <Image src={post.author.image} alt={post.author.name} width={32} height={32} />
+                                                        ) : post.author?.name?.charAt(0) || 'F'}
                                                     </div>
-                                                    <span className="text-xs font-medium text-muted-foreground">
-                                                        {post.author?.name || 'Equipe Ferdinan'}
+                                                    <span className="text-[10px] font-bold uppercase tracking-widest text-white/60">
+                                                        {post.author?.name || 'Skarner Engine'}
                                                     </span>
                                                 </div>
-                                                <span className="text-sm font-semibold text-primary flex items-center gap-1 group/link">
-                                                    Ler artigo <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1" />
+                                                <span className="text-xs font-black text-primary flex items-center gap-2 group/link uppercase tracking-tighter">
+                                                    Explorar <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-2" />
                                                 </span>
-                                            </CardFooter>
-                                        </Card>
+                                            </GlassFooter>
+                                        </GlassCard>
                                     </Link>
                                 </FadeInOnScroll>
                             ))}
                         </div>
                     ) : (
                         <FadeInOnScroll>
-                            <div className="text-center py-20 bg-card/30 backdrop-blur rounded-3xl border border-dashed border-border">
-                                <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <Clock className="w-8 h-8 text-muted-foreground" />
+                            <div className="text-center py-20 bg-white/5 backdrop-blur-3xl rounded-[32px] border border-white/5">
+                                <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10">
+                                    <Clock className="w-10 h-10 text-white/20 animate-spin-slow" />
                                 </div>
-                                <h3 className="text-xl font-bold mb-2">Em breve</h3>
-                                <p className="text-muted-foreground max-w-md mx-auto">
-                                    Estamos preparando conteúdos incríveis para você. Volte em breve para conferir nossos artigos sobre Growth e Alta Performance.
+                                <h3 className="text-2xl font-bold mb-3 text-white">Sincronizando Conteúdo...</h3>
+                                <p className="text-white/40 max-w-md mx-auto font-light italic">
+                                    Nossa engine de IA está refinando os próximos insights. Prepare-se para a vanguarda.
                                 </p>
                             </div>
                         </FadeInOnScroll>
