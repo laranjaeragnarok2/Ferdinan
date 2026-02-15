@@ -12,9 +12,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import LatestPostSection from '@/components/sections/LatestPostSection';
 import dynamic from 'next/dynamic';
 
-const MarketTicker = dynamic(() => import('@/components/ui/MarketTicker').then(mod => mod.MarketTicker), {
-  ssr: false,
-});
+const MarketTicker = dynamic(() => import('@/components/ui/MarketTicker').then(mod => mod.MarketTicker));
 
 export default function Home() {
   return (
