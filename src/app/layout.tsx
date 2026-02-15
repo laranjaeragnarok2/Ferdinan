@@ -23,9 +23,9 @@ const ptSans = PT_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Ferdinan-MSP | Consultoria de Growth, Gestão & Compliance Digital',
+  title: 'Ferdinan-MSP | Liderança em Growth, Gestão & Soberania Digital',
   description:
-    'Liderança em estratégias de Growth e Gestão de Alta Performance para mercados de alto valor. Especialistas em auditoria algorítmica e soberania tecnológica. Arquiteto: Silas Ferdinan.',
+    'A soberania definitiva do Grupo Ferdinan-MSP. Arquitetamos a integridade e o domínio de mercados de alto valor sob o comando estratégico de Silas Ferdinan.',
   keywords: ['Growth Hacking', 'Consultoria de Vendas', 'Gestão de Alta Performance', 'Automação de Processos', 'Ferdinan', 'MSP Group', 'Compliance Digital', 'Auditoria de Algoritmos', 'Silas Ferdinan', 'Soberania Digital'],
   authors: [{ name: 'Silas Ferdinan' }],
   verification: {
