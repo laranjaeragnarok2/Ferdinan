@@ -93,6 +93,25 @@
     @apply bg-gradient-to-b from-[#FFFBEB] via-[#D4AF37] to-[#92400E] bg-clip-text text-transparent gold-bloom;
   }
 
+  .audit-scan-overlay {
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500 pointer-events-none overflow-hidden bg-black/40 backdrop-blur-[2px];
+    background-image: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+  }
+
+  .audit-code-text {
+    @apply absolute font-mono text-[8px] text-primary/40 whitespace-nowrap;
+    animation: scan-line 10s linear infinite;
+  }
+
+  @keyframes scan-line {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(1000%); }
+  }
+
+  .group:hover .audit-scan-overlay {
+    @apply opacity-100;
+  }
+
   .ticker-item {
     @apply inline-block px-8 py-2 text-[10px] font-mono tracking-widest text-white/40 uppercase;
   }

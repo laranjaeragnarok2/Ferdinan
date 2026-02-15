@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { GlassCard, GlassContent } from "../ui/glass-card";
+import { AuditScanner } from "../ui/AuditScanner";
 
 const painThesisImage = PlaceHolderImages.find(img => img.id === 'pain-thesis');
 
@@ -24,18 +25,20 @@ export default function PainAndThesisSection() {
             </Link>
           </div>
           <div className="order-1 md:order-2">
-            <GlassCard intensity="vanguard" className="p-2">
-              {painThesisImage && (
-                  <Image 
-                      src={painThesisImage.imageUrl}
-                      alt={painThesisImage.description}
-                      width={600}
-                      height={700}
-                      className="rounded-xl grayscale hover:grayscale-0 transition-all duration-700 object-cover"
-                      data-ai-hint={painThesisImage.imageHint}
-                  />
-              )}
-            </GlassCard>
+            <AuditScanner>
+              <GlassCard intensity="vanguard" className="p-2">
+                {painThesisImage && (
+                    <Image 
+                        src={painThesisImage.imageUrl}
+                        alt={painThesisImage.description}
+                        width={600}
+                        height={700}
+                        className="rounded-xl grayscale hover:grayscale-0 transition-all duration-700 object-cover"
+                        data-ai-hint={painThesisImage.imageHint}
+                    />
+                )}
+              </GlassCard>
+            </AuditScanner>
           </div>
         </div>
       </div>
