@@ -27,11 +27,11 @@ export default function HeroSection() {
           alt={heroBackgroundImage.description}
           fill
           sizes="100vw"
-          quality={85}
+          quality={80}
           className="object-cover"
           priority
-          fetchPriority="high"
-          loading="eager"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPj/HwADBwH/7vM8OAAAAABJRU5ErkJggg=="
           data-ai-hint={heroBackgroundImage.imageHint}
         />
       )}

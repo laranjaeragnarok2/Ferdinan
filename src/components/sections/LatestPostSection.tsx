@@ -37,7 +37,6 @@ const LatestPostSection = async () => {
                                         fill
                                         sizes="(max-width: 1024px) 100vw, 50vw"
                                         className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                        priority
                                     />
                                 ) : (
                                     <div className="w-full h-full bg-gradient-to-br from-muted/50 to-muted flex items-center justify-center">

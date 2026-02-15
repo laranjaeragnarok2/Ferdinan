@@ -10,7 +10,11 @@ import { FadeInOnScroll } from '@/components/animations/FadeInOnScroll';
 import NewsFeedSection from '@/components/sections/NewsFeedSection';
 import FAQSection from '@/components/sections/FAQSection';
 import LatestPostSection from '@/components/sections/LatestPostSection';
-import { MarketTicker } from '@/components/ui/MarketTicker';
+import dynamic from 'next/dynamic';
+
+const MarketTicker = dynamic(() => import('@/components/ui/MarketTicker').then(mod => mod.MarketTicker), {
+  ssr: false,
+});
 
 export default function Home() {
   return (

@@ -7,6 +7,8 @@ import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FadeInOnScroll } from '@/components/animations/FadeInOnScroll';
+import { MarketTicker } from '@/components/ui/MarketTicker';
+import { AuditScanner } from '@/components/ui/AuditScanner';
 
 export const revalidate = 60;
 
@@ -54,21 +56,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     const readingTime = Math.ceil(wordCount / wordsPerMinute);
 
     return (
-        <div className="flex flex-col min-h-screen bg-background">
+        <div className="flex flex-col min-h-screen bg-background relative overflow-hidden">
+            <MarketTicker />
             <Header />
 
             <main className="flex-grow">
                 {post.coverImage && (
-                    <div className="relative h-[400px] w-full">
-                        <Image
-                            src={post.coverImage}
-                            alt={post.title}
-                            fill
-                            className="object-cover"
-                            priority
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-                    </div>
+                    <AuditScanner>
+                        <div className="relative h-[400px] w-full">
+                            <Image
+                                src={post.coverImage}
+                                alt={post.title}
+                                fill
+                                className="object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-700"
+                                priority
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                        </div>
+                    </AuditScanner>
                 )}
 
                 <article className="container mx-auto max-w-4xl px-4 py-12">

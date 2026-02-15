@@ -5,8 +5,9 @@ import { Toaster } from '@/components/ui/toaster';
 import Script from 'next/script';
 import { ClientWrappers } from '@/components/layout/ClientWrappers';
 
-import { StockTicker } from '@/components/ui/StockTicker';
-import dynamic from 'next/dynamic';
+const StockTicker = dynamic(() => import('@/components/ui/StockTicker').then(mod => mod.StockTicker), {
+  ssr: false,
+});
 
 const playfair = Playfair_Display({
   subsets: ['latin'],

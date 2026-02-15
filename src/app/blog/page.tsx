@@ -8,9 +8,12 @@ import Image from 'next/image';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import { FadeInOnScroll } from '@/components/animations/FadeInOnScroll';
 
+import { MarketTicker } from '@/components/ui/MarketTicker';
+import { AuditScanner } from '@/components/ui/AuditScanner';
+
 export const metadata = {
-    title: 'Blog | Ferdinan - Growth & High Performance',
-    description: 'Insights, estratégias e guias práticos sobre Growth Hacking, Vendas B2B e Gestão de Alta Performance.',
+    title: 'Soberania & Conhecimento | Blog Ferdinan-MSP',
+    description: 'Relatórios táticos e auditorias de integridade para a elite digital. Liderança estratégica sob o olhar de Silas Ferdinan.',
 };
 
 export default async function BlogListingPage() {
@@ -25,6 +28,7 @@ export default async function BlogListingPage() {
                 <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-blue-600/20 rounded-full blur-[120px] opacity-30 animate-pulse" />
             </div>
 
+            <MarketTicker />
             <Header />
 
             <main className="flex-grow pt-32 pb-20 relative z-10">
@@ -38,7 +42,7 @@ export default async function BlogListingPage() {
                             </Badge>
                             <h1 className="text-5xl md:text-7xl font-bold font-headline mb-6 tracking-tighter text-white">
                                 Estrutura & <br />
-                                <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-white to-primary/80 animate-gradient-x">
+                                <span className="text-luxury-gold drop-shadow-[0_0_30px_rgba(212,175,55,0.2)]">
                                     Conhecimento
                                 </span>
                             </h1>
@@ -53,33 +57,35 @@ export default async function BlogListingPage() {
                             {publishedPosts.map((post, index) => (
                                 <FadeInOnScroll key={post.slug} delay={index * 0.1}>
                                     <Link href={`/blog/${post.slug}`} className="group h-full block">
-                                        <GlassCard intensity="medium" className="h-full flex flex-col group-hover:bg-white/15 group-hover:scale-[1.02] group-hover:border-white/30 transition-all duration-500">
-                                            {/* Image Container */}
-                                            <div className="relative h-64 w-full overflow-hidden rounded-t-2xl">
-                                                {post.coverImage ? (
-                                                    <Image
-                                                        src={post.coverImage}
-                                                        alt={post.title}
-                                                        fill
-                                                        className="object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[0.5] group-hover:grayscale-0"
-                                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                                    />
-                                                ) : (
-                                                    <div className="w-full h-full bg-gradient-to-br from-white/5 to-white/10 flex items-center justify-center">
-                                                        <span className="text-white/20 font-bold tracking-tighter text-4xl italic">FERDINAN</span>
-                                                    </div>
-                                                )}
-                                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                                        <GlassCard intensity="medium" className="h-full flex flex-col group-hover:bg-white/15 group-hover:scale-[1.02] group-hover:border-white/30 transition-all duration-500 overflow-hidden">
+                                            {/* Image Container with AuditScanner */}
+                                            <AuditScanner>
+                                                <div className="relative h-64 w-full overflow-hidden">
+                                                    {post.coverImage ? (
+                                                        <Image
+                                                            src={post.coverImage}
+                                                            alt={post.title}
+                                                            fill
+                                                            className="object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[0.5] group-hover:grayscale-0"
+                                                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                        />
+                                                    ) : (
+                                                        <div className="w-full h-full bg-gradient-to-br from-white/5 to-white/10 flex items-center justify-center">
+                                                            <span className="text-white/20 font-bold tracking-tighter text-4xl italic">FERDINAN</span>
+                                                        </div>
+                                                    )}
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
 
-                                                {/* Tags Overlay */}
-                                                <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-                                                    {post.tags?.slice(0, 2).map(tag => (
-                                                        <span key={tag} className="px-3 py-1 bg-white/10 backdrop-blur-xl text-[10px] font-bold uppercase tracking-widest rounded-full border border-white/10 text-white/90">
-                                                            {tag}
-                                                        </span>
-                                                    ))}
+                                                    {/* Tags Overlay */}
+                                                    <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                                                        {post.tags?.slice(0, 2).map(tag => (
+                                                            <span key={tag} className="px-3 py-1 bg-white/10 backdrop-blur-xl text-[10px] font-bold uppercase tracking-widest rounded-full border border-white/10 text-white/90">
+                                                                {tag}
+                                                            </span>
+                                                        ))}
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </AuditScanner>
 
                                             <GlassHeader className="space-y-3 pb-2 mt-2">
                                                 <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1">
