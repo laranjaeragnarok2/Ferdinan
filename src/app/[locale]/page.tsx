@@ -10,10 +10,12 @@ import { FadeInOnScroll } from '@/components/animations/FadeInOnScroll';
 import NewsFeedSection from '@/components/sections/NewsFeedSection';
 import FAQSection from '@/components/sections/FAQSection';
 import LatestPostSection from '@/components/sections/LatestPostSection';
+import { MarketTicker } from '@/components/ui/MarketTicker';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
+      <MarketTicker />
       <Header />
       <main className="flex-grow">
         <HeroSection />

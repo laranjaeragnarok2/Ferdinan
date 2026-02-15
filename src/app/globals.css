@@ -56,11 +56,21 @@
 
 @layer components {
   .glass-luxury {
-    @apply bg-white/[0.02] backdrop-blur-2xl border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)];
+    @apply bg-white/[0.03] backdrop-blur-3xl border border-white/[0.08] shadow-[0_8px_32px_0_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.05)];
+  }
+
+  .gold-bloom {
+    @apply drop-shadow-[0_0_15px_rgba(212,175,55,0.3)];
+    transition: drop-shadow 0.5s ease;
+  }
+
+  .gold-bloom:hover {
+    @apply drop-shadow-[0_0_25px_rgba(212,175,55,0.6)];
   }
 
   .border-gold-glow {
     position: relative;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.05);
   }
 
   .border-gold-glow::after {
@@ -71,10 +81,24 @@
     border-radius: inherit;
     z-index: -1;
     pointer-events: none;
+    opacity: 0.5;
+    transition: opacity 0.5s ease;
+  }
+
+  .border-gold-glow:hover::after {
+    opacity: 1;
   }
 
   .text-luxury-gold {
-    @apply bg-gradient-to-b from-[#FDE68A] via-[#D4AF37] to-[#B45309] bg-clip-text text-transparent;
+    @apply bg-gradient-to-b from-[#FFFBEB] via-[#D4AF37] to-[#92400E] bg-clip-text text-transparent gold-bloom;
+  }
+
+  .ticker-item {
+    @apply inline-block px-8 py-2 text-[10px] font-mono tracking-widest text-white/40 uppercase;
+  }
+
+  .ticker-value {
+    @apply text-luxury-gold ml-2;
   }
 }
 

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Star } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { MagneticButton } from '@/components/ui/MagneticButton';
 
 const testimonialImages = [
   PlaceHolderImages.find((img) => img.id === 'testimonial-1'),
@@ -42,25 +43,27 @@ export default function HeroSection() {
         </div>
 
         <h1 className="font-headline text-5xl font-bold tracking-tighter text-white md:text-8xl lg:text-9xl mb-8">
-          Insights para <br />
+          Soberania & <br />
           <span className="text-luxury-gold drop-shadow-[0_0_30px_rgba(212,175,55,0.2)]">
             Elite Digital
           </span>
         </h1>
 
         <p className="mx-auto mt-8 max-w-2xl text-lg md:text-xl text-white/60 leading-relaxed font-light">
-          Pare de queimar capital com estratégias que não escalam. Implementamos processos de <span className="text-white font-medium border-b border-primary/50">Growth e Gestão</span> focados em ROI real e soberania de mercado.
+          A autoridade definitiva em <span className="text-white font-medium border-b border-primary/50">Growth, Gestão & Compliance</span>. Liderados por Silas Ferdinan, arquitetamos a integridade algorítmica e o crescimento exponencial de marcas soberanas.
         </p>
 
         <div className="mt-16 flex flex-col items-center justify-center gap-6">
-          <Link href="#contact" passHref aria-label="Solicitar análise do meu negócio">
-            <Button
-              size="lg"
-              className="h-16 px-12 bg-white text-black font-bold text-lg transition-all duration-500 transform hover:scale-105 hover:bg-primary hover:text-black shadow-[0_0_40px_rgba(255,255,255,0.1)] rounded-none border border-white/20"
-            >
-              Agendar Análise Estratégica
-            </Button>
-          </Link>
+          <MagneticButton>
+            <Link href="#contact" passHref aria-label="Solicitar análise do meu negócio">
+              <Button
+                size="lg"
+                className="h-16 px-12 bg-white text-black font-bold text-lg transition-all duration-500 transform hover:bg-primary hover:text-black shadow-[0_0_50px_rgba(212,175,55,0.15)] rounded-none border border-white/20"
+              >
+                Agendar Análise Estratégica
+              </Button>
+            </Link>
+          </MagneticButton>
 
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row mt-8">
             <div className="flex -space-x-2">
