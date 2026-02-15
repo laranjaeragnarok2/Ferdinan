@@ -19,12 +19,12 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-white/[0.05] bg-black/[0.01] backdrop-blur-2xl">
       <div className="flex h-20 items-center justify-between px-4 sm:px-6 lg:px-12">
-        <Link href="/" className="flex items-center space-x-3 group" aria-label="Ferdinan-MSP.Group Home">
+        <Link href="/" className="flex items-center space-x-3 group" aria-label="Ferdinan-MSP Home">
           <div className="transition-transform group-hover:scale-110 duration-500">
             <GrowthIcon />
           </div>
           <span className="font-bold text-2xl font-headline tracking-tighter text-luxury-gold drop-shadow-[0_0_15px_rgba(212,175,55,0.1)]">
-            Ferdinan
+            Ferdinan-MSP
           </span>
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-xs font-semibold tracking-widest uppercase">

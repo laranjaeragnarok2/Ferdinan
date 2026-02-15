@@ -98,7 +98,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                             ))}
                         </div>
 
-                        <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-luxury-gold drop-shadow-[0_0_20px_rgba(212,175,55,0.1)] font-headline">
                             {post.title}
                         </h1>
 
