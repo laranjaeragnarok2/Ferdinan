@@ -24,7 +24,8 @@ export default function HeroSection() {
       {heroBackgroundImage && (
         <Image
           src={heroBackgroundImage.imageUrl}
-          alt={heroBackgroundImage.description}
+          alt="Silas Ferdinan - Arquiteto de Integridade e Liderança em Growth do Grupo Ferdinan-MSP"
+          title="Ferdinan-MSP: Soberania e Integridade Digital"
           fill
           sizes="100vw"
           quality={80}

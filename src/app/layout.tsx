@@ -136,6 +136,26 @@ export default function RootLayout({
             },
             {
               "@context": "https://schema.org",
+              "@type": "VideoObject",
+              "name": "Soberania e Integridade Digital com Silas Ferdinan",
+              "description": "Uma visão profunda sobre a arquitetura de crescimento e integridade do Grupo Ferdinan-MSP.",
+              "thumbnailUrl": [
+                "https://www.ferdinan-msp.group/video-thumbnail.jpg"
+              ],
+              "uploadDate": "2026-02-14T08:00:00+08:00",
+              "duration": "PT0M59S",
+              "embedUrl": "https://www.youtube.com/embed/rvOyQfVOk60",
+              "publisher": {
+                "@type": "Organization",
+                "name": "Ferdinan-MSP",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://www.ferdinan-msp.group/favicon-32x32.png"
+                }
+              }
+            },
+            {
+              "@context": "https://schema.org",
               "@type": "FAQPage",
               "mainEntity": [
                 {
