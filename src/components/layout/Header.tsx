@@ -17,23 +17,22 @@ export default function Header() {
   )}`;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-transparent backdrop-blur-sm">
-      <div className="flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center space-x-2" aria-label="Ferdinan-MSP.Group Home">
-          <GrowthIcon />
-          <span className="font-bold text-xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600">
-            Ferdinan-MSP.Group
+    <header className="sticky top-0 z-50 w-full border-b border-white/[0.05] bg-black/[0.01] backdrop-blur-2xl">
+      <div className="flex h-20 items-center justify-between px-4 sm:px-6 lg:px-12">
+        <Link href="/" className="flex items-center space-x-3 group" aria-label="Ferdinan-MSP.Group Home">
+          <div className="transition-transform group-hover:scale-110 duration-500">
+            <GrowthIcon />
+          </div>
+          <span className="font-bold text-2xl font-headline tracking-tighter text-luxury-gold drop-shadow-[0_0_15px_rgba(212,175,55,0.1)]">
+            Ferdinan
           </span>
         </Link>
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-          <Link href="/#pain-thesis" className="text-slate-300 hover:text-white">O Problema</Link>
-          <Link href="/#process" className="text-slate-300 hover:text-white">Nosso Processo</Link>
-          <Link href="/#solutions" className="text-slate-300 hover:text-white">Soluções</Link>
-          <Link href="/#social-proof" className="text-slate-300 hover:text-white">Depoimentos</Link>
-          <Link href="/blog" className="text-slate-300 hover:text-white">Blog</Link>
-          <Link href="/#contact" className="text-slate-300 hover:text-white">Contato</Link>
-
-          {/* Admin Link Removed temporarily */}
+        <nav className="hidden md:flex items-center gap-8 text-xs font-semibold tracking-widest uppercase">
+          <Link href="/#pain-thesis" className="text-white/40 hover:text-primary transition-colors">Problema</Link>
+          <Link href="/#process" className="text-white/40 hover:text-primary transition-colors">Processo</Link>
+          <Link href="/#solutions" className="text-white/40 hover:text-primary transition-colors">Soluções</Link>
+          <Link href="/blog" className="text-white/40 hover:text-primary transition-colors">Briefing</Link>
+          <Link href="/#contact" className="text-white/40 hover:text-primary transition-colors">Contato</Link>
         </nav>
         <nav className="hidden md:flex items-center gap-4">
           <a
@@ -42,8 +41,8 @@ export default function Header() {
             rel="noopener noreferrer"
             aria-label="Solicitar consultoria via WhatsApp"
           >
-            <Button className="bg-gradient-to-r from-amber-500 to-orange-600 text-black font-bold btn-gradient border-amber-500 hover:brightness-110">
-              Solicitar uma Consultoria
+            <Button className="bg-white text-black font-bold tracking-tight rounded-none px-8 h-11 border border-white/20 hover:bg-primary hover:text-black transition-all duration-500">
+              SOLICITAR ACESSO
             </Button>
           </a>
         </nav>

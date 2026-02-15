@@ -36,27 +36,27 @@ export default function HeroSection() {
       )}
       <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-background"></div>
       <div className="container relative z-10 mx-auto px-4 py-24 text-center md:py-40">
-        <div className="mb-6 inline-flex items-center rounded-full border border-orange-500/30 bg-orange-500/10 px-3 py-1 text-sm font-medium text-orange-400 backdrop-blur-sm">
-          <span className="mr-2 inline-flex h-2 w-2 animate-pulse rounded-full bg-orange-500"></span>
+        <div className="mb-6 inline-flex items-center rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 text-xs font-semibold tracking-widest text-primary uppercase backdrop-blur-md">
+          <span className="mr-2 inline-flex h-1.5 w-1.5 animate-pulse rounded-full bg-primary shadow-[0_0_10px_#D4AF37]"></span>
           Consultoria de Alta Performance
         </div>
 
-        <h1 className="font-headline text-5xl font-extrabold tracking-tight text-white md:text-7xl lg:text-8xl mb-8">
+        <h1 className="font-headline text-5xl font-bold tracking-tighter text-white md:text-8xl lg:text-9xl mb-8">
           Insights para <br />
-          <span className="bg-gradient-to-r from-orange-400 via-amber-500 to-orange-600 bg-clip-text text-transparent">
-            Alta Performance
+          <span className="text-luxury-gold drop-shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+            Elite Digital
           </span>
         </h1>
 
-        <p className="mx-auto mt-8 max-w-2xl text-xl text-slate-300 leading-relaxed">
-          Pare de queimar capital com estratégias que não escalam. Implementamos processos de <span className="text-white font-semibold underline decoration-orange-500/50 underline-offset-4">Growth e Gestão</span> focados em ROI real e previsibilidade.
+        <p className="mx-auto mt-8 max-w-2xl text-lg md:text-xl text-white/60 leading-relaxed font-light">
+          Pare de queimar capital com estratégias que não escalam. Implementamos processos de <span className="text-white font-medium border-b border-primary/50">Growth e Gestão</span> focados em ROI real e soberania de mercado.
         </p>
 
-        <div className="mt-12 flex flex-col items-center justify-center gap-6">
+        <div className="mt-16 flex flex-col items-center justify-center gap-6">
           <Link href="#contact" passHref aria-label="Solicitar análise do meu negócio">
             <Button
               size="lg"
-              className="h-14 px-10 bg-orange-600 text-white font-bold text-lg transition-all duration-300 transform hover:scale-105 hover:bg-orange-700 shadow-[0_0_25px_rgba(234,88,12,0.3)] rounded-full"
+              className="h-16 px-12 bg-white text-black font-bold text-lg transition-all duration-500 transform hover:scale-105 hover:bg-primary hover:text-black shadow-[0_0_40px_rgba(255,255,255,0.1)] rounded-none border border-white/20"
             >
               Agendar Análise Estratégica
             </Button>
