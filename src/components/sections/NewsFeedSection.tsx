@@ -26,36 +26,23 @@ interface NewsItem {
   };
 }
 
+const premiumBusinessPhotos = [
+  'photo-1460925895917-afdab827c52f', // Gráficos e Laptop
+  'photo-1486406146926-c627a92ad1ab', // Arquitetura Corporativa
+  'photo-1497366216548-37526070297c', // Escritório Moderno
+  'photo-1507679799987-c7377ec58699', // Business Profissional
+  'photo-1553729459-efe14ef6055d', // Business Concept
+  'photo-1542744173-8e7e53415bb0', // Estratégia
+  'photo-1519389950473-47ba027788c0', // Tecnologia e Trabalho
+  'photo-1551288049-bbbda50a137e', // Análise de Dados
+  'photo-1526628953301-3e589a6a8b74'  // Mercado Financeiro
+];
+
 const getNewsImages = (item: NewsItem, index: number) => {
-  // 1. Procurar imagem real do Google News (geralmente na descrição)
-  if (item.description) {
-    const imgMatch = item.description.match(/<img[^>]+src="([^">]+)"/);
-    if (imgMatch && imgMatch[1]) {
-      let url = imgMatch[1];
-      if (url.startsWith('//')) url = `https:${url}`;
-      return url;
-    }
-  }
-
-  // 2. Verificar se o RSS2JSON extraiu algum outro campo
-  if (item.thumbnail && item.thumbnail.length > 0) return item.thumbnail;
-  if (item.enclosure?.link && item.enclosure.link.includes('http')) return item.enclosure.link;
-
-  // 3. Fallback Premium: Galeria Curada da Unsplash (Totalmente Grátis e Sem Limites)
-  // Usamos uma lista de IDs de fotos de alta qualidade com temática de business/growth
-  const premiumBusinessPhotos = [
-    'photo-1460925895917-afdab827c52f', // Gráficos e Laptop
-    'photo-1486406146926-c627a92ad1ab', // Arquitetura Corporativa
-    'photo-1497366216548-37526070297c', // Escritório Moderno
-    'photo-1507679799987-c7377ec58699', // Business Profissional
-    'photo-1553729459-efe14ef6055d', // Business Concept
-    'photo-1542744173-8e7e53415bb0', // Estratégia
-    'photo-1519389950473-47ba027788c0', // Tecnologia e Trabalho
-    'photo-1551288049-bbbda50a137e', // Análise de Dados
-    'photo-1526628953301-3e589a6a8b74'  // Mercado Financeiro
-  ];
-
-  // Escolhe uma imagem da galeria baseada no índice do item para não repetir muito
+  // 1. Prioridade Soberana: Usar imagens locais ou fallback garantido da Unsplash
+  // O Google News RSS frequentemente envia imagens que bloqueiam hotlinking (403)
+  // Para evitar imagens quebradas, usamos a galeria premium da Unsplash por padrão.
+  
   const photoId = premiumBusinessPhotos[index % premiumBusinessPhotos.length];
   return `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=800&q=80`;
 };
@@ -64,20 +51,6 @@ const NewsFeedSection = () => {
   const [news, setNews] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  // Fallback definitivo caso qualquer imagem falhe no carregamento
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    const target = e.target as HTMLImageElement;
-    const fallbacks = [
-      'photo-1486406146926-c627a92ad1ab',
-      'photo-1497366216548-37526070297c',
-      'photo-1507679799987-c7377ec58699',
-      'photo-1454165833767-171f675b33d0',
-      'photo-1517245386807-bb43f82c33c4'
-    ];
-    const randomId = fallbacks[Math.floor(Math.random() * fallbacks.length)];
-    target.src = `https://images.unsplash.com/${randomId}?auto=format&fit=crop&w=800&q=80`;
-  };
 
   useEffect(() => {
     const fetchNews = async () => {
@@ -167,11 +140,8 @@ const NewsFeedSection = () => {
                               src={imageUrl}
                               alt={item.title}
                               fill
+                              unoptimized={true}
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                              onLoadingComplete={(img) => {
-                                // Fallback logic is harder with <Image />, 
-                                // but Next.js usually handles failures.
-                              }}
                               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
