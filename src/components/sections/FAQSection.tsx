@@ -32,8 +32,8 @@ const faqs = [
 
 export default function FAQSection() {
     return (
-        <section id="faq" className="py-16 sm:py-24 bg-background">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+        <section id="faq" className="py-16 sm:py-24 bg-background bg-sovereign-arabesque overflow-hidden">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl relative z-10">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl font-bold md:text-4xl font-headline text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600 mb-4">
                         Perguntas Frequentes
