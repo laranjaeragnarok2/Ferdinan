@@ -1,6 +1,6 @@
 {
     "functions": {
-        "src/app/api/blog/upload/route.ts": {
+        "src/app/api/send-lead/route.ts": {
             "maxDuration": 60
         }
     }
