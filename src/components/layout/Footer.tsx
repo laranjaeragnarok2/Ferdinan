@@ -38,61 +38,61 @@ export default function Footer() {
       </div>
 
       {/* Barra de Certificação de Elite */}
-      <div className="border-t border-border/40 py-10 bg-black/40">
+      <div className="border-t border-border/40 py-12 bg-black/40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-10 gap-x-6 items-center opacity-30 hover:opacity-100 transition-opacity duration-700 grayscale hover:grayscale-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-y-12 gap-x-8 items-center opacity-30 hover:opacity-100 transition-opacity duration-700 grayscale hover:grayscale-0">
                 
                 {/* 1. SSL */}
-                <div className="flex items-center gap-2 group justify-center lg:justify-start">
-                    <Lock className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+                <div className="flex items-center gap-3 group justify-center lg:justify-start">
+                    <Lock className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
                     <div className="flex flex-col">
-                        <span className="text-[9px] font-bold uppercase tracking-widest text-white leading-none">SSL Secure</span>
-                        <span className="text-[7px] font-mono text-primary/70 uppercase tracking-tighter mt-1">AES-256 BIT ENCRYPT</span>
+                        <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">SSL Secure</span>
+                        <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">AES-256 BIT ENCRYPT</span>
                     </div>
                 </div>
                 
                 {/* 2. Safe Browsing */}
-                <div className="flex items-center gap-2 group justify-center lg:justify-start">
-                    <ShieldCheck className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+                <div className="flex items-center gap-3 group justify-center lg:justify-start">
+                    <ShieldCheck className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
                     <div className="flex flex-col">
-                        <span className="text-[9px] font-bold uppercase tracking-widest text-white leading-none">Safe Browsing</span>
-                        <span className="text-[7px] font-mono text-primary/70 uppercase tracking-tighter mt-1">GOOGLE VERIFIED</span>
+                        <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">Safe Browsing</span>
+                        <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">GOOGLE VERIFIED</span>
                     </div>
                 </div>
 
                 {/* 3. LGPD */}
-                <div className="flex items-center gap-2 group justify-center lg:justify-start">
-                    <Database className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+                <div className="flex items-center gap-3 group justify-center lg:justify-start">
+                    <Database className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
                     <div className="flex flex-col">
-                        <span className="text-[9px] font-bold uppercase tracking-widest text-white leading-none">Sovereign Data</span>
-                        <span className="text-[7px] font-mono text-primary/70 uppercase tracking-tighter mt-1">LGPD COMPLIANT</span>
+                        <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">Sovereign Data</span>
+                        <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">LGPD COMPLIANT</span>
                     </div>
                 </div>
 
                 {/* 4. Google Cloud/Firebase */}
-                <div className="flex items-center gap-2 group justify-center lg:justify-start">
-                    <Cloud className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+                <div className="flex items-center gap-3 group justify-center lg:justify-start">
+                    <Cloud className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
                     <div className="flex flex-col">
-                        <span className="text-[9px] font-bold uppercase tracking-widest text-white leading-none">Infrastructure</span>
-                        <span className="text-[7px] font-mono text-primary/70 uppercase tracking-tighter mt-1">GOOGLE CLOUD / FIREBASE</span>
+                        <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">Infrastructure</span>
+                        <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">GOOGLE CLOUD / FIREBASE</span>
                     </div>
                 </div>
 
                 {/* 5. Skarner Engine */}
-                <div className="flex items-center gap-2 group justify-center lg:justify-start">
-                    <Fingerprint className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+                <div className="flex items-center gap-3 group justify-center lg:justify-start">
+                    <Fingerprint className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
                     <div className="flex flex-col">
-                        <span className="text-[9px] font-bold uppercase tracking-widest text-white leading-none">Skarner Audit</span>
-                        <span className="text-[7px] font-mono text-primary/70 uppercase tracking-tighter mt-1">SOVEREIGN VERIFIED</span>
+                        <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">Skarner Audit</span>
+                        <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">SOVEREIGN VERIFIED</span>
                     </div>
                 </div>
 
                 {/* 6. Kyber-1024 */}
-                <div className="flex items-center gap-2 group justify-center lg:justify-start">
-                    <Cpu className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+                <div className="flex items-center gap-3 group justify-center lg:justify-start">
+                    <Cpu className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
                     <div className="flex flex-col">
-                        <span className="text-[9px] font-bold uppercase tracking-widest text-white leading-none">Security Core</span>
-                        <span className="text-[7px] font-mono text-primary/70 uppercase tracking-tighter mt-1">KYBER-1024 QUANTUM-READY</span>
+                        <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">Security Core</span>
+                        <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">KYBER-1024 QUANTUM-READY</span>
                     </div>
                 </div>
 
