@@ -4,14 +4,14 @@ import { getPosts } from '@/lib/mdx';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const baseUrl = 'https://www.ferdinan-msp.group';
 
-    // Agora busca posts locais (.mdx) dinamicamente
+    // Buscar posts do blog dinamicamente do Sanity
     const posts = await getPosts();
     
     const blogPostsEntries: MetadataRoute.Sitemap = posts.map((post) => ({
         url: `${baseUrl}/blog/${post.slug}`,
         lastModified: new Date(post.updatedAt || post.publishedAt),
         changeFrequency: 'weekly',
-        priority: 0.7, // Aumentada prioridade de conteúdo dinâmico
+        priority: 0.6,
     }));
 
     const staticEntries: MetadataRoute.Sitemap = [

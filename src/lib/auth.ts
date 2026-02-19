@@ -1,10 +1,6 @@
 import { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
-
-// Auditoria local silenciosa (Removida dependência de Firebase)
-const logAuditLocal = (action: string, email: string, level: string, meta: any) => {
-    console.log(`[AUDIT_LOG][${level}] ${action} for ${email}`, meta);
-};
+import { logAuditAction } from './audit';
 
 export const authOptions: NextAuthOptions = {
     providers: [
@@ -15,13 +11,14 @@ export const authOptions: NextAuthOptions = {
     ],
     callbacks: {
         async signIn({ user }) {
+            // Permitir múltiplos emails de admin separados por vírgula
             const adminEmails = (process.env.ADMIN_EMAIL || '').split(',').map(e => e.trim().toLowerCase());
             const isAllowed = !!user.email && adminEmails.includes(user.email.toLowerCase());
 
             if (isAllowed) {
-                logAuditLocal('ADMIN_SIGN_IN_SUCCESS', user.email!, 'INFO', { name: user.name });
+                await logAuditAction('ADMIN_SIGN_IN_SUCCESS', user.email!, 'INFO', { name: user.name });
             } else {
-                logAuditLocal('ADMIN_SIGN_IN_ATTEMPT', user.email || 'unknown', 'SECURITY', { 
+                await logAuditAction('ADMIN_SIGN_IN_ATTEMPT', user.email || 'unknown', 'SECURITY', { 
                     attemptedEmail: user.email,
                     status: 'BLOCKED'
                 });

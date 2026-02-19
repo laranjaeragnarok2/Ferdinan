@@ -1,16 +1,42 @@
-// Arquivo neutralizado para remoção de Firebase
-// Mantendo a compatibilidade com as chamadas do sistema de Propostas
-export const saveProposal = async (data: any) => {
-    console.log("[SOVEREIGN_MODE] Mock saveProposal:", data);
-    return { success: true, id: 'mock-id' };
-};
+import {
+    collection,
+    doc,
+    getDoc,
+    getDocs,
+    setDoc,
+    updateDoc,
+    query,
+    orderBy,
+    limit,
+} from 'firebase/firestore';
+import { db } from './firebase';
+import { ProposalData } from '@/types/proposal';
 
-export const getProposal = async (id: string) => {
-    console.log("[SOVEREIGN_MODE] Mock getProposal for ID:", id);
-    return null;
-};
+const PROPOSALS_COLLECTION = 'proposals';
 
-export const submitProposal = async (data: any) => {
-    console.log("[SOVEREIGN_MODE] Mock submitProposal:", data);
-    return { success: true };
-};
+// Salvar ou atualizar proposta
+export async function saveProposal(proposal: ProposalData): Promise<string> {
+    const id = proposal.id || 'default-proposal';
+    const docRef = doc(db, PROPOSALS_COLLECTION, id);
+
+    const dataToSave = {
+        ...proposal,
+        id,
+        updatedAt: new Date().toISOString(),
+    };
+
+    await setDoc(docRef, dataToSave, { merge: true });
+    return id;
+}
+
+// Buscar proposta por ID
+export async function getProposal(id: string = 'default-proposal'): Promise<ProposalData | null> {
+    const docRef = doc(db, PROPOSALS_COLLECTION, id);
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+        return null;
+    }
+
+    return docSnap.data() as ProposalData;
+}
