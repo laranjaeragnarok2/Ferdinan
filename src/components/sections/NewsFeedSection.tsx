@@ -26,26 +26,18 @@ interface NewsItem {
   };
 }
 
+// Galeria de IDs estáveis da Unsplash - Business & Tech
 const premiumBusinessPhotos = [
-  'photo-1460925895917-afdab827c52f', // Gráficos e Laptop
-  'photo-1486406146926-c627a92ad1ab', // Arquitetura Corporativa
-  'photo-1497366216548-37526070297c', // Escritório Moderno
-  'photo-1507679799987-c7377ec58699', // Business Profissional
-  'photo-1553729459-efe14ef6055d', // Business Concept
-  'photo-1542744173-8e7e53415bb0', // Estratégia
-  'photo-1519389950473-47ba027788c0', // Tecnologia e Trabalho
-  'photo-1551288049-bbbda50a137e', // Análise de Dados
-  'photo-1526628953301-3e589a6a8b74'  // Mercado Financeiro
+  'photo-1460925895917-afdab827c52f',
+  'photo-1486406146926-c627a92ad1ab',
+  'photo-1497366216548-37526070297c',
+  'photo-1507679799987-c7377ec58699',
+  'photo-1553729459-efe14ef6055d',
+  'photo-1542744173-8e7e53415bb0',
+  'photo-1519389950473-47ba027788c0',
+  'photo-1551288049-bbbda50a137e',
+  'photo-1526628953301-3e589a6a8b74'
 ];
-
-const getNewsImages = (item: NewsItem, index: number) => {
-  // 1. Prioridade Soberana: Usar imagens locais ou fallback garantido da Unsplash
-  // O Google News RSS frequentemente envia imagens que bloqueiam hotlinking (403)
-  // Para evitar imagens quebradas, usamos a galeria premium da Unsplash por padrão.
-  
-  const photoId = premiumBusinessPhotos[index % premiumBusinessPhotos.length];
-  return `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=800&q=80`;
-};
 
 const NewsFeedSection = () => {
   const [news, setNews] = useState<NewsItem[]>([]);
@@ -78,7 +70,6 @@ const NewsFeedSection = () => {
 
   return (
     <section id="news" className="py-24 bg-background relative overflow-hidden">
-      {/* Abstract Background */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-[-10%] left-[-5%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-5%] w-[40%] h-[40%] bg-orange-600/5 rounded-full blur-[120px]" />
@@ -130,18 +121,19 @@ const NewsFeedSection = () => {
             <>
               <CarouselContent className="-ml-6">
                 {news.map((item, index) => {
-                  const imageUrl = getNewsImages(item, index);
+                  // Link direto da Unsplash para evitar 403 do Google News
+                  const unsplashId = premiumBusinessPhotos[index % premiumBusinessPhotos.length];
+                  const imageUrl = `https://images.unsplash.com/${unsplashId}?auto=format&fit=crop&q=80&w=800`;
+                  
                   return (
                     <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/3 xl:basis-1/4">
                       <a href={item.link} target="_blank" rel="noopener noreferrer" className="h-full block group">
                         <Card className="flex flex-col h-full bg-card/30 backdrop-blur-md border-muted/30 hover:border-primary/50 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)] cursor-pointer group rounded-2xl overflow-hidden">
-                          <div className="relative h-48 w-full overflow-hidden">
-                            <Image
+                          <div className="relative h-48 w-full overflow-hidden bg-muted">
+                            <img
                               src={imageUrl}
                               alt={item.title}
-                              fill
-                              unoptimized={true}
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                              loading="lazy"
                               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent" />
@@ -175,7 +167,6 @@ const NewsFeedSection = () => {
                   );
                 })}
               </CarouselContent>
-              {/* Mobile Nav */}
               <div className="flex justify-center gap-4 mt-8 md:hidden">
                 <CarouselPrevious className="static translate-y-0" />
                 <CarouselNext className="static translate-y-0" />

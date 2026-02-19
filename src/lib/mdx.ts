@@ -6,7 +6,6 @@ import { client } from '@/sanity/lib/client';
 
 const BLOG_PATH = path.join(process.cwd(), 'src/content/blog');
 
-// Função auxiliar para converter post do Sanity para o formato unificado
 function mapSanityPost(post: any): BlogPost {
     return {
         id: post._id,
@@ -26,34 +25,38 @@ function mapSanityPost(post: any): BlogPost {
 export async function getPosts(): Promise<BlogPost[]> {
     let allPosts: BlogPost[] = [];
 
-    // 1. Tentar carregar posts locais (.mdx) - PRIORIDADE SOBERANA
-    if (fs.existsSync(BLOG_PATH)) {
-        const files = fs.readdirSync(BLOG_PATH).filter(f => f.endsWith('.mdx'));
-        const localPosts = files.map((fileName) => {
-            const fullPath = path.join(BLOG_PATH, fileName);
-            const fileContents = fs.readFileSync(fullPath, 'utf8');
-            const { data, content } = matter(fileContents);
-            const slug = fileName.replace(/\.mdx$/, '');
+    // 1. Posts Locais (.mdx)
+    try {
+        if (fs.existsSync(BLOG_PATH)) {
+            const files = fs.readdirSync(BLOG_PATH).filter(f => f.endsWith('.mdx'));
+            const localPosts = files.map((fileName) => {
+                const fullPath = path.join(BLOG_PATH, fileName);
+                const fileContents = fs.readFileSync(fullPath, 'utf8');
+                const { data, content } = matter(fileContents);
+                const slug = fileName.replace(/\.mdx$/, '');
 
-            return {
-                id: slug,
-                slug: slug,
-                title: data.title || 'Untitled',
-                description: data.description || '',
-                content: content,
-                coverImage: data.coverImage || '',
-                author: data.author || { name: 'Admin' },
-                tags: data.tags || [],
-                publishedAt: data.publishedAt || new Date().toISOString(),
-                updatedAt: data.updatedAt || new Date().toISOString(),
-                published: true,
-                source: 'local'
-            } as BlogPost;
-        });
-        allPosts = [...localPosts];
+                return {
+                    id: slug,
+                    slug: slug,
+                    title: data.title || 'Untitled',
+                    description: data.description || '',
+                    content: content,
+                    coverImage: data.coverImage || '',
+                    author: data.author || { name: 'Admin' },
+                    tags: data.tags || [],
+                    publishedAt: data.publishedAt || new Date().toISOString(),
+                    updatedAt: data.updatedAt || new Date().toISOString(),
+                    published: true,
+                    source: 'local'
+                } as BlogPost;
+            });
+            allPosts = [...localPosts];
+        }
+    } catch (e) {
+        console.error("Erro ao ler posts locais:", e);
     }
 
-    // 2. Tentar carregar posts do Sanity (FALLBACK)
+    // 2. Fallback Sanity
     try {
         const query = `*[_type == "post"] | order(publishedAt desc) {
             _id,
@@ -69,7 +72,6 @@ export async function getPosts(): Promise<BlogPost[]> {
         }`;
         const sanityPosts = await client.fetch(query);
         
-        // Adicionar apenas posts do Sanity que NÃO existam localmente (pelo slug)
         const localSlugs = new Set(allPosts.map(p => p.slug));
         const missingPosts = sanityPosts
             .map(mapSanityPost)
@@ -77,41 +79,24 @@ export async function getPosts(): Promise<BlogPost[]> {
             
         allPosts = [...allPosts, ...missingPosts];
     } catch (e) {
-        console.warn("[SOVEREIGN_FALLBACK] Falha ao conectar ao Sanity. Usando apenas posts locais.");
+        console.warn("[SOVEREIGN_FALLBACK] Sanity offline.");
     }
 
     return allPosts.sort((a, b) => (new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()));
 }
 
 export async function getPostBySlug(slug: string): Promise<{ data: BlogPost; content: string } | null> {
-    // 1. Tentar Local primeiro
+    // 1. Local
     try {
         const fullPath = path.join(BLOG_PATH, `${slug}.mdx`);
         if (fs.existsSync(fullPath)) {
             const fileContents = fs.readFileSync(fullPath, 'utf8');
             const { data, content } = matter(fileContents);
-
-            const blogPost: BlogPost = {
-                id: slug,
-                slug: slug,
-                title: data.title || 'Untitled',
-                description: data.description || '',
-                content: content,
-                coverImage: data.coverImage || '',
-                author: data.author || { name: 'Admin' },
-                tags: data.tags || [],
-                publishedAt: data.publishedAt || new Date().toISOString(),
-                updatedAt: data.updatedAt || new Date().toISOString(),
-                published: true,
-            };
-
-            return { data: blogPost, content: content };
+            return { data: { ...mapSanityPost({}), ...data, slug, id: slug }, content };
         }
-    } catch (e) {
-        // Segue para o Sanity se falhar local
-    }
+    } catch (e) {}
 
-    // 2. Fallback para Sanity
+    // 2. Sanity
     try {
         const query = `*[_type == "post" && slug.current == $slug][0] {
             _id,
@@ -130,9 +115,7 @@ export async function getPostBySlug(slug: string): Promise<{ data: BlogPost; con
             const blogPost = mapSanityPost(post);
             return { data: blogPost, content: blogPost.content };
         }
-    } catch (e) {
-        return null;
-    }
+    } catch (e) {}
 
     return null;
 }
