@@ -5,11 +5,16 @@ import { z } from "zod";
 import nodemailer from 'nodemailer';
 import { sendDiscordNotification } from '@/utils/discord';
 
-const formSchema = z.object({
-  name: z.string().min(2, 'O nome deve ter pelo menos 2 caracteres.'),
+export const formSchema = z.object({
+  firstName: z.string().min(2, 'O nome deve ter pelo menos 2 caracteres.'),
+  lastName: z.string().min(2, 'O sobrenome deve ter pelo menos 2 caracteres.'),
   email: z.string().email('Por favor, insira um e-mail válido.'),
-  whatsapp: z.string().min(10, 'Por favor, insira um número de WhatsApp válido.'),
-  challenge: z.string().nonempty('Por favor, selecione um desafio.'),
+  countryCode: z.string().min(1, 'Selecione o código do país.'),
+  phone: z.string().min(8, 'Por favor, insira um número de telefone válido.'),
+  challenge: z.string().min(1, 'Por favor, selecione um desafio.'),
+  referral: z.string().min(1, 'Por favor, selecione como nos encontrou.'),
+  experience: z.string().min(1, 'Por favor, selecione seu nível de experiência.'),
+  acceptNotifications: z.boolean().default(false),
 });
 
 export type LeadFormData = z.infer<typeof formSchema>;
@@ -26,19 +31,24 @@ export async function submitLead(data: LeadFormData) {
       },
     });
 
+    const fullPhone = `${data.countryCode} ${data.phone}`;
+
     // 1. E-mail de Notificação para VOCÊ (Dono)
     const notificationMail = {
       from: `"Ferdinan-MSP.Group Leads" <${process.env.SMTP_USER}>`,
       to: process.env.SMTP_USER,
-      subject: `🔥 Novo Lead: ${data.name} (Análise de Negócio)`,
+      subject: `🔥 Novo Lead: ${data.firstName} ${data.lastName} (${data.challenge})`,
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
           <h2 style="color: #ea580c;">Nova Solicitação de Análise</h2>
           <hr/>
-          <p><strong>Nome:</strong> ${data.name}</p>
+          <p><strong>Nome:</strong> ${data.firstName} ${data.lastName}</p>
           <p><strong>Email:</strong> ${data.email}</p>
-          <p><strong>WhatsApp:</strong> ${data.whatsapp}</p>
+          <p><strong>Telefone:</strong> ${fullPhone}</p>
           <p><strong>Desafio Principal:</strong> ${data.challenge}</p>
+          <p><strong>Origem:</strong> ${data.referral}</p>
+          <p><strong>Experiência:</strong> ${data.experience}</p>
+          <p><strong>Aceita Notificações:</strong> ${data.acceptNotifications ? 'Sim' : 'Não'}</p>
           <hr/>
           <p style="font-size: 12px; color: #666;">Recebido via Formulário Principal do Site.</p>
         </div>
@@ -52,7 +62,7 @@ export async function submitLead(data: LeadFormData) {
       subject: 'Recebemos sua solicitação de Análise Estratégica',
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #333; line-height: 1.6;">
-          <h2 style="color: #ea580c;">Olá, ${data.name.split(' ')[0]}.</h2>
+          <h2 style="color: #ea580c;">Olá, ${data.firstName}.</h2>
           
           <p>Recebi pessoalmente a sua solicitação de análise para o seu negócio.</p>
           
@@ -69,17 +79,18 @@ export async function submitLead(data: LeadFormData) {
 
           <br/>
           <p>Atenciosamente,</p>
-          <p><strong>Ferdinan</strong><br>
+          <p><strong>Silas Ferdinan</strong><br>
           <span style="font-size: 12px; color: #666;">Growth & Gestão | Ferdinan-MSP.Group</span></p>
         </div>
       `,
     };
 
     // Enviar ambos os e-mails e notificação Discord
+    // Nota: A função sendDiscordNotification pode precisar de ajuste para o novo formato de dados
     await Promise.allSettled([
       transporter.sendMail(notificationMail),
       transporter.sendMail(confirmationMail),
-      sendDiscordNotification(data, 'form')
+      sendDiscordNotification({ ...data, name: `${data.firstName} ${data.lastName}`, whatsapp: fullPhone }, 'form')
     ]);
 
     return { success: true, message: "Solicitação recebida com sucesso! Verifique seu e-mail." };
