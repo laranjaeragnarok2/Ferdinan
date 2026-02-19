@@ -12,16 +12,17 @@ const GlassCard = React.forwardRef<
     low: "bg-white/[0.01] backdrop-blur-sm border-white/5",
     medium: "bg-white/[0.03] backdrop-blur-xl border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]",
     high: "bg-white/[0.05] backdrop-blur-2xl border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.1)]",
-    vanguard: "bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-3xl border-white/10 shadow-[0_25px_80px_rgba(0,0,0,0.8),inset_0_1px_2px_rgba(255,255,255,0.1)]",
+    vanguard: "bg-gradient-to-br from-white/[0.05] to-transparent backdrop-blur-3xl border-primary/20 shadow-[0_25px_80px_rgba(0,0,0,0.8),inset_0_1px_2px_rgba(255,255,255,0.1)]",
   }
 
   return (
     <div
       ref={ref}
       className={cn(
-        "rounded-2xl border transition-all duration-500 group",
+        "rounded-2xl border transition-all duration-500 group relative overflow-hidden",
         intensities[intensity],
-        withGlow && "before:absolute before:inset-0 before:-z-10 before:bg-primary/5 before:blur-3xl before:opacity-0 before:transition-opacity hover:before:opacity-100",
+        "before:absolute before:inset-0 before:p-[1px] before:bg-gradient-to-tr before:from-primary/20 before:via-transparent before:to-primary/20 before:rounded-[inherit] before:-z-10 before:mask-[linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)] before:mask-composite-exclude",
+        withGlow && "after:absolute after:inset-0 after:-z-20 after:bg-primary/5 after:blur-3xl after:opacity-0 after:transition-opacity hover:after:opacity-100",
         className
       )}
       {...props}

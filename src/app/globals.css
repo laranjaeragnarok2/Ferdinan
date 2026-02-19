@@ -101,13 +101,13 @@
   }
 
   .audit-scan-overlay {
-    @apply absolute inset-0 opacity-0 transition-opacity duration-500 pointer-events-none overflow-hidden bg-black/40 backdrop-blur-[2px];
+    @apply absolute inset-0 opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden bg-black/20 backdrop-blur-[1px];
     background-image: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
   }
 
   .audit-code-text {
-    @apply absolute font-mono text-[8px] text-primary/40 whitespace-nowrap;
-    animation: scan-line 10s linear infinite;
+    @apply absolute font-mono text-[8px] text-primary/30 whitespace-nowrap;
+    animation: scan-line 12s linear infinite;
   }
 
   @keyframes scan-line {
@@ -116,12 +116,12 @@
     }
 
     to {
-      transform: translateY(1000%);
+      transform: translateY(1200%);
     }
   }
 
   .group:hover .audit-scan-overlay {
-    @apply opacity-100;
+    @apply opacity-80;
   }
 
   .ticker-item {

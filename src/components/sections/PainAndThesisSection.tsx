@@ -34,7 +34,7 @@ export default function PainAndThesisSection() {
                         title="Integridade e Domínio de Mercado"
                         width={600}
                         height={700}
-                        className="rounded-xl grayscale hover:grayscale-0 transition-all duration-700 object-cover"
+                        className="rounded-xl transition-all duration-700 object-cover"
                         data-ai-hint={painThesisImage.imageHint}
                     />
                 )}
