@@ -72,13 +72,13 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
-        'blink-glow': {
-          '0%, 100%': { 
-            'text-shadow': '0 0 5px rgba(212, 175, 55, 0.1), 0 0 10px rgba(212, 175, 55, 0.1)' 
-          },
-          '50%': { 
-            'text-shadow': '0 0 20px rgba(212, 175, 55, 0.5), 0 0 30px rgba(212, 175, 55, 0.2)' 
-          },
+        'sparkle': {
+          '0%, 100%': { opacity: '0', transform: 'scale(0) rotate(0deg)' },
+          '50%': { opacity: '1', transform: 'scale(1) rotate(180deg)' },
+        },
+        'gold-shimmer': {
+          '0%': { backgroundPosition: '-200% center' },
+          '100%': { backgroundPosition: '200% center' },
         },
         'accordion-down': {
           from: {
@@ -98,7 +98,8 @@ export default {
         },
       },
       animation: {
-        'blink-glow': 'blink-glow 3s ease-in-out infinite',
+        'sparkle': 'sparkle 2s ease-in-out infinite',
+        'gold-shimmer': 'gold-shimmer 5s linear infinite',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },

@@ -7,6 +7,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Star } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { MagneticButton } from '@/components/ui/MagneticButton';
+import React from 'react';
 
 const testimonialImages = [
   PlaceHolderImages.find((img) => img.id === 'testimonial-1'),
@@ -16,6 +17,20 @@ const testimonialImages = [
 
 const heroBackgroundImage = PlaceHolderImages.find(
   (img) => img.id === 'hero-background'
+);
+
+const Sparkle = ({ delay, top, left, size }: { delay: string, top: string, left: string, size: string }) => (
+  <span 
+    className="absolute animate-sparkle pointer-events-none text-luxury-gold opacity-0"
+    style={{ 
+      top, 
+      left, 
+      fontSize: size,
+      animationDelay: delay 
+    }}
+  >
+    ✦
+  </span>
 );
 
 export default function HeroSection() {
@@ -43,12 +58,22 @@ export default function HeroSection() {
           Consultoria de Alta Performance
         </div>
 
-        <h1 className="font-headline text-5xl font-bold tracking-tighter text-white md:text-8xl lg:text-9xl mb-8">
-          <span className="animate-blink-glow">Soberania & <br /></span>
-          <span className="text-luxury-gold drop-shadow-[0_0_30px_rgba(212,175,55,0.2)] animate-blink-glow">
-            Elite Digital
-          </span>
-        </h1>
+        <div className="relative inline-block">
+          {/* Estrelinhas de Ouro (Sparkles) */}
+          <Sparkle delay="0s" top="-20%" left="10%" size="20px" />
+          <Sparkle delay="0.5s" top="10%" left="-5%" size="15px" />
+          <Sparkle delay="1.2s" top="80%" left="95%" size="18px" />
+          <Sparkle delay="0.8s" top="95%" left="40%" size="12px" />
+          <Sparkle delay="1.5s" top="20%" left="105%" size="22px" />
+          <Sparkle delay="0.3s" top="-10%" left="70%" size="14px" />
+
+          <h1 className="font-headline text-5xl font-bold tracking-tighter text-white md:text-8xl lg:text-9xl mb-8">
+            Soberania & <br />
+            <span className="text-luxury-gold drop-shadow-[0_0_30px_rgba(212,175,55,0.2)] bg-gradient-to-r from-luxury-gold via-white to-luxury-gold bg-[length:200%_auto] animate-gold-shimmer bg-clip-text text-transparent">
+              Elite Digital
+            </span>
+          </h1>
+        </div>
 
         <p className="mx-auto mt-8 max-w-2xl text-lg md:text-xl text-white/60 leading-relaxed font-light">
           A autoridade definitiva em <span className="text-white font-medium border-b border-primary/50">Growth, Gestão & Compliance</span>. Liderados por Silas Ferdinan, arquitetamos a integridade algorítmica e o crescimento exponencial de marcas soberanas.
