@@ -64,7 +64,7 @@ export default function HeroSection() {
         <img 
           src="/arrow.webp" 
           alt="Role para baixo" 
-          className="w-32 h-auto mix-blend-screen"
+          className="w-32 h-auto mix-blend-screen filter contrast-[1.5] brightness-[1.1] grayscale-[0.2]"
         />
       </div>
 
