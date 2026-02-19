@@ -37,6 +37,15 @@ const Sparkle = ({ delay, top, left, size }: { delay: string, top: string, left:
 export default function HeroSection() {
   return (
     <section className="relative text-white overflow-hidden">
+      {/* Seta Animada com modo de mesclagem para remover fundo preto */}
+      <div className="absolute left-4 top-1/2 -translate-y-1/2 z-30 hidden lg:block pointer-events-none opacity-60">
+        <img 
+          src="/arrow.webp" 
+          alt="Role para baixo" 
+          className="w-32 h-auto mix-blend-screen"
+        />
+      </div>
+
       {heroBackgroundImage && (
         <Image
           src={heroBackgroundImage.imageUrl}
