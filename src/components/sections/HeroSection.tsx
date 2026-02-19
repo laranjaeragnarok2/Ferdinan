@@ -42,7 +42,6 @@ export default function HeroSection() {
       const scrollY = window.scrollY;
       const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = scrollY / windowHeight;
-      // Diminui de 1 até 0 conforme o scroll
       const newScale = Math.max(0, 1 - progress * 1.5); 
       setScrollScale(newScale);
     };
@@ -53,18 +52,18 @@ export default function HeroSection() {
 
   return (
     <section className="relative text-white overflow-hidden">
-      {/* Seta Animada com Escalonamento Dinâmico (Fixed para acompanhar o scroll) */}
+      {/* Seta Animada (GIF) com Efeitos de Elite para disfarçar qualidade */}
       <div 
-        className="fixed left-4 top-1/2 -translate-y-1/2 z-30 hidden lg:block pointer-events-none transition-all duration-100"
+        className="fixed left-2 top-1/2 -translate-y-1/2 z-30 hidden lg:block pointer-events-none transition-all duration-100"
         style={{ 
           transform: `translateY(-50%) scale(${scrollScale})`,
-          opacity: scrollScale * 0.6
+          opacity: scrollScale * 0.7
         }}
       >
         <img 
-          src="/arrow.webp" 
+          src="/arrow-anim.gif" 
           alt="Role para baixo" 
-          className="w-32 h-auto mix-blend-screen filter contrast-[1.5] brightness-[1.1] grayscale-[0.2]"
+          className="w-24 h-auto mix-blend-screen filter brightness-125 contrast-125 drop-shadow-[0_0_15px_rgba(212,175,55,0.4)] blur-[0.5px]"
         />
       </div>
 
