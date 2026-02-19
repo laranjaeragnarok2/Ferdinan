@@ -123,6 +123,14 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
+
+      {/* Incentivo de Rolagem Sutil */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 opacity-40 hover:opacity-100 transition-opacity duration-500">
+        <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-luxury-gold">Explorar</span>
+        <div className="w-[1px] h-12 bg-gradient-to-b from-luxury-gold to-transparent relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1/2 bg-white animate-scroll-down"></div>
+        </div>
+      </div>
     </section>
   );
 }

@@ -72,6 +72,11 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
+        'scroll-down': {
+          '0%': { transform: 'translateY(0)', opacity: '0' },
+          '50%': { opacity: '1' },
+          '100%': { transform: 'translateY(20px)', opacity: '0' },
+        },
         'sparkle': {
           '0%, 100%': { opacity: '0', transform: 'scale(0) rotate(0deg)' },
           '50%': { opacity: '1', transform: 'scale(1) rotate(180deg)' },
@@ -98,6 +103,7 @@ export default {
         },
       },
       animation: {
+        'scroll-down': 'scroll-down 2s ease-in-out infinite',
         'sparkle': 'sparkle 2s ease-in-out infinite',
         'gold-shimmer': 'gold-shimmer 5s linear infinite',
         'accordion-down': 'accordion-down 0.2s ease-out',
