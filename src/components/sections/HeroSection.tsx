@@ -21,12 +21,13 @@ const heroBackgroundImage = PlaceHolderImages.find(
 
 const Sparkle = ({ delay, top, left, size }: { delay: string, top: string, left: string, size: string }) => (
   <span 
-    className="absolute animate-sparkle pointer-events-none text-luxury-gold opacity-0"
+    className="absolute animate-sparkle pointer-events-none text-luxury-gold opacity-0 z-20"
     style={{ 
       top, 
       left, 
       fontSize: size,
-      animationDelay: delay 
+      animationDelay: delay,
+      filter: 'drop-shadow(0 0 10px rgba(212, 175, 55, 0.8))'
     }}
   >
     ✦
@@ -52,24 +53,25 @@ export default function HeroSection() {
         />
       )}
       <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-background"></div>
+      
       <div className="container relative z-10 mx-auto px-4 py-24 text-center md:py-40">
         <div className="mb-6 inline-flex items-center rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 text-xs font-semibold tracking-widest text-primary uppercase backdrop-blur-md">
           <span className="mr-2 inline-flex h-1.5 w-1.5 animate-pulse rounded-full bg-primary shadow-[0_0_10px_#D4AF37]"></span>
           Consultoria de Alta Performance
         </div>
 
-        <div className="relative inline-block">
-          {/* Estrelinhas de Ouro (Sparkles) */}
-          <Sparkle delay="0s" top="-20%" left="10%" size="20px" />
-          <Sparkle delay="0.5s" top="10%" left="-5%" size="15px" />
-          <Sparkle delay="1.2s" top="80%" left="95%" size="18px" />
-          <Sparkle delay="0.8s" top="95%" left="40%" size="12px" />
-          <Sparkle delay="1.5s" top="20%" left="105%" size="22px" />
-          <Sparkle delay="0.3s" top="-10%" left="70%" size="14px" />
+        <div className="relative max-w-fit mx-auto">
+          {/* Estrelinhas de Ouro Amplificadas e Alinhadas */}
+          <Sparkle delay="0s" top="-15%" left="5%" size="28px" />
+          <Sparkle delay="0.5s" top="20%" left="-10%" size="20px" />
+          <Sparkle delay="1.2s" top="70%" left="105%" size="24px" />
+          <Sparkle delay="0.8s" top="100%" left="50%" size="18px" />
+          <Sparkle delay="1.5s" top="10%" left="95%" size="30px" />
+          <Sparkle delay="0.3s" top="-5%" left="80%" size="22px" />
 
-          <h1 className="font-headline text-5xl font-bold tracking-tighter text-white md:text-8xl lg:text-9xl mb-8">
+          <h1 className="font-headline text-5xl font-bold tracking-tighter text-white md:text-8xl lg:text-9xl mb-8 leading-[1.1]">
             Soberania & <br />
-            <span className="text-luxury-gold drop-shadow-[0_0_30px_rgba(212,175,55,0.2)] bg-gradient-to-r from-luxury-gold via-white to-luxury-gold bg-[length:200%_auto] animate-gold-shimmer bg-clip-text text-transparent">
+            <span className="text-luxury-gold drop-shadow-[0_0_40px_rgba(212,175,55,0.4)] bg-gradient-to-r from-luxury-gold via-white to-luxury-gold bg-[length:200%_auto] animate-gold-shimmer bg-clip-text text-transparent">
               Elite Digital
             </span>
           </h1>
