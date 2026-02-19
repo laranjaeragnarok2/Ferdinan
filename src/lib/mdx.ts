@@ -8,16 +8,16 @@ const BLOG_PATH = path.join(process.cwd(), 'src/content/blog');
 
 function mapSanityPost(post: any): BlogPost {
     return {
-        id: post._id,
+        id: post._id || post.slug,
         slug: post.slug,
-        title: post.title,
+        title: post.title || 'Untitled',
         description: post.description || '',
         content: post.content || '',
         coverImage: post.coverImage || '',
         author: post.author || { name: 'Admin' },
         tags: post.tags || [],
         publishedAt: post.publishedAt || new Date().toISOString(),
-        updatedAt: post._updatedAt || new Date().toISOString(),
+        updatedAt: post._updatedAt || post.updatedAt || new Date().toISOString(),
         published: true,
     };
 }
@@ -45,7 +45,7 @@ export async function getPosts(): Promise<BlogPost[]> {
                     author: data.author || { name: 'Admin' },
                     tags: data.tags || [],
                     publishedAt: data.publishedAt || new Date().toISOString(),
-                    updatedAt: data.updatedAt || new Date().toISOString(),
+                    updatedAt: data.updatedAt || data.publishedAt || new Date().toISOString(),
                     published: true,
                     source: 'local'
                 } as BlogPost;
@@ -79,7 +79,7 @@ export async function getPosts(): Promise<BlogPost[]> {
             
         allPosts = [...allPosts, ...missingPosts];
     } catch (e) {
-        console.warn("[SOVEREIGN_FALLBACK] Sanity offline.");
+        console.warn("[SOVEREIGN_FALLBACK] Sanity offline ou nao configurado.");
     }
 
     return allPosts.sort((a, b) => (new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()));
@@ -92,7 +92,22 @@ export async function getPostBySlug(slug: string): Promise<{ data: BlogPost; con
         if (fs.existsSync(fullPath)) {
             const fileContents = fs.readFileSync(fullPath, 'utf8');
             const { data, content } = matter(fileContents);
-            return { data: { ...mapSanityPost({}), ...data, slug, id: slug }, content };
+            
+            const blogPost = {
+                id: slug,
+                slug: slug,
+                title: data.title || 'Untitled',
+                description: data.description || '',
+                content: content,
+                coverImage: data.coverImage || '',
+                author: data.author || { name: 'Admin' },
+                tags: data.tags || [],
+                publishedAt: data.publishedAt || new Date().toISOString(),
+                updatedAt: data.updatedAt || data.publishedAt || new Date().toISOString(),
+                published: true,
+            };
+            
+            return { data: blogPost, content };
         }
     } catch (e) {}
 
