@@ -3,7 +3,7 @@ import Footer from '@/components/layout/Footer';
 import { GlassCard, GlassContent } from '@/components/ui/glass-card';
 import { FadeInOnScroll } from '@/components/animations/FadeInOnScroll';
 
-export const 'metadata = {
+export const metadata = {
     title: 'Código de Ética & Integridade | Ferdinan-MSP.Group',
     description: 'Protocolo de soberania e transparência do Grupo Ferdinan-MSP.Group. Nossa constituição de valores e integridade digital.',
     robots: {
@@ -14,10 +14,10 @@ export const 'metadata = {
 
 export default function EthicsPage() {
     return (
-        <div className="flex flex-col min-h-screen bg-black">
+        <div className="flex flex-col min-h-screen bg-black bg-sovereign-arabesque overflow-hidden">
             <Header />
             <main className="flex-grow pt-32 pb-20 relative z-10">
-                <div className="container mx-auto px-4 max-w-4xl">
+                <div className="container mx-auto px-4 max-w-4xl relative z-10">
                     <FadeInOnScroll>
                         <h1 className="text-4xl md:text-6xl font-bold font-headline text-luxury-gold mb-12 tracking-tighter text-center">
                             Código de Ética <br/> & Integridade
