@@ -7,7 +7,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Star } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { MagneticButton } from '@/components/ui/MagneticButton';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const testimonialImages = [
   PlaceHolderImages.find((img) => img.id === 'testimonial-1'),
@@ -35,10 +35,32 @@ const Sparkle = ({ delay, top, left, size }: { delay: string, top: string, left:
 );
 
 export default function HeroSection() {
+  const [scrollScale, setScrollScale] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollY / windowHeight;
+      // Diminui de 1 até 0 conforme o scroll
+      const newScale = Math.max(0, 1 - progress * 1.5); 
+      setScrollScale(newScale);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section className="relative text-white overflow-hidden">
-      {/* Seta Animada com modo de mesclagem para remover fundo preto */}
-      <div className="absolute left-4 top-1/2 -translate-y-1/2 z-30 hidden lg:block pointer-events-none opacity-60">
+      {/* Seta Animada com Escalonamento Dinâmico (Fixed para acompanhar o scroll) */}
+      <div 
+        className="fixed left-4 top-1/2 -translate-y-1/2 z-30 hidden lg:block pointer-events-none transition-all duration-100"
+        style={{ 
+          transform: `translateY(-50%) scale(${scrollScale})`,
+          opacity: scrollScale * 0.6
+        }}
+      >
         <img 
           src="/arrow.webp" 
           alt="Role para baixo" 
