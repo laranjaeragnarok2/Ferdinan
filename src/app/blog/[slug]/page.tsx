@@ -68,7 +68,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                 src={post.coverImage}
                                 alt={post.title}
                                 fill
-                                className="object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-700"
+                                className="object-cover transition-all duration-700"
                                 priority
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />

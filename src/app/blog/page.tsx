@@ -66,7 +66,7 @@ export default async function BlogListingPage() {
                                                             src={post.coverImage}
                                                             alt={post.title}
                                                             fill
-                                                            className="object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[0.5] group-hover:grayscale-0"
+                                                            className="object-cover transition-transform duration-1000 group-hover:scale-110"
                                                             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                                         />
                                                     ) : (
@@ -112,8 +112,8 @@ export default async function BlogListingPage() {
                                             <GlassFooter className="pt-4 border-t border-white/5 mt-auto p-6 flex items-center justify-between">
                                                 <div className="flex items-center gap-3">
                                                     <div className="w-8 h-8 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-[10px] font-black text-white/60 overflow-hidden">
-                                                        {post.author?.image ? (
-                                                            <Image src={post.author.image} alt={post.author.name} width={32} height={32} />
+                                                        {post.author?.avatar ? (
+                                                            <Image src={post.author.avatar} alt={post.author.name} width={32} height={32} />
                                                         ) : post.author?.name?.charAt(0) || 'F'}
                                                     </div>
                                                     <span className="text-[10px] font-bold uppercase tracking-widest text-white/60">
