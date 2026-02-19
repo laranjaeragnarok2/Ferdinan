@@ -71,7 +71,7 @@ export async function sendDiscordNotification(
           : []),
       ],
       footer: {
-        text: `Ferdinan-MSP • ${isFormLead ? 'Análise de Negócio' : 'Curadoria de Conteúdo'}`,
+        text: `Ferdinan-MSP.Group • ${isFormLead ? 'Análise de Negócio' : 'Curadoria de Conteúdo'}`,
       },
       timestamp,
     };

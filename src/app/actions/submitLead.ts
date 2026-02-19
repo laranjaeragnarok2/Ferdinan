@@ -28,7 +28,7 @@ export async function submitLead(data: LeadFormData) {
 
     // 1. E-mail de Notificação para VOCÊ (Dono)
     const notificationMail = {
-      from: `"Ferdinan-MSP Leads" <${process.env.SMTP_USER}>`,
+      from: `"Ferdinan-MSP.Group Leads" <${process.env.SMTP_USER}>`,
       to: process.env.SMTP_USER,
       subject: `🔥 Novo Lead: ${data.name} (Análise de Negócio)`,
       html: `
@@ -47,7 +47,7 @@ export async function submitLead(data: LeadFormData) {
 
     // 2. E-mail de Confirmação para o CLIENTE
     const confirmationMail = {
-      from: `"Ferdinan-MSP" <${process.env.SMTP_USER}>`,
+      from: `"Ferdinan-MSP.Group" <${process.env.SMTP_USER}>`,
       to: data.email,
       subject: 'Recebemos sua solicitação de Análise Estratégica',
       html: `
@@ -70,7 +70,7 @@ export async function submitLead(data: LeadFormData) {
           <br/>
           <p>Atenciosamente,</p>
           <p><strong>Ferdinan</strong><br>
-          <span style="font-size: 12px; color: #666;">Growth & Gestão | Ferdinan-MSP</span></p>
+          <span style="font-size: 12px; color: #666;">Growth & Gestão | Ferdinan-MSP.Group</span></p>
         </div>
       `,
     };

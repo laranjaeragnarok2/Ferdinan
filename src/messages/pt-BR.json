@@ -51,10 +51,10 @@
   "SocialProofSection": {
     "title": "Resultados, Não Promessas",
     "subtitle": "Parceiros que confiam em nossa curadoria para transformar seus negócios.",
-    "testimonial1_quote": "A Ferdinan-MSP não entregou um serviço, mas uma parceria estratégica. A curadoria deles foi fundamental para nosso aumento de 40% em leads qualificados em um único trimestre.",
+    "testimonial1_quote": "A Ferdinan-MSP.Group não entregou um serviço, mas uma parceria estratégica. A curadoria deles foi fundamental para nosso aumento de 40% em leads qualificados em um único trimestre.",
     "testimonial1_name": "Alexandre Dubois",
     "testimonial1_title": "CEO, Maison de Luxe",
-    "testimonial2_quote": "Trabalhar com a Ferdinan-MSP nos deu a clareza que precisávamos. O processo de validação deles garantiu que cada real investido tivesse retorno máximo. Os resultados foram transformadores.",
+    "testimonial2_quote": "Trabalhar com a Ferdinan-MSP.Group nos deu a clareza que precisávamos. O processo de validação deles garantiu que cada real investido tivesse retorno máximo. Os resultados foram transformadores.",
     "testimonial2_name": "Isabella Rossi",
     "testimonial2_title": "Fundadora, Artisa",
     "testimonial3_quote": "O que mais me impressionou foi a capacidade deles de entender as nuances do nosso mercado. As soluções não foram apenas eficazes, mas perfeitamente alinhadas com nossa visão de longo prazo.",
@@ -114,11 +114,11 @@
     "newsletter": "Assine nossa newsletter para receber as últimas novidades.",
     "emailPlaceholder": "Email",
     "subscribeButton": "Inscrever",
-    "copyright": "© {year} Ferdinan-MSP. Todos os Direitos Reservados."
+    "copyright": "© {year} Ferdinan-MSP.Group. Todos os Direitos Reservados."
   },
   "Concierge": {
     "title": "Concierge Virtual",
-    "initialMessage": "Olá! Sou o assistente virtual da Ferdinan-MSP. Como posso te ajudar a descobrir a melhor estratégia de crescimento para seu negócio hoje?",
+    "initialMessage": "Olá! Sou o assistente virtual da Ferdinan-MSP.Group. Como posso te ajudar a descobrir a melhor estratégia de crescimento para seu negócio hoje?",
     "inputPlaceholder": "Digite sua dúvida...",
     "sendButtonText": "Enviar"
   },

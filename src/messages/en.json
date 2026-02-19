@@ -51,10 +51,10 @@
   "SocialProofSection": {
     "title": "Results, Not Promises",
     "subtitle": "Partners who trust our curation to transform their businesses.",
-    "testimonial1_quote": "Ferdinan-MSP delivered not a service, but a strategic partnership. Their curation was key to our 40% increase in qualified leads in a single quarter.",
+    "testimonial1_quote": "Ferdinan-MSP.Group delivered not a service, but a strategic partnership. Their curation was key to our 40% increase in qualified leads in a single quarter.",
     "testimonial1_name": "Alexandre Dubois",
     "testimonial1_title": "CEO, Maison de Luxe",
-    "testimonial2_quote": "Working with Ferdinan-MSP gave us the clarity we needed. Their validation process ensured that every dollar invested had maximum return. The results were transformative.",
+    "testimonial2_quote": "Working with Ferdinan-MSP.Group gave us the clarity we needed. Their validation process ensured that every dollar invested had maximum return. The results were transformative.",
     "testimonial2_name": "Isabella Rossi",
     "testimonial2_title": "Founder, Artisa",
     "testimonial3_quote": "What impressed me most was their ability to understand the nuances of our market. The solutions were not just effective, but perfectly aligned with our long-term vision.",
@@ -114,11 +114,11 @@
     "newsletter": "Subscribe to our newsletter to get the latest news.",
     "emailPlaceholder": "Email",
     "subscribeButton": "Subscribe",
-    "copyright": "© {year} Ferdinan-MSP. All Rights Reserved."
+    "copyright": "© {year} Ferdinan-MSP.Group. All Rights Reserved."
   },
   "Concierge": {
     "title": "Virtual Concierge",
-    "initialMessage": "Hello! I'm the virtual assistant for Ferdinan-MSP. How can I help you discover the best growth strategy for your business today?",
+    "initialMessage": "Hello! I'm the virtual assistant for Ferdinan-MSP.Group. How can I help you discover the best growth strategy for your business today?",
     "inputPlaceholder": "Type your question...",
     "sendButtonText": "Send"
   },

@@ -4,8 +4,8 @@ import { GlassCard, GlassContent } from '@/components/ui/glass-card';
 import { FadeInOnScroll } from '@/components/animations/FadeInOnScroll';
 
 export const metadata = {
-    title: 'Código de Ética & Integridade | Ferdinan-MSP',
-    description: 'Protocolo de soberania e transparência do Grupo Ferdinan-MSP. Nossa constituição de valores e integridade digital.',
+    title: 'Código de Ética & Integridade | Ferdinan-MSP.Group',
+    description: 'Protocolo de soberania e transparência do Grupo Ferdinan-MSP.Group. Nossa constituição de valores e integridade digital.',
     robots: {
         index: true,
         follow: true,
@@ -28,7 +28,7 @@ export default function EthicsPage() {
                                 <section>
                                     <h2 className="text-2xl font-bold text-white mb-4 not-italic uppercase tracking-widest">Missão Ética</h2>
                                     <p>
-                                        O Grupo Ferdinan-MSP existe para estabelecer a Soberania da Verdade no ambiente digital. Nosso compromisso não é com ferramentas, mas com o Legado e a Honra. Operamos sob a premissa de que a tecnologia deve ser o escudo da família e o motor da transparência econômica.
+                                        O Grupo Ferdinan-MSP.Group existe para estabelecer a Soberania da Verdade no ambiente digital. Nosso compromisso não é com ferramentas, mas com o Legado e a Honra. Operamos sob a premissa de que a tecnologia deve ser o escudo da família e o motor da transparência econômica.
                                     </p>
                                 </section>
 
@@ -44,7 +44,7 @@ export default function EthicsPage() {
                                 <section>
                                     <h2 className="text-2xl font-bold text-white mb-4 not-italic uppercase tracking-widest">2. Lealdade e Proteção Familiar</h2>
                                     <p>
-                                        A base de toda sociedade próspera é a família. O Grupo Ferdinan-MSP utiliza sua inteligência cibernética para blindar seus membros, parceiros e herdeiros contra perseguições, coações ou ataques de má-fé. Nossa lealdade é inegociável.
+                                        A base de toda sociedade próspera é a família. O Grupo Ferdinan-MSP.Group utiliza sua inteligência cibernética para blindar seus membros, parceiros e herdeiros contra perseguições, coações ou ataques de má-fé. Nossa lealdade é inegociável.
                                     </p>
                                 </section>
 

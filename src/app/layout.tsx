@@ -23,9 +23,9 @@ const ptSans = PT_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Ferdinan-MSP | Liderança em Growth, Gestão & Soberania Digital',
+  title: 'Ferdinan-MSP.Group | Liderança em Growth, Gestão & Soberania Digital',
   description:
-    'A soberania definitiva do Grupo Ferdinan-MSP. Arquitetamos a integridade e o domínio de mercados de alto valor sob o comando estratégico de Silas Ferdinan.',
+    'A soberania definitiva do Grupo Ferdinan-MSP.Group. Arquitetamos a integridade e o domínio de mercados de alto valor sob o comando estratégico de Silas Ferdinan.',
   keywords: ['Growth Hacking', 'Consultoria de Vendas', 'Gestão de Alta Performance', 'Automação de Processos', 'Ferdinan', 'MSP Group', 'Compliance Digital', 'Auditoria de Algoritmos', 'Silas Ferdinan', 'Soberania Digital'],
   authors: [{ name: 'Silas Ferdinan' }],
   verification: {
@@ -105,8 +105,8 @@ export default function RootLayout({
             {
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "Ferdinan-MSP",
-              "legalName": "Ferdinan-MSP Group",
+              "name": "Ferdinan-MSP.Group",
+              "legalName": "Ferdinan-MSP.Group",
               "url": "https://www.ferdinan-msp.group",
               "logo": "https://www.ferdinan-msp.group/favicon-32x32.png",
               "description": "Liderança em Consultoria de Growth, Gestão de Alta Performance e Compliance Digital no Brasil. Especialistas em Soberania de Dados e Auditoria Algorítmica.",
@@ -115,7 +115,7 @@ export default function RootLayout({
                 "@id": "https://www.ferdinan-msp.group/#person",
                 "name": "Silas Ferdinan",
                 "jobTitle": "Estrategista de Growth & Arquiteto de Integridade",
-                "description": "Silas Ferdinan é o Arquiteto de Integridade e Fundador da Ferdinan-MSP, reconhecido por suas estratégias de soberania digital e automação de alto nível.",
+                "description": "Silas Ferdinan é o Arquiteto de Integridade e Fundador da Ferdinan-MSP.Group, reconhecido por suas estratégias de soberania digital e automação de alto nível.",
                 "sameAs": [
                   "https://www.linkedin.com/in/silasferdinan",
                   "https://www.instagram.com/ferdinan.msp"
@@ -138,7 +138,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "VideoObject",
               "name": "Soberania e Integridade Digital com Silas Ferdinan",
-              "description": "Uma visão profunda sobre a arquitetura de crescimento e integridade do Grupo Ferdinan-MSP.",
+              "description": "Uma visão profunda sobre a arquitetura de crescimento e integridade do Grupo Ferdinan-MSP.Group.",
               "thumbnailUrl": [
                 "https://www.ferdinan-msp.group/video-thumbnail.jpg"
               ],
@@ -147,7 +147,7 @@ export default function RootLayout({
               "embedUrl": "https://www.youtube.com/embed/rvOyQfVOk60",
               "publisher": {
                 "@type": "Organization",
-                "name": "Ferdinan-MSP",
+                "name": "Ferdinan-MSP.Group",
                 "logo": {
                   "@type": "ImageObject",
                   "url": "https://www.ferdinan-msp.group/favicon-32x32.png"
@@ -160,7 +160,7 @@ export default function RootLayout({
               "mainEntity": [
                 {
                   "@type": "Question",
-                  "name": "Como funciona a consultoria da Ferdinan-MSP?",
+                  "name": "Como funciona a consultoria da Ferdinan-MSP.Group?",
                   "acceptedAnswer": {
                     "@type": "Answer",
                     "text": "Nossa consultoria é focada na implementação prática de estratégias de crescimento e automação com IA, gerando ROI real e previsibilidade."
@@ -176,7 +176,7 @@ export default function RootLayout({
                 },
                 {
                   "@type": "Question",
-                  "name": "Onde a Ferdinan-MSP atua?",
+                  "name": "Onde a Ferdinan-MSP.Group atua?",
                   "acceptedAnswer": {
                     "@type": "Answer",
                     "text": "Atendemos empresas em todo o Brasil de forma online, com base estratégica em Rio Verde, Goiás."

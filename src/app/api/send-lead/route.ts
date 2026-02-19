@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     });
 
     const mailOptions = {
-      from: `"Ferdinan-MSP" <${process.env.SMTP_USER}>`,
+      from: `"Ferdinan-MSP.Group" <${process.env.SMTP_USER}>`,
       to: email,
       subject: '🛠️ Sua Curadoria de Alta Performance (Livros + Ferramentas)',
       html: `
@@ -65,7 +65,7 @@ export async function POST(req: Request) {
 
           <p>Sucesso e alta performance,<br>
           <strong>Ferdinan</strong><br>
-          <span style="font-size: 12px; color: #666;">Growth & Gestão | Ferdinan-MSP</span></p>
+          <span style="font-size: 12px; color: #666;">Growth & Gestão | Ferdinan-MSP.Group</span></p>
         </div>
       `,
     };
@@ -74,7 +74,7 @@ export async function POST(req: Request) {
 
     // Também enviar um email de notificação para você (opcional mas recomendado)
     const notificationOptions = {
-      from: `"Sistema Ferdinan-MSP" <${process.env.SMTP_USER}>`,
+      from: `"Sistema Ferdinan-MSP.Group" <${process.env.SMTP_USER}>`,
       to: process.env.SMTP_USER,
       subject: '🔥 Novo Lead Capturado!',
       text: `Um novo lead deixou o email para a curadoria: ${email}`,

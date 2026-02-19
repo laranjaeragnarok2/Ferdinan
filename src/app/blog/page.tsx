@@ -12,7 +12,7 @@ import { MarketTicker } from '@/components/ui/MarketTicker';
 import { AuditScanner } from '@/components/ui/AuditScanner';
 
 export const metadata = {
-    title: 'Soberania & Conhecimento | Blog Ferdinan-MSP',
+    title: 'Soberania & Conhecimento | Blog Ferdinan-MSP.Group',
     description: 'Relatórios táticos e auditorias de integridade para a elite digital. Liderança estratégica sob o olhar de Silas Ferdinan.',
 };
 

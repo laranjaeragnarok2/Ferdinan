@@ -30,7 +30,7 @@ export default function PainAndThesisSection() {
                 {painThesisImage && (
                     <Image 
                         src={painThesisImage.imageUrl}
-                        alt="Estratégia de Soberania Digital e Auditoria Algorítmica da Ferdinan-MSP"
+                        alt="Estratégia de Soberania Digital e Auditoria Algorítmica da Ferdinan-MSP.Group"
                         title="Integridade e Domínio de Mercado"
                         width={600}
                         height={700}
