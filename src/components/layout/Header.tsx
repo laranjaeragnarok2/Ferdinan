@@ -31,6 +31,7 @@ export default function Header() {
           <Link href="/#pain-thesis" className="text-white/40 hover:text-primary transition-colors">Problema</Link>
           <Link href="/#process" className="text-white/40 hover:text-primary transition-colors">Processo</Link>
           <Link href="/#solutions" className="text-white/40 hover:text-primary transition-colors">Soluções</Link>
+          <Link href="/ia" className="text-white/40 hover:text-primary transition-colors">IA</Link>
           <Link href="/blog" className="text-white/40 hover:text-primary transition-colors">Briefing</Link>
           <Link href="/#contact" className="text-white/40 hover:text-primary transition-colors">Contato</Link>
         </nav>
@@ -84,6 +85,13 @@ export default function Header() {
               Soluções
             </Link>
             <Link
+              href="/ia"
+              className="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-all"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Inteligência Artificial
+            </Link>
+            <Link
               href="/#social-proof"
               className="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-all"
               onClick={() => setIsMenuOpen(false)}
@@ -104,8 +112,6 @@ export default function Header() {
             >
               Contato
             </Link>
-
-            {/* Admin Link Removed temporarily */}
 
             <div className="pt-4 border-t border-white/10">
               <a
