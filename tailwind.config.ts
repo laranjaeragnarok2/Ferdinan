@@ -72,6 +72,14 @@ export default {
         sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
+        'blink-glow': {
+          '0%, 100%': { 
+            'text-shadow': '0 0 5px rgba(212, 175, 55, 0.1), 0 0 10px rgba(212, 175, 55, 0.1)' 
+          },
+          '50%': { 
+            'text-shadow': '0 0 20px rgba(212, 175, 55, 0.5), 0 0 30px rgba(212, 175, 55, 0.2)' 
+          },
+        },
         'accordion-down': {
           from: {
             height: '0',
@@ -90,6 +98,7 @@ export default {
         },
       },
       animation: {
+        'blink-glow': 'blink-glow 3s ease-in-out infinite',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },

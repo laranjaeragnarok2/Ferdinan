@@ -44,8 +44,8 @@ export default function HeroSection() {
         </div>
 
         <h1 className="font-headline text-5xl font-bold tracking-tighter text-white md:text-8xl lg:text-9xl mb-8">
-          Soberania & <br />
-          <span className="text-luxury-gold drop-shadow-[0_0_30px_rgba(212,175,55,0.2)]">
+          <span className="animate-blink-glow">Soberania & <br /></span>
+          <span className="text-luxury-gold drop-shadow-[0_0_30px_rgba(212,175,55,0.2)] animate-blink-glow">
             Elite Digital
           </span>
         </h1>
