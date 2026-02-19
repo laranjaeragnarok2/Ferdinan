@@ -54,16 +54,16 @@ export default function HeroSection() {
     <section className="relative text-white overflow-hidden">
       {/* Seta Animada (GIF) com Efeitos de Elite para disfarçar qualidade */}
       <div 
-        className="fixed left-2 top-1/2 -translate-y-1/2 z-30 hidden lg:block pointer-events-none transition-all duration-100"
+        className="fixed left-4 bottom-24 z-30 hidden lg:block pointer-events-none transition-all duration-100"
         style={{ 
-          transform: `translateY(-50%) scale(${scrollScale})`,
+          transform: `scale(${scrollScale})`,
           opacity: scrollScale * 0.7
         }}
       >
         <img 
           src="/arrow-anim.gif" 
           alt="Role para baixo" 
-          className="w-24 h-auto mix-blend-screen filter brightness-125 contrast-125 drop-shadow-[0_0_15px_rgba(212,175,55,0.4)] blur-[0.5px]"
+          className="w-48 h-auto mix-blend-screen filter brightness-125 contrast-125 drop-shadow-[0_0_20px_rgba(212,175,55,0.5)] blur-[0.4px]"
         />
       </div>
 
