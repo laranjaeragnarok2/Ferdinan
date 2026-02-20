@@ -66,13 +66,13 @@ export async function submitLead(data: LeadFormData) {
           
           <p>Recebi pessoalmente a sua solicitação de análise para o seu negócio.</p>
           
-          <p>Nesse exato momento, nossa equipe já foi notificada. Diferente de agências comuns, nós não usamos robôs para triagem inicial. Eu ou um dos meus consultores seniores analisaremos seu perfil.</p>
+          <p>Nesse exato momento, o <strong>Núcleo Diamante</strong> já iniciou o processamento dos seus dados. Diferente de agências comuns que utilizam triagens genéricas, nossa inteligência proprietária realiza um cruzamento de viabilidade técnica antes da minha revisão final.</p>
           
           <p><strong>O que acontece agora?</strong></p>
           <ul>
-            <li>Vamos analisar os dados que você enviou.</li>
+            <li>Nossa arquitetura soberana analisará os dados que você enviou.</li>
             <li>Entraremos em contato via WhatsApp ou E-mail em até 24 horas úteis.</li>
-            <li>Se o seu perfil for aprovado, agendaremos o diagnóstico detalhado.</li>
+            <li>Se o seu perfil atingir o score de viabilidade, agendaremos o diagnóstico detalhado.</li>
           </ul>
 
           <p>Enquanto isso, recomendo que reflita: <em>Qual é o custo de oportunidade de não resolver o problema de "${data.challenge}" hoje?</em></p>

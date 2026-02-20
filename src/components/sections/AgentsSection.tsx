@@ -68,7 +68,7 @@ export default function AgentsSection() {
             Inteligência Orquestrada: Ecossistema de Agentes
           </h2>
           <p className="max-w-3xl mx-auto text-xl text-muted-foreground leading-relaxed">
-            Nossa operação é liderada pelo <span className="text-primary font-bold">Orquestrador Diamante (Gemini 3 Pro)</span>, 
+            Nossa operação é liderada pelo <span className="text-primary font-bold">Orquestrador Diamante (Proprietário)</span>, 
             que coordena uma frota de especialistas dedicados a cada pilar da sua jornada empresarial.
           </p>
         </div>
@@ -86,9 +86,9 @@ export default function AgentsSection() {
                 </div>
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">Orquestrador Diamante (Sovereign)</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-2">Orquestrador Diamante (Sovereign OS)</h3>
                 <p className="text-muted-foreground mb-4">
-                  O cérebro estratégico que analisa, decide e delega. Utilizando o Gemini 3 Pro, 
+                  O núcleo estratégico de processamento que analisa, decide e delega. Utilizando arquitetura de rede neural proprietária, 
                   garante que cada demanda seja atendida pelo especialista correto com precisão cirúrgica.
                 </p>
                 <div className="flex flex-wrap gap-2">

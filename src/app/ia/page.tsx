@@ -37,10 +37,10 @@ export default function AIPage() {
               <div className="container mx-auto px-4 text-center">
                 <h2 className="text-3xl font-headline text-foreground mb-8">Tecnologia de Próxima Geração</h2>
                 <div className="flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
-                  <div className="text-2xl font-bold font-mono">Gemini 3 Pro</div>
-                  <div className="text-2xl font-bold font-mono">Vertex AI</div>
-                  <div className="text-2xl font-bold font-mono">Clawdbot</div>
-                  <div className="text-2xl font-bold font-mono">Sovereign OS</div>
+                  <div className="text-2xl font-bold font-mono">Diamante-OS Core</div>
+                  <div className="text-2xl font-bold font-mono">Neural Orquestrator</div>
+                  <div className="text-2xl font-bold font-mono">Clawdbot V2</div>
+                  <div className="text-2xl font-bold font-mono">Sovereign Architecture</div>
                 </div>
               </div>
             </section>
