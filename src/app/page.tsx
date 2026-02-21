@@ -56,7 +56,7 @@ export default function Home() {
             <LeadFormSection />
           </FadeInOnScroll>
         </div>
-      </main>
+      </main>wth, Gestão & Compliance.
       <Footer />
     </div>
   );

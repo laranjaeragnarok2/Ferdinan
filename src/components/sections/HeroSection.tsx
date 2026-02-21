@@ -108,7 +108,7 @@ export default function HeroSection() {
         </div>
 
         <p className="mx-auto mt-8 max-w-2xl text-lg md:text-xl text-white/60 leading-relaxed font-light">
-          A autoridade definitiva em <span className="text-white font-medium border-b border-primary/50">Growth, Gestão & Compliance</span>. Liderados por Ferdinan, arquitetamos a integridade algorítmica e o crescimento exponencial de marcas soberanas.
+          A autoridade definitiva em <span className="text-white font-medium border-b border-primary/50">Empreendedorismo Digital, Growth, Automação, Compliance & Desenvolvimento Estratégico com Ecossistema de IA Exclusivo para seu Negócio</span>. Liderados por Ferdinan, arquitetamos a integridade algorítmica e o crescimento exponencial de marcas soberanas.
         </p>
 
         <div className="mt-16 flex flex-col items-center justify-center gap-6">
