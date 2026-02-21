@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw CRM | Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">OC</div>
+                <span>OpenClaw CRM</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-view="dashboard">
+                    <i data-lucide="layout-dashboard"></i> Dashboard
+                </a>
+                <a href="#" class="nav-item" data-view="leads">
+                    <i data-lucide="users"></i> Leads
+                </a>
+                <a href="#" class="nav-item" data-view="deals">
+                    <i data-lucide="briefcase"></i> Negócios
+                </a>
+                <a href="#" class="nav-item" data-view="pipeline">
+                    <i data-lucide="trello"></i> Pipeline
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="status-indicator">
+                    <span class="dot"></span> Local Server Active
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="search-bar">
+                    <i data-lucide="search"></i>
+                    <input type="text" placeholder="Pesquisar contatos, negócios..." id="global-search">
+                </div>
+                <div class="user-actions">
+                    <button class="btn btn-primary" id="btn-add-lead">
+                        <i data-lucide="plus"></i> Novo Lead
+                    </button>
+                    <div class="avatar">H</div>
+                </div>
+            </header>
+
+            <div id="view-dashboard" class="content-view">
+                <div class="welcome-section">
+                    <h1>Olá, Horyua! 👋</h1>
+                    <p>Aqui está o que está acontecendo no seu pipeline hoje.</p>
+                </div>
+
+                <div class="stats-grid" id="stats-summary">
+                    <!-- Stats cards injected here -->
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="card recent-deals">
+                        <div class="card-header">
+                            <h2>Principais Negócios</h2>
+                            <a href="#" class="view-all">Ver todos</a>
+                        </div>
+                        <div class="table-container">
+                            <table id="top-deals-table">
+                                <thead>
+                                    <tr>
+                                        <th>Negócio</th>
+                                        <th>Estágio</th>
+                                        <th>Valor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Rows injected here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card pipeline-preview">
+                        <div class="card-header">
+                            <h2>Pipeline por Estágio</h2>
+                        </div>
+                        <div class="chart-container" id="stage-breakdown">
+                            <!-- Stage bars injected here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-leads" class="content-view hidden">
+                <div class="section-header">
+                    <h1>Seus Leads</h1>
+                </div>
+                <div class="card table-card">
+                    <table id="leads-list">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Empresa</th>
+                                <th>Email</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="view-deals" class="content-view hidden">
+                <div class="section-header">
+                    <h1>Lista de Negócios</h1>
+                </div>
+                <div class="card table-card">
+                    <table id="deals-list">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Estágio</th>
+                                <th>Valor</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Novo Lead -->
+    <div id="modal-lead" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Adicionar Novo Lead</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="lead-form">
+                <div class="form-group">
+                    <label>Nome Completo</label>
+                    <input type="text" name="name" required placeholder="Ex: João Silva">
+                </div>
+                <div class="form-group">
+                    <label>Empresa</label>
+                    <input type="text" name="company" placeholder="Ex: Initech">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="email@exemplo.com">
+                </div>
+                <div class="form-group">
+                    <label>Notas</label>
+                    <textarea name="notes" placeholder="Algum detalhe importante..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary close-modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar Lead</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

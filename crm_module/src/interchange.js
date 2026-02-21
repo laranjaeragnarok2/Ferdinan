@@ -5,13 +5,29 @@
  */
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { writeMd } from '../../interchange/src/index.js';
+import { getSchemaVersion } from './db.js';
 import { generatePipelineReport } from './reports.js';
 import { listDueFollowups } from './followups.js';
 import { getContact } from './contacts.js';
 import { listActivities } from './activities.js';
-import { getSchemaVersion } from './db.js';
 import fs from 'node:fs';
+
+/**
+ * Local helper to write markdown files with frontmatter.
+ * @param {string} filePath 
+ * @param {Object} meta 
+ * @param {string} content 
+ */
+async function writeMd(filePath, meta, content) {
+  const dir = path.dirname(filePath);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+  const frontmatter = `---\n${Object.entries(meta)
+    .map(([k, v]) => `${k}: ${JSON.stringify(v)}`)
+    .join('\n')}\n---\n\n`;
+  fs.writeFileSync(filePath, frontmatter + content);
+}
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const INTERCHANGE_DIR = path.join(__dirname, '..', 'interchange', 'crm');

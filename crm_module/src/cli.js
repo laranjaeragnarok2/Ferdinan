@@ -3,14 +3,15 @@
 import { Command } from 'commander';
 import { initDb } from './db.js';
 import { addContact, listContacts, editContact, getContact } from './contacts.js';
-import { addDeal, listDeals, updateStage, getDeal } from './deals.js';
+import { addDeal, listDeals, updateStage, getDeal, listDealsByContact } from './deals.js';
 import { addTag, getTags } from './tags.js';
-import { addActivity } from './activities.js';
+import { addActivity, listActivities } from './activities.js';
 import { addFollowup, listDueFollowups, completeFollowup } from './followups.js';
 import { search } from './search.js';
 import { generatePipelineReport } from './reports.js';
 import { refreshInterchange } from './interchange.js';
-import { createBackup, restoreFromBackup } from './backup.js';
+import { join } from 'path';
+import { createBackup, restoreFromBackup, copyDbFiles } from './backup.js';
 
 const program = new Command();
 program
@@ -88,6 +89,35 @@ leadCmd
     } catch (error) {
       console.error('Error editing contact:', error.message);
       process.exit(1);
+    }
+  });
+
+leadCmd
+  .command('show')
+  .description('Show contact details and deals')
+  .argument('<id>', 'Contact ID')
+  .action((id) => {
+    try {
+      const contact = getContact(db, id);
+      if (!contact) {
+        console.error(`Contact NOT found: ${id}`);
+        return;
+      }
+      console.log(`Contact: ${contact.name}`);
+      console.log(`  Company: ${contact.company || 'N/A'}`);
+      console.log(`  Email:   ${contact.email || 'N/A'}`);
+      console.log(`  Phone:   ${contact.phone || 'N/A'}`);
+      if (contact.notes) console.log(`  Notes:   ${contact.notes}`);
+
+      const deals = listDealsByContact(db, id);
+      if (deals.length > 0) {
+        console.log('\n  Deals:');
+        deals.forEach(d => {
+          console.log(`    ${d.id}: ${d.title} [${d.stage}] - $${d.value.toLocaleString()}`);
+        });
+      }
+    } catch (error) {
+      console.error('Error showing contact:', error.message);
     }
   });
 
@@ -184,6 +214,40 @@ dealCmd
     } catch (error) {
       console.error('Error adding tag:', error.message);
       process.exit(1);
+    }
+  });
+
+dealCmd
+  .command('show')
+  .description('Show deal details, activities, and tags')
+  .argument('<id>', 'Deal ID')
+  .action((id) => {
+    try {
+      const deal = getDeal(db, id);
+      if (!deal) {
+        console.error(`Deal NOT found: ${id}`);
+        return;
+      }
+      console.log(`Deal: ${deal.title}`);
+      console.log(`  Stage: ${deal.stage}`);
+      console.log(`  Value: $${deal.value.toLocaleString()}`);
+      console.log(`  Source: ${deal.source || 'N/A'}`);
+      if (deal.contact_name) {
+        console.log(`  Contact: ${deal.contact_name}${deal.company ? ` (${deal.company})` : ''}`);
+      }
+
+      const tags = getTags(db, id);
+      if (tags.length > 0) console.log(`  Tags: ${tags.join(', ')}`);
+
+      const acts = listActivities(db, id);
+      if (acts.length > 0) {
+        console.log('\n  Activities:');
+        acts.forEach(a => {
+          console.log(`    ${a.timestamp} [${a.type}]: ${a.content}`);
+        });
+      }
+    } catch (error) {
+      console.error('Error showing deal:', error.message);
     }
   });
 

@@ -112,3 +112,14 @@ export function getDeal(db, id) {
   `);
   return stmt.get(id);
 }
+
+/**
+ * List deals for a specific contact.
+ * @param {import('better-sqlite3').Database} db
+ * @param {string} contactId
+ * @returns {Array<Object>}
+ */
+export function listDealsByContact(db, contactId) {
+  const stmt = db.prepare('SELECT * FROM deals WHERE contact_id = ? ORDER BY created_at DESC');
+  return stmt.all(contactId);
+}

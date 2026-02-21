@@ -16,7 +16,7 @@ export function createBackup(dbPath, outDir = 'data', prefix = 'crm-backup') {
   return outPath;
 }
 
-function copyDbFiles(srcBase, destBase) {
+export function copyDbFiles(srcBase, destBase) {
   const extensions = ['', '.wal', '.shm'];
   extensions.forEach(ext => {
     const src = srcBase + ext;

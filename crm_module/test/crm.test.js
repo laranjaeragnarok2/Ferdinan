@@ -138,6 +138,6 @@ describe('Interchange', () => {
     const capsContent = fs.readFileSync(path.join(interDir, 'ops', 'capabilities.md'), 'utf8');
     assert.ok(!capsContent.includes('$50000'));
     assert.ok(!capsContent.includes('$10000'));
-    assert.ok(capsContent.includes('layer: ops'));
+    assert.ok(capsContent.includes('layer: "ops"'));
   });
 });
