@@ -92,12 +92,20 @@ export default function AgentsSection() {
           <div className="inline-flex items-center justify-center p-3 mb-6 rounded-2xl bg-primary/10 border border-primary/20 gold-bloom">
             <Bot className="h-8 w-8 text-primary" />
           </div>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-sm uppercase tracking-wider mb-6">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            Especialistas em Licitações
+          </div>
           <h2 className="text-4xl md:text-5xl font-headline text-luxury-gold mb-6">
             Inteligência Orquestrada: Ecossistema de Agentes
           </h2>
           <p className="max-w-3xl mx-auto text-xl text-muted-foreground leading-relaxed">
-            Nossa operação é liderada pelo <span className="text-primary font-bold">Orquestrador Diamante (Eu)</span>,
-            que coordena uma frota de sub-agentes especialistas dedicados a cada pilar da sua jornada corporativa e licitatória.
+            Nossa operação é liderada pelo <span className="text-primary font-bold">Orquestrador Diamante (Proprietário)</span>,
+            que coordena uma frota de sub-agentes especialistas dedicados a cada pilar da sua jornada corporativa, com
+            <strong className="text-foreground"> expertise inigualável em processos licitatórios</strong> e conformidade pública.
           </p>
         </div>
 
@@ -119,16 +127,46 @@ export default function AgentsSection() {
                   Como Orquestrador Central, minha função é coordenar, estrategizar e delegar, utilizando a inteligência dos sub-agentes e um vasto arsenal de habilidades (Law, Contract, Compliance, Accounting, Strategy) através da nossa <strong className="text-foreground">arquitetura proprietária</strong>. Com capacidade de raciocínio profundo, integro informações complexas de diversas fontes para resolver problemas de alto impacto.
                 </p>
 
-                <div className="bg-primary/5 border border-primary/20 rounded-lg p-5 mb-5 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 -mt-2 -mr-2 opacity-10">
-                    <Scale className="h-24 w-24 text-primary" />
+                {/* Licitações Highlight Banners */}
+                <div className="relative group rounded-xl p-[1px] bg-gradient-to-r from-primary via-emerald-500 to-amber-500 mb-6 shadow-[0_0_20px_rgba(212,175,55,0.2)]">
+                  <div className="bg-background/95 backdrop-blur-sm rounded-xl p-6 h-full relative overflow-hidden">
+                    {/* Background decoration */}
+                    <div className="absolute -right-4 -bottom-4 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+                      <Scale className="h-40 w-40 text-emerald-500" />
+                    </div>
+
+                    <div className="flex items-center gap-3 mb-4 relative z-10">
+                      <div className="p-2 bg-emerald-500/20 rounded-lg border border-emerald-500/30">
+                        <ShieldCheck className="h-6 w-6 text-emerald-400" />
+                      </div>
+                      <h4 className="text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400">
+                        Domínio Absoluto em Leis e Licitações
+                      </h4>
+                    </div>
+
+                    <p className="text-sm text-foreground/90 leading-relaxed relative z-10 mb-4">
+                      Com o meu core de orquestração e acesso a habilidades afiadas em <strong className="text-emerald-400">Law & Compliance</strong>, garanto precisão em processos críticos de certames da sua empresa. Atuo como um <strong className="text-emerald-400 font-bold">consultor estratégico e integrador 24/7</strong> para o avanço em licitações.
+                    </p>
+
+                    <div className="grid grid-cols-2 gap-3 relative z-10 mt-4">
+                      <div className="bg-white/5 border border-white/10 rounded p-3 flex items-start gap-2">
+                        <div className="mt-1 flex-shrink-0 h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="text-xs font-semibold text-foreground/80">Análise Cirúrgica de Editais e Riscos</span>
+                      </div>
+                      <div className="bg-white/5 border border-white/10 rounded p-3 flex items-start gap-2">
+                        <div className="mt-1 flex-shrink-0 h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="text-xs font-semibold text-foreground/80">Preparação de Propostas Financeiras</span>
+                      </div>
+                      <div className="bg-white/5 border border-white/10 rounded p-3 flex items-start gap-2">
+                        <div className="mt-1 flex-shrink-0 h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="text-xs font-semibold text-foreground/80">Revisão e Elaboração de Termos Legais</span>
+                      </div>
+                      <div className="bg-white/5 border border-white/10 rounded p-3 flex items-start gap-2">
+                        <div className="mt-1 flex-shrink-0 h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="text-xs font-semibold text-foreground/80">Monitoramento Contínuo de Compliance</span>
+                      </div>
+                    </div>
                   </div>
-                  <h4 className="text-md font-bold text-primary mb-2 flex items-center gap-2">
-                    <ShieldCheck className="h-5 w-5" /> Capacidade para Licitações e Leis
-                  </h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed relative z-10">
-                    Com o meu core de orquestração e acesso a habilidades jurídicas e financeiras afiadas, posso coordenar a <strong className="text-foreground">análise minuciosa de editais</strong>, a <strong className="text-foreground">preparação de propostas financeiras</strong>, a <strong className="text-foreground">revisão de termos legais</strong> e a <strong className="text-foreground">garantia de conformidade plena (Compliance)</strong> em diversas regulações. Atuo como um consultor estratégico e integrador em todo o processo de licitação.
-                  </p>
                 </div>
 
                 <div className="flex flex-wrap gap-2">
