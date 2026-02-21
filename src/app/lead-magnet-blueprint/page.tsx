@@ -49,15 +49,15 @@ export default function LeadMagnetBlueprintPage() {
           <div className="absolute inset-0 z-0 opacity-10">
             {/* Example of abstract lines/connection patterns - using simple SVG for now */}
             <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" strokeWidth="0.5"/>
-              <line x1="100" y1="0" x2="0" y2="100" stroke="currentColor" strokeWidth="0.5"/>
-              <circle cx="50" cy="50" r="30" stroke="currentColor" strokeWidth="0.5" fill="none"/>
+              <line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" strokeWidth="0.5" />
+              <line x1="100" y1="0" x2="0" y2="100" stroke="currentColor" strokeWidth="0.5" />
+              <circle cx="50" cy="50" r="30" stroke="currentColor" strokeWidth="0.5" fill="none" />
             </svg>
           </div>
 
           <div className="container mx-auto px-4 relative z-10 text-center">
             <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
-              Blueprint da Elite Digital: 7 Passos para uma Metodologia de Resultados Reais em TI
+              Blueprint da Dominio Digital: 7 Passos para uma Metodologia de Resultados Reais em TI
             </h1>
             <p className="text-xl md:text-2xl font-light mb-8">
               Transforme a gestão de TI da sua empresa e alcance resultados exponenciais com nosso guia prático e inovador.
@@ -78,7 +78,7 @@ export default function LeadMagnetBlueprintPage() {
             <p className="text-lg text-gray-700">
               A TI é o coração da inovação e da eficiência nos negócios modernos. Este blueprint oferece um caminho claro e
               comprovado para otimizar seus processos, aumentar a produtividade e gerar valor real para sua organização.
-              Descubra como a Elite Digital está transformando o futuro da tecnologia.
+              Descubra como a Dominio Digital está transformando o futuro da tecnologia.
             </p>
           </div>
 
@@ -109,7 +109,7 @@ export default function LeadMagnetBlueprintPage() {
               Não perca tempo! Transforme sua TI hoje.
             </h2>
             <p className="text-xl font-light mb-10">
-              Preencha o formulário abaixo para receber o "Blueprint da Elite Digital" e desbloqueie o potencial máximo da sua equipe.
+              Preencha o formulário abaixo para receber o "Blueprint da Dominio Digital" e desbloqueie o potencial máximo da sua equipe.
             </p>
 
             {/* Lead Capture Form - Placeholder */}

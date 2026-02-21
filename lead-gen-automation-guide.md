@@ -10,7 +10,7 @@
 
 Esta automação de Geração e Qualificação de Leads Otimizadas por IA foi projetada para impulsionar o crescimento de negócios B2B de alto padrão, convertendo investimentos em resultados mensuráveis. Ela integra inteligência de mercado, criação de conteúdo estratégico, automação de outreach multicanal e um sistema robusto de CRM local-first, tudo orquestrado por agentes de IA especializados.
 
-**Filosofia:** Conquistar a "Soberania & Elite Digital" através de uma "Metodologia para Resultados Reais", transformando dados em autoridade e leads em clientes.
+**Filosofia:** Conquistar a "Soberania & Dominio Digital" através de uma "Metodologia para Resultados Reais", transformando dados em autoridade e leads em clientes.
 
 ---
 
@@ -30,8 +30,8 @@ O processo é estruturado em fases lógicas, garantindo uma abordagem sistemáti
 
 *   **Objetivo:** Criar os ativos de marketing para atrair e engajar o ICP.
 *   **Processo:**
-    *   **Propostas de Valor e Mensagens de Outreach:** O **Growth Officer** (com `marketing-strategy-pmm`, `marketing-copy-knowledge`) elabora mensagens personalizadas para email e LinkedIn, focadas em "Soberania & Elite Digital" e "crescimento exponencial".
-    *   **Isca Digital (Lead Magnet):** O **Growth Officer** cria o rascunho do conteúdo de um e-book ("Blueprint da Elite Digital: 7 Passos para uma Metodologia de Resultados Reais em TI"). O **Designer V2** (`graphic-design`, `ui-ux-pro-max`, `frontend-design`) desenvolve os visuais (capa, infográfico, layout interno), integrando-os ao Design System do site.
+    *   **Propostas de Valor e Mensagens de Outreach:** O **Growth Officer** (com `marketing-strategy-pmm`, `marketing-copy-knowledge`) elabora mensagens personalizadas para email e LinkedIn, focadas em "Soberania & Dominio Digital" e "crescimento exponencial".
+    *   **Isca Digital (Lead Magnet):** O **Growth Officer** cria o rascunho do conteúdo de um e-book ("Blueprint da Dominio Digital: 7 Passos para uma Metodologia de Resultados Reais em TI"). O **Designer V2** (`graphic-design`, `ui-ux-pro-max`, `frontend-design`) desenvolve os visuais (capa, infográfico, layout interno), integrando-os ao Design System do site.
     *   **Página Web do Lead Magnet:** A página é implementada diretamente no repositório do site (`src/app/blueprint-elite-digital/page.tsx`), com o header e footer globais.
 
 ### Fase 3: Implementação e Execução da Automação

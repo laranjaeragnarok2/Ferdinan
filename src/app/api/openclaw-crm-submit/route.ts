@@ -6,7 +6,7 @@ import { NextRequest, NextResponse } from 'next/server';
 async function sendToOpenClawCRM(leadData: any): Promise<boolean> {
   console.log('Simulating sending lead to openclaw-crm:', leadData);
   // Simulate a successful response for now
-  return true; 
+  return true;
   // In a real scenario, you might have:
   // try {
   //   const response = await fetch('YOUR_OPENCLAW_CRM_API_ENDPOINT', {
@@ -63,7 +63,7 @@ export async function POST(request: NextRequest) {
       phone,
       company,
       jobTitle: role, // Mapping 'role' to 'jobTitle' as per spec
-      source: 'Lead Magnet: Blueprint da Elite Digital',
+      source: 'Lead Magnet: Blueprint da Dominio Digital',
     };
 
     // 4. Call openclaw-crm API (simulated)

@@ -102,7 +102,7 @@ export default function HeroSection() {
           <h1 className="font-headline text-5xl font-bold tracking-tighter text-white md:text-8xl lg:text-9xl mb-8 leading-[1.1]">
             Soberania & <br />
             <span className="text-luxury-gold drop-shadow-[0_0_50px_rgba(212,175,55,0.5)]">
-              Elite Digital
+              Dominio Digital
             </span>
           </h1>
         </div>

@@ -12,7 +12,7 @@ export function MainContent() {
         <GlassCard intensity="vanguard" withGlow className="py-8 shadow-lg text-center mb-12">
           <GlassHeader className="pb-2">
             <GlassTitle className="text-4xl md:text-5xl font-headline font-bold leading-tight mb-2">
-              Blueprint da Elite Digital
+              Blueprint da Dominio Digital
             </GlassTitle>
             <GlassDescription className="text-xl md:text-2xl font-light">
               7 Passos para uma Metodologia de Resultados Reais em TI
@@ -31,7 +31,7 @@ export function MainContent() {
         <div className="max-w-6xl mx-auto">
           <section className="mb-12 text-center max-w-3xl mx-auto">
             <p className="text-lg mb-4 text-muted-foreground">
-              Em um cenário de TI em constante evolução, a obtenção de resultados reais e sustentáveis exige mais do que apenas tecnologia. Exige uma metodologia robusta, clareza estratégica e a capacidade de inovar continuamente. Este Blueprint foi criado para líderes e equipes de TI que buscam transformar desafios em oportunidades e consolidar sua posição como a elite digital do mercado.
+              Em um cenário de TI em constante evolução, a obtenção de resultados reais e sustentáveis exige mais do que apenas tecnologia. Exige uma metodologia robusta, clareza estratégica e a capacidade de inovar continuamente. Este Blueprint foi criado para líderes e equipes de TI que buscam transformar desafios em oportunidades e consolidar sua posição como a Dominio Digital do mercado.
             </p>
             <p className="text-lg text-muted-foreground">
               Descubra os 7 passos fundamentais que irão guiá-lo na construção de uma operação de TI de alto impacto, focada em eficiência, segurança e, acima de tudo, resultados mensuráveis.
@@ -126,7 +126,7 @@ export function MainContent() {
               <GlassContent>
                 <>
                   <p className="text-lg mb-6 text-muted-foreground">
-                    Preencha o formulário abaixo para fazer o download gratuito do "Blueprint da Elite Digital" e comece sua jornada rumo a resultados reais e estratégicos em TI.
+                    Preencha o formulário abaixo para fazer o download gratuito do "Blueprint da Dominio Digital" e comece sua jornada rumo a resultados reais e estratégicos em TI.
                   </p>
 
                   {/* Lead Capture Form */}
