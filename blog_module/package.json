@@ -1,0 +1,14 @@
+{
+    "name": "openclaw-blog",
+    "version": "1.0.0",
+    "description": "Skill for automating blog post creation",
+    "main": "src/cli.js",
+    "bin": {
+        "blog-tool": "./src/cli.js"
+    },
+    "type": "module",
+    "dependencies": {
+        "commander": "^12.1.0",
+        "slugify": "^1.6.6"
+    }
+}
