@@ -7,6 +7,7 @@
     "genkit:dev": "genkit start -- tsx src/ai/dev.ts",
     "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
     "build": "next build",
+    "newsletter": "node crm_module/src/newsletter_task.js",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit"
@@ -64,6 +65,8 @@
     "react-dom": "^19.2.4",
     "react-hook-form": "^7.54.2",
     "recharts": "^2.15.1",
+    "rss-parser": "^3.13.0",
+    "sqlite3": "^5.1.7",
     "styled-components": "^6.3.8",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
