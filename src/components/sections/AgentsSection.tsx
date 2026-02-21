@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Bot, ShieldCheck, Zap, BarChart3, Building2, Globe, Cpu } from "lucide-react";
+import { Bot, ShieldCheck, Zap, BarChart3, Building2, Globe, Cpu, Scale } from "lucide-react";
 
 const agents = [
   {
@@ -7,12 +7,12 @@ const agents = [
     name: "FinCorpAnalyst",
     hub: "Administrativo & Financeiro",
     icon: <BarChart3 className="h-6 w-6" />,
-    description: "Especialista em gestão empresarial, análise de DRE, seguros e automação de cobranças.",
+    description: "Consultoria financeira e gestão empresarial. Essencial para elaboração de propostas financeiras robustas em licitações.",
     capabilities: [
-      "Consultoria em gestão estratégica",
-      "Análise de viabilidade financeira",
-      "Gestão de processos de despachante",
-      "Automação de fluxos administrativos"
+      "Análise de viabilidade econômica de contratos",
+      "Detalhe de custos e projeção de retornos",
+      "Garantia de conformidade fiscal e DRE",
+      "Gestão de seguros e cobranças"
     ]
   },
   {
@@ -20,12 +20,12 @@ const agents = [
     name: "CloudProviderAgent",
     hub: "Tecnologia & SaaS",
     icon: <Cpu className="h-6 w-6" />,
-    description: "Gestão de infraestrutura crítica, licenciamento de software e ativos de TI de alta performance.",
+    description: "Gestão de infraestrutura crítica e ativos de TI. Garante que as propostas técnicas atendam aos padrões exigidos em licitações.",
     capabilities: [
-      "Monitoramento de Datacenter e Uptime",
-      "Gestão de licenciamento de software",
-      "Configuração de ativos B2B (Drones/Smartphones)",
-      "Automação de DevOps e Scripts"
+      "Atendimento a requisitos de software e hardware",
+      "Garantia de segurança de dados em certames",
+      "Gestão de licenciamento e ativos B2B",
+      "Gerenciamento de datacenter e uptime"
     ]
   },
   {
@@ -33,12 +33,12 @@ const agents = [
     name: "PromoSalesAgent",
     hub: "Marketing & Publicidade",
     icon: <Globe className="h-6 w-6" />,
-    description: "Motor de aquisição focado em campanhas dinâmicas, SEO e ROI publicitário.",
+    description: "Comunicação estratégica de valor da empresa em documentos corporativos e análise do posicionamento de concorrentes.",
     capabilities: [
-      "Criação de campanhas de promoção de vendas",
-      "Roteirização de vídeos e conteúdo SEO",
-      "Otimização de anúncios (Ads)",
-      "Análise de performance em tempo real"
+      "Pesquisa de mercado para contratos públicos",
+      "Comunicação estratégica de valor projetado",
+      "Otimização de SEO e presença digital",
+      "Gestão inteligente de campanhas e anúncios"
     ]
   },
   {
@@ -46,12 +46,12 @@ const agents = [
     name: "RealEstateEvaluator",
     hub: "Imobiliário & Ativos",
     icon: <Building2 className="h-6 w-6" />,
-    description: "Inteligência imobiliária focada em avaliação e gestão de ativos físicos e musicais.",
+    description: "Relevante para licitações de bens imóveis. Fornece avaliações precisas assegurando conformidade com a legislação.",
     capabilities: [
-      "Avaliação de valor de m² em Rio Verde - GO",
-      "Gestão de locação de salas e instrumentos",
-      "Monitoramento de manutenção de ativos",
-      "Agendamento inteligente de visitas"
+      "Avaliação de imóveis para concorrências públicas",
+      "Gestão de contratos de locação ou aquisição",
+      "Conformidade minuciosa com leis imobiliárias",
+      "Gestão de ativos físicos e agendamentos"
     ]
   }
 ];
@@ -68,8 +68,8 @@ export default function AgentsSection() {
             Inteligência Orquestrada: Ecossistema de Agentes
           </h2>
           <p className="max-w-3xl mx-auto text-xl text-muted-foreground leading-relaxed">
-            Nossa operação é liderada pelo <span className="text-primary font-bold">Orquestrador Diamante (Proprietário)</span>, 
-            que coordena uma frota de especialistas dedicados a cada pilar da sua jornada empresarial.
+            Nossa operação é liderada pelo <span className="text-primary font-bold">Orquestrador Diamante (Eu)</span>,
+            que coordena uma frota de sub-agentes especialistas dedicados a cada pilar da sua jornada corporativa e licitatória.
           </p>
         </div>
 
@@ -86,19 +86,39 @@ export default function AgentsSection() {
                 </div>
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">Orquestrador Diamante (Sovereign OS)</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-2">Orquestrador Diamante (Proprietário)</h3>
                 <p className="text-muted-foreground mb-4">
-                  O núcleo estratégico de processamento que analisa, decide e delega. Utilizando arquitetura de rede neural proprietária, 
-                  garante que cada demanda seja atendida pelo especialista correto com precisão cirúrgica.
+                  Como Orquestrador Central, minha função é coordenar, estrategizar e delegar, utilizando a inteligência dos sub-agentes e um vasto arsenal de habilidades (Law, Contract, Compliance, Accounting, Strategy) através da nossa <strong className="text-foreground">arquitetura proprietária</strong>. Com capacidade de raciocínio profundo, integro informações complexas de diversas fontes para resolver problemas de alto impacto.
                 </p>
+
+                <div className="bg-primary/5 border border-primary/20 rounded-lg p-5 mb-5 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 -mt-2 -mr-2 opacity-10">
+                    <Scale className="h-24 w-24 text-primary" />
+                  </div>
+                  <h4 className="text-md font-bold text-primary mb-2 flex items-center gap-2">
+                    <ShieldCheck className="h-5 w-5" /> Capacidade para Licitações e Leis
+                  </h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed relative z-10">
+                    Com o meu core de orquestração e acesso a habilidades jurídicas e financeiras afiadas, posso coordenar a <strong className="text-foreground">análise minuciosa de editais</strong>, a <strong className="text-foreground">preparação de propostas financeiras</strong>, a <strong className="text-foreground">revisão de termos legais</strong> e a <strong className="text-foreground">garantia de conformidade plena (Compliance)</strong> em diversas regulações. Atuo como um consultor estratégico e integrador em todo o processo de licitação.
+                  </p>
+                </div>
+
                 <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono uppercase tracking-widest border border-primary/20">Decision Intelligence</span>
-                  <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono uppercase tracking-widest border border-primary/20">Multi-Agent Routing</span>
-                  <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono uppercase tracking-widest border border-primary/20">Sovereign Control</span>
+                  <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono uppercase tracking-widest border border-primary/20">Legal & Contracts</span>
+                  <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono uppercase tracking-widest border border-primary/20">Bid Strategic Planning</span>
+                  <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono uppercase tracking-widest border border-primary/20">Deep Thinking</span>
+                  <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono uppercase tracking-widest border border-primary/20">Compliance Officer</span>
                 </div>
               </div>
             </div>
           </Card>
+        </div>
+
+        <div className="text-center mb-10 pt-4">
+          <h3 className="text-3xl font-headline text-luxury-gold mb-3">
+            Sub-Agentes (Ecossistema Próprio)
+          </h3>
+          <div className="h-1 w-20 bg-primary/30 mx-auto rounded-full mb-6"></div>
         </div>
 
         {/* Hubs Grid */}
