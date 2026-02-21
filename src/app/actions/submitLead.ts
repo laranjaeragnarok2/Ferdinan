@@ -79,7 +79,7 @@ export async function submitLead(data: LeadFormData) {
 
           <br/>
           <p>Atenciosamente,</p>
-          <p><strong>Silas Ferdinan</strong><br>
+          <p><strong>Ferdinan</strong><br>
           <span style="font-size: 12px; color: #666;">Growth & Gestão | Ferdinan-MSP.Group</span></p>
         </div>
       `,

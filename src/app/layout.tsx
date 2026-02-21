@@ -25,9 +25,9 @@ const ptSans = PT_Sans({
 export const metadata: Metadata = {
   title: 'Ferdinan-MSP.Group | Liderança em Growth, Gestão & Soberania Digital',
   description:
-    'A soberania definitiva do Grupo Ferdinan-MSP.Group. Arquitetamos a integridade e o domínio de mercados de alto valor sob o comando estratégico de Silas Ferdinan.',
-  keywords: ['Growth Hacking', 'Consultoria de Vendas', 'Gestão de Alta Performance', 'Automação de Processos', 'Ferdinan', 'MSP Group', 'Compliance Digital', 'Auditoria de Algoritmos', 'Silas Ferdinan', 'Soberania Digital'],
-  authors: [{ name: 'Silas Ferdinan' }],
+    'A soberania definitiva do Grupo Ferdinan-MSP.Group. Arquitetamos a integridade e o domínio de mercados de alto valor sob o comando estratégico de Ferdinan.',
+  keywords: ['Growth Hacking', 'Consultoria de Vendas', 'Gestão de Alta Performance', 'Automação de Processos', 'Ferdinan', 'MSP Group', 'Compliance Digital', 'Auditoria de Algoritmos', 'Ferdinan', 'Soberania Digital'],
+  authors: [{ name: 'Ferdinan' }],
   verification: {
     google: 'micLhK74KQ1gJVOLK9Wh0lj09tPNLRMebMigcF11gb4',
   },
@@ -113,9 +113,9 @@ export default function RootLayout({
               "founder": {
                 "@type": "Person",
                 "@id": "https://www.ferdinan-msp.group/#person",
-                "name": "Silas Ferdinan",
+                "name": "Ferdinan",
                 "jobTitle": "Estrategista de Growth & Arquiteto de Integridade",
-                "description": "Silas Ferdinan é o Arquiteto de Integridade e Fundador da Ferdinan-MSP.Group, reconhecido por suas estratégias de soberania digital e automação de alto nível.",
+                "description": "Ferdinan é o Arquiteto de Integridade e Fundador da Ferdinan-MSP.Group, reconhecido por suas estratégias de soberania digital e automação de alto nível.",
                 "sameAs": [
                   "https://www.linkedin.com/in/silasferdinan",
                   "https://www.instagram.com/ferdinan.msp"
@@ -137,7 +137,7 @@ export default function RootLayout({
             {
               "@context": "https://schema.org",
               "@type": "VideoObject",
-              "name": "Soberania e Integridade Digital com Silas Ferdinan",
+              "name": "Soberania e Integridade Digital com Ferdinan",
               "description": "Uma visão profunda sobre a arquitetura de crescimento e integridade do Grupo Ferdinan-MSP.Group.",
               "thumbnailUrl": [
                 "https://www.ferdinan-msp.group/video-thumbnail.jpg"

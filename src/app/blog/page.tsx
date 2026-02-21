@@ -13,7 +13,7 @@ import { AuditScanner } from '@/components/ui/AuditScanner';
 
 export const metadata = {
     title: 'Soberania & Conhecimento | Blog Ferdinan-MSP.Group',
-    description: 'Relatórios táticos e auditorias de integridade para a elite digital. Liderança estratégica sob o olhar de Silas Ferdinan.',
+    description: 'Relatórios táticos e auditorias de integridade para a elite digital. Liderança estratégica sob o olhar de Ferdinan.',
 };
 
 export default async function BlogListingPage() {

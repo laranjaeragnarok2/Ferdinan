@@ -20,11 +20,11 @@ const heroBackgroundImage = PlaceHolderImages.find(
 );
 
 const Sparkle = ({ delay, top, left, size }: { delay: string, top: string, left: string, size: string }) => (
-  <span 
+  <span
     className="absolute animate-sparkle pointer-events-none text-luxury-gold opacity-0 z-20"
-    style={{ 
-      top, 
-      left, 
+    style={{
+      top,
+      left,
       fontSize: size,
       animationDelay: delay,
       filter: 'drop-shadow(0 0 10px rgba(212, 175, 55, 0.8))'
@@ -42,7 +42,7 @@ export default function HeroSection() {
       const scrollY = window.scrollY;
       const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = scrollY / windowHeight;
-      const newScale = Math.max(0, 1 - progress * 1.5); 
+      const newScale = Math.max(0, 1 - progress * 1.5);
       setScrollScale(newScale);
     };
 
@@ -53,16 +53,16 @@ export default function HeroSection() {
   return (
     <section className="relative text-white overflow-hidden">
       {/* Seta Animada (GIF) com Efeitos de Elite para disfarçar qualidade */}
-      <div 
+      <div
         className="fixed left-4 bottom-24 z-30 hidden lg:block pointer-events-none transition-all duration-100"
-        style={{ 
+        style={{
           transform: `scale(${scrollScale})`,
           opacity: scrollScale * 0.7
         }}
       >
-        <img 
-          src="/arrow-anim.gif" 
-          alt="Role para baixo" 
+        <img
+          src="/arrow-anim.gif"
+          alt="Role para baixo"
           className="w-48 h-auto mix-blend-screen filter brightness-125 contrast-125 drop-shadow-[0_0_20px_rgba(212,175,55,0.5)] blur-[0.4px]"
         />
       </div>
@@ -70,7 +70,7 @@ export default function HeroSection() {
       {heroBackgroundImage && (
         <Image
           src={heroBackgroundImage.imageUrl}
-          alt="Silas Ferdinan - Arquiteto de Integridade e Liderança em Growth do Grupo Ferdinan-MSP.Group"
+          alt="Ferdinan - Arquiteto de Integridade e Liderança em Growth do Grupo Ferdinan-MSP.Group"
           title="Ferdinan-MSP.Group: Soberania e Integridade Digital"
           fill
           sizes="100vw"
@@ -83,7 +83,7 @@ export default function HeroSection() {
         />
       )}
       <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-background"></div>
-      
+
       <div className="container relative z-10 mx-auto px-4 py-24 text-center md:py-40">
         <div className="mb-6 inline-flex items-center rounded-full border border-primary/30 bg-primary/5 px-4 py-1.5 text-xs font-semibold tracking-widest text-primary uppercase backdrop-blur-md">
           <span className="mr-2 inline-flex h-1.5 w-1.5 animate-pulse rounded-full bg-primary shadow-[0_0_10px_#D4AF37]"></span>
@@ -108,7 +108,7 @@ export default function HeroSection() {
         </div>
 
         <p className="mx-auto mt-8 max-w-2xl text-lg md:text-xl text-white/60 leading-relaxed font-light">
-          A autoridade definitiva em <span className="text-white font-medium border-b border-primary/50">Growth, Gestão & Compliance</span>. Liderados por Silas Ferdinan, arquitetamos a integridade algorítmica e o crescimento exponencial de marcas soberanas.
+          A autoridade definitiva em <span className="text-white font-medium border-b border-primary/50">Growth, Gestão & Compliance</span>. Liderados por Ferdinan, arquitetamos a integridade algorítmica e o crescimento exponencial de marcas soberanas.
         </p>
 
         <div className="mt-16 flex flex-col items-center justify-center gap-6">
