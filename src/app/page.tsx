@@ -19,6 +19,7 @@ const NewsFeedSection = dynamic(() => import('@/components/sections/NewsFeedSect
 });
 const LatestPostSection = dynamic(() => import('@/components/sections/LatestPostSection'));
 const FAQSection = dynamic(() => import('@/components/sections/FAQSection'));
+const AutomacaoCTASection = dynamic(() => import('@/components/sections/AutomacaoCTASection'));
 
 export default function Home() {
   return (
@@ -35,6 +36,9 @@ export default function Home() {
           </FadeInOnScroll>
           <FadeInOnScroll>
             <PainAndThesisSection />
+          </FadeInOnScroll>
+          <FadeInOnScroll>
+            <AutomacaoCTASection />
           </FadeInOnScroll>
           <FadeInOnScroll>
             <CurationProcessSection />

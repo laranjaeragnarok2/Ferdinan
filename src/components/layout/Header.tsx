@@ -32,6 +32,7 @@ export default function Header() {
           <Link href="/#process" className="text-white/40 hover:text-primary transition-colors">Processo</Link>
           <Link href="/#solutions" className="text-white/40 hover:text-primary transition-colors">Soluções</Link>
           <Link href="/ia" className="text-white/40 hover:text-primary transition-colors">IA</Link>
+          <Link href="/automacao" className="text-white/40 hover:text-primary transition-colors">Automação</Link>
           <Link href="/blog" className="text-white/40 hover:text-primary transition-colors">Briefing</Link>
           <Link href="/#contact" className="text-white/40 hover:text-primary transition-colors">Contato</Link>
         </nav>
@@ -97,6 +98,13 @@ export default function Header() {
               onClick={() => setIsMenuOpen(false)}
             >
               Depoimentos
+            </Link>
+            <Link
+              href="/automacao"
+              className="text-slate-300 hover:text-white hover:bg-white/5 p-2 rounded-lg transition-all"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Automação
             </Link>
             <Link
               href="/blog"
