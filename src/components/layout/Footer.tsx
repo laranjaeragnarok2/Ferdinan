@@ -15,7 +15,7 @@ export default function Footer() {
               Ferdinan-MSP.Group
             </span>
           </Link>
-          <p className="text-muted-foreground">A Ferdinan-MSP.Group presta consultoria de vendas e gestão em Rio Verde, Goiás. Estratégias de crescimento personalizadas para negócios de alto valor.</p>
+          <p className="text-muted-foreground">A Ferdinan-MSP.Group presta consultoria global com sua sede em Rio Verde, Goiás. Estratégias de crescimento personalizadas para você empreendedor.</p>
         </div>
         <div>
           <h3 className="font-semibold mb-4 text-foreground">Links Rápidos</h3>
@@ -40,63 +40,63 @@ export default function Footer() {
       {/* Barra de Certificação de Elite */}
       <div className="border-t border-border/40 py-12 bg-black/40">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-y-12 gap-x-8 items-center opacity-30 hover:opacity-100 transition-opacity duration-700 grayscale hover:grayscale-0">
-                
-                {/* 1. SSL */}
-                <div className="flex items-center gap-3 group justify-center lg:justify-start">
-                    <Lock className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
-                    <div className="flex flex-col">
-                        <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">SSL Secure</span>
-                        <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">AES-256 BIT ENCRYPT</span>
-                    </div>
-                </div>
-                
-                {/* 2. Safe Browsing */}
-                <div className="flex items-center gap-3 group justify-center lg:justify-start">
-                    <ShieldCheck className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
-                    <div className="flex flex-col">
-                        <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">Safe Browsing</span>
-                        <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">GOOGLE VERIFIED</span>
-                    </div>
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-y-12 gap-x-8 items-center opacity-30 hover:opacity-100 transition-opacity duration-700 grayscale hover:grayscale-0">
 
-                {/* 3. LGPD */}
-                <div className="flex items-center gap-3 group justify-center lg:justify-start">
-                    <Database className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
-                    <div className="flex flex-col">
-                        <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">Sovereign Data</span>
-                        <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">LGPD COMPLIANT</span>
-                    </div>
-                </div>
-
-                {/* 4. Google Cloud/Firebase */}
-                <div className="flex items-center gap-3 group justify-center lg:justify-start">
-                    <Cloud className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
-                    <div className="flex flex-col">
-                        <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">Infrastructure</span>
-                        <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">GOOGLE CLOUD / FIREBASE</span>
-                    </div>
-                </div>
-
-                {/* 5. Skarner Engine */}
-                <div className="flex items-center gap-3 group justify-center lg:justify-start">
-                    <Fingerprint className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
-                    <div className="flex flex-col">
-                        <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">Skarner Audit</span>
-                        <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">SOVEREIGN VERIFIED</span>
-                    </div>
-                </div>
-
-                {/* 6. Kyber-1024 */}
-                <div className="flex items-center gap-3 group justify-center lg:justify-start">
-                    <Cpu className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
-                    <div className="flex flex-col">
-                        <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">Security Core</span>
-                        <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">KYBER-1024 QUANTUM-READY</span>
-                    </div>
-                </div>
-
+            {/* 1. SSL */}
+            <div className="flex items-center gap-3 group justify-center lg:justify-start">
+              <Lock className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
+              <div className="flex flex-col">
+                <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">SSL Secure</span>
+                <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">AES-256 BIT ENCRYPT</span>
+              </div>
             </div>
+
+            {/* 2. Safe Browsing */}
+            <div className="flex items-center gap-3 group justify-center lg:justify-start">
+              <ShieldCheck className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
+              <div className="flex flex-col">
+                <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">Safe Browsing</span>
+                <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">GOOGLE VERIFIED</span>
+              </div>
+            </div>
+
+            {/* 3. LGPD */}
+            <div className="flex items-center gap-3 group justify-center lg:justify-start">
+              <Database className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
+              <div className="flex flex-col">
+                <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">Sovereign Data</span>
+                <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">LGPD COMPLIANT</span>
+              </div>
+            </div>
+
+            {/* 4. Google Cloud/Firebase */}
+            <div className="flex items-center gap-3 group justify-center lg:justify-start">
+              <Cloud className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
+              <div className="flex flex-col">
+                <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">Infrastructure</span>
+                <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">GOOGLE CLOUD / FIREBASE</span>
+              </div>
+            </div>
+
+            {/* 5. Skarner Engine */}
+            <div className="flex items-center gap-3 group justify-center lg:justify-start">
+              <Fingerprint className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
+              <div className="flex flex-col">
+                <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">Skarner Audit</span>
+                <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">SOVEREIGN VERIFIED</span>
+              </div>
+            </div>
+
+            {/* 6. Kyber-1024 */}
+            <div className="flex items-center gap-3 group justify-center lg:justify-start">
+              <Cpu className="w-7 h-7 text-primary group-hover:scale-110 transition-transform" />
+              <div className="flex flex-col">
+                <span className="text-[12px] font-bold uppercase tracking-widest text-white leading-none">Security Core</span>
+                <span className="text-[10px] font-mono text-primary/70 uppercase tracking-tighter mt-1.5">KYBER-1024 QUANTUM-READY</span>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
 
