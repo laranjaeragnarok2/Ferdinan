@@ -8,6 +8,13 @@ const agents = [
     hub: "Administrativo & Financeiro",
     icon: <BarChart3 className="h-6 w-6" />,
     description: "Consultoria financeira e gestão empresarial. Essencial para elaboração de propostas financeiras robustas em licitações.",
+    theme: {
+      bgGradient: "from-emerald-500/10 via-transparent to-transparent",
+      iconWrap: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/40",
+      dot: "bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]",
+      borderHover: "hover:border-emerald-500/40 hover:shadow-[0_0_30px_rgba(52,211,153,0.15)]",
+      textHighlight: "text-emerald-400"
+    },
     capabilities: [
       "Análise de viabilidade econômica de contratos",
       "Detalhe de custos e projeção de retornos",
@@ -21,6 +28,13 @@ const agents = [
     hub: "Tecnologia & SaaS",
     icon: <Cpu className="h-6 w-6" />,
     description: "Gestão de infraestrutura crítica e ativos de TI. Garante que as propostas técnicas atendam aos padrões exigidos em licitações.",
+    theme: {
+      bgGradient: "from-blue-500/10 via-transparent to-transparent",
+      iconWrap: "bg-blue-500/10 text-blue-400 border-blue-500/20 group-hover:bg-blue-500/20 group-hover:border-blue-500/40",
+      dot: "bg-blue-400 shadow-[0_0_8px_rgba(96,165,250,0.8)]",
+      borderHover: "hover:border-blue-500/40 hover:shadow-[0_0_30px_rgba(96,165,250,0.15)]",
+      textHighlight: "text-blue-400"
+    },
     capabilities: [
       "Atendimento a requisitos de software e hardware",
       "Garantia de segurança de dados em certames",
@@ -34,6 +48,13 @@ const agents = [
     hub: "Marketing & Publicidade",
     icon: <Globe className="h-6 w-6" />,
     description: "Comunicação estratégica de valor da empresa em documentos corporativos e análise do posicionamento de concorrentes.",
+    theme: {
+      bgGradient: "from-purple-500/10 via-transparent to-transparent",
+      iconWrap: "bg-purple-500/10 text-purple-400 border-purple-500/20 group-hover:bg-purple-500/20 group-hover:border-purple-500/40",
+      dot: "bg-purple-400 shadow-[0_0_8px_rgba(192,132,252,0.8)]",
+      borderHover: "hover:border-purple-500/40 hover:shadow-[0_0_30px_rgba(192,132,252,0.15)]",
+      textHighlight: "text-purple-400"
+    },
     capabilities: [
       "Pesquisa de mercado para contratos públicos",
       "Comunicação estratégica de valor projetado",
@@ -47,6 +68,13 @@ const agents = [
     hub: "Imobiliário & Ativos",
     icon: <Building2 className="h-6 w-6" />,
     description: "Relevante para licitações de bens imóveis. Fornece avaliações precisas assegurando conformidade com a legislação.",
+    theme: {
+      bgGradient: "from-amber-500/10 via-transparent to-transparent",
+      iconWrap: "bg-amber-500/10 text-amber-500 border-amber-500/20 group-hover:bg-amber-500/20 group-hover:border-amber-500/40",
+      dot: "bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]",
+      borderHover: "hover:border-amber-500/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.15)]",
+      textHighlight: "text-amber-500"
+    },
     capabilities: [
       "Avaliação de imóveis para concorrências públicas",
       "Gestão de contratos de locação ou aquisição",
@@ -124,29 +152,38 @@ export default function AgentsSection() {
         {/* Hubs Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {agents.map((agent) => (
-            <Card key={agent.id} className="glass-luxury border-white/[0.08] hover:border-gold-glow p-8 transition-all duration-300">
-              <CardHeader className="p-0 mb-6 flex flex-row items-center gap-4">
-                <div className="h-12 w-12 rounded-xl bg-primary/5 border border-primary/10 flex items-center justify-center text-primary">
-                  {agent.icon}
-                </div>
-                <div>
-                  <h4 className="text-xs font-mono text-primary uppercase tracking-[0.2em] mb-1">{agent.hub}</h4>
-                  <h3 className="text-xl font-bold text-foreground">{agent.name}</h3>
-                </div>
-              </CardHeader>
-              <CardContent className="p-0">
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {agent.description}
-                </p>
-                <ul className="space-y-3">
-                  {agent.capabilities.map((cap, i) => (
-                    <li key={i} className="flex items-start gap-3 text-sm text-foreground/80">
-                      <div className="mt-1 h-1.5 w-1.5 rounded-full bg-primary shrink-0 shadow-[0_0_8px_rgba(212,175,55,0.8)]" />
-                      {cap}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
+            <Card
+              key={agent.id}
+              className={`glass-luxury border-white/[0.08] ${agent.theme.borderHover} p-8 transition-all duration-500 relative overflow-hidden group`}
+            >
+              <div className={`absolute inset-0 bg-gradient-to-br ${agent.theme.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-in-out`} />
+
+              <div className="relative z-10">
+                <CardHeader className="p-0 mb-6 flex flex-row items-center gap-4">
+                  <div className={`h-12 w-12 rounded-xl border flex items-center justify-center transition-all duration-500 ${agent.theme.iconWrap}`}>
+                    {agent.icon}
+                  </div>
+                  <div>
+                    <h4 className={`text-xs font-mono uppercase tracking-[0.2em] mb-1 transition-colors duration-500 ${agent.theme.textHighlight}`}>
+                      {agent.hub}
+                    </h4>
+                    <h3 className="text-xl font-bold text-foreground">{agent.name}</h3>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {agent.description}
+                  </p>
+                  <ul className="space-y-3">
+                    {agent.capabilities.map((cap, i) => (
+                      <li key={i} className="flex items-start gap-3 text-sm text-foreground/80 group-hover:text-foreground transition-colors duration-300">
+                        <div className={`mt-1.5 h-1.5 w-1.5 rounded-full shrink-0 transition-shadow duration-500 ${agent.theme.dot}`} />
+                        {cap}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </div>
             </Card>
           ))}
         </div>
