@@ -61,50 +61,94 @@ function buildHtmlTemplate(newsArticles) {
 
     if (newsArticles.length > 0) {
         newsHtml = newsArticles.map(article => `
-            <div style="margin-bottom: 24px; padding: 24px; border: 1px solid rgba(212, 175, 55, 0.15); border-left: 4px solid #D4AF37; background: rgba(255, 255, 255, 0.02); border-radius: 8px;">
-                <h4 style="margin: 0 0 12px 0; color: #FFFFFF; font-size: 16px; font-weight: 500; font-family: 'Outfit', sans-serif;">${article.title}</h4>
-                <p style="margin: 0 0 16px 0; font-size: 12px; color: rgba(255, 255, 255, 0.5); text-transform: uppercase; letter-spacing: 0.05em;">⏳ Publicado em: ${new Date(article.pubDate).toLocaleDateString('pt-BR')}</p>
-                <a href="${article.link}" style="display: inline-block; font-size: 13px; color: #D4AF37; text-decoration: none; font-weight: bold; border-bottom: 1px solid rgba(212, 175, 55, 0.4); padding-bottom: 2px;">Ler Análise Completa →</a>
-            </div>
+            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 24px;">
+                <tr>
+                    <td style="padding: 24px; border: 1px solid #333333; border-left: 4px solid #D4AF37; background-color: #1A1A1A; border-radius: 8px;">
+                        <h4 style="margin: 0 0 12px 0; color: #FFFFFF; font-size: 16px; font-weight: 500; font-family: Helvetica, Arial, sans-serif;">${article.title}</h4>
+                        <p style="margin: 0 0 16px 0; font-size: 12px; color: #888888; text-transform: uppercase; letter-spacing: 0.05em; font-family: Helvetica, Arial, sans-serif;">⏳ Publicado em: ${new Date(article.pubDate).toLocaleDateString('pt-BR')}</p>
+                        <a href="${article.link}" style="display: inline-block; font-size: 13px; color: #D4AF37; text-decoration: none; font-weight: bold; border-bottom: 1px solid #D4AF37; padding-bottom: 2px; font-family: Helvetica, Arial, sans-serif;">Ler Análise Completa &rarr;</a>
+                    </td>
+                </tr>
+            </table>
         `).join('');
     } else {
-        newsHtml = '<p style="color: rgba(255, 255, 255, 0.5); font-style: italic; padding: 20px; border: 1px dashed rgba(255,255,255,0.1); border-radius: 8px;">Nenhuma movimentação drástica de mercado nas últimas 24h. O panorama corporativo permanece estável.</p>';
+        newsHtml = '<p style="color: #888888; font-style: italic; padding: 20px; border: 1px dashed #333333; border-radius: 8px; font-family: Helvetica, Arial, sans-serif;">Nenhuma movimentação drástica de mercado nas últimas 24h. O panorama corporativo permanece estável.</p>';
     }
 
-    return `
-        <div style="background-color: #0A0A0A; padding: 40px 20px;">
-            <div style="font-family: 'Inter', Helvetica, sans-serif; max-width: 600px; margin: auto; padding: 40px; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; background-color: #0F0F11; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                <div style="text-align: center; margin-bottom: 40px;">
-                    <img src="https://ferdinan-msp.group/ferdinan-mascot.png" alt="Orquestrador Diamante" style="width: 70px; height: 70px; border-radius: 50%; border: 2px solid #D4AF37; box-shadow: 0 0 15px rgba(212, 175, 55, 0.5); margin-bottom: 20px;" />
-                    <h1 style="color: #D4AF37; margin: 0; font-size: 28px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 300;">Ferdinan <span style="font-weight: 700;">Group</span></h1>
-                    <div style="width: 40px; height: 1px; background: rgba(212, 175, 55, 0.5); margin: 15px auto;"></div>
-                    <p style="color: rgba(255, 255, 255, 0.5); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; margin-top: 5px;">Sovereign OS • Market Intelligence</p>
-                </div>
-                
-                <p style="color: rgba(255, 255, 255, 0.9); font-size: 16px; line-height: 1.6;">Olá, <strong style="color: #FFFFFF;">Amigo Empresário</strong>,</p>
-                <p style="color: rgba(255, 255, 255, 0.7); font-size: 15px; line-height: 1.7;">O Orquestrador Diamante interceptou movimentações estratégicas e de compliance que impactam profundamente o cenário corporativo hoje.</p>
-                
-                <div style="margin: 40px 0;">
-                    <h3 style="color: #FFFFFF; margin-bottom: 25px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 15px; font-size: 16px; text-transform: uppercase; letter-spacing: 0.1em; display: flex; align-items: center;">
-                        <span style="display: inline-block; width: 8px; height: 8px; background-color: #D4AF37; border-radius: 50%; margin-right: 10px; box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);"></span>
-                        Radar de Editais
-                    </h3>
-                    ${newsHtml}
-                </div>
-
-                <div style="background: linear-gradient(145deg, rgba(212, 175, 55, 0.05), rgba(212, 175, 55, 0.1)); border: 1px solid rgba(212, 175, 55, 0.2); padding: 30px; border-radius: 12px; margin-top: 50px; text-align: center;">
-                    <h4 style="margin: 0 0 15px 0; color: #FFFFFF; font-size: 18px; font-family: 'Outfit', sans-serif;">Transforme Risco em Vitória.</h4>
-                    <p style="margin: 0 0 25px 0; font-size: 14px; color: rgba(255, 255, 255, 0.6); line-height: 1.6;">Precisa de estruturação jurídica e financeira para dominar editais complexos? Nossa arquitetura proprietária está pronta.</p>
-                    <a href="https://www.ferdinan-msp.group" style="display: inline-block; background-color: #D4AF37; color: #0A0A0A; padding: 14px 30px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;">Acionar Orquestrador</a>
-                </div>
-
-                <p style="font-size: 11px; text-align: center; color: rgba(255, 255, 255, 0.3); margin-top: 50px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 25px; line-height: 1.6;">
-                    Briefing Executivo Confidencial.<br>
-                    Ferdinan Group - Todos os direitos reservados.
-                </p>
-            </div>
-        </div>
-    `;
+    return `<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferdinan Group - Market Intelligence</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #0A0A0A; font-family: Helvetica, Arial, sans-serif;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #0A0A0A; padding: 40px 10px;">
+        <tr>
+            <td align="center">
+                <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; padding: 40px; border: 1px solid #222222; border-radius: 16px; background-color: #0F0F11;">
+                    <tr>
+                        <td align="center" style="padding-bottom: 40px;">
+                            <img src="https://ferdinan-msp.group/ferdinan-mascot.png" alt="Orquestrador Diamante" width="80" height="80" style="display: block; border-radius: 50%; border: 2px solid #D4AF37; margin-bottom: 20px;" />
+                            <h1 style="color: #D4AF37; margin: 0; font-size: 28px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 300;">Ferdinan <span style="font-weight: 700;">Group</span></h1>
+                            <div style="width: 40px; height: 1px; background-color: #D4AF37; margin: 15px auto;"></div>
+                            <p style="color: #888888; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; margin-top: 5px;">Sovereign OS &bull; Market Intelligence</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-bottom: 40px;">
+                            <p style="color: #DDDDDD; font-size: 16px; line-height: 1.6; margin: 0 0 15px 0;">Olá, <strong style="color: #FFFFFF;">Amigo Empresário</strong>,</p>
+                            <p style="color: #BBBBBB; font-size: 15px; line-height: 1.7; margin: 0;">O Orquestrador Diamante interceptou movimentações estratégicas e de compliance que impactam profundamente o cenário corporativo hoje.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-bottom: 40px;">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom: 1px solid #222222; margin-bottom: 25px;">
+                                <tr>
+                                    <td style="padding-bottom: 15px;">
+                                        <h3 style="color: #FFFFFF; font-size: 16px; text-transform: uppercase; letter-spacing: 0.1em; margin: 0;">
+                                            <span style="color: #D4AF37;">&#9679;</span> Radar de Editais
+                                        </h3>
+                                    </td>
+                                </tr>
+                            </table>
+                            ${newsHtml}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #1A1A1A; border: 1px solid #333333; border-radius: 12px;">
+                                <tr>
+                                    <td align="center" style="padding: 30px;">
+                                        <h4 style="margin: 0 0 15px 0; color: #FFFFFF; font-size: 18px;">Transforme Risco em Vitória.</h4>
+                                        <p style="margin: 0 0 25px 0; font-size: 14px; color: #BBBBBB; line-height: 1.6;">Precisa de estruturação jurídica e financeira para dominar editais complexos? Nossa arquitetura proprietária está pronta.</p>
+                                        <a href="https://www.ferdinan-msp.group" style="display: inline-block; background-color: #D4AF37; color: #0A0A0A; padding: 14px 30px; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px;">Acionar Orquestrador</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="padding-top: 50px;">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top: 1px solid #222222;">
+                                <tr>
+                                    <td align="center" style="padding-top: 30px;">
+                                        <p style="font-size: 11px; color: #666666; line-height: 1.6; margin: 0;">
+                                            Briefing Executivo Confidencial.<br>
+                                            Ferdinan Group - Todos os direitos reservados.
+                                        </p>
+                                        <img src="https://ferdinan-msp.group/favicon-32x32.png" alt="Logo Ferdinan" width="32" height="32" style="display: block; margin-top: 15px; opacity: 0.5;" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>`;
 }
 
 async function runNewsletterEngine() {
