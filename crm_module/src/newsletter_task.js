@@ -89,7 +89,7 @@ function buildHtmlTemplate(newsArticles) {
                 <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; padding: 40px; border: 1px solid #222222; border-radius: 16px; background-color: #0F0F11;">
                     <tr>
                         <td align="center" style="padding-bottom: 40px;">
-                            <img src="https://ferdinan-msp.group/ferdinan-mascot.png" alt="Orquestrador Diamante" width="80" height="80" style="display: block; border-radius: 50%; border: 2px solid #D4AF37; margin-bottom: 20px;" />
+                            <img src="cid:mascot" alt="Orquestrador Diamante" width="80" height="80" style="display: block; border-radius: 50%; border: 2px solid #D4AF37; margin-bottom: 20px;" />
                             <h1 style="color: #D4AF37; margin: 0; font-size: 28px; letter-spacing: 1.5px; text-transform: uppercase; font-weight: 300;">Ferdinan <span style="font-weight: 700;">Group</span></h1>
                             <div style="width: 40px; height: 1px; background-color: #D4AF37; margin: 15px auto;"></div>
                             <p style="color: #888888; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; margin-top: 5px;">Sovereign OS &bull; Market Intelligence</p>
@@ -137,7 +137,7 @@ function buildHtmlTemplate(newsArticles) {
                                             Briefing Executivo Confidencial.<br>
                                             Ferdinan Group - Todos os direitos reservados.
                                         </p>
-                                        <img src="https://ferdinan-msp.group/favicon-32x32.png" alt="Logo Ferdinan" width="32" height="32" style="display: block; margin-top: 15px; opacity: 0.5;" />
+                                        <img src="cid:favicon" alt="Logo Ferdinan" width="32" height="32" style="display: block; margin-top: 15px; opacity: 0.5;" />
                                     </td>
                                 </tr>
                             </table>
@@ -180,7 +180,19 @@ async function runNewsletterEngine() {
                 to: lead.email,
                 subject: `📡 Radar de Compliance e Licitações de TI - Briefing da Semana`,
                 text: `Olá Amigo Empresário,\n\nAcesse o briefing de inteligência com as últimas movimentações em Licitações de TI e Compliance do Mercado.`,
-                html: htmlContent
+                html: htmlContent,
+                attachments: [
+                    {
+                        filename: 'ferdinan-mascot.png',
+                        path: path.join(__dirname, '..', '..', 'public', 'ferdinan-mascot.png'),
+                        cid: 'mascot'
+                    },
+                    {
+                        filename: 'favicon-32x32.png',
+                        path: path.join(__dirname, '..', '..', 'public', 'favicon-32x32.png'),
+                        cid: 'favicon'
+                    }
+                ]
             };
 
             try {
