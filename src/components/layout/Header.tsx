@@ -10,7 +10,7 @@ import { Menu, X } from "lucide-react";
 export default function Header() {
   const { status } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const phoneNumber = '556492339844';
+  const phoneNumber = '5564993180364';
   const message = 'Olá, eu gostaria de mais informações';
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     message

@@ -18,13 +18,13 @@ function WhatsAppIcon({ className }: { className?: string }) {
 
 
 export default function WhatsAppButton() {
-    const phoneNumber = "556492339844";
+    const phoneNumber = "5564993180364";
     const message = "Olá, eu gostaria de mais informações";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
     return (
-        <Link 
-            href={whatsappUrl} 
+        <Link
+            href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="fixed bottom-6 right-6 z-50 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-r from-amber-500 to-orange-600 text-black shadow-lg transition-transform duration-300 ease-in-out hover:scale-110 hover:brightness-110"
