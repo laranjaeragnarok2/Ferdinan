@@ -106,7 +106,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Ferdinan-MSP.Group",
-              "legalName": "Ferdinan-MSP.Group",
+              "legalName": "FERDINAN MSP EMPREENDEDORISMO DIGITAL LTDA",
               "url": "https://www.ferdinan-msp.group",
               "logo": "https://www.ferdinan-msp.group/favicon-32x32.png",
               "description": "Liderança em Consultoria de Growth, Gestão de Alta Performance e Compliance Digital no Brasil. Especialistas em Soberania de Dados e Auditoria Algorítmica.",
@@ -124,11 +124,13 @@ export default function RootLayout({
               "contactPoint": {
                 "@type": "ContactPoint",
                 "contactType": "Strategic Sales",
-                "email": "diretoria@ferdinan-msp.group",
+                "email": "comercial@ferdinan-msp.group",
                 "url": "https://www.ferdinan-msp.group/#contact"
               },
               "address": {
                 "@type": "PostalAddress",
+                "streetAddress": "RUA U-006, LOTE 8 QUADRA 18 PAVLH TERREO, SETOR UNIVERSITARIO",
+                "postalCode": "75909330",
                 "addressLocality": "Rio Verde",
                 "addressRegion": "GO",
                 "addressCountry": "BR"

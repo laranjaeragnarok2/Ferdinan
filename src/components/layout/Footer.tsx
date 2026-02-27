@@ -15,7 +15,7 @@ export default function Footer() {
               Ferdinan-MSP.Group
             </span>
           </Link>
-          <p className="text-muted-foreground">A Ferdinan-MSP.Group presta consultoria global com sua sede em Rio Verde, Goiás. Estratégias de crescimento personalizadas para você empreendedor.</p>
+          <p className="text-muted-foreground">A FERDINAN MSP EMPREENDEDORISMO DIGITAL LTDA (Ferdinan-MSP.Group) presta consultoria global com sua sede em Rio Verde, Goiás. Estratégias de crescimento personalizadas para você empreendedor.</p>
         </div>
         <div>
           <h3 className="font-semibold mb-4 text-foreground">Links Rápidos</h3>
@@ -100,7 +100,10 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="container mx-auto text-center text-sm text-muted-foreground border-t border-border/40 pt-6 pb-6 px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto text-center text-sm text-muted-foreground border-t border-border/40 pt-6 pb-6 px-4 sm:px-6 lg:px-8 space-y-2">
+        <p>FERDINAN MSP EMPREENDEDORISMO DIGITAL LTDA | CNPJ: 55.261.413/0001-90</p>
+        <p>Rua U-006, Lote 8, Quadra 18, Pavilhão Térreo - Setor Universitário, Rio Verde - GO, CEP: 75909-330</p>
+        <p>comercial@ferdinan-msp.group</p>
         <p>
           &copy; {new Date().getFullYear()} Ferdinan-MSP.Group. Todos os Direitos Reservados.
         </p>
